@@ -824,377 +824,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/10/10/3、Android/1、Android 基础/基本知识/设备相关/Android 获取和设置按键音效/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/3、Android/1、Android 基础/基本知识/设备相关/Android 获取和设置按键音效/" itemprop="url">
-                  Android 获取和设置按键音效
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-10-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-10-10T11:42:59+08:00">2017-10-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-14 15:19:51" itemprop="dateModified" datetime="2018-05-14T15:19:51+08:00">2018-05-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Android-获取和设置按键音效"><a href="#Android-获取和设置按键音效" class="headerlink" title="Android 获取和设置按键音效"></a>Android 获取和设置按键音效</h1><blockquote>
-<p> android 系统设置按键音效主要用到 Settings.System 系统设置类及API</p>
-</blockquote>
-<h2 id="系统按键音获取："><a href="#系统按键音获取：" class="headerlink" title="系统按键音获取："></a>系统按键音获取：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#需要import包android.provider</span><br><span class="line">#取出的值为int类型，0关闭，1开启</span><br><span class="line">Settings.System.getInt(getContentResolver(), Settings.System.SOUND_EFFECTS_ENABLED, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="系统按键音设定："><a href="#系统按键音设定：" class="headerlink" title="系统按键音设定："></a>系统按键音设定：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#需要import包android.provider</span><br><span class="line">#0关闭，1开启</span><br><span class="line">#</span><br><span class="line">Settings.System.putInt(getContentResolver(), Settings.System.SOUND_EFFECTS_ENABLED, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>需要加入修改系统设置权限<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_SETTINGS"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="自定义控件的按键音设置："><a href="#自定义控件的按键音设置：" class="headerlink" title="自定义控件的按键音设置："></a>自定义控件的按键音设置：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 需要系统按键音效打开，才能正常使用</span><br><span class="line">View.setSoundEffectsEnabled(<span class="keyword">true</span>)</span><br><span class="line">View.playSoundEffect(SoundEffectConstants.CLICK);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/10/10/1、Java/1、java 基础/Java访问权限/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/10/10/1、Java/1、java 基础/Java访问权限/" itemprop="url">
-                  Java访问权限
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-10-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-10-10T11:42:59+08:00">2017-10-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-08-06 10:06:54" itemprop="dateModified" datetime="2018-08-06T10:06:54+08:00">2018-08-06</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Java访问权限"><a href="#Java访问权限" class="headerlink" title="Java访问权限"></a>Java访问权限</h2><p>public，protected，private是Java里用来定义成员的访问权限的，另外还有一种是“default”，也就是在成员前不加任何权限修饰符。如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>   <span class="class"><span class="keyword">class</span>   <span class="title">A</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">void</span>   <span class="title">method</span><span class="params">()</span></span>&#123;&#125;; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>method就属于default权限。 </p>
-<p>这四个修饰符的访问权限如下表: </p>
-<table>
-<thead>
-<tr>
-<th>限定符</th>
-<th>类内部</th>
-<th>package内</th>
-<th>子类</th>
-<th>其他</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>public</td>
-<td>允许</td>
-<td>允许</td>
-<td>允许</td>
-<td>允许</td>
-</tr>
-<tr>
-<td>protected</td>
-<td>允许</td>
-<td>允许</td>
-<td>允许</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td>default</td>
-<td>允许</td>
-<td>允许</td>
-<td>不允许</td>
-<td>不允许</td>
-</tr>
-<tr>
-<td>private</td>
-<td>允许</td>
-<td>不允许</td>
-<td>不允许</td>
-<td>不允许</td>
-</tr>
-</tbody>
-</table>
-<p>比如：用protected修饰的成员（变量或方法），在类内部可以调用，同一个package下的其他类也可以调用，子类里也可以调用，其他地方则不可以调用，也就是说在其他<br>Java语言定义了public、protected、private、abstract、static和final这6常用修饰<br>词外还定义了5个不太常用的修饰词，下面是对这11个Java修饰词的介绍： </p>
-<ul>
-<li><p>1.public<br>使用对象：类、接口、成员<br>介绍：无论它所处在的包定义在哪，该类（接口、成员）都是可访问的 </p>
-</li>
-<li><p>2.private<br>使用对象：成员<br>介绍：成员只可以在定义它的类中被访问 </p>
-</li>
-<li>3.static<br>使用对象：类、方法、字段、初始化函数<br>介绍：成名为static的内部类是一个顶级类，它和包含类的成员是不相关的。静态方法<br>是类方法，<br>是被指向到所属的类而不是类的实例。静态字段是类字段，无论该字段所在的类创建了<br>多少实例，该字<br>段只存在一个实例被指向到所属的类而不是类的实例。初始化函数是在装载类时执行<br>的，而不是在创建<br>实例时执行的。 </li>
-<li>4.final<br>使用对象：类、方法、字段、变量<br>介绍：被定义成final的类不允许出现子类，不能被覆盖（不应用于动态查询），字段值<br>不允许被<br>修改。 </li>
-<li>5.abstract<br>使用对象：类、接口、方法<br>介绍：类中包括没有实现的方法，不能被实例化。如果是一个abstract方法，则方法体<br>为空，该方<br>法的实现在子类中被定义，并且包含一个abstract方法的类必须是一个abstract类 </li>
-<li>6.protected<br>使用对象：成员<br>介绍：成员只能在定义它的包中被访问，如果在其他包中被访问，则实现这个方法的类<br>必须是该成<br>员所属类的子类。 </li>
-<li>7.native<br>使用对象：成员<br>介绍：与操作平台相关，定义时并不定义其方法，方法的实现被一个外部的库实现。 </li>
-<li>8.strictfp<br>使用对象：类、方法<br>介绍：strictfp修饰的类中所有的方法都隐藏了strictfp修饰词，方法执行的所有浮点<br>计算遵守<br>IEEE   754标准，所有取值包括中间的结果都必须表示为float或double类型，而不能利用<br>由本地平台浮<br>点格式或硬件提供的额外精度或表示范围。 </li>
-<li>9.synchronized<br>使用对象：方法<br>介绍：对于一个静态的方法，在执行之前jvm把它所在的类锁定；对于一个非静态类的方<br>法，执行<br>前把某个特定对象实例锁定。 </li>
-<li>10.volatile<br>使用对象：字段<br>介绍：因为异步线程可以访问字段，所以有些优化操作是一定不能作用在字段上的。<br>volatile有时<br>可以代替synchronized。 </li>
-<li>11.transient<br>使用对象：字段<br>介绍：字段不是对象持久状态的一部分，不应该把字段和对象一起串起。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/10/10/1、Java/1、java 基础/java 中的集合/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1574,6 +1203,377 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/10/10/1、Java/1、java 基础/Java访问权限/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/10/1、Java/1、java 基础/Java访问权限/" itemprop="url">
+                  Java访问权限
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2017-10-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-10-10T11:42:59+08:00">2017-10-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-08-06 10:06:54" itemprop="dateModified" datetime="2018-08-06T10:06:54+08:00">2018-08-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Java访问权限"><a href="#Java访问权限" class="headerlink" title="Java访问权限"></a>Java访问权限</h2><p>public，protected，private是Java里用来定义成员的访问权限的，另外还有一种是“default”，也就是在成员前不加任何权限修饰符。如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>   <span class="class"><span class="keyword">class</span>   <span class="title">A</span></span>&#123; </span><br><span class="line">    <span class="function"><span class="keyword">void</span>   <span class="title">method</span><span class="params">()</span></span>&#123;&#125;; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>method就属于default权限。 </p>
+<p>这四个修饰符的访问权限如下表: </p>
+<table>
+<thead>
+<tr>
+<th>限定符</th>
+<th>类内部</th>
+<th>package内</th>
+<th>子类</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>允许</td>
+<td>允许</td>
+<td>允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>default</td>
+<td>允许</td>
+<td>允许</td>
+<td>不允许</td>
+<td>不允许</td>
+</tr>
+<tr>
+<td>private</td>
+<td>允许</td>
+<td>不允许</td>
+<td>不允许</td>
+<td>不允许</td>
+</tr>
+</tbody>
+</table>
+<p>比如：用protected修饰的成员（变量或方法），在类内部可以调用，同一个package下的其他类也可以调用，子类里也可以调用，其他地方则不可以调用，也就是说在其他<br>Java语言定义了public、protected、private、abstract、static和final这6常用修饰<br>词外还定义了5个不太常用的修饰词，下面是对这11个Java修饰词的介绍： </p>
+<ul>
+<li><p>1.public<br>使用对象：类、接口、成员<br>介绍：无论它所处在的包定义在哪，该类（接口、成员）都是可访问的 </p>
+</li>
+<li><p>2.private<br>使用对象：成员<br>介绍：成员只可以在定义它的类中被访问 </p>
+</li>
+<li>3.static<br>使用对象：类、方法、字段、初始化函数<br>介绍：成名为static的内部类是一个顶级类，它和包含类的成员是不相关的。静态方法<br>是类方法，<br>是被指向到所属的类而不是类的实例。静态字段是类字段，无论该字段所在的类创建了<br>多少实例，该字<br>段只存在一个实例被指向到所属的类而不是类的实例。初始化函数是在装载类时执行<br>的，而不是在创建<br>实例时执行的。 </li>
+<li>4.final<br>使用对象：类、方法、字段、变量<br>介绍：被定义成final的类不允许出现子类，不能被覆盖（不应用于动态查询），字段值<br>不允许被<br>修改。 </li>
+<li>5.abstract<br>使用对象：类、接口、方法<br>介绍：类中包括没有实现的方法，不能被实例化。如果是一个abstract方法，则方法体<br>为空，该方<br>法的实现在子类中被定义，并且包含一个abstract方法的类必须是一个abstract类 </li>
+<li>6.protected<br>使用对象：成员<br>介绍：成员只能在定义它的包中被访问，如果在其他包中被访问，则实现这个方法的类<br>必须是该成<br>员所属类的子类。 </li>
+<li>7.native<br>使用对象：成员<br>介绍：与操作平台相关，定义时并不定义其方法，方法的实现被一个外部的库实现。 </li>
+<li>8.strictfp<br>使用对象：类、方法<br>介绍：strictfp修饰的类中所有的方法都隐藏了strictfp修饰词，方法执行的所有浮点<br>计算遵守<br>IEEE   754标准，所有取值包括中间的结果都必须表示为float或double类型，而不能利用<br>由本地平台浮<br>点格式或硬件提供的额外精度或表示范围。 </li>
+<li>9.synchronized<br>使用对象：方法<br>介绍：对于一个静态的方法，在执行之前jvm把它所在的类锁定；对于一个非静态类的方<br>法，执行<br>前把某个特定对象实例锁定。 </li>
+<li>10.volatile<br>使用对象：字段<br>介绍：因为异步线程可以访问字段，所以有些优化操作是一定不能作用在字段上的。<br>volatile有时<br>可以代替synchronized。 </li>
+<li>11.transient<br>使用对象：字段<br>介绍：字段不是对象持久状态的一部分，不应该把字段和对象一起串起。</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/10/10/3、Android/1、Android 基础/基本知识/设备相关/Android 获取和设置按键音效/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/10/3、Android/1、Android 基础/基本知识/设备相关/Android 获取和设置按键音效/" itemprop="url">
+                  Android 获取和设置按键音效
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2017-10-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-10-10T11:42:59+08:00">2017-10-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-05-14 15:19:51" itemprop="dateModified" datetime="2018-05-14T15:19:51+08:00">2018-05-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Android-获取和设置按键音效"><a href="#Android-获取和设置按键音效" class="headerlink" title="Android 获取和设置按键音效"></a>Android 获取和设置按键音效</h1><blockquote>
+<p> android 系统设置按键音效主要用到 Settings.System 系统设置类及API</p>
+</blockquote>
+<h2 id="系统按键音获取："><a href="#系统按键音获取：" class="headerlink" title="系统按键音获取："></a>系统按键音获取：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#需要import包android.provider</span><br><span class="line">#取出的值为int类型，0关闭，1开启</span><br><span class="line">Settings.System.getInt(getContentResolver(), Settings.System.SOUND_EFFECTS_ENABLED, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="系统按键音设定："><a href="#系统按键音设定：" class="headerlink" title="系统按键音设定："></a>系统按键音设定：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#需要import包android.provider</span><br><span class="line">#0关闭，1开启</span><br><span class="line">#</span><br><span class="line">Settings.System.putInt(getContentResolver(), Settings.System.SOUND_EFFECTS_ENABLED, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>需要加入修改系统设置权限<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.WRITE_SETTINGS"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="自定义控件的按键音设置："><a href="#自定义控件的按键音设置：" class="headerlink" title="自定义控件的按键音设置："></a>自定义控件的按键音设置：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 需要系统按键音效打开，才能正常使用</span><br><span class="line">View.setSoundEffectsEnabled(<span class="keyword">true</span>)</span><br><span class="line">View.playSoundEffect(SoundEffectConstants.CLICK);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/10/10/3、Android/1、Android 基础/基本知识/设备相关/Android 检测耳机是否插入方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1885,7 +1885,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/08/11/3、Android/5、Android 开源/网络框架/Retrofit2/Retrofit2 添加header/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/08/11/3、Android/5、Android 开源/网络框架/Retrofit2 添加header/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -1904,7 +1904,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/11/3、Android/5、Android 开源/网络框架/Retrofit2/Retrofit2 添加header/" itemprop="url">
+                <a class="post-title-link" href="/2017/08/11/3、Android/5、Android 开源/网络框架/Retrofit2 添加header/" itemprop="url">
                   Retrofit2 添加header
                 </a>
               
@@ -1948,7 +1948,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-08-10 09:14:42" itemprop="dateModified" datetime="2018-08-10T09:14:42+08:00">2018-08-10</time>
+                <time title="Updated at: 2018-08-10 09:36:10" itemprop="dateModified" datetime="2018-08-10T09:36:10+08:00">2018-08-10</time>
               
             
           </span>
