@@ -229,30 +229,6 @@
         
         
           
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
-  </li>
-        
-        
-        
-          
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
@@ -306,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu16.4 安装PHP运行环境 LAMP/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu中彻底删除nginx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -325,7 +301,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu16.4 安装PHP运行环境 LAMP/" itemprop="url">
+                <a class="post-title-link" href="/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu中彻底删除nginx/" itemprop="url">
                   Ubuntu16.4 安装PHP运行环境 LAMP
                 </a>
               
@@ -369,7 +345,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-16 10:13:08" itemprop="dateModified" datetime="2018-04-16T10:13:08+08:00">2018-04-16</time>
+                <time title="Updated at: 2018-04-13 10:24:25" itemprop="dateModified" datetime="2018-04-13T10:24:25+08:00">2018-04-13</time>
               
             
           </span>
@@ -404,27 +380,17 @@
       
         
           
-            <h2 id="Ubuntu16-4-安装PHP运行环境-LAMP"><a href="#Ubuntu16-4-安装PHP运行环境-LAMP" class="headerlink" title="Ubuntu16.4 安装PHP运行环境 LAMP"></a>Ubuntu16.4 安装PHP运行环境 LAMP</h2><h3 id="1、安装apache"><a href="#1、安装apache" class="headerlink" title="1、安装apache"></a>1、安装apache</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apache2</span><br></pre></td></tr></table></figure>
-<p>测试： 浏览器访问<a href="http://Ubuntu的IP（即http://localhost），出现It" target="_blank" rel="noopener">http://Ubuntu的IP（即http://localhost），出现It</a> Works!网页。<br>查看状态： service apache2 status/start/stop/restart<br>Web目录：/var/www<br>安装目录： /etc/apache2/<br>全局配置： /etc/apache2/apache2.conf<br>监听端口： /etc/apache2/ports.conf<br>虚拟主机： /etc/apache2/sites-enabled/000-default.conf</p>
-<h3 id="2、安装mysql"><a href="#2、安装mysql" class="headerlink" title="2、安装mysql"></a>2、安装mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server mysql-client</span><br></pre></td></tr></table></figure>
-<p>测试：mysql -u root -p<br>查看状态：service mysql status/start/stop/retart<br>查看监听端口的情况：netstat -tunpl或 netstat -tap</p>
-<p>然后整合一下php和mysql<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure></p>
-<h3 id="3、安装php7-0"><a href="#3、安装php7-0" class="headerlink" title="3、安装php7.0"></a>3、安装php7.0</h3><p>apt-get安装<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install php7.0</span><br></pre></td></tr></table></figure></p>
-<p>输入版本信息，检测安装是否成功<br> php -v<br>PHP 7.0.4-7ubuntu2.1 (cli) ( NTS )<br>Copyright (c) 1997-2016 The PHP Group<br>Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies<br>with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies</p>
-<p>整合一下php和apache,安装apache2 php7 module<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libapache2-mod-php7.0</span><br><span class="line">sudo apt install libapache2-mod-php7.0</span><br></pre></td></tr></table></figure></p>
-<h3 id="4、验证"><a href="#4、验证" class="headerlink" title="4、验证"></a>4、验证</h3><p>重启MySQL和Apache<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql restart</span><br><span class="line">sudo service apache2 restart</span><br></pre></td></tr></table></figure></p>
-<p>测试Apache能否解析PHP<br>vim /var/www/html/phpinfo.php<br>文件中写：<figure class="highlight plain"><figcaption><span>echo phpinfo();?> ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">浏览器访问：http://ubuntu地址/phpinfo.php（即http://localhost/phpinfo.php），出现PHP Version网页</span><br><span class="line">### 5、安装phpMyAdmin</span><br><span class="line">```shell</span><br><span class="line">sudo apt-get install phpmyadmin</span><br></pre></td></tr></table></figure></p>
-<p>安装：选择apache2，点击确定。下一步选择是要配置数据库，并输入密码。<br>创建phpMyAdmin快捷方式：sudo ln -s /usr/share/phpmyadmin /var/www/html<br>启用Apache mod_rewrite模块：sudo a2enmod rewrite<br>重启服务：<br>service php7.0-fpm restart<br>service apache2 restart<br>测试：浏览器访问：<a href="http://ubuntu地址/phpmyadmin(即http://localhost/phpmyadmin)" target="_blank" rel="noopener">http://ubuntu地址/phpmyadmin(即http://localhost/phpmyadmin)</a></p>
-<h3 id="6、配置Apache"><a href="#6、配置Apache" class="headerlink" title="6、配置Apache"></a>6、配置Apache</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apache2/apache2.conf</span><br></pre></td></tr></table></figure>
-<p>添加：<br>AddType application/x-httpd-php .php .htm .html<br>AddDefaultCharset UTF-8<br>重启Apache服务</p>
-<p>###6、解决常见问题</p>
-<p>####1、ubuntu 16.04 可能乱码的问题<br>解决中文乱码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/default/locale</span><br></pre></td></tr></table></figure></p>
-<p>修改为<br>LANG=”zh_CN.UTF-8”<br>LANGUAGE=”zh_CN:zh”<br>然后重启<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure></p>
-<p>最后 安装中文包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install zhcon</span><br></pre></td></tr></table></figure></p>
-<p>####2、 xml_parser_create()  不支持的问题<br>解决这个问题可以在这里<br><a href="http://php.net/manual/en/xml.installation.php" target="_blank" rel="noopener">XML Parser</a><br>安装XML Parser<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php-xml</span><br></pre></td></tr></table></figure></p>
-<p>之后重启apache.</p>
-
-          
+          Ubuntu16.4 安装PHP运行环境 LAMP1.先执行一下命令：
+1.1 删除nginx，–purge包括配置文件1sudo apt-get --purge remove nginx
+　　1.2 自动移除全部不使用的软件包1sudo 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu中彻底删除nginx/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -574,596 +540,23 @@
       
         
           
-            <h2 id="Centos7-安装nodejs-amp-npm"><a href="#Centos7-安装nodejs-amp-npm" class="headerlink" title="Centos7 安装nodejs  &amp; npm"></a>Centos7 安装nodejs  &amp; npm</h2><p>使用源码安装方式</p>
-<h3 id="登录官网下载最新源码"><a href="#登录官网下载最新源码" class="headerlink" title="登录官网下载最新源码"></a>登录官网下载最新源码</h3><blockquote>
-<p> 从下图所示中获取源码链接</p>
-</blockquote>
-<p><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-8/28111150.jpg" alt=""></p>
-<blockquote>
-<p>下载源码 </p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://npm.taobao.org/mirrors/node/v8.9.0/node-v8.9.0.tar.gz</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>解压源码并进入解压目录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xzvf node-v* &amp;&amp; cd node-v*</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>安装编译软件gcc-c++<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc gcc-c++</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>编译源码<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line"><span class="meta">#</span><span class="bash">编译时间较长，耐心等待。。。</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>编译并安装<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>测试是否安装成功<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -version</span><br><span class="line">npm -version</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>安装结果如图所示<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-8/94597562.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/5、JNI/交叉编译/cmake 基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/16/5、JNI/交叉编译/cmake 基础/" itemprop="url">
-                  cmake 基础
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2016-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:24:44+08:00">2016-09-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-04-20 15:43:48" itemprop="dateModified" datetime="2018-04-20T15:43:48+08:00">2018-04-20</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="cmake-基础"><a href="#cmake-基础" class="headerlink" title="cmake 基础"></a>cmake 基础</h2><h3 id="一、基本使用"><a href="#一、基本使用" class="headerlink" title="一、基本使用"></a>一、基本使用</h3><p>安装：下载二进制包后可直接解压使用<br>从源码安装则执行命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./bootstrap;</span><br><span class="line"> make;</span><br><span class="line">  make install</span><br></pre></td></tr></table></figure></p>
-<p>——尝试执行bootstrap失败<br>使用：<code>cmake dir_path</code>，生成工程文件或makefile文件</p>
-<h3 id="二、-概念"><a href="#二、-概念" class="headerlink" title="二、 概念"></a>二、 概念</h3><p><code>out-of-source build</code>，与<code>in-source build</code>相对，即将编译输出文件与源文件放到不同目录中；</p>
-<h3 id="三、基本结构"><a href="#三、基本结构" class="headerlink" title="三、基本结构"></a>三、基本结构</h3><p>1，依赖CMakeLists.txt文件，项目主目标一个，主目录中可指定包含的子目录；<br>2，在项目CMakeLists.txt中使用project指定项目名称，add_subdirectory添加子目录<br>3，子目录CMakeLists.txt将从父目录CMakeLists.txt继承设置（TBD，待检验）</p>
-<h3 id="四、-语法"><a href="#四、-语法" class="headerlink" title="四、  语法"></a>四、  语法</h3><ol>
-<li><p>#注释</p>
-</li>
-<li><p>变量：使用set命令显式定义及赋值，在非if语句中，使用${}引用，if中直接使用变量名引用；后续的set命令会清理变量原来的值；</p>
-</li>
-<li><p>command (args …)  #命令不分大小写，参数使用空格分隔，使用双引号引起参数中空格</p>
-</li>
-<li><p>set(var a;b;c) &lt;=&gt; set(var a b c)  #定义变量var并赋值为a;b;c这样一个string list</p>
-</li>
-<li><p>Add_executable(${var}) &lt;=&gt; Add_executable(a b c)   #变量使用${xxx}引用</p>
-</li>
-<li><p>条件语句：</p>
-</li>
-</ol>
-<p>if(var) #var 非empty 0 N No OFF FALSE… #非运算使用NOT</p>
-<pre><code>…
-</code></pre><p>else()/elseif() … endif(var)</p>
-<ol start="7">
-<li>循环语句</li>
-</ol>
-<p>Set(VAR a b c)</p>
-<p>Foreach(f ${VAR})       …Endforeach(f)</p>
-<ol start="8">
-<li>循环语句</li>
-</ol>
-<p>WHILE() … ENDWHILE()</p>
-<h3 id="五、内部变量"><a href="#五、内部变量" class="headerlink" title="五、内部变量"></a>五、内部变量</h3><p>CMAKE_C_COMPILER：指定C编译器</p>
-<p>CMAKE_CXX_COMPILER：</p>
-<p>CMAKE_C_FLAGS：编译C文件时的选项，如-g；也可以通过add_definitions添加编译选项</p>
-<p>EXECUTABLE_OUTPUT_PATH：可执行文件的存放路径</p>
-<p>LIBRARY_OUTPUT_PATH：库文件路径</p>
-<p>CMAKE_BUILD_TYPE:：build 类型(Debug, Release, …)，CMAKE_BUILD_TYPE=Debug</p>
-<p>BUILD_SHARED_LIBS：Switch between shared and static libraries</p>
-<p>内置变量的使用：</p>
-<blockquote>
-<p>在CMakeLists.txt中指定，使用set</p>
-</blockquote>
-<blockquote>
-<p>cmake命令中使用，如cmake -DBUILD_SHARED_LIBS=OFF</p>
-</blockquote>
-<p>###六、 命令<br>project (HELLO)   #指定项目名称，生成的VC项目的名称；</p>
-<blockquote>
-<p>使用${HELLO_SOURCE_DIR}表示项目根目录</p>
-</blockquote>
-<p>include_directories：指定头文件的搜索路径，相当于指定gcc的-I参数</p>
-<blockquote>
-<p>include_directories (${HELLO_SOURCE_DIR}/Hello)  #增加Hello为include目录</p>
-</blockquote>
-<p>link_directories：动态链接库或静态链接库的搜索路径，相当于gcc的-L参数</p>
-<blockquote>
-<p>link_directories (${HELLO_BINARY_DIR}/Hello)     #增加Hello为link目录</p>
-</blockquote>
-<p>add_subdirectory：包含子目录</p>
-<blockquote>
-<p>add_subdirectory (Hello)</p>
-</blockquote>
-<p>add_executable：编译可执行程序，指定编译，好像也可以添加.o文件</p>
-<blockquote>
-<p>add_executable (helloDemo demo.cxx demo_b.cxx)   #将cxx编译成可执行文件——</p>
-</blockquote>
-<p>add_definitions：添加编译参数</p>
-<blockquote>
-<p>add_definitions(-DDEBUG)将在gcc命令行添加DEBUG宏定义；</p>
-</blockquote>
-<blockquote>
-<p>add_definitions( “-Wall -ansi –pedantic –g”)</p>
-</blockquote>
-<p>target_link_libraries：添加链接库,相同于指定-l参数</p>
-<blockquote>
-<p>target_link_libraries(demo Hello) #将可执行文件与Hello连接成最终文件demo</p>
-</blockquote>
-<p>add_library:</p>
-<blockquote>
-<p>add_library(Hello hello.cxx)  #将hello.cxx编译成静态库如libHello.a</p>
-</blockquote>
-<p>add_custom_target:</p>
-<p>message( status|fatal_error, “message”):</p>
-<p>set_target_properties( … ): lots of properties… OUTPUT_NAME, VERSION, ….</p>
-<p>link_libraries( lib1 lib2 …): All targets link with the same set of libs</p>
-<p>###七、 说明<br>1，CMAKE生成的makefile能够处理好.h文件更改时只编译需要的cpp文件；</p>
-<p>###八、FAQ</p>
-<ol>
-<li><p>怎样获得一个目录下的所有源文件</p>
-<blockquote>
-<p>aux_source_directory(<dir> <variable>)<br>将dir中所有源文件（不包括头文件）保存到变量variable中，然后可以add_executable (ss7gw ${variable})这样使用。</variable></dir></p>
-</blockquote>
-</li>
-<li><p>怎样指定项目编译目标</p>
-<blockquote>
-<p> project命令指定</p>
-</blockquote>
-</li>
-<li><p>怎样添加动态库和静态库</p>
-<blockquote>
-<p>target_link_libraries命令添加即可</p>
-</blockquote>
-</li>
-<li><p>怎样在执行CMAKE时打印消息</p>
-<blockquote>
-<p>message([SEND_ERROR | STATUS | FATAL_ERROR] “message to display” …)</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>注意大小写</p>
-</blockquote>
-<ol start="5">
-<li>怎样指定头文件与库文件路径<blockquote>
-<p>include_directories与link_directories</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>可以多次调用以设置多个路径</p>
-</blockquote>
-<blockquote>
-<p>link_directories仅对其后面的targets起作用</p>
-</blockquote>
-<ol start="6">
-<li>怎样区分debug、release版本<blockquote>
-<p>建立debug/release两目录，分别在其中执行cmake -DCMAKE_BUILD_TYPE=Debug（或Release），需要编译不同版本时进入不同目录执行make即可；</p>
-</blockquote>
-</li>
-</ol>
-<p>Debug版会使用参数-g；Release版使用-O3 –DNDEBUG</p>
-<blockquote>
-<p>另一种设置方法——例如DEBUG版设置编译参数DDEBUG</p>
-</blockquote>
-<p>IF(DEBUG_mode)</p>
-<pre><code>add_definitions(-DDEBUG)
-</code></pre><p>ENDIF()</p>
-<p>在执行cmake时增加参数即可，例如cmake -D DEBUG_mode=ON</p>
-<ol start="7">
-<li>怎样设置条件编译<br>例如debug版设置编译选项DEBUG，并且更改不应改变CMakelist.txt</li>
-</ol>
-<blockquote>
-<p>使用option command，eg：</p>
-</blockquote>
-<p>option(DEBUG_mode “ON for debug or OFF for release” ON)</p>
-<p>IF(DEBUG_mode)</p>
-<pre><code>add_definitions(-DDEBUG)
-</code></pre><p>ENDIF()</p>
-<blockquote>
-<p>使其生效的方法：首先cmake生成makefile，然后make edit_cache编辑编译选项；Linux下会打开一个文本框，可以更改，该完后再make生成目标文件——emacs不支持make edit_cache；</p>
-</blockquote>
-<blockquote>
-<p>局限：这种方法不能直接设置生成的makefile，而是必须使用命令在make前设置参数；对于debug、release版本，相当于需要两个目录，分别先cmake一次，然后分别make edit_cache一次；</p>
-</blockquote>
-<blockquote>
-<p>期望的效果：在执行cmake时直接通过参数指定一个开关项，生成相应的makefile——可以这样做，例如cmake –DDEBUGVERSION=ON</p>
-</blockquote>
-<ol start="8">
-<li><p>怎样添加编译宏定义</p>
-<blockquote>
-<p>使用add_definitions命令，见命令部分说明</p>
-</blockquote>
-</li>
-<li><p>怎样添加编译依赖项<br>用于确保编译目标项目前依赖项必须先构建好</p>
-</li>
-</ol>
-<blockquote>
-<p>add_dependencies</p>
-</blockquote>
-<ol start="10">
-<li>怎样指定目标文件目录<blockquote>
-<p>建立一个新的目录，在该目录中执行cmake生成Makefile文件，这样编译结果会保存在该目录——类似</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>SET_TARGET_PROPERTIES(ss7gw PROPERTIES</p>
-</blockquote>
-<pre><code>RUNTIME_OUTPUT_DIRECTORY &quot;${BIN_DIR}&quot;)
-</code></pre><ol start="11">
-<li><p>很多文件夹，难道需要把每个文件夹编译成一个库文件？</p>
-<blockquote>
-<p>可以不在子目录中使用CMakeList.txt，直接在上层目录中指定子目录</p>
-</blockquote>
-</li>
-<li><p>怎样设定依赖的cmake版本</p>
-<blockquote>
-<p>cmake_minimum_required(VERSION 2.6)</p>
-</blockquote>
-</li>
-<li><p>相对路径怎么指定</p>
-<blockquote>
-<p>${projectname_SOURCE_DIR}表示根源文件目录，${ projectname _BINARY_DIR}表示根二进制文件目录？</p>
-</blockquote>
-</li>
-<li><p>怎样设置编译中间文件的目录</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</li>
-<li><p>怎样在IF语句中使用字串或数字比较</p>
-<blockquote>
-<p>数字比较LESS、GREATER、EQUAL，字串比STRLESS、STRGREATER、STREQUAL，</p>
-</blockquote>
-</li>
-</ol>
-<blockquote>
-<p>Eg：</p>
-</blockquote>
-<p>set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)</p>
-<p>set(AAA abc)</p>
-<p>IF(AAA STREQUAL abc)</p>
-<pre><code>message(STATUS &quot;true&quot;)   #应该打印true
-</code></pre><p>ENDIF()</p>
-<ol start="16">
-<li><p>更改h文件时是否只编译必须的cpp文件</p>
-<blockquote>
-<p>是</p>
-</blockquote>
-</li>
-<li><p>机器上安装了VC7和VC8，CMAKE会自动搜索编译器，但是怎样指定某个版本？</p>
-<blockquote>
-<p>TBD</p>
-</blockquote>
-</li>
-<li><p>怎样根据OS指定编译选项</p>
-<blockquote>
-<p>IF( APPLE ); IF( UNIX ); IF( WIN32 )</p>
-</blockquote>
-</li>
-<li><p>能否自动执行某些编译前、后命令？</p>
-<blockquote>
-<p>可以，TBD</p>
-</blockquote>
-</li>
-<li><p>怎样打印make的输出<br>make VERBOSE=1</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu中彻底删除nginx/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu中彻底删除nginx/" itemprop="url">
-                  Ubuntu16.4 安装PHP运行环境 LAMP
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2016-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:24:44+08:00">2016-09-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-04-13 10:24:25" itemprop="dateModified" datetime="2018-04-13T10:24:25+08:00">2018-04-13</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Ubuntu16-4-安装PHP运行环境-LAMP"><a href="#Ubuntu16-4-安装PHP运行环境-LAMP" class="headerlink" title="Ubuntu16.4 安装PHP运行环境 LAMP"></a>Ubuntu16.4 安装PHP运行环境 LAMP</h2><p>1.先执行一下命令：</p>
-<p>1.1 删除nginx，–purge包括配置文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove nginx</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>1.2 自动移除全部不使用的软件包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>1.3 罗列出与nginx相关的软件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --get-selections|grep nginx</span><br></pre></td></tr></table></figure></p>
-<p>　　<br>执行1.3的结果:</p>
-<blockquote>
-<p>stephen@stephen-OptiPlex-390:~$ dpkg –get-selections|grep nginx<br>nginx                       install<br>nginx-common                    install<br>nginx-core                  install</p>
-</blockquote>
-<p>1.4 删除1.3查询出与nginx有关的软件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove nginx</span><br><span class="line">sudo apt-get --purge remove nginx-common</span><br><span class="line">sudo apt-get --purge remove nginx-core</span><br></pre></td></tr></table></figure></p>
-<p>这样就可以完全卸载掉nginx包括配置文件</p>
-<p>2.查看nginx正在运行的进程，如果有就kill掉<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep nginx</span><br></pre></td></tr></table></figure></p>
-<p>　　看下nginx还有没有启动,一般执行完1后，nginx还是启动着的，如下：</p>
-<blockquote>
-<p>stephen@stephen-OptiPlex-390:~$ ps -ef |grep nginx<br>root      7875  2317  0 15:02 ?        00:00:00 nginx: master process /usr/sbin/nginx<br>www-data  7876  7875  0 15:02 ?        00:00:00 nginx: worker process<br>www-data  7877  7875  0 15:02 ?        00:00:00 nginx: worker process<br>www-data  7878  7875  0 15:02 ?        00:00:00 nginx: worker process<br>www-data  7879  7875  0 15:02 ?        00:00:00 nginx: worker process<br>stephen   8321  3510  0 15:20 pts/0    00:00:00 grep –color=auto nginx
-　</p>
-</blockquote>
-<p>3.kill nginx进程<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill  -9  7875 7876 7877 7879</span><br></pre></td></tr></table></figure></p>
-<p>4.全局查找与nginx相关的文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo  find  /  -name  nginx*</span><br></pre></td></tr></table></figure>
-<p>5.依依删除4列出的所有文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf file</span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li>再次重装</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
-
-          
+          Centos7 安装nodejs  &amp; npm使用源码安装方式
+登录官网下载最新源码
+ 从下图所示中获取源码链接
+
+
+
+下载源码 
+
+1wget https://npm.taobao.org/mirrors/node/v8.9.0/
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/16/6、Linux/2、常用软件服务管理/Centos安装node和npm/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1313,67 +706,335 @@
       
         
           
-            <p>Android学习路线从4个阶段来对Android的学习过程做一个全面的分析:Android初级、中级、高级以及资深工程师。。</p>
-<p>初级工程师<br> 编程基础、数据结构、C语言都有一定基础，Java语法什么的也都掌握的比较好。</p>
-<p>​        Android官方文档中的training和guide看一遍，同时通过写博客和记笔记的方式来做总结，建议让自己的每篇博客都有价值些。通过一年时间的学习，相信每个人都可以达到中级工程师的水平。<br>技术要求：</p>
-<ul>
-<li>基本知识点<br>比如四大组件如何使用、如何创建Service、如何进行布局、简单的自定义View、动画等常见技术</li>
-<li>书籍推荐<br>《第一行代码 Android》、《疯狂Android》</li>
-</ul>
-<p>中级工程师</p>
-<ul>
-<li>AIDL：熟悉AIDL，理解其工作原理，懂transact和onTransact的区别；</li>
-<li>Binder：从Java层大概理解Binder的工作原理，懂Parcel对象的使用；</li>
-<li>多进程：熟练掌握多进程的运行机制，懂Messenger、Socket等；</li>
-<li>事件分发：弹性滑动、滑动冲突等；</li>
-<li>玩转View：View的绘制原理、各种自定义View；</li>
-<li>动画系列：熟悉View动画和属性动画的不同点，懂属性动画的工作原理；</li>
-<li>懂性能优化、熟悉mat等工具</li>
-<li>懂点常见的设计模式<br>学习方法<br>阅读进阶书籍，阅读Android源码，阅读官方文档并尝试自己写相关的技术文章，需要有一定技术深度和自我思考。在这个阶段的学习过程中，有2个点是比较困扰大家的，一个是阅读源码，另一个是自定义View以及滑动冲突。<br>如何阅读源码呢？这是个头疼的问题，但是源码必须要读。阅读源码的时候不要深入代码细节不可自拔，要关注代码的流程并尽量挖掘出对应用层开发有用的结论。另外仔细阅读源码中对一个类或者方法的注释，在看不懂源码时，源码中的注释可以帮你更好地了解源码中的工作原理，这个过程虽然艰苦，但是别无他法。<br>如何玩转自定义View呢？我们要透过现象看本质，更多地去关注自定义view所需的知识点：</li>
-<li>搞懂view的滑动原理</li>
-<li>搞懂如何实现弹性滑动</li>
-<li>搞懂view的滑动冲突</li>
-<li>搞懂view的measure、layout和draw</li>
-<li>然后再学习几个已有的自定义view的例子</li>
-<li>最后就可以搞定自定义view了，所谓万变不离其宗<br>大概再需要1-2年时间，即可达到高级工程师的技术水平。我个人认为通过《Android开发艺术探索》和《Android群英传》可以缩短这个过程为0.5-1年。注意，达到高级工程师的技术水平不代表就可以立刻成为高级工程师（受机遇、是否跳槽的影响），但是技术达到了，成为高级工程师只是很简单的事。<br>技术要求：</li>
-<li>稍微深入的知识点<br>AIDL、Messenger、Binder、多进程、动画、滑动冲突、自定义View、消息队列等</li>
-<li>书籍推荐<br>《Android开发艺术探索》、《Android群英传》</li>
-</ul>
-<p>高级工程师<br>资深工程师月薪可以达到30k+。<br>为了成为Android资深工程师，需要学习的东西就更多了，并且有些并不是那么具体了，如下所示：</p>
-<ul>
-<li>继续加深理解”稍微深入的知识点“中所定义的内容</li>
-<li>了解系统核心机制：</li>
-</ul>
-<ol>
-<li>了解SystemServer的启动过程</li>
-<li>了解主线程的消息循环模型</li>
-<li>了解AMS和PMS的工作原理</li>
-<li>能够回答问题”一个应用存在多少个Window？“</li>
-<li>了解四大组件的大概工作流程</li>
-<li>…</li>
-</ol>
-<ul>
-<li>基本知识点的细节</li>
-</ul>
-<ol>
-<li>Activity的启动模式以及异常情况下不同Activity的表现</li>
-<li>Service的onBind和onReBind的关联</li>
-<li>onServiceDisconnected(ComponentName className)和binderDied()的区别</li>
-<li>AsyncTask在不同版本上的表现细节</li>
-<li>线程池的细节和参数配置</li>
-<li>…</li>
-</ol>
-<ul>
-<li>熟悉设计模式，有架构意识<br>学习方法<br>这个时候已经没有太具体的学习方法了，无非就是看书、看源码和做项目，平时多种总结，尽量将知识融会贯通从而形成一种体系化的感觉。<br>同时这个阶段对架构是有一定要求的，架构是抽象的，但是设计模式是具体的，所以一定要加强下设计模式的学习。关于设计模式的学习，推荐《Android 源码设计模式解析与实战》，既可以学习设计模式，又可能体会到Android源码中的设计思想。<br>技术要求：</li>
-<li>稍微深入的知识点</li>
-<li>系统核心机制</li>
-<li>基本知识点的细节</li>
-<li>设计模式和架构</li>
-<li>书籍推荐<br>《Android开发艺术探索》、《Android 源码设计模式解析与实战》、《Android内核剖析》</li>
-</ul>
-<p>资深工程师<br>更多了解不同业务的架构问题，内核源码设计原理，整理并开源自己的组件</p>
+          Android学习路线从4个阶段来对Android的学习过程做一个全面的分析:Android初级、中级、高级以及资深工程师。。
+初级工程师 编程基础、数据结构、C语言都有一定基础，Java语法什么的也都掌握的比较好。
+​        An
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/16/15、职业规划/android-路线图/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu16.4 安装PHP运行环境 LAMP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu16.4 安装PHP运行环境 LAMP/" itemprop="url">
+                  Ubuntu16.4 安装PHP运行环境 LAMP
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2016-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:24:44+08:00">2016-09-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-04-16 10:13:08" itemprop="dateModified" datetime="2018-04-16T10:13:08+08:00">2018-04-16</time>
+              
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Ubuntu16.4 安装PHP运行环境 LAMP1、安装apache1sudo apt install apache2
+测试： 浏览器访问http://Ubuntu的IP（即http://localhost），出现It Works!网页。
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/16/6、Linux/2、常用软件服务管理/Ubuntu16.4 安装PHP运行环境 LAMP/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/5、JNI/交叉编译/cmake 基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/16/5、JNI/交叉编译/cmake 基础/" itemprop="url">
+                  cmake 基础
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2016-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:24:44+08:00">2016-09-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-04-20 15:43:48" itemprop="dateModified" datetime="2018-04-20T15:43:48+08:00">2018-04-20</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          cmake 基础一、基本使用安装：下载二进制包后可直接解压使用从源码安装则执行命令：123./bootstrap; make;  make install
+——尝试执行bootstrap失败使用：cmake dir_path，生成工程文件或
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/16/5、JNI/交叉编译/cmake 基础/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1523,11 +1184,15 @@
       
         
           
-            <h2 id="byte-数组和int之间的转换"><a href="#byte-数组和int之间的转换" class="headerlink" title="byte[]数组和int之间的转换"></a>byte[]数组和int之间的转换</h2><h3 id="1、int与byte-之间的转换（类似的byte-short-long型）"><a href="#1、int与byte-之间的转换（类似的byte-short-long型）" class="headerlink" title="1、int与byte[]之间的转换（类似的byte short,long型）"></a>1、int与byte[]之间的转换（类似的byte short,long型）</h3><p>int转byte[]<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * 将int数值转换为占四个字节的byte数组，本方法适用于(低位在前，高位在后)的顺序。 和bytesToInt（）配套使用 </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> value  </span></span><br><span class="line"><span class="comment">    *            要转换的int值 </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> byte数组 </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] intToBytes( <span class="keyword">int</span> value )   </span><br><span class="line">&#123;   </span><br><span class="line">    <span class="keyword">byte</span>[] src = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];  </span><br><span class="line">    src[<span class="number">3</span>] =  (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">24</span>) &amp; <span class="number">0xFF</span>);  </span><br><span class="line">    src[<span class="number">2</span>] =  (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">16</span>) &amp; <span class="number">0xFF</span>);  </span><br><span class="line">    src[<span class="number">1</span>] =  (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">8</span>) &amp; <span class="number">0xFF</span>);    </span><br><span class="line">    src[<span class="number">0</span>] =  (<span class="keyword">byte</span>) (value &amp; <span class="number">0xFF</span>);                  </span><br><span class="line">    <span class="keyword">return</span> src;   </span><br><span class="line">&#125;  </span><br><span class="line"> <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * 将int数值转换为占四个字节的byte数组，本方法适用于(高位在前，低位在后)的顺序。  和bytesToInt2（）配套使用 </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] intToBytes2(<span class="keyword">int</span> value)   </span><br><span class="line">&#123;   </span><br><span class="line">    <span class="keyword">byte</span>[] src = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];  </span><br><span class="line">    src[<span class="number">0</span>] = (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">24</span>) &amp; <span class="number">0xFF</span>);  </span><br><span class="line">    src[<span class="number">1</span>] = (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">16</span>)&amp; <span class="number">0xFF</span>);  </span><br><span class="line">    src[<span class="number">2</span>] = (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">8</span>)&amp;<span class="number">0xFF</span>);    </span><br><span class="line">    src[<span class="number">3</span>] = (<span class="keyword">byte</span>) (value &amp; <span class="number">0xFF</span>);       </span><br><span class="line">    <span class="keyword">return</span> src;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>byte[]转int<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * byte数组中取int数值，本方法适用于(低位在前，高位在后)的顺序，和和intToBytes（）配套使用 </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> src  </span></span><br><span class="line"><span class="comment">    *            byte数组  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> offset  </span></span><br><span class="line"><span class="comment">    *            从数组的第offset位开始  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> int数值  </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bytesToInt</span><span class="params">(<span class="keyword">byte</span>[] src, <span class="keyword">int</span> offset)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> value;    </span><br><span class="line">    value = (<span class="keyword">int</span>) ((src[offset] &amp; <span class="number">0xFF</span>)   </span><br><span class="line">            | ((src[offset+<span class="number">1</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">8</span>)   </span><br><span class="line">            | ((src[offset+<span class="number">2</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">16</span>)   </span><br><span class="line">            | ((src[offset+<span class="number">3</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">24</span>));  </span><br><span class="line">    <span class="keyword">return</span> value;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"> <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * byte数组中取int数值，本方法适用于(低位在后，高位在前)的顺序。和intToBytes2（）配套使用 </span></span><br><span class="line"><span class="comment">    */</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bytesToInt2</span><span class="params">(<span class="keyword">byte</span>[] src, <span class="keyword">int</span> offset)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> value;    </span><br><span class="line">    value = (<span class="keyword">int</span>) ( ((src[offset] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">24</span>)  </span><br><span class="line">            |((src[offset+<span class="number">1</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">16</span>)  </span><br><span class="line">            |((src[offset+<span class="number">2</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">8</span>)  </span><br><span class="line">            |(src[offset+<span class="number">3</span>] &amp; <span class="number">0xFF</span>));  </span><br><span class="line">    <span class="keyword">return</span> value;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="2、int与byte-之间的转换（类似的byte-short-long型）"><a href="#2、int与byte-之间的转换（类似的byte-short-long型）" class="headerlink" title="2、int与byte[]之间的转换（类似的byte short,long型）"></a>2、int与byte[]之间的转换（类似的byte short,long型）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * 将int数值转换为占四个字节的byte数组，本方法适用于(低位在前，高位在后)的顺序。  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> value  </span></span><br><span class="line"><span class="comment">    *            要转换的int值 </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> byte数组 </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] intToBytes(<span class="keyword">int</span> value)   </span><br><span class="line">&#123;   </span><br><span class="line">    <span class="keyword">byte</span>[] byte_src = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];  </span><br><span class="line">    byte_src[<span class="number">3</span>] = (<span class="keyword">byte</span>) ((value &amp; <span class="number">0xFF000000</span>)&gt;&gt;<span class="number">24</span>);  </span><br><span class="line">    byte_src[<span class="number">2</span>] = (<span class="keyword">byte</span>) ((value &amp; <span class="number">0x00FF0000</span>)&gt;&gt;<span class="number">16</span>);  </span><br><span class="line">    byte_src[<span class="number">1</span>] = (<span class="keyword">byte</span>) ((value &amp; <span class="number">0x0000FF00</span>)&gt;&gt;<span class="number">8</span>);    </span><br><span class="line">    byte_src[<span class="number">0</span>] = (<span class="keyword">byte</span>) ((value &amp; <span class="number">0x000000FF</span>));          </span><br><span class="line">    <span class="keyword">return</span> byte_src;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * byte数组中取int数值，本方法适用于(低位在前，高位在后)的顺序。 </span></span><br><span class="line"><span class="comment">    *   </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> ary  </span></span><br><span class="line"><span class="comment">    *            byte数组  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> offset  </span></span><br><span class="line"><span class="comment">    *            从数组的第offset位开始  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> int数值  </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bytesToInt</span><span class="params">(<span class="keyword">byte</span>[] ary, <span class="keyword">int</span> offset)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> value;    </span><br><span class="line">    value = (<span class="keyword">int</span>) ((ary[offset]&amp;<span class="number">0xFF</span>)   </span><br><span class="line">            | ((ary[offset+<span class="number">1</span>]&lt;&lt;<span class="number">8</span>) &amp; <span class="number">0xFF00</span>)  </span><br><span class="line">            | ((ary[offset+<span class="number">2</span>]&lt;&lt;<span class="number">16</span>)&amp; <span class="number">0xFF0000</span>)   </span><br><span class="line">            | ((ary[offset+<span class="number">3</span>]&lt;&lt;<span class="number">24</span>) &amp; <span class="number">0xFF000000</span>));  </span><br><span class="line">    <span class="keyword">return</span> value;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
+          byte[]数组和int之间的转换1、int与byte[]之间的转换（类似的byte short,long型）int转byte[]123456789101112131415161718192021222324252627   /**    
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/11/1、Java/1、java 基础/byte[]数组和int之间的转换/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1677,8 +1342,15 @@
       
         
           
-            <h3 id="1、Python-基本数据类型"><a href="#1、Python-基本数据类型" class="headerlink" title="1、Python 基本数据类型"></a>1、Python 基本数据类型</h3>
+          1、Python 基本数据类型
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/11/10、Python/Python 基础/1、Python 基本数据类型/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1828,66 +1500,16 @@
       
         
           
-            <h2 id="java-中的Random"><a href="#java-中的Random" class="headerlink" title="java 中的Random"></a>java 中的Random</h2><p>Java中存在着两种Random函数：</p>
-<h3 id="一、java-lang-Math-Random"><a href="#一、java-lang-Math-Random" class="headerlink" title="一、java.lang.Math.Random:"></a>一、java.lang.Math.Random:</h3><p>调用这个Math.Random()函数能够返回带正号的double值，该值大于等于0.0且小于1.0，即取值范围是[0.0,1.0)的左闭右开区间，返回值是一个伪随机数，在该范围内(近似)均匀分布。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Math.Random() 函数产生的随机数:<span class="number">0.9956775355643588</span></span><br><span class="line">Math.Random() 函数产生的随机数:<span class="number">0.3452454357686029</span></span><br><span class="line">Math.Random() 函数产生的随机数:<span class="number">0.9489235373049734</span></span><br><span class="line">Math.Random() 函数产生的随机数:<span class="number">0.5280729775003039</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="二、java-util-Random"><a href="#二、java-util-Random" class="headerlink" title="二、java.util.Random:"></a>二、java.util.Random:</h3><p>Random类是伪随机数的产生器。之所以称之为伪随机数是因为它们是简单的均匀分布序列。Random定义了下面的构造函数。 </p>
-<ul>
-<li>Random() 创建一个新的随机数生成器。</li>
-<li>Random(long seed) 使用单个 long 种子创建一个新的随机数生成器。<br>第一种形式创建一个使用当前时间作为起始值或称为初始值的数字发生器。第二种形式允许人为指定一个初值。<br>如果用初值初始化了一个Random对象，就对随机序列定义了起始点。如果用相同的初值初始化另一个Random对象，将获得同一随机序列。如果要生成不同的序列，应当指定不同的初值。实现这种处理的最简单的方法是使用当前时间作为产生Random对象的初值。这种方法减少了得到相同序列的可能性。<br>下面是Java.util.Random()方法摘要：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>protected int next(int bits)</td>
-<td>生成下一个伪随机数</td>
-</tr>
-<tr>
-<td>boolean nextBoolean()</td>
-<td>返回下一个伪随机数，它是取自此随机数生成器序列的均匀分布的boolean值</td>
-</tr>
-<tr>
-<td>void nextBytes(byte[] bytes)</td>
-<td>生成随机字节并将其置于用户提供的 byte 数组中</td>
-</tr>
-<tr>
-<td>double nextDouble()</td>
-<td>返回下一个伪随机数，它是取自此随机数生成器序列的、在0.0和1.0之间均匀分布的 double值</td>
-</tr>
-<tr>
-<td>float nextFloat()</td>
-<td>返回下一个伪随机数，它是取自此随机数生成器序列的、在0.0和1.0之间均匀分布float值</td>
-</tr>
-<tr>
-<td>double nextGaussian()</td>
-<td>返回下一个伪随机数，它是取自此随机数生成器序列的、呈高斯（“正态”）分布的double值，其平均值是0.0标准差是1.0</td>
-</tr>
-<tr>
-<td>int nextInt()</td>
-<td>返回下一个伪随机数，它是此随机数生成器的序列中均匀分布的 int 值</td>
-</tr>
-<tr>
-<td>int nextInt(int n)</td>
-<td>返回一个伪随机数，它是取自此随机数生成器序列的、在（包括和指定值（不包括）之间均匀分布的int值</td>
-</tr>
-<tr>
-<td>long nextLong()</td>
-<td>返回下一个伪随机数，它是取自此随机数生成器序列的均匀分布的 long 值</td>
-</tr>
-<tr>
-<td>void setSeed(long seed)</td>
-<td>使用单个 long 种子设置此随机数生成器的种子</td>
-</tr>
-</tbody>
-</table>
-<p>正如你能看到的，从Random对象中可以提取七种类型的随机数。从nextBoolean()方法中可以获得随机布尔数。通过调用nextBytes()方法获得随机字节数。通过调用nextInt()方法可以获得随机整型数。通过调用nextLong()方法可以获得均匀分布的长整型随机数。通过调用nextFloat()和nextDouble()方法可以分别得到在0.0到1.0之间的，均匀分布的float和double随机数。最后，调用nextGaussian()方法返回中心在0.0，标准偏差为1.0的double值，这就是著名的钟形曲线。</p>
-<h3 id="三、Random类使用示例"><a href="#三、Random类使用示例" class="headerlink" title="三、Random类使用示例"></a>三、Random类使用示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Random r = <span class="keyword">new</span> Random()</span><br><span class="line">生成[<span class="number">0</span>, <span class="number">1.0</span>）区间的小数：<span class="keyword">double</span> d1 = r.nextDouble();直接使用nextDouble方法获得。</span><br><span class="line">生成[<span class="number">0</span>, <span class="number">5.0</span>)区间的小数：<span class="keyword">double</span> d2  r.nextDouble()*<span class="number">5</span>;因为nextDouble方法生成的数字区间是[<span class="number">0</span>, <span class="number">1.0</span>)，将该区间扩大<span class="number">5</span>倍即是要求的区间。同理，生成[<span class="number">0</span>, d)区间的随机小数，d为任意正的小数，则只需要将nextDouble方法的返回值乘以d即可。</span><br><span class="line">生成[<span class="number">1</span>, <span class="number">2.5</span>)区间的小数：<span class="keyword">double</span> d3 = r.nextDouble()*<span class="number">1.5</span>+<span class="number">1</span>;生成[<span class="number">1</span>, <span class="number">2.5</span>)区间的随机小数，则只需要首先生成[<span class="number">0</span>, <span class="number">1.5</span>)区间的随机数字，然后将生成的随机数区间加<span class="number">1</span>即可。同理，生成任意非从<span class="number">0</span>开始的小数区间[d1, d2)范围的随机数字(其中d1不等于<span class="number">0</span>)，则只需要首先生成[<span class="number">0</span>, d2-d1)区间的随机数字，然后将生成的随机数区间加上d1即可。</span><br><span class="line">生成任意整数：<span class="keyword">int</span> n1 = r.nextInt();直接使用nextInt方法即可。</span><br><span class="line">生成[<span class="number">0</span>, <span class="number">10</span>)区间的整数：<span class="keyword">int</span> n2 = r.nextInt(<span class="number">10</span>) /n2 = Math.abs(r.nextInt()%<span class="number">10</span>) ;前面两种方法均可生成[<span class="number">0</span>, <span class="number">10</span>)区间的整数。第一种实现使用Random类中的nextInt(<span class="keyword">int</span> n)方法直接实现。第二种实现中，首先调用nextInt()方法生成一个任意的<span class="keyword">int</span>数字，该数字和<span class="number">10</span>取余以后生成的数组区间为(-<span class="number">10</span>, <span class="number">10</span>),然后再对该区间求绝对值，则得到的区间就是[<span class="number">0</span>, <span class="number">10</span>)了。同理，生成任意[<span class="number">0</span>, n)区间的随机整数，都可以使用如下代码：<span class="keyword">int</span> n2 = r.nextInt(n); n2 = Math.abs(r.nextInt()%n)</span><br><span class="line">生成[<span class="number">0</span>, <span class="number">10</span>]区间的整数：<span class="keyword">int</span> n3 = r.nextInt(<span class="number">11</span>);n3 = Math.abs(r.nextInt()%<span class="number">11</span>)相对于整数区间，[<span class="number">0</span>, <span class="number">10</span>]区间和[<span class="number">0</span>, <span class="number">11</span>)区间等价，所以即生成[<span class="number">0</span>, <span class="number">11</span>)区间的整数。</span><br><span class="line">生成[-<span class="number">3</span>, <span class="number">15</span>)区间的整数：<span class="keyword">int</span> n4 = r.nextInt(<span class="number">18</span>)-<span class="number">3</span>; n4 = Math.abs(r.next()%<span class="number">18</span>)-<span class="number">3</span>;生成非从<span class="number">0</span>开始区间的随机整数，可以参看上面非从<span class="number">0</span>开始的小数区间实现原理的说明。</span><br></pre></td></tr></table></figure>
-          
+          java 中的RandomJava中存在着两种Random函数：
+一、java.lang.Math.Random:调用这个Math.Random()函数能够返回带正号的double值，该值大于等于0.0且小于1.0，即取值范围是[0.0,1
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/10/1、Java/1、java 基础/java Random/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2037,8 +1659,15 @@
       
         
           
-            <h1 id="java-文件写入追加"><a href="#java-文件写入追加" class="headerlink" title="java 文件写入追加"></a>java 文件写入追加</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A方法追加文件：使用RandomAccessFile</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">appendMethodA</span><span class="params">(String fileName, String content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 打开一个随机访问文件流，按读写方式</span></span><br><span class="line">            RandomAccessFile randomFile = <span class="keyword">new</span> RandomAccessFile(fileName, <span class="string">"rw"</span>);</span><br><span class="line">            <span class="comment">// 文件长度，字节数</span></span><br><span class="line">            <span class="keyword">long</span> fileLength = randomFile.length();</span><br><span class="line">            <span class="comment">//将写文件指针移到文件尾。</span></span><br><span class="line">            randomFile.seek(fileLength);</span><br><span class="line">            randomFile.writeBytes(content);</span><br><span class="line">            randomFile.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * B方法追加文件：使用FileWriter</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">appendMethodB</span><span class="params">(String fileName, String content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件</span></span><br><span class="line">            FileWriter writer = <span class="keyword">new</span> FileWriter(fileName, <span class="keyword">true</span>);</span><br><span class="line">            writer.write(content);</span><br><span class="line">            writer.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-          
+          java 文件写入追加123456789101112131415161718192021222324252627282930/** * A方法追加文件：使用RandomAccessFile */    public static void 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/08/02/1、Java/1、java 基础/java 文件写入追加/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2188,12 +1817,16 @@
       
         
           
-            <h2 id="java-文件读取"><a href="#java-文件读取" class="headerlink" title="java 文件读取"></a>java 文件读取</h2><p>在java中文件读取主要有以下几种情况<br>1、按字节读取文件内容<br>2、按字符读取文件内容<br>3、按行读取文件内容<br>4、随机读取文件内容 </p>
-<h2 id="1、按字节读取文件内容"><a href="#1、按字节读取文件内容" class="headerlink" title="1、按字节读取文件内容"></a>1、按字节读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以字节为单位读取文件，常用于读二进制文件，如图片、声音、影像等文件。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByBytes</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(fileName);</span><br><span class="line">        InputStream in = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字节为单位读取文件内容，一次读一个字节："</span>);</span><br><span class="line">            <span class="comment">// 一次读一个字节</span></span><br><span class="line">            in = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">            <span class="keyword">int</span> tempbyte;</span><br><span class="line">            <span class="keyword">while</span> ((tempbyte = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                System.out.write(tempbyte);</span><br><span class="line">            &#125;</span><br><span class="line">            in.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字节为单位读取文件内容，一次读多个字节："</span>);</span><br><span class="line">            <span class="comment">// 一次读多个字节</span></span><br><span class="line">            <span class="keyword">byte</span>[] tempbytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">100</span>];</span><br><span class="line">            <span class="keyword">int</span> byteread = <span class="number">0</span>;</span><br><span class="line">            in = <span class="keyword">new</span> FileInputStream(fileName);</span><br><span class="line">            ReadFromFile.showAvailableBytes(in);</span><br><span class="line">            <span class="comment">// 读入多个字节到字节数组中，byteread为一次读入的字节数</span></span><br><span class="line">            <span class="keyword">while</span> ((byteread = in.read(tempbytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                System.out.write(tempbytes, <span class="number">0</span>, byteread);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">            e1.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (in != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    in.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2、按字符读取文件内容"><a href="#2、按字符读取文件内容" class="headerlink" title="2、按字符读取文件内容"></a>2、按字符读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以字符为单位读取文件，常用于读文本，数字等类型的文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByChars</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(fileName);</span><br><span class="line">        Reader reader = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字符为单位读取文件内容，一次读一个字符："</span>);</span><br><span class="line">            <span class="comment">// 一次读一个字符</span></span><br><span class="line">            reader = <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(file));</span><br><span class="line">            <span class="keyword">int</span> tempchar;</span><br><span class="line">            <span class="keyword">while</span> ((tempchar = reader.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 对于windows下，\r\n这两个字符在一起时，表示一个换行。</span></span><br><span class="line">                <span class="comment">// 但如果这两个字符分开显示时，会换两次行。</span></span><br><span class="line">                <span class="comment">// 因此，屏蔽掉\r，或者屏蔽\n。否则，将会多出很多空行。</span></span><br><span class="line">                <span class="keyword">if</span> (((<span class="keyword">char</span>) tempchar) != <span class="string">'\r'</span>) &#123;</span><br><span class="line">                    System.out.print((<span class="keyword">char</span>) tempchar);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            reader.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字符为单位读取文件内容，一次读多个字符："</span>);</span><br><span class="line">            <span class="comment">// 一次读多个字符</span></span><br><span class="line">            <span class="keyword">char</span>[] tempchars = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">30</span>];</span><br><span class="line">            <span class="keyword">int</span> charread = <span class="number">0</span>;</span><br><span class="line">            reader = <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(fileName));</span><br><span class="line">            <span class="comment">// 读入多个字符到字符数组中，charread为一次读取字符数</span></span><br><span class="line">            <span class="keyword">while</span> ((charread = reader.read(tempchars)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 同样屏蔽掉\r不显示</span></span><br><span class="line">                <span class="keyword">if</span> ((charread == tempchars.length)</span><br><span class="line">                        &amp;&amp; (tempchars[tempchars.length - <span class="number">1</span>] != <span class="string">'\r'</span>)) &#123;</span><br><span class="line">                    System.out.print(tempchars);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charread; i++) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (tempchars[i] == <span class="string">'\r'</span>) &#123;</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            System.out.print(tempchars[i]);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">            e1.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (reader != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    reader.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="3、按行读取文件内容"><a href="#3、按行读取文件内容" class="headerlink" title="3、按行读取文件内容"></a>3、按行读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 以行为单位读取文件，常用于读面向行的格式化文件</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByLines</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">      File file = <span class="keyword">new</span> File(fileName);</span><br><span class="line">      BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          System.out.println(<span class="string">"以行为单位读取文件内容，一次读一整行："</span>);</span><br><span class="line">          reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(file));</span><br><span class="line">          String tempString = <span class="keyword">null</span>;</span><br><span class="line">          <span class="keyword">int</span> line = <span class="number">1</span>;</span><br><span class="line">          <span class="comment">// 一次读入一行，直到读入null为文件结束</span></span><br><span class="line">          <span class="keyword">while</span> ((tempString = reader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="comment">// 显示行号</span></span><br><span class="line">              System.out.println(<span class="string">"line "</span> + line + <span class="string">": "</span> + tempString);</span><br><span class="line">              line++;</span><br><span class="line">          &#125;</span><br><span class="line">          reader.close();</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (reader != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  reader.close();</span><br><span class="line">              &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4、随机读取文件内容"><a href="#4、随机读取文件内容" class="headerlink" title="4、随机读取文件内容"></a>4、随机读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 随机读取文件内容</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByRandomAccess</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">      RandomAccessFile randomFile = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          System.out.println(<span class="string">"随机读取一段文件内容："</span>);</span><br><span class="line">          <span class="comment">// 打开一个随机访问文件流，按只读方式</span></span><br><span class="line">          randomFile = <span class="keyword">new</span> RandomAccessFile(fileName, <span class="string">"r"</span>);</span><br><span class="line">          <span class="comment">// 文件长度，字节数</span></span><br><span class="line">          <span class="keyword">long</span> fileLength = randomFile.length();</span><br><span class="line">          <span class="comment">// 读文件的起始位置</span></span><br><span class="line">          <span class="keyword">int</span> beginIndex = (fileLength &gt; <span class="number">4</span>) ? <span class="number">4</span> : <span class="number">0</span>;</span><br><span class="line">          <span class="comment">// 将读文件的开始位置移到beginIndex位置。</span></span><br><span class="line">          randomFile.seek(beginIndex);</span><br><span class="line">          <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">10</span>];</span><br><span class="line">          <span class="keyword">int</span> byteread = <span class="number">0</span>;</span><br><span class="line">          <span class="comment">// 一次读10个字节，如果文件内容不足10个字节，则读剩下的字节。</span></span><br><span class="line">          <span class="comment">// 将一次读取的字节数赋给byteread</span></span><br><span class="line">          <span class="keyword">while</span> ((byteread = randomFile.read(bytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">              System.out.write(bytes, <span class="number">0</span>, byteread);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (randomFile != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  randomFile.close();</span><br><span class="line">              &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-          
+          java 文件读取在java中文件读取主要有以下几种情况1、按字节读取文件内容2、按字符读取文件内容3、按行读取文件内容4、随机读取文件内容 
+1、按字节读取文件内容1234567891011121314151617181920212223
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/07/28/1、Java/1、java 基础/java 文件读取/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
