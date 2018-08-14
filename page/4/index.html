@@ -440,7 +440,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/3、Android/3、Andorid 设备/蓝牙/关于经典蓝牙服务对应的UUID码/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/2、C_C++/32位64位操作系统基本数据类型字节大小/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -459,8 +459,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/关于经典蓝牙服务对应的UUID码/" itemprop="url">
-                  关于蓝牙服务对应的UUID码
+                <a class="post-title-link" href="/2017/03/10/2、C_C++/32位64位操作系统基本数据类型字节大小/" itemprop="url">
+                  32位64位操作系统基本数据类型字节大小
                 </a>
               
             
@@ -503,7 +503,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-20 11:20:38" itemprop="dateModified" datetime="2018-04-20T11:20:38+08:00">2018-04-20</time>
+                <time title="Updated at: 2018-04-18 14:06:48" itemprop="dateModified" datetime="2018-04-18T14:06:48+08:00">2018-04-18</time>
               
             
           </span>
@@ -538,14 +538,169 @@
       
         
           
-          
-UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的意思。对于蓝牙设备，每个服务都有一个与它对应的UUID（唯一的）。
-
-下面列出一些常用的蓝牙服务UUID：123ServiceDiscover
+          32位64位操作系统基本数据类型字节大小int型字长问题：① C/C++规定int字长和机器字长相同；② 操作系统字长和机器字长未必一致；③ 编译器根据操作系统字长来定义int字长；  由上面三点可知，在一些没有操作系统的嵌入式计算机系统上
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/关于经典蓝牙服务对应的UUID码/#more" rel="contents">
+            <a class="btn" href="/2017/03/10/2、C_C++/32位64位操作系统基本数据类型字节大小/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/7、web/前端跨域问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/10/7、web/前端跨域问题/" itemprop="url">
+                  前端跨域问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-03-10T11:42:59+08:00">2017-03-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-11-23 10:46:13" itemprop="dateModified" datetime="2017-11-23T10:46:13+08:00">2017-11-23</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          跨域由于浏览器同源策略，凡是发送请求url的协议、域名、端口三者之间任意一与当前页面地址不同即为跨域。具体可以查看下表特别注意两点：第一，如果是协议和端口造成的跨域问题“前台”是无能为力的，第二：在跨域问题上，域仅仅是通过“URL的首部”来
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/10/7、web/前端跨域问题/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>
@@ -917,7 +1072,7 @@ UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/7、web/前端跨域问题/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/3、Android/3、Andorid 设备/蓝牙/手机BLE作为外围设备/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -936,8 +1091,8 @@ UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/10/7、web/前端跨域问题/" itemprop="url">
-                  前端跨域问题
+                <a class="post-title-link" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/手机BLE作为外围设备/" itemprop="url">
+                  手机BLE作为外围设备
                 </a>
               
             
@@ -980,7 +1135,7 @@ UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的�
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2017-11-23 10:46:13" itemprop="dateModified" datetime="2017-11-23T10:46:13+08:00">2017-11-23</time>
+                <time title="Updated at: 2018-04-13 10:38:44" itemprop="dateModified" datetime="2018-04-13T10:38:44+08:00">2018-04-13</time>
               
             
           </span>
@@ -1015,169 +1170,13 @@ UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的�
       
         
           
-          跨域由于浏览器同源策略，凡是发送请求url的协议、域名、端口三者之间任意一与当前页面地址不同即为跨域。具体可以查看下表特别注意两点：第一，如果是协议和端口造成的跨域问题“前台”是无能为力的，第二：在跨域问题上，域仅仅是通过“URL的首部”来
+          手机BLE作为外围设备 自安卓5.0后，谷歌加入了对安卓手机作为低功耗蓝牙外围设备，即服务端的支持。使得手机可以通过低功耗蓝牙进行相互通信。
+开发步骤实现这一功能其实只需要分为设置广播和设置服务器两个部分完成即可
+设置服务器这一步骤主要操作
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/10/7、web/前端跨域问题/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/2、C_C++/32位64位操作系统基本数据类型字节大小/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/10/2、C_C++/32位64位操作系统基本数据类型字节大小/" itemprop="url">
-                  32位64位操作系统基本数据类型字节大小
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-03-10T11:42:59+08:00">2017-03-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-04-18 14:06:48" itemprop="dateModified" datetime="2018-04-18T14:06:48+08:00">2018-04-18</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          32位64位操作系统基本数据类型字节大小int型字长问题：① C/C++规定int字长和机器字长相同；② 操作系统字长和机器字长未必一致；③ 编译器根据操作系统字长来定义int字长；  由上面三点可知，在一些没有操作系统的嵌入式计算机系统上
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/03/10/2、C_C++/32位64位操作系统基本数据类型字节大小/#more" rel="contents">
+            <a class="btn" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/手机BLE作为外围设备/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>
@@ -1392,7 +1391,7 @@ UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/3、Android/3、Andorid 设备/蓝牙/手机BLE作为外围设备/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/3、Android/3、Andorid 设备/蓝牙/关于经典蓝牙服务对应的UUID码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -1411,8 +1410,8 @@ UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/手机BLE作为外围设备/" itemprop="url">
-                  手机BLE作为外围设备
+                <a class="post-title-link" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/关于经典蓝牙服务对应的UUID码/" itemprop="url">
+                  关于蓝牙服务对应的UUID码
                 </a>
               
             
@@ -1455,7 +1454,7 @@ UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的�
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-13 10:38:44" itemprop="dateModified" datetime="2018-04-13T10:38:44+08:00">2018-04-13</time>
+                <time title="Updated at: 2018-04-20 11:20:38" itemprop="dateModified" datetime="2018-04-20T11:20:38+08:00">2018-04-20</time>
               
             
           </span>
@@ -1490,13 +1489,14 @@ UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的�
       
         
           
-          手机BLE作为外围设备 自安卓5.0后，谷歌加入了对安卓手机作为低功耗蓝牙外围设备，即服务端的支持。使得手机可以通过低功耗蓝牙进行相互通信。
-开发步骤实现这一功能其实只需要分为设置广播和设置服务器两个部分完成即可
-设置服务器这一步骤主要操作
+          
+UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的意思。对于蓝牙设备，每个服务都有一个与它对应的UUID（唯一的）。
+
+下面列出一些常用的蓝牙服务UUID：123ServiceDiscover
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/手机BLE作为外围设备/#more" rel="contents">
+            <a class="btn" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/关于经典蓝牙服务对应的UUID码/#more" rel="contents">
               Weiterlesen &raquo;
             </a>
           </div>
@@ -2022,9 +2022,9 @@ jbytearray转c++ byte数组
       <div class="footer-inner">
         <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-AtomOne"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">AtomOne</span>
+  <span class="author" itemprop="copyrightHolder">liyy</span>
 
   
 
