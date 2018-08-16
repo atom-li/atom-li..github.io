@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -84,9 +84,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Muse',
     version: '6.4.0',
-    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -282,12 +282,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/08/11/3、Android/5、Android 开源/网络框架/Retrofit2 添加header/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/11/3、Android/5、Android 开源/网络框架/Retrofit2 添加header/" itemprop="url">
+                  Retrofit2 添加header
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2017-08-11 16:02:59" itemprop="dateCreated datePublished" datetime="2017-08-11T16:02:59+08:00">2017-08-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-08-10 09:36:10" itemprop="dateModified" datetime="2018-08-10T09:36:10+08:00">2018-08-10</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Retrofit2-添加header"><a href="#Retrofit2-添加header" class="headerlink" title="Retrofit2 添加header"></a>Retrofit2 添加header</h2><h3 id="1、使用注解方式添加"><a href="#1、使用注解方式添加" class="headerlink" title="1、使用注解方式添加"></a>1、使用注解方式添加</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加单个header</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Headers</span>(<span class="string">"Cache-Control: max-age=640000"</span>)</span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks"</span>)</span><br><span class="line">Call&lt;List&lt;AsyncHelper.Task&gt;&gt; getTask();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加多个header</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> taskId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Headers</span>(&#123;</span><br><span class="line">        <span class="string">"Accept: application/vnd.yourapi.v1.full+json"</span>,</span><br><span class="line">        <span class="string">"User-Agent: Your-App-Name"</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks/&#123;task_id&#125;"</span>)</span><br><span class="line">Call&lt;AsyncHelper.Task&gt; getTasks(<span class="meta">@Path</span>(<span class="string">"task_id"</span>) <span class="keyword">long</span> taskId);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动态添加header</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> contentRange</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks"</span>)</span><br><span class="line">Call&lt;List&lt;AsyncHelper.Task&gt;&gt; getTasks(<span class="meta">@Header</span>(<span class="string">"Content-Range"</span>) String contentRange);</span><br></pre></td></tr></table></figure>
+<h3 id="2、使用拦截器添加"><a href="#2、使用拦截器添加" class="headerlink" title="2、使用拦截器添加"></a>2、使用拦截器添加</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient.Builder httpClient = <span class="keyword">new</span> OkHttpClient.Builder();  </span><br><span class="line">httpClient.addInterceptor(<span class="keyword">new</span> Interceptor() &#123;  </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Interceptor.Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Request original = chain.request();</span><br><span class="line">        <span class="comment">// 自定义拦截器动态添加header</span></span><br><span class="line">        Request request = original.newBuilder()</span><br><span class="line">            .header(<span class="string">"User-Agent"</span>, <span class="string">"Your-App-Name"</span>)</span><br><span class="line">            .header(<span class="string">"Accept"</span>, <span class="string">"application/vnd.yourapi.v1.full+json"</span>)</span><br><span class="line">            .method(original.method(), original.body())</span><br><span class="line">            .build();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> chain.proceed(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">OkHttpClient client = httpClient.build();  </span><br><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()  </span><br><span class="line">    .baseUrl(API_BASE_URL)</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .client(client)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/08/11/3、Android/5、Android 开源/网络框架/Retrofit2/Retrofit2 添加header/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -380,15 +533,10 @@
       
         
           
-          Retrofit2 添加header1、使用注解方式添加1234567891011121314151617181920212223242526272829/** * 添加单个header * * @return */@Headers("Ca
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/11/3、Android/5、Android 开源/网络框架/Retrofit2/Retrofit2 添加header/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="Retrofit2-添加header"><a href="#Retrofit2-添加header" class="headerlink" title="Retrofit2 添加header"></a>Retrofit2 添加header</h2><h3 id="1、使用注解方式添加"><a href="#1、使用注解方式添加" class="headerlink" title="1、使用注解方式添加"></a>1、使用注解方式添加</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加单个header</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Headers</span>(<span class="string">"Cache-Control: max-age=640000"</span>)</span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks"</span>)</span><br><span class="line">Call&lt;List&lt;AsyncHelper.Task&gt;&gt; getTask();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加多个header</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> taskId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Headers</span>(&#123;</span><br><span class="line">        <span class="string">"Accept: application/vnd.yourapi.v1.full+json"</span>,</span><br><span class="line">        <span class="string">"User-Agent: Your-App-Name"</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks/&#123;task_id&#125;"</span>)</span><br><span class="line">Call&lt;AsyncHelper.Task&gt; getTasks(<span class="meta">@Path</span>(<span class="string">"task_id"</span>) <span class="keyword">long</span> taskId);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动态添加header</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> contentRange</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks"</span>)</span><br><span class="line">Call&lt;List&lt;AsyncHelper.Task&gt;&gt; getTasks(<span class="meta">@Header</span>(<span class="string">"Content-Range"</span>) String contentRange);</span><br></pre></td></tr></table></figure>
+<h3 id="2、使用拦截器添加"><a href="#2、使用拦截器添加" class="headerlink" title="2、使用拦截器添加"></a>2、使用拦截器添加</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient.Builder httpClient = <span class="keyword">new</span> OkHttpClient.Builder();  </span><br><span class="line">httpClient.addInterceptor(<span class="keyword">new</span> Interceptor() &#123;  </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Interceptor.Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Request original = chain.request();</span><br><span class="line">        <span class="comment">// 自定义拦截器动态添加header</span></span><br><span class="line">        Request request = original.newBuilder()</span><br><span class="line">            .header(<span class="string">"User-Agent"</span>, <span class="string">"Your-App-Name"</span>)</span><br><span class="line">            .header(<span class="string">"Accept"</span>, <span class="string">"application/vnd.yourapi.v1.full+json"</span>)</span><br><span class="line">            .method(original.method(), original.body())</span><br><span class="line">            .build();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> chain.proceed(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">OkHttpClient client = httpClient.build();  </span><br><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()  </span><br><span class="line">    .baseUrl(API_BASE_URL)</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .client(client)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -445,7 +593,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -538,17 +686,34 @@
       
         
           
-          Ubuntu安装Java8和Java9Java 9 的代码由于提供了新特性，所以有些代码并不支持向后兼容。也就是说，用 Java 9 写的代码，有可能在 Java 8 或更早版本的 JDK 上不能运行。
-1、安装Jave8
-导入Webupd
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/10/6、Linux/2、常用软件服务管理/Ubuntu安装Java8和Java9/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="Ubuntu安装Java8和Java9"><a href="#Ubuntu安装Java8和Java9" class="headerlink" title="Ubuntu安装Java8和Java9"></a>Ubuntu安装Java8和Java9</h2><p>Java 9 的代码由于提供了新特性，所以有些代码并不支持向后兼容。也就是说，用 Java 9 写的代码，有可能在 Java 8 或更早版本的 JDK 上不能运行。</p>
+<h3 id="1、安装Jave8"><a href="#1、安装Jave8" class="headerlink" title="1、安装Jave8"></a>1、安装Jave8</h3><ol>
+<li><p>导入Webupd8 PPA</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加Webupd8 PPA 资源库</span></span><br><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line"><span class="meta">#</span><span class="bash">更新apt-get 使其生效</span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">选择确认条款，用Tab键切换。</span></span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置为默认jdk</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//sudo update-java-alternatives -s java-8-oracle</span><br><span class="line">sudo apt install oracle-java8-set-default</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="2、安装Java9"><a href="#2、安装Java9" class="headerlink" title="2、安装Java9"></a>2、安装Java9</h3><ol>
+<li><p>导入Webupd8 PPA</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository -y ppa:webupd8team/java</span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">选择确认条款，用Tab键切换。</span></span><br><span class="line">sudo apt-get install oracle-java9-installer</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install oracle-java9-set-default</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> java -version</span></span><br><span class="line">java version "9"</span><br><span class="line">Java(TM) SE Runtime Environment (build 9+181)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 9+181, mixed mode)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
         
       
     </div>
@@ -605,7 +770,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -698,16 +863,14 @@
       
         
           
-          Centos7 搭建FTP 服务1、安装vsftpd1234yum check-updateyum -y install vsftpd#完成后再检查一遍whereis vsftpd
-2、查看vsftpd 服务状态12#如果是激活状态的话会有
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/10/6、Linux/2、常用软件服务管理/Centos 7创建FTP服务器/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="Centos7-搭建FTP-服务"><a href="#Centos7-搭建FTP-服务" class="headerlink" title="Centos7 搭建FTP 服务"></a>Centos7 搭建FTP 服务</h2><h3 id="1、安装vsftpd"><a href="#1、安装vsftpd" class="headerlink" title="1、安装vsftpd"></a>1、安装vsftpd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum check-update</span><br><span class="line">yum -y install vsftpd</span><br><span class="line"><span class="comment">#完成后再检查一遍</span></span><br><span class="line">whereis vsftpd</span><br></pre></td></tr></table></figure>
+<h3 id="2、查看vsftpd-服务状态"><a href="#2、查看vsftpd-服务状态" class="headerlink" title="2、查看vsftpd 服务状态"></a>2、查看vsftpd 服务状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果是激活状态的话会有active绿色的标记</span></span><br><span class="line">systemctl status vsftpd.service</span><br></pre></td></tr></table></figure>
+<h3 id="3、修改配置参数"><a href="#3、修改配置参数" class="headerlink" title="3、修改配置参数"></a>3、修改配置参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/vsftpd/vsftpd.conf</span><br><span class="line"><span class="comment">#修改为如下参数</span></span><br><span class="line">anonymous_enable=NO</span><br><span class="line">chroot_local_user=YES</span><br><span class="line">allow_writeable_chroot=YES</span><br><span class="line"><span class="comment">#之后添加下列内容到vsftpd.conf末尾</span></span><br><span class="line">pasv_enable=YES</span><br><span class="line">pasv_min_port=40000</span><br><span class="line">pasv_max_port=40100</span><br></pre></td></tr></table></figure>
+<h3 id="4、配置防火墙"><a href="#4、配置防火墙" class="headerlink" title="4、配置防火墙"></a>4、配置防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#默认情况下centos7是使用firewall和selinux</span></span><br><span class="line"><span class="comment">#防火墙添加FTP服务：</span></span><br><span class="line">firewall-cmd --permanent --add-service=ftp</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="comment">#设置SELinux：</span></span><br><span class="line">getsebool -a | grep ftp</span><br><span class="line">setsebool -P ftpd_full_access on</span><br></pre></td></tr></table></figure>
+<h3 id="5、创建ftp用户"><a href="#5、创建ftp用户" class="headerlink" title="5、创建ftp用户"></a>5、创建ftp用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建ftp用户两种方式，系统用户和虚拟用户，这里使用系统用户</span></span><br><span class="line"><span class="comment">#在ftp组中加入一个atom_ftp账户用来ftp到/root并给它添加密码</span></span><br><span class="line">useradd -g ftp -M -d /root -s /sbin/nologin atom_ftp</span><br><span class="line">passwd atom_ftp</span><br><span class="line"><span class="comment">#把/root的所有权给atom_ftp.root</span></span><br><span class="line">chown -R atom_ftp.root /root</span><br></pre></td></tr></table></figure>
+<h3 id="6、重启ftp"><a href="#6、重启ftp" class="headerlink" title="6、重启ftp"></a>6、重启ftp</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart vsftpd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> vsftpd.service</span><br><span class="line">systemctl status vsftpd.service</span><br></pre></td></tr></table></figure>
+
+          
         
       
     </div>
@@ -764,7 +927,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -857,16 +1020,26 @@
       
         
           
-          参考链接CSDN Webrtc服务器搭建CSDN 搭建自己的AppRTCDemo服务器WebRTC实时通信系列教程
-#WebRTC 服务器搭建WebRTC，是Web Real-Time Communication的缩写，是谷歌2010年以6
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/07/6、Linux/3、场景应用/WebRTC服务器搭建/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>参考链接<br><a href="http://blog.csdn.net/tifentan/article/details/53462535" target="_blank" rel="noopener">CSDN Webrtc服务器搭建</a><br><a href="http://blog.csdn.net/mandagod/article/details/71440873" target="_blank" rel="noopener">CSDN 搭建自己的AppRTCDemo服务器</a><br><a href="http://blog.csdn.net/leytton/article/details/76696372" target="_blank" rel="noopener">WebRTC实时通信系列教程</a></p>
+<p>#WebRTC 服务器搭建<br>WebRTC，是Web Real-Time Communication的缩写，是谷歌2010年以6820万美元收购Global IP Solutions公司而获得的一项技术，于2011年5月开放了工程的源代码，在行业内得到了广泛的支持和应用，成为下一代视频通话的标准。</p>
+<p>##WebRTC 运行服务器<br>需要搭建三个服务器，分别是房间服务器、信令服务器以及打洞服务器</p>
+<ul>
+<li>房间服务器（Room Server）<br>房间服务器是用来创建和管理通话会话的状态维护,是双方通话还是多方通话,加入与离开房间等等,我们暂时沿用Google部署在GAE平台上的AppRTC这个房间服务器实现,该GAE App的源码可以在github.com上获取.该实现是一个基于Python的GAE应用,我们需要下载Google GAE的离线开发包到我们自己的Linux服务器上来运行该项目,搭建房间服务器.</li>
+<li>信令服务器（Signaling Server）<br>信令服务器是用来管理和协助通话终端建立去中心的点对点通话的一个角色.这个角色要负责一下任务</li>
+</ul>
+<ol>
+<li>用来控制通信发起或者结束的连接控制消息</li>
+<li>发生错误时用来相互通告的消息</li>
+<li>各自一方媒体流元数据，比如像解码器、解码器的配置、带宽、媒体类型等等</li>
+<li>两两之间用来建立安全连接的关键数据</li>
+<li>外界所能看到的网络上的数据，比如广域网IP地址、端口等</li>
+</ol>
+<p>信令服务器的具体协议实现没有严格规定,只要实现功能就OK.<br>我们这里依然沿用Google提供的基于GO语言和WebSocket的信令服务器Collider.和上面的房间服务器一并在Github上可以获取.获取到我们自己的Linux服务器上用GO语言的运行环境来运行该信令服务器.</p>
+<ul>
+<li>打洞服务器（STUN/TURN/ICE Server）<br>我们目前大部分人连接互联网时都处于防火墙后面或者配置私有子网的家庭(NAT)路由器后面,这就导致我们的计算机的IP地址不是广域网IP地址,故而不能相互之间直接通讯. 正因为这样的一个场景,我们得想办法去穿越这些防火墙或者家庭(NAT)路由器,让两个同处于私有网络里的计算机能够通讯起来.</li>
+</ul>
+
+          
         
       
     </div>
@@ -923,7 +1096,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1016,15 +1189,11 @@
       
         
           
-          如何判断当前线程是否是主线程1、使用Looper123public boolean isMainThread() &#123;    return Looper.getMainLooper() == Looper.myLooper();&#
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/10/3、Android/1、Android 基础/基本知识/如何判断当前线程是否是主线程/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="如何判断当前线程是否是主线程"><a href="#如何判断当前线程是否是主线程" class="headerlink" title="如何判断当前线程是否是主线程"></a>如何判断当前线程是否是主线程</h2><h3 id="1、使用Looper"><a href="#1、使用Looper" class="headerlink" title="1、使用Looper"></a>1、使用Looper</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMainThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Looper.getMainLooper() == Looper.myLooper();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMainThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Looper.getMainLooper().getThread() == Thread.currentThread();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMainThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
         
       
     </div>
@@ -1081,7 +1250,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1174,15 +1343,10 @@
       
         
           
-          Android Studio 配置1、支持中文项目路径windows 平台在如图所示的位置添加gradle.properties文件在新建的文件中添加1com.android.build.gradle.overridePathCheck=t
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/10/3、Android/1、Android 基础/基本知识/AndroidStudio 配置/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="Android-Studio-配置"><a href="#Android-Studio-配置" class="headerlink" title="Android Studio 配置"></a>Android Studio 配置</h2><h3 id="1、支持中文项目路径"><a href="#1、支持中文项目路径" class="headerlink" title="1、支持中文项目路径"></a>1、支持中文项目路径</h3><p>windows 平台在如图所示的位置添加<strong><em>gradle.properties</em></strong>文件<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171128/F34DHBge1i.png?imageslim" alt="mark"><br>在新建的文件中添加<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com.android.build.gradle.overridePathCheck=<span class="keyword">true</span></span><br></pre></td></tr></table></figure></p>
+<p>重新构建工程即可</p>
+<h3 id="2、网络代理"><a href="#2、网络代理" class="headerlink" title="2、网络代理"></a>2、网络代理</h3>
+          
         
       
     </div>
@@ -1239,7 +1403,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1332,15 +1496,9 @@
       
         
           
-          Ubuntu常用的命令查看软件xxx安装内容：dpkg -L xxx查找软件库中的软件：apt-cache search 正则表达式查找软件库中的软件：aptitude search 软件包查找文件属于哪个包：dpkg -S filenam
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/10/6、Linux/1、常用Linux指令/Ubuntu常用的命令/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <h2 id="Ubuntu常用的命令"><a href="#Ubuntu常用的命令" class="headerlink" title="Ubuntu常用的命令"></a>Ubuntu常用的命令</h2><p>查看软件xxx安装内容：dpkg -L xxx<br>查找软件库中的软件：apt-cache search 正则表达式<br>查找软件库中的软件：aptitude search 软件包<br>查找文件属于哪个包：dpkg -S filename<br>查找文件属于哪个包：apt-file search filename<br>查询软件xxx依赖哪些包：apt-cache depends xxx<br>查询软件xxx被哪些包依赖：apt-cache rdepends xxx<br>增加一个光盘源：sudo apt-cdrom add<br>系统升级：sudo apt-get update;sudo apt-get dist-upgrade<br>清除已删除包的残馀配置文件：dpkg -l |grep ^rc|awk ‘{print $2}’ |sudo xargs dpkg -P<br>编译时缺少h文件的自动处理：sudo auto-apt run ./configure<br>查看安装软件时下载包的临时存放目录：ls /var/cache/apt/archives<br>备份当前系统安装的所有包的列表：dpkg –get-selections | grep -v deinstall &gt; ~/somefile<br>从备份的安装包的列表文件恢复所有包：dpkg –set-selections &lt; ~/somefile;sudo dselect<br>清理旧版本的软件缓存：sudo apt-get autoclean<br>清理所有软件缓存：sudo apt-get clean<br>删除系统不再使用的孤立软件：sudo apt-get autoremove<br>查看包在服务器上面的地址：apt-get -qq –print-uris install ssh | cut -d\’ -f2<br>查看内核：uname -a<br>查看Ubuntu版本：cat /etc/issue 或 lsb_release -a<br>查看内核加载的模块：lsmod<br>查看PCI设备：lspci<br>查看USB设备：lsusb -v<br>查看网卡状态：sudo ethtool eth0<br>查看CPU信息：cat /proc/cpuinfo<br>显示当前硬件信息：sudo lshw<br>显示系统运行时间：uptime<br>查看硬盘的分区：sudo fdisk -l<br>硬盘分区：sudo fdisk /dev/sda<br>硬盘格式化：sudo mkfs.ext3 /dev/sda1<br>硬盘检查(请不要检查已经挂载的分区，否则容易损坏数据)：sudo fsck /dev/sda1<br>分区挂载：sudo mount -t 文件系统类型 (-o nls=utf8 或 -o iocharset=utf8) 设备路经 访问路经<br>分区卸载：sudo umount 目录名或设备名<br>查看IDE硬盘信息：sudo hdparm -i /dev/hda<br>查看STAT硬盘信息 ：sudo hdparm -I /dev/sda 或 sudo blktool /dev/sda id<br>查看硬盘剩馀空间：df<br>查看目录占用空间：du -hs 目录名<br>优盘没法卸载：sync;fuser -km /media/usbdisk<br>查看硬盘当前读写情况：sudo iostat -x 2<br>查看当前的内存使用情况：free<br>动态显示进程执行情况：top<br>查看当前有哪些进程：ps -A<br>查看当前进程树：pstree<br>中止一个进程：kill 进程号 或 killall 进程名<br>强制中止一个进程：kill -9 进程号 或 killall -9 进程名<br>图形方式中止一个程序：xkill 出现骷髅标志的鼠标，点击需要中止的程序即可<br>查看进程打开的文件：lsof -p<br>显示开启文件abc.txt的进程 ：lsof abc.txt<br>显示22端口现在运行什么程序 ：lsof -i :22<br>显示nsd进程现在打开的文件 ：lsof -c nsd<br>在后台运行程序，退出登录后，并不结束程序 ：nohup 程序 &amp;<br>详细显示程序的运行信息 ：strace -f -F -o outfile<br>增加系统最大打开文件个数：ulimit -n 4096 或 echo 4096 &gt; /proc/sys/fs/file-max<br>配置 ADSL ：sudo pppoeconf<br>ADSL手工拨号：sudo pon dsl-provider<br>激活 ADSL：sudo /etc/ppp/pppoe_on_boot<br>断开 ADSL ：sudo poff<br>查看拨号日志：sudo plog<br>如何设置动态域名：w3m -no-cookie -dump ‘<a href="http://usere:pass@members.3322.org/dyndns/update?system=dyndns&amp;hostname=yourdns.3322.org’" target="_blank" rel="noopener">http://usere:pass@members.3322.org/dyndns/update?system=dyndns&amp;hostname=yourdns.3322.org’</a><br>根据IP查网卡地址 ：arping IP地址<br>根据IP查电脑名 ：nmblookup -A IP地址<br>查看当前IP地址 ：ifconfig eth0 |awk ‘/inet/ {split($2,x,”:”);print x[2]}’<br>查看当前外网的IP地址 ：w3m -no-cookie -dump <a href="http://www.123cha.com|grep" target="_blank" rel="noopener">www.123cha.com|grep</a> -o ‘[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}’<br>查看当前监听80端口的程序 ：lsof -i :80<br>查看当前网卡的物理地址：arp -a | awk ‘{print $4}’<br>同一个网卡增加第二个IP地址 ：sudo ifconfig eth0:0 1.2.3.4 netmask 255.255.255.0<br>立即让网络支持nat ：echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward; sudo iptables -t nat -I POSTROUTING -j MASQUERADE<br>查看路由信息：netstat -rn 或 sudo route -n<br>手工增加一条路由 ：sudo route add -net 192.168.0.0 netmask 255.255.255.0 gw 172.16.0.1<br>手工删除一条路由：sudo route del -net 192.168.0.0 netmask 255.255.255.0 gw 172.16.0.1<br>修改网卡MAC地址的方法 ：sudo ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE<br>统计当前IP连接的个数 ：netstat -na|grep ESTABLISHED|awk ‘{print $5}’|awk -F: ‘{print $1}’|sort|uniq -c|sort -r -n<br>屏蔽IPV6 ：echo ‘blacklist ipv6′ | sudo tee /etc/modprobe.d/blacklist-ipv6<br>察看当前网络连接状况以及程序 ：sudo netstat -atnp<br>查看ADSL的当前流量：sudo ethstatus -i ppp0<br>查看域名的注册备案情况：whois baidu.cn<br>查看到某一个域名的路由情况：tracepath baidu.cn<br>重新从服务器获得IP地址 ：sudo dhclient<br>下载网站文档：wget -r -p -np -k <a href="http://www.xxx.com" target="_blank" rel="noopener">http://www.xxx.com</a><br>如何5个线程下载：axel -n 5 <a href="http://www.xxx.com/downloadfile.zip" target="_blank" rel="noopener">http://www.xxx.com/downloadfile.zip</a><br>添加一个服务：sudo update-rc.d 服务名 defaults 99<br>删除一个服务 ：sudo update-rc.d 服务名 remove<br>临时重启一个服务：/etc/init.d/服务名 restart<br>临时关闭一个服务：/etc/init.d/服务名 stop<br>临时启动一个服务：/etc/init.d/服务名 start<br>增加用户：sudo adduser 用户名<br>删除用户：sudo deluser 用户名<br>修改当前用户的密码：passwd<br>修改用户密码：sudo passwd 用户名<br>修改用户资料：sudo chfn userid<br>如何禁用某个帐户：sudo usermod -L 用户名 或 sudo passwd -l 用户名<br>如何启用某个帐户：sudo usermod -U 用户名 或 sudo passwd -u 用户名<br>增加用户到admin组：sudo usermod -G admin -a 用户名<br>配置默认Java使用哪个 ：sudo update-alternatives –config java<br>终端设置代理 ：export http_proxy=<a href="http://xx.xx.xx.xx:xxx" target="_blank" rel="noopener">http://xx.xx.xx.xx:xxx</a><br>修改系统登录信息：sudo vim /etc/motd<br>使用sun的java编译器：sudo update-java-alternatives -s java-6-sun<br>切换输入法引擎：im-switch -c<br>转换文件名由GBK为UTF8 ：convmv -r -f cp936 -t utf8 –notest –nosmart <em><br>转换文件内容由GBK到UTF8 ：iconv -f gbk -t utf8 $i &gt; newfile<br>转换 mp3 标签编码 ：sudo apt-get install python-mutagen;find . -iname ‘</em>.mp3′ -execdir mid3iconv -e GBK {} \;<br>控制台下显示中文 ：sudo apt-get install zhcon;zhcon –utf8 –drv=vga<br>lftp 登录远程Windows中文FTP　：lftp :~&gt;set ftp:charset GBK<br>PDF 文件乱码 ：sudo apt-get install xpdf-chinese-simplified xpdf-chinese-traditional poppler-data<br>一屏查看文件内容 ：cat 文件名<br>分页查看文件内容：more 文件名<br>可控分页查看文件内容：less 文件名<br>根据字符串匹配来查看文件部分内容：grep 字符串 文件名<br>显示包含字符串的文件名：grep -l -r 字符串 路径<br>显示不包含字符串的文件名：grep -L -r 字符串 路径<br>快速查找某个文件：find 目录 -name 文件名<br>创建两个空文件：touch file1 file2<br>递归式创建一些嵌套目录：mkdir –p /tmp/xxs/dsd/efd<br>递归式删除嵌套目录：rm –fr /tmp/xxs<br>回当前用户的宿主目录：cd ~<br>查看当前所在目录的绝对路经：pwd<br>列出当前目录下的所有文件：ls -a<br>移动路径下的文件并改名：mv 路径/文件 /新路径/新文件名<br>复制文件或者目录：cp -av 原文件或原目录 新文件或新目录<br>查看文件类型：file filename<br>对比两个文件之间的差异：diff file1 file2<br>显示xxx文件倒数6行的内容 ：tail -n 6 xxx<br>不停地显示最新的内容 ：tail -n 10 -f /var/log/apache2/access.log<br>查看文件第五行到第10行的内容 ：sed -n ‘5,10p’ /var/log/apache2/access.log<br>查找关于xxx的命令 ：apropos xxx 或 man -k xxx<br>通过ssh传输文件 ：scp -rp /path/filename username@remoteIP:/path<br>把所有文件的后辍由rm改为rmvb ：rename ’s/.rm$/.rmvb/’ <em><br>把所有文件名中的大写改为小写：rename ‘tr/A-Z/a-z/’ </em><br>删除特殊文件名 –help.txt 的文件：rm — –help.txt 或 rm ./–help.txt<br>查看当前目录的子目录：ls -d <em>/. 或 echo </em>/.<br>将最近30天访问过的文件移动到上级back目录 ：find . -type f -atime -30 -exec mv {} ../back \;<br>显示一小时以内的包含 xxxx 的文件：find . -type f -mmin -60|xargs -i grep -l xxxx ‘{}’<br>显示最近2小时到8小时之内的文件：find . -mmin +120 -mmin -480 -exec more {} \;<br>删除修改时间在30天之前的文件 ：find . -type f -mtime +30 -mtime -3600 -exec rm {} \;<br>删除创建时间在30天之前的文件 ：find . -type f -ctime +30 -ctime -3600 -exec rm {} \;<br>删除掉guest的以avi或rm结尾的文件：find . -name ‘<em>.avi’ -o -name ‘</em>.rm’ -user ‘guest’ -exec rm {} \;<br>删除掉不以java和xml结尾7天没有使用的文件 ：find . ! -name <em>.java ! -name ‘</em>.xml’ -atime +7 -exec rm {} \;<br>删除所有的 .svn 目录 ：find . -name .svn -type d -exec rm -fr {} \;<br>删除所有以“~”结尾的临时文件 ：find . -name ‘<em>~’ -exec rm {} \;<br>统计当前文件个数：ls .|wc -w<br>统计当前目录个数：ls -l |grep ^d|wc -l<br>显示当前目录下2006-01-01的文件名 ：ls -l |grep 2006-01-01 |awk ‘{print $8}’<br>使用ssh方式同步远程数据到本地目录 ：rsync -Pa -I –size-only –delete –timeout=300 Remote_IP:/home/ubuntu /backup<br>增加 7Z 压缩软件：sudo apt-get install p7zip p7zip-full p7zip-rar<br>增加 rar 软件压缩和解压缩支持 ：sudo apt-get install rar unrar<br>解压缩 xxx.tar.gz ：tar -zxvf xxx.tar.gz<br>解压缩 xxx.tar.bz2 ：tar -jxvf xxx.tar.bz2<br>压缩aaa bbb目录为xxx.tar.gz ：tar -zcvf xxx.tar.gz aaa bbb<br>压缩aaa bbb目录为xxx.tar.bz2 ：tar -jcvf xxx.tar.bz2 aaa bbb<br>增加 lha 支持 ：sudo apt-get install lha<br>增加解 cab 文件支持 ：sudo apt-get install cabextract<br>显示日历：cal<br>设置日期：date -s mm/dd/yy<br>设置时间：date -s HH:MM<br>将时间写入CMOS ：hwclock –systohc<br>查看CMOS时间 ：hwclock –show<br>读取CMOS时间 ：hwclock –hctosys<br>从服务器上同步时间 ：sudo ntpdate ntp.ubuntu.com<br>设置电脑的时区为上海：sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime<br>关闭UTC，将当前时间写入CMOS。：sudo sed -ie ’s/UTC=yes/UTC=no/g’ /etc/default/rcS;sudo hwclock –systohc<br>修改mysql的root口令 ：sudo mysqladmin -u root -p password ‘你的新密码’<br>如何使用命令关闭显示器 ：xset dpms force off<br>设置CPU的频率 ：sudo apt-get install cpufrequtils;sudo cpufreq-info<br>命令关机：sudo halt<br>现在关机：sudo shutdown -h now<br>晚上11点自动关机：sudo shutdown -h 23:00<br>60分钟后关机：sudo shutdown -h +60<br>命令重启电脑：sudo reboot<br>现在重启电脑：sudo shutdown -r now<br>关闭笔记本的触摸板 ：synclient touchpadoff=1<br>开启笔记本的触摸板：synclient touchpadoff=0<br>统计每个单词的出现频率并排序 ：awk ‘{arr[$1]+=1 }END{for(i in arr){print arr[i]“\t”i}}’ FILE_NAME | sort -rn<br>统计80端口的连接并排序 ：netstat -na|grep :80|awk ‘{print $5}’|awk -F: ‘{print $1}’|sort|uniq -c|sort -r -n<br>把终端加到右键菜单：sudo apt-get install nautilus-open-terminal<br>如何删除Totem电影播放机的播放历史记录 ：rm ~/.recently-used<br>vim 如何显示彩色字符 ：sudo cp /usr/share/vim/vimcurrent/vimrc_example.vim /usr/share/vim/vimrc<br>让 vim 直接支持编辑 .gz 文件 ：sudo apt-get install vim-full<br>vim 如何显示行号：:set number<br>查看在会话设置的启动程序：ls ~/.config/autostart<br>提高wine的反应速度 ：sudo sed -ie ‘/GBK/,/^}/d’ /usr/share/X11/locale/zh_CN.UTF-8/XLC_LOCALE<br>制作ISO文件：mkisofs -o test.iso -Jrv -V test_disk /home/carla/<br>延迟10秒抓图：gnome-screenshot -d 10<br>延迟5秒抓当前激活窗口：gnome-screenshot -w -d 5<br>如何命令行刻录：cdrecord -scanbus;cdrecord -v -eject speed=8 dev=1,1,0 test.iso<br>回收站在哪里：~/.local/share/Trash/<br>默认打开方式的配置文件在哪里：~/.local/share/applications/mimeapps.list<br>如何查看HTTP头：w3m -dump_head <a href="http://www.xxx.com" target="_blank" rel="noopener">http://www.xxx.com</a><br>连续监视内存使用情况：watch -d free<br>如何切换到root帐号：sudo -Hs<br>只读挂载ntfs分区：sudo mount -t ntfs -o nls=utf8,umask=0 /dev/sdb1 /mnt/c<br>可写挂载ntfs分区：sudo mount -t ntfs-3g -o locale=zh_CN.utf8,umask=0 /dev/sdb1 /mnt/c<br>挂载fat32分区：sudo mount -t vfat -o iocharset=utf8,umask=0 /dev/sda1 /mnt/c<br>挂载共享文件：sudo mount -t smbfs -o username=xxx,password=xxx,iocharset=utf8 //192.168.1.1/share /mnt/share<br>挂载ISO文件：sudo mount -t iso9660 -o loop,utf8 xxx.iso /mnt/iso<br>带行号显示文件的内容：nl 文件名<br>批 量将rmvb转为avi：for i in </em>; do mencoder -oac mp3lame -lameopts vbr=3 -ovcxvid -xvidencopts fixed_quant=4 -of avi $i -o <code>echo $i | sed -e’s/rmvb$/avi/’</code>; done<br>批量将svg转为png：for i in <em>; do inkscape $i –export-png=<code>echo $i | sed -e ’s/svg$/png/’</code>; done<br>批量缩小图片到30%：for i in </em>; do convert -resize 30%x30% $1 sm-$1; done<br>批量转换jpg到png：for i in <em>; do convert $i <code>echo $i | sed -e ’s/jpg$/png/’</code>; done<br>获取jpg的扩展信息(Exif)：identify -verbose xxx.jpg<br>查看当前系统所有的监听端口：nc -zv localhost 1-65535<br>去掉文件中的^M：cat filename | tr -d “^M” &gt; newfile<br>去掉文件中的^M：sed -e “s/^M//g” filename &gt; newfile<br>转换bin/cue到iso文件：sudo apt-get install bchunk;bchunk image.bin image.cue image<br>转换目录到iso文件：mkisofs dirname -o isofile.iso<br>转换CD到iso文件：dd if=/dev/cdrom of=isofile.iso<br>ape 转换为flac：sudo apt-get install flac shntool;shntool split -t“%n.%p-%t” -f example_UTF-8.cue -o flac example.ape -d flacOutputDir<br>ape转换为 mp3：sudo apt-get install flac shntool lame;shntool split -t“%n.%p-%t” -f example_UTF-8.cue -o ‘cust ext=mp3 lame –r3mix -b 320–quiet – %f’ example.ape -d mp3OutputDir<br>检查本地是否存在安全隐患：sudo apt-get install rkhunter;rkhunter –checkall<br>如何安装杀毒软件：sudo apt-get install clamav;clamscan -r ~/<br>查看网络连接状态：netstat -n | awk ‘/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}’<br>统计程序的内存耗用：ps -eo fname,rss|awk ‘{arr[$1]+=$2} END {for (i in arr) {print i,arr[i]}}’|sort -k2 -nr<br>显示当前内存大小：free -m |grep “Mem” | awk ‘{print $2}’<br>按内存从大到小排列进程：ps -eo “%C : %p : %z : %a”|sort -k5 -nr<br>按cpu利用率从大到小排列进程：ps -eo “%C : %p : %z : %a”|sort -nr<br>统计当前目录下所有jpg文件的尺寸：find . -name </em>.jpg -exec wc -c {} \;|awk ‘{print $1}’|awk ‘{a+=$1}END{print a}’<br>清除僵死进程：ps -eal | awk ‘{ if ($2 == “Z”) {print $4}}’ | sudo kill -9<br>CD 抓轨为 mp3 (有损)：sudo apt-get install abcde;abcde -o mp3 -b<br>CD 抓轨为 Flac (无损)：sudo apt-get install abcde;abcde -o flac -b<br>显示系统安装包的统计信息：apt-cache stats<br>显示系统全部可用包的名称：apt-cache pkgnames<br>显示包的信息：apt-cache show k3b</p>
+
+          
         
       
     </div>
@@ -1397,7 +1555,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1490,16 +1648,9 @@
       
         
           
-          LinearLayoutManager api-reverseLayout 和 stackFromEnd
+            <h2 id="LinearLayoutManager-api-reverseLayout-和-stackFromEnd"><a href="#LinearLayoutManager-api-reverseLayout-和-stackFromEnd" class="headerlink" title="LinearLayoutManager api-reverseLayout 和 stackFromEnd"></a>LinearLayoutManager api-reverseLayout 和 stackFromEnd</h2><p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180601/Lc3gfeIIL9.png?imageslim" alt="mark"></p>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/01/3、Android/1、Android 基础/基本组件/RecycleView_LinearLayoutManager-reverseLayout 和 stackFromEnd/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1556,7 +1707,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1649,174 +1800,9 @@
       
         
           
-          Gradle lint 配置1、配置模式12345android &#123;    lintOptions &#123;        disable 'ValidFragment'    &#125;&#125;
-2、lint配置选项1
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/29/3、Android/0、Android Studio/Gradle lint 配置/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/05/23/3、Android/0、Android Studio/AndroidStudio CMakeLists 使用模版/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/23/3、Android/0、Android Studio/AndroidStudio CMakeLists 使用模版/" itemprop="url">
-                  AndroidStudio CMakeLists 使用模版
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-05-23 17:46:47" itemprop="dateCreated datePublished" datetime="2017-05-23T17:46:47+08:00">2017-05-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-08-10 14:31:09" itemprop="dateModified" datetime="2018-08-10T14:31:09+08:00">2018-08-10</time>
-              
-            
-          </span>
-
+            <h2 id="Gradle-lint-配置"><a href="#Gradle-lint-配置" class="headerlink" title="Gradle lint 配置"></a>Gradle lint 配置</h2><h3 id="1、配置模式"><a href="#1、配置模式" class="headerlink" title="1、配置模式"></a>1、配置模式</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    lintOptions &#123;</span><br><span class="line">        disable <span class="string">'ValidFragment'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、lint配置选项"><a href="#2、lint配置选项" class="headerlink" title="2、lint配置选项"></a>2、lint配置选项</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    lintOptions &#123;</span><br><span class="line">        <span class="comment">// 设置为 true时lint将不报告分析的进度</span></span><br><span class="line">        quiet <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 如果为 true，则当lint发现错误时停止 gradle构建</span></span><br><span class="line">        abortOnError <span class="literal">false</span></span><br><span class="line">        <span class="comment">// 如果为 true，则只报告错误</span></span><br><span class="line">        ignoreWarnings <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 如果为 true，则当有错误时会显示文件的全路径或绝对路径 (默认情况下为true)</span></span><br><span class="line">        <span class="comment">//absolutePaths true</span></span><br><span class="line">        <span class="comment">// 如果为 true，则检查所有的问题，包括默认不检查问题</span></span><br><span class="line">        checkAllWarnings <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 如果为 true，则将所有警告视为错误</span></span><br><span class="line">        warningsAsErrors <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 不检查给定的问题id</span></span><br><span class="line">        disable <span class="string">'TypographyFractions'</span>,<span class="string">'TypographyQuotes'</span></span><br><span class="line">        <span class="comment">// 检查给定的问题 id</span></span><br><span class="line">        enable <span class="string">'RtlHardcoded'</span>,<span class="string">'RtlCompat'</span>, <span class="string">'RtlEnabled'</span></span><br><span class="line">        <span class="comment">// * 仅 * 检查给定的问题 id</span></span><br><span class="line">        check <span class="string">'NewApi'</span>, <span class="string">'InlinedApi'</span></span><br><span class="line">        <span class="comment">// 如果为true，则在错误报告的输出中不包括源代码行</span></span><br><span class="line">        noLines <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 如果为 true，则对一个错误的问题显示它所在的所有地方，而不会截短列表，等等。</span></span><br><span class="line">        showAll <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 重置 lint 配置（使用默认的严重性等设置）。</span></span><br><span class="line">        lintConfig file(<span class="string">"default-lint.xml"</span>)</span><br><span class="line">        <span class="comment">// 如果为 true，生成一个问题的纯文本报告（默认为false）</span></span><br><span class="line">        textReport <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 配置写入输出结果的位置；它可以是一个文件或 “stdout”（标准输出）</span></span><br><span class="line">        textOutput <span class="string">'stdout'</span></span><br><span class="line">        <span class="comment">// 如果为真，会生成一个XML报告，以给Jenkins之类的使用</span></span><br><span class="line">        xmlReport <span class="literal">false</span></span><br><span class="line">        <span class="comment">// 用于写入报告的文件（如果不指定，默认为lint-results.xml）</span></span><br><span class="line">        xmlOutput file(<span class="string">"lint-report.xml"</span>)</span><br><span class="line">        <span class="comment">// 如果为真，会生成一个HTML报告（包括问题的解释，存在此问题的源码，等等）</span></span><br><span class="line">        htmlReport <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 写入报告的路径，它是可选的（默认为构建目录下的 lint-results.html ）</span></span><br><span class="line">        htmlOutput file(<span class="string">"lint-report.html"</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置为 true， 将使所有release 构建都以issus的严重性级别为fatal（severity=false）的设置来运行lint</span></span><br><span class="line">        <span class="comment">// 并且，如果发现了致命（fatal）的问题，将会中止构建（由上面提到的 abortOnError 控制）</span></span><br><span class="line">         checkReleaseBuilds <span class="literal">true</span></span><br><span class="line">        <span class="comment">// 设置给定问题的严重级别（severity）为fatal （这意味着他们将会</span></span><br><span class="line">        <span class="comment">// 在release构建的期间检查 （即使 lint 要检查的问题没有包含在代码中)</span></span><br><span class="line">        fatal <span class="string">'NewApi'</span>, <span class="string">'InlineApi'</span></span><br><span class="line">        <span class="comment">// 设置给定问题的严重级别为error</span></span><br><span class="line">        error <span class="string">'Wakelock'</span>, <span class="string">'TextViewEdits'</span></span><br><span class="line">        <span class="comment">// 设置给定问题的严重级别为warning</span></span><br><span class="line">        warning <span class="string">'ResourceAsColor'</span></span><br><span class="line">        <span class="comment">// 设置给定问题的严重级别（severity）为ignore （和不检查这个问题一样）</span></span><br><span class="line">        ignore <span class="string">'TypographyQuotes'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          CMakeLists 模版1、在module的build.gradle文件中添加如下配置信息1234567891011121314151617181920212223242526272829android &#123;    default
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/05/23/3、Android/0、Android Studio/AndroidStudio CMakeLists 使用模版/#more" rel="contents">
-              Weiterlesen &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1889,10 +1875,6 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.png"
-                alt="liyy" />
-            
               <p class="site-author-name" itemprop="name">liyy</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -1904,7 +1886,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">79</span>
+                    <span class="site-state-item-count">80</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -1969,17 +1951,12 @@
             <div class="links-of-author motion-element">
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/atom-li" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  <a href="https://github.com/atom-li" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
                   
                 </span>
               
                 <span class="links-of-author-item">
-                  <a href="mailto:1299854942@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="https://www.jianshu.com/u/d531760428f2" target="_blank" title="简书"><i class="fa fa-fw fa-book"></i>简书</a>
+                  <a href="https://gitee.com/atom_one" target="_blank" title="Gitee"><i class="fa fa-fw fa-globe"></i>Gitee</a>
                   
                 </span>
               
@@ -2014,9 +1991,9 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
   <span class="with-love" id="animate">
-    <i class="fa fa-AtomOne"></i>
+    <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">liyy</span>
 
@@ -2036,7 +2013,7 @@
 
 
 
-  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.0</div>
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
 
 
 
@@ -2089,8 +2066,6 @@
 
 
 
-  
-
 
 
 
@@ -2116,11 +2091,6 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
 
