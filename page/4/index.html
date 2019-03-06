@@ -223,7 +223,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -231,7 +231,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/05/23/3、Android/0、Android Studio/AndroidStudio CMakeLists 使用模版/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/09/16/4、计算机系统/1、Linux/2、常用软件服务管理/Ubuntu16.04 安装常用软件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -301,8 +301,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/05/23/3、Android/0、Android Studio/AndroidStudio CMakeLists 使用模版/" itemprop="url">
-                  AndroidStudio CMakeLists 使用模版
+                <a class="post-title-link" href="/2017/09/16/4、计算机系统/1、Linux/2、常用软件服务管理/Ubuntu16.04 安装常用软件/" itemprop="url">
+                  Ubuntu16.04 安装常用软件
                 </a>
               
             
@@ -321,14 +321,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2017-05-23 17:46:47" itemprop="dateCreated datePublished" datetime="2017-05-23T17:46:47+08:00">2017-05-23</time>
+              <time title="Created: 2017-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2017-09-16T10:24:44+08:00">2017-09-16</time>
             
 
             
@@ -345,7 +345,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-08-10 14:31:09" itemprop="dateModified" datetime="2018-08-10T14:31:09+08:00">2018-08-10</time>
+                <time title="Modified: 2018-05-18 09:44:40" itemprop="dateModified" datetime="2018-05-18T09:44:40+08:00">2018-05-18</time>
               
             
           </span>
@@ -380,8 +380,11 @@
       
         
           
-            <h2 id="CMakeLists-模版"><a href="#CMakeLists-模版" class="headerlink" title="CMakeLists 模版"></a>CMakeLists 模版</h2><h3 id="1、在module的build-gradle文件中添加如下配置信息"><a href="#1、在module的build-gradle文件中添加如下配置信息" class="headerlink" title="1、在module的build.gradle文件中添加如下配置信息"></a>1、在<code>module</code>的<code>build.gradle</code>文件中添加如下配置信息</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        <span class="comment">//cmake编译方式</span></span><br><span class="line">        externalNativeBuild &#123;</span><br><span class="line">            cmake &#123;</span><br><span class="line">                cppFlags <span class="string">" -std=c++11 -fexceptions -frtti"</span></span><br><span class="line">                arguments <span class="string">'-DANDROID_TOOLCHAIN=gcc'</span>, <span class="string">'-DANDROID_STL=c++_static'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//通用 Android NDK 配置</span></span><br><span class="line">        ndk &#123;</span><br><span class="line">            abiFilters <span class="string">'armeabi'</span>, <span class="string">'arm64-v8a'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//配置NDK编译方式</span></span><br><span class="line">    externalNativeBuild &#123;</span><br><span class="line">        <span class="comment">//编译方式 android.mk</span></span><br><span class="line"><span class="comment">//        ndkBuild &#123;</span></span><br><span class="line"><span class="comment">//            path 'src/main/jni/Android.mk'</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        <span class="comment">//编译方式 cmake</span></span><br><span class="line">        cmake &#123;</span><br><span class="line">            path <span class="string">'CMakeLists.txt'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    lintOptions &#123;</span><br><span class="line">        abortOnError <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2、在module-的根目录中添加-CMakeLists-txt-文件"><a href="#2、在module-的根目录中添加-CMakeLists-txt-文件" class="headerlink" title="2、在module 的根目录中添加 CMakeLists.txt 文件"></a>2、在module 的根目录中添加 <code>CMakeLists.txt</code> 文件</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置 CMAKE 的最低版本要求</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.4</span>.<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 JNI_DIR 全局目录引用</span></span><br><span class="line"><span class="keyword">set</span>(JNI_DIR <span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/src/main/jni)</span><br><span class="line"><span class="comment"># 设置生成的so动态库最后输出的路径</span></span><br><span class="line"><span class="comment">#set(CMAKE_LIBRARY_OUTPUT_DIRECTORY $&#123;PROJECT_SOURCE_DIR&#125;/../jniLibs/$&#123;ANDROID_ABI&#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定生成或者引用的静态链接库</span></span><br><span class="line"><span class="keyword">add_library</span>(</span><br><span class="line">    static_test</span><br><span class="line">    STATIC</span><br><span class="line">    IMPORTED )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定引用静态库的路径</span></span><br><span class="line"><span class="keyword">set_target_properties</span>(</span><br><span class="line">    static_test</span><br><span class="line">    PROPERTIES IMPORTED_LOCATION</span><br><span class="line">    <span class="variable">$&#123;JNI_DIR&#125;</span>/android/<span class="variable">$&#123;ANDROID_ABI&#125;</span>/libcrypto.a )</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 添加链接库头文件路径</span></span><br><span class="line"><span class="keyword">include_directories</span>( <span class="variable">$&#123;JNI_DIR&#125;</span></span><br><span class="line">                     <span class="variable">$&#123;JNI_DIR&#125;</span>/<span class="keyword">include</span></span><br><span class="line">                     <span class="variable">$&#123;JNI_DIR&#125;</span>/NTL )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用通配符定义全局文件引用</span></span><br><span class="line">file(GLOB bq_files  <span class="variable">$&#123;JNI_DIR&#125;</span>/*.cpp)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定生成动态链接库</span></span><br><span class="line"><span class="keyword">add_library</span>( BQIot</span><br><span class="line">             SHARED</span><br><span class="line">             <span class="variable">$&#123;bq_files&#125;</span> )</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加链接库</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>( BQIot</span><br><span class="line">                       android</span><br><span class="line">                       log</span><br><span class="line">                       static_test )</span><br></pre></td></tr></table></figure>
+            <h2 id="Ubuntu16-04-安装常用软件"><a href="#Ubuntu16-04-安装常用软件" class="headerlink" title="Ubuntu16.04 安装常用软件"></a>Ubuntu16.04 安装常用软件</h2><h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br></pre></td></tr></table></figure>
+<p>查看状态：service ssh status/start/stop/restart<br>或：/etc/init.d/ssh status/start/stop/retsrt<br>实际上，service命令就是执行/etc/init.d脚本，二者功能是一样的</p>
+<h3 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vim</span><br></pre></td></tr></table></figure>
+<h3 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install tree</span><br></pre></td></tr></table></figure>
+<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
 
           
         
@@ -435,7 +438,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/18/3、Android/1、Android 基础/基本知识/Android 混淆模板/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/08/11/4、计算机系统/2、Android/5、Android 开源/网络框架/Retrofit2 添加header/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -454,8 +457,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/18/3、Android/1、Android 基础/基本知识/Android 混淆模板/" itemprop="url">
-                  Android 混淆模板
+                <a class="post-title-link" href="/2017/08/11/4、计算机系统/2、Android/5、Android 开源/网络框架/Retrofit2 添加header/" itemprop="url">
+                  Retrofit2 添加header
                 </a>
               
             
@@ -474,14 +477,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2017-03-18 19:42:59" itemprop="dateCreated datePublished" datetime="2017-03-18T19:42:59+08:00">2017-03-18</time>
+              <time title="Created: 2017-08-11 16:02:59" itemprop="dateCreated datePublished" datetime="2017-08-11T16:02:59+08:00">2017-08-11</time>
             
 
             
@@ -498,7 +501,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-08-09 11:20:27" itemprop="dateModified" datetime="2018-08-09T11:20:27+08:00">2018-08-09</time>
+                <time title="Modified: 2018-08-10 09:36:10" itemprop="dateModified" datetime="2018-08-10T09:36:10+08:00">2018-08-10</time>
               
             
           </span>
@@ -533,7 +536,8 @@
       
         
           
-            <h2 id="Android-Studio-混淆模板"><a href="#Android-Studio-混淆模板" class="headerlink" title="Android Studio 混淆模板"></a>Android Studio 混淆模板</h2><p>可以直接复制该模板到AndroidStudio 项目的 proguard-rules.pro 文件中。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br></pre></td><td class="code"><pre><span class="line">#####################################################################</span><br><span class="line">#</span><br><span class="line"># 1、对于一些基本指令的添加</span><br><span class="line">#</span><br><span class="line">#####################################################################</span><br><span class="line"></span><br><span class="line"># 设置混淆的压缩比率 0 ~ 7，默认为5，一般不做修改</span><br><span class="line">-optimizationpasses <span class="number">5</span></span><br><span class="line"># 混淆后类名都为小写   Aa aA</span><br><span class="line">-dontusemixedcaseclassnames</span><br><span class="line"># 指定不去忽略非公共库的类</span><br><span class="line">-dontskipnonpubliclibraryclasses</span><br><span class="line"># 指定不去忽略非公共库的类成员</span><br><span class="line">-dontskipnonpubliclibraryclassmembers</span><br><span class="line"># 不做预校验的操作，preverify是proguard的四个步骤之一，Android不需要preverify，去掉这一步能够加快混淆速度。</span><br><span class="line">-dontpreverify</span><br><span class="line"># 混淆时不记录日志</span><br><span class="line">-verbose</span><br><span class="line"># 混淆采用的算法.</span><br><span class="line">-optimizations !code/simplification/arithmetic,!field<span class="comment">/*,!class/merging/* </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 抛出异常时保留代码行号，方便异常信息的追踪</span></span><br><span class="line"><span class="comment">-keepattributes SourceFile,LineNumberTable</span></span><br><span class="line"><span class="comment"># 保留Annotation不混淆</span></span><br><span class="line"><span class="comment">-keepattributes *Annotation*</span></span><br><span class="line"><span class="comment">#避免混淆内部类</span></span><br><span class="line"><span class="comment">-keepattributes InnerClasses</span></span><br><span class="line"><span class="comment"># 避免混淆泛型</span></span><br><span class="line"><span class="comment">-keepattributes Signature</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#dump文件列出apk包内所有class的内部结构</span></span><br><span class="line"><span class="comment">-dump class_files.txt</span></span><br><span class="line"><span class="comment">#seeds.txt文件列出未混淆的类和成员</span></span><br><span class="line"><span class="comment">-printseeds seeds.txt</span></span><br><span class="line"><span class="comment">#usage.txt文件列出从apk中删除的代码</span></span><br><span class="line"><span class="comment">-printusage unused.txt</span></span><br><span class="line"><span class="comment">#mapping文件列出混淆前后的映射</span></span><br><span class="line"><span class="comment">-printmapping mapping.txt</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 2、Android开发中一些需要保留的公共部分</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment"># 基础组件</span></span><br><span class="line"><span class="comment">-keep public class * extends android.app.Activity</span></span><br><span class="line"><span class="comment">-keep public class * extends android.app.Application</span></span><br><span class="line"><span class="comment">-keep public class * extends android.app.Service</span></span><br><span class="line"><span class="comment">-keep public class * extends android.content.BroadcastReceiver</span></span><br><span class="line"><span class="comment">-keep public class * extends android.content.ContentProvider</span></span><br><span class="line"><span class="comment">-keep public class * extends android.app.backup.BackupAgentHelper</span></span><br><span class="line"><span class="comment">-keep public class * extends android.preference.Preference</span></span><br><span class="line"><span class="comment">-keep public class * extends android.view.View</span></span><br><span class="line"><span class="comment">-keep public class com.android.vending.licensing.ILicensingService</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 保留support下的所有类及其内部类</span></span><br><span class="line"><span class="comment">-keep class android.support.** &#123;*;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 保留继承的</span></span><br><span class="line"><span class="comment">-keep public class * extends android.support.v4.**</span></span><br><span class="line"><span class="comment">-keep public class * extends android.support.v7.**</span></span><br><span class="line"><span class="comment">-keep public class * extends android.support.annotation.**</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 保留R下面的资源</span></span><br><span class="line"><span class="comment">-keep class **.R$* &#123;*;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 保留本地native方法不被混淆</span></span><br><span class="line"><span class="comment">-keepclasseswithmembernames class * &#123;</span></span><br><span class="line"><span class="comment">    native &lt;methods&gt;;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 保留枚举类不被混淆</span></span><br><span class="line"><span class="comment">-keepclassmembers enum * &#123;</span></span><br><span class="line"><span class="comment">    public static **[] values();</span></span><br><span class="line"><span class="comment">    public static ** valueOf(java.lang.String);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 保留我们自定义控件（继承自View）不被混淆</span></span><br><span class="line"><span class="comment">-keep public class * extends android.view.View&#123;</span></span><br><span class="line"><span class="comment">    *** get*();</span></span><br><span class="line"><span class="comment">    void set*(***);</span></span><br><span class="line"><span class="comment">    public &lt;init&gt;(android.content.Context);</span></span><br><span class="line"><span class="comment">    public &lt;init&gt;(android.content.Context, android.util.AttributeSet);</span></span><br><span class="line"><span class="comment">    public &lt;init&gt;(android.content.Context, android.util.AttributeSet, int);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 保留Parcelable序列化类不被混淆</span></span><br><span class="line"><span class="comment">-keep class * implements android.os.Parcelable &#123;</span></span><br><span class="line"><span class="comment">    public static final android.os.Parcelable$Creator *;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 保留Serializable序列化的类不被混淆</span></span><br><span class="line"><span class="comment">-keepclassmembers class * implements java.io.Serializable &#123;</span></span><br><span class="line"><span class="comment">    static final long serialVersionUID;</span></span><br><span class="line"><span class="comment">    private static final java.io.ObjectStreamField[] serialPersistentFields;</span></span><br><span class="line"><span class="comment">    !static !transient &lt;fields&gt;;</span></span><br><span class="line"><span class="comment">    !private &lt;fields&gt;;</span></span><br><span class="line"><span class="comment">    !private &lt;methods&gt;;</span></span><br><span class="line"><span class="comment">    private void writeObject(java.io.ObjectOutputStream);</span></span><br><span class="line"><span class="comment">    private void readObject(java.io.ObjectInputStream);</span></span><br><span class="line"><span class="comment">    java.lang.Object writeReplace();</span></span><br><span class="line"><span class="comment">    java.lang.Object readResolve();</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># webView处理，项目中没有使用到webView忽略即可</span></span><br><span class="line"><span class="comment">-keepclassmembers class fqcn.of.javascript.interface.for.Webview &#123;</span></span><br><span class="line"><span class="comment">   public *;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">-keepclassmembers class * extends android.webkit.WebViewClient &#123;</span></span><br><span class="line"><span class="comment">    public void *(android.webkit.WebView, java.lang.String, android.graphics.Bitmap);</span></span><br><span class="line"><span class="comment">    public boolean *(android.webkit.WebView, java.lang.String);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">-keepclassmembers class * extends android.webkit.WebViewClient &#123;</span></span><br><span class="line"><span class="comment">    public void *(android.webkit.WebView, jav.lang.String);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 3、javaBean实体类、eventbus、属性动画、自定义回调、反射</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 避免混淆实体类，修改成你对应的包名</span></span><br><span class="line"><span class="comment">-keep class com.yzread.bean.** &#123; *; &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 避免混淆eventbus实体类，修改成你对应的包名</span></span><br><span class="line"><span class="comment">-keep class com.yzread.eventbus.** &#123; *; &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 对于带有回调函数的onXXEvent、**On*Listener的，不能被混淆</span></span><br><span class="line"><span class="comment">-keepclassmembers class * &#123;</span></span><br><span class="line"><span class="comment">    void *(**On*Event);</span></span><br><span class="line"><span class="comment">    void *(**On*Listener);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 避免混淆属性动画兼容库</span></span><br><span class="line"><span class="comment">-dontwarn com.nineoldandroids.*</span></span><br><span class="line"><span class="comment">-keep class com.nineoldandroids.** &#123; *;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># 避免混淆js相关的接口</span></span><br><span class="line"><span class="comment">#-keepattributes *JavascriptInterface*</span></span><br><span class="line"><span class="comment">#-keep class com.wyk.test.js.** &#123; *; &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># 4、项目第三方依赖库</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#####################################################################</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># butterknife</span></span><br><span class="line"><span class="comment">-keep class butterknife.** &#123; *; &#125;</span></span><br><span class="line"><span class="comment">-dontwarn butterknife.internal.**</span></span><br><span class="line"><span class="comment">-keep class **$$ViewBinder &#123; *; &#125;</span></span><br><span class="line"><span class="comment">-keepclasseswithmembernames class * &#123;</span></span><br><span class="line"><span class="comment">    @butterknife.* &lt;fields&gt;;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">-keepclasseswithmembernames class * &#123;</span></span><br><span class="line"><span class="comment">    @butterknife.* &lt;methods&gt;;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># eventBus</span></span><br><span class="line"><span class="comment">-keepattributes *Annotation*</span></span><br><span class="line"><span class="comment">-keepclassmembers class * &#123;</span></span><br><span class="line"><span class="comment">    @org.greenrobot.eventbus.Subscribe &lt;methods&gt;;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">-keep enum org.greenrobot.eventbus.ThreadMode &#123; *; &#125;</span></span><br><span class="line"><span class="comment"># Only required if you use AsyncExecutor</span></span><br><span class="line"><span class="comment">-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent &#123;</span></span><br><span class="line"><span class="comment">    &lt;init&gt;(java.lang.Throwable);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># Rxjava/RxAndroid</span></span><br><span class="line"><span class="comment">-keep class rx.schedulers.Schedulers &#123;</span></span><br><span class="line"><span class="comment">    public static &lt;methods&gt;;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">-keep class rx.schedulers.ImmediateScheduler &#123;</span></span><br><span class="line"><span class="comment">    public &lt;methods&gt;;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">-keep class rx.schedulers.TestScheduler &#123;</span></span><br><span class="line"><span class="comment">    public &lt;methods&gt;;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">-keep class rx.schedulers.Schedulers &#123;</span></span><br><span class="line"><span class="comment">    public static ** test();</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">-dontwarn rx.internal.util.unsafe.**</span></span><br><span class="line"><span class="comment">-keep class rx.internal.util.unsafe.** &#123; *;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># Glide</span></span><br><span class="line"><span class="comment">-keep public class * implements com.bumptech.glide.module.GlideModule</span></span><br><span class="line"><span class="comment">-keep public class * extends com.bumptech.glide.module.AppGlideModule</span></span><br><span class="line"><span class="comment">-keep public enum com.bumptech.glide.load.ImageHeaderParser$** &#123;</span></span><br><span class="line"><span class="comment">  **[] $VALUES;</span></span><br><span class="line"><span class="comment">  public *;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"># for DexGuard only</span></span><br><span class="line"><span class="comment">-keepresourcexmlelements manifest/application/meta-data@value=GlideModule</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># Retrofit</span></span><br><span class="line"><span class="comment">-dontnote retrofit2.Platform</span></span><br><span class="line"><span class="comment">-dontnote retrofit2.Platform$IOS$MainThreadExecutor</span></span><br><span class="line"><span class="comment">-dontwarn retrofit2.Platform$Java8</span></span><br><span class="line"><span class="comment">-keep class retrofit2.** &#123; *; &#125;</span></span><br><span class="line"><span class="comment">-keepattributes Signature</span></span><br><span class="line"><span class="comment">-keepattributes Exceptions</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#okhttp</span></span><br><span class="line"><span class="comment">-dontwarn okhttp3.**</span></span><br><span class="line"><span class="comment">-keep class okhttp3.**&#123;*;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#okio</span></span><br><span class="line"><span class="comment">-dontwarn okio.**</span></span><br><span class="line"><span class="comment">-keep class okio.**&#123;*;&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># fastjson</span></span><br><span class="line"><span class="comment">-dontwarn com.alibaba.fastjson.**</span></span><br><span class="line"><span class="comment">-keep class com.alibaba.fastjson.**&#123;*; &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"># Gson</span></span><br><span class="line"><span class="comment">-keepattributes Signature</span></span><br><span class="line"><span class="comment">-keepattributes *Annotation*</span></span><br><span class="line"><span class="comment">-keep class sun.misc.Unsafe &#123; *; &#125;</span></span><br><span class="line"><span class="comment">-keep class com.google.gson.stream.** &#123; *; &#125;</span></span><br><span class="line"><span class="comment">-keep class com.google.gson.examples.android.model.** &#123; *; &#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">-dontwarn org.immutables.gson.**</span></span><br><span class="line"><span class="comment">-keep class org.immutables.gson.** &#123; *;&#125;</span></span><br></pre></td></tr></table></figure></p>
+            <h2 id="Retrofit2-添加header"><a href="#Retrofit2-添加header" class="headerlink" title="Retrofit2 添加header"></a>Retrofit2 添加header</h2><h3 id="1、使用注解方式添加"><a href="#1、使用注解方式添加" class="headerlink" title="1、使用注解方式添加"></a>1、使用注解方式添加</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加单个header</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Headers</span>(<span class="string">"Cache-Control: max-age=640000"</span>)</span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks"</span>)</span><br><span class="line">Call&lt;List&lt;AsyncHelper.Task&gt;&gt; getTask();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加多个header</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> taskId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Headers</span>(&#123;</span><br><span class="line">        <span class="string">"Accept: application/vnd.yourapi.v1.full+json"</span>,</span><br><span class="line">        <span class="string">"User-Agent: Your-App-Name"</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks/&#123;task_id&#125;"</span>)</span><br><span class="line">Call&lt;AsyncHelper.Task&gt; getTasks(<span class="meta">@Path</span>(<span class="string">"task_id"</span>) <span class="keyword">long</span> taskId);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动态添加header</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> contentRange</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks"</span>)</span><br><span class="line">Call&lt;List&lt;AsyncHelper.Task&gt;&gt; getTasks(<span class="meta">@Header</span>(<span class="string">"Content-Range"</span>) String contentRange);</span><br></pre></td></tr></table></figure>
+<h3 id="2、使用拦截器添加"><a href="#2、使用拦截器添加" class="headerlink" title="2、使用拦截器添加"></a>2、使用拦截器添加</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient.Builder httpClient = <span class="keyword">new</span> OkHttpClient.Builder();  </span><br><span class="line">httpClient.addInterceptor(<span class="keyword">new</span> Interceptor() &#123;  </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Interceptor.Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Request original = chain.request();</span><br><span class="line">        <span class="comment">// 自定义拦截器动态添加header</span></span><br><span class="line">        Request request = original.newBuilder()</span><br><span class="line">            .header(<span class="string">"User-Agent"</span>, <span class="string">"Your-App-Name"</span>)</span><br><span class="line">            .header(<span class="string">"Accept"</span>, <span class="string">"application/vnd.yourapi.v1.full+json"</span>)</span><br><span class="line">            .method(original.method(), original.body())</span><br><span class="line">            .build();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> chain.proceed(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">OkHttpClient client = httpClient.build();  </span><br><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()  </span><br><span class="line">    .baseUrl(API_BASE_URL)</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .client(client)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
 
           
         
@@ -587,7 +591,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/3、Android/3、Andorid 设备/蓝牙/关于经典蓝牙服务对应的UUID码/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/08/11/4、计算机系统/2、Android/5、Android 开源/网络框架/Retrofit2/Retrofit2 添加header/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -606,8 +610,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/关于经典蓝牙服务对应的UUID码/" itemprop="url">
-                  关于蓝牙服务对应的UUID码
+                <a class="post-title-link" href="/2017/08/11/4、计算机系统/2、Android/5、Android 开源/网络框架/Retrofit2/Retrofit2 添加header/" itemprop="url">
+                  Retrofit2 添加header
                 </a>
               
             
@@ -626,14 +630,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2017-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-03-10T11:42:59+08:00">2017-03-10</time>
+              <time title="Created: 2017-08-11 16:02:59" itemprop="dateCreated datePublished" datetime="2017-08-11T16:02:59+08:00">2017-08-11</time>
             
 
             
@@ -650,7 +654,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-20 11:20:38" itemprop="dateModified" datetime="2018-04-20T11:20:38+08:00">2018-04-20</time>
+                <time title="Modified: 2018-08-10 09:14:42" itemprop="dateModified" datetime="2018-08-10T09:14:42+08:00">2018-08-10</time>
               
             
           </span>
@@ -685,176 +689,8 @@
       
         
           
-            <blockquote>
-<p>UUID是“Universally Unique Identifier”的缩写，通用唯一识别码的意思。对于蓝牙设备，每个服务都有一个与它对应的UUID（唯一的）。</p>
-</blockquote>
-<p>下面列出一些常用的蓝牙服务UUID：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ServiceDiscoveryServerServiceClassID_UUID = &apos;&#123;00001000-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">BrowseGroupDescriptorServiceClassID_UUID = &apos;&#123;00001001-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">PublicBrowseGroupServiceClass_UUID = &apos;&#123;00001002-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#蓝牙串口服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SerialPortServiceClass_UUID = &apos;&#123;00001101-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line"></span><br><span class="line">LANAccessUsingPPPServiceClass_UUID = &apos;&#123;00001102-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#拨号网络服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DialupNetworkingServiceClass_UUID = &apos;&#123;00001103-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#信息同步服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IrMCSyncServiceClass_UUID = &apos;&#123;00001104-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line"></span><br><span class="line">SDP_OBEXObjectPushServiceClass_UUID = &apos;&#123;00001105-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#文件传输服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">OBEXFileTransferServiceClass_UUID = &apos;&#123;00001106-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line"></span><br><span class="line">IrMCSyncCommandServiceClass_UUID = &apos;&#123;00001107-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">SDP_HeadsetServiceClass_UUID = &apos;&#123;00001108-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">CordlessTelephonyServiceClass_UUID = &apos;&#123;00001109-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">SDP_AudioSourceServiceClass_UUID = &apos;&#123;0000110A-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">SDP_AudioSinkServiceClass_UUID = &apos;&#123;0000110B-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">SDP_AVRemoteControlTargetServiceClass_UUID = &apos;&#123;0000110C-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">SDP_AdvancedAudioDistributionServiceClass_UUID = &apos;&#123;0000110D-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">SDP_AVRemoteControlServiceClass_UUID = &apos;&#123;0000110E-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">VideoConferencingServiceClass_UUID = &apos;&#123;0000110F-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">IntercomServiceClass_UUID = &apos;&#123;00001110-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#蓝牙传真服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FaxServiceClass_UUID = &apos;&#123;00001111-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line"></span><br><span class="line">HeadsetAudioGatewayServiceClass_UUID = &apos;&#123;00001112-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">WAPServiceClass_UUID = &apos;&#123;00001113-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">WAPClientServiceClass_UUID = &apos;&#123;00001114-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#个人局域网服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PANUServiceClass_UUID = &apos;&#123;00001115-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#个人局域网服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NAPServiceClass_UUID = &apos;&#123;00001116-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#个人局域网服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">GNServiceClass_UUID = &apos;&#123;00001117-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line"></span><br><span class="line">DirectPrintingServiceClass_UUID = &apos;&#123;00001118-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">ReferencePrintingServiceClass_UUID = &apos;&#123;00001119-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">ImagingServiceClass_UUID = &apos;&#123;0000111A-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">ImagingResponderServiceClass_UUID = &apos;&#123;0000111B-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">ImagingAutomaticArchiveServiceClass_UUID = &apos;&#123;0000111C-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">ImagingReferenceObjectsServiceClass_UUID = &apos;&#123;0000111D-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">SDP_HandsfreeServiceClass_UUID = &apos;&#123;0000111E-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">HandsfreeAudioGatewayServiceClass_UUID = &apos;&#123;0000111F-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">DirectPrintingReferenceObjectsServiceClass_UUID = &apos;&#123;00001120-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">ReflectedUIServiceClass_UUID = &apos;&#123;00001121-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">BasicPringingServiceClass_UUID = &apos;&#123;00001122-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">PrintingStatusServiceClass_UUID = &apos;&#123;00001123-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#人机输入服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HumanInterfaceDeviceServiceClass_UUID = &apos;&#123;00001124-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line"></span><br><span class="line">HardcopyCableReplacementServiceClass_UUID = &apos;&#123;00001125-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<p>#蓝牙打印服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HCRPrintServiceClass_UUID = &apos;&#123;00001126-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">HCRScanServiceClass_UUID = &apos;&#123;00001127-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">CommonISDNAccessServiceClass_UUID = &apos;&#123;00001128-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">VideoConferencingGWServiceClass_UUID = &apos;&#123;00001129-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">UDIMTServiceClass_UUID = &apos;&#123;0000112A-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">UDITAServiceClass_UUID = &apos;&#123;0000112B-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">AudioVideoServiceClass_UUID = &apos;&#123;0000112C-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">SIMAccessServiceClass_UUID = &apos;&#123;0000112D-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">PnPInformationServiceClass_UUID = &apos;&#123;00001200-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">GenericNetworkingServiceClass_UUID = &apos;&#123;00001201-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">GenericFileTransferServiceClass_UUID = &apos;&#123;00001202-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">GenericAudioServiceClass_UUID = &apos;&#123;00001203-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br><span class="line">GenericTelephonyServiceClass_UUID = &apos;&#123;00001204-0000-1000-8000-00805F9B34FB&#125;&apos;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/3、Android/3、Andorid 设备/蓝牙/Andorid 各版本获取蓝牙Mac地址/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/Andorid 各版本获取蓝牙Mac地址/" itemprop="url">
-                  手机各个版本获取蓝牙MAC地址
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-03-10T11:42:59+08:00">2017-03-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-04-13 10:30:52" itemprop="dateModified" datetime="2018-04-13T10:30:52+08:00">2018-04-13</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Android-获取手机蓝牙MAC地址"><a href="#Android-获取手机蓝牙MAC地址" class="headerlink" title="Android 获取手机蓝牙MAC地址"></a>Android 获取手机蓝牙MAC地址</h2><h3 id="1、首先在AndroidManifest-xml中给权限"><a href="#1、首先在AndroidManifest-xml中给权限" class="headerlink" title="1、首先在AndroidManifest.xml中给权限"></a>1、首先在AndroidManifest.xml中给权限</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//在程序中使用蓝牙功能</span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH"</span> /&gt;</span></span><br><span class="line">//启动设备发现或操纵蓝牙设置  </span><br><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.BLUETOOTH_ADMIN"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="２、不同Android版本获取方法"><a href="#２、不同Android版本获取方法" class="headerlink" title="２、不同Android版本获取方法"></a>２、不同Android版本获取方法</h3><h4 id="Andriod-4-2-之前"><a href="#Andriod-4-2-之前" class="headerlink" title="Andriod 4.2 之前"></a>Andriod 4.2 之前</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">BluetoothAdapter btAda = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">           <span class="comment">//开启蓝牙</span></span><br><span class="line">           <span class="keyword">if</span> (btAda.isEnabled() == <span class="keyword">false</span>) &#123;</span><br><span class="line">               <span class="keyword">if</span> (btAda.enable()) &#123;</span><br><span class="line">                   <span class="keyword">while</span> (btAda.getState() == BluetoothAdapter.STATE_TURNING_ON</span><br><span class="line">                           || btAda.getState() != BluetoothAdapter.STATE_ON) &#123;</span><br><span class="line">                       <span class="keyword">try</span> &#123;</span><br><span class="line">                           Thread.sleep(<span class="number">100</span>);</span><br><span class="line">                       &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                           e.printStackTrace();</span><br><span class="line">                       &#125;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> btAda.getAddress();</span><br></pre></td></tr></table></figure>
-<h4 id="android-4-2-到-android6-0-之间可以使用以下方式直接读取"><a href="#android-4-2-到-android6-0-之间可以使用以下方式直接读取" class="headerlink" title="android 4.2 到 android6.0 之间可以使用以下方式直接读取"></a>android 4.2 到 android6.0 之间可以使用以下方式直接读取</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String bluetoothAddress = Settings.Secure.getString(context.getContentResolver(), <span class="string">"bluetooth_address"</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="android-6-0-之后无法直接读取mac-地址"><a href="#android-6-0-之后无法直接读取mac-地址" class="headerlink" title="android 6.0 之后无法直接读取mac 地址"></a>android 6.0 之后无法直接读取mac 地址</h4><p>1、首先添加依赖<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">'net.vidageek:mirror:1.6.1'</span></span><br></pre></td></tr></table></figure></p>
-<p>2、然后通过发射获取<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line">            Object bluetoothManagerService = <span class="keyword">new</span> Mirror().on(bluetoothAdapter).get().field(<span class="string">"mService"</span>);</span><br><span class="line">            <span class="keyword">if</span> (bluetoothManagerService == <span class="keyword">null</span>) &#123;</span><br><span class="line">                Log.w(TAG, <span class="string">"couldn't find bluetoothManagerService"</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            Object address = <span class="keyword">new</span> Mirror().on(bluetoothManagerService).invoke().method(<span class="string">"getAddress"</span>).withoutArgs();</span><br><span class="line">            <span class="keyword">if</span> (address != <span class="keyword">null</span> &amp;&amp; address <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">                Log.w(TAG, <span class="string">"using reflection to get the BT MAC address: "</span> + address);</span><br><span class="line">                <span class="keyword">return</span> (String) address;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure></p>
+            <h2 id="Retrofit2-添加header"><a href="#Retrofit2-添加header" class="headerlink" title="Retrofit2 添加header"></a>Retrofit2 添加header</h2><h3 id="1、使用注解方式添加"><a href="#1、使用注解方式添加" class="headerlink" title="1、使用注解方式添加"></a>1、使用注解方式添加</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加单个header</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Headers</span>(<span class="string">"Cache-Control: max-age=640000"</span>)</span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks"</span>)</span><br><span class="line">Call&lt;List&lt;AsyncHelper.Task&gt;&gt; getTask();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加多个header</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> taskId</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Headers</span>(&#123;</span><br><span class="line">        <span class="string">"Accept: application/vnd.yourapi.v1.full+json"</span>,</span><br><span class="line">        <span class="string">"User-Agent: Your-App-Name"</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks/&#123;task_id&#125;"</span>)</span><br><span class="line">Call&lt;AsyncHelper.Task&gt; getTasks(<span class="meta">@Path</span>(<span class="string">"task_id"</span>) <span class="keyword">long</span> taskId);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动态添加header</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> contentRange</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GET</span>(<span class="string">"/tasks"</span>)</span><br><span class="line">Call&lt;List&lt;AsyncHelper.Task&gt;&gt; getTasks(<span class="meta">@Header</span>(<span class="string">"Content-Range"</span>) String contentRange);</span><br></pre></td></tr></table></figure>
+<h3 id="2、使用拦截器添加"><a href="#2、使用拦截器添加" class="headerlink" title="2、使用拦截器添加"></a>2、使用拦截器添加</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">OkHttpClient.Builder httpClient = <span class="keyword">new</span> OkHttpClient.Builder();  </span><br><span class="line">httpClient.addInterceptor(<span class="keyword">new</span> Interceptor() &#123;  </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Interceptor.Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        Request original = chain.request();</span><br><span class="line">        <span class="comment">// 自定义拦截器动态添加header</span></span><br><span class="line">        Request request = original.newBuilder()</span><br><span class="line">            .header(<span class="string">"User-Agent"</span>, <span class="string">"Your-App-Name"</span>)</span><br><span class="line">            .header(<span class="string">"Accept"</span>, <span class="string">"application/vnd.yourapi.v1.full+json"</span>)</span><br><span class="line">            .method(original.method(), original.body())</span><br><span class="line">            .build();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> chain.proceed(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">OkHttpClient client = httpClient.build();  </span><br><span class="line">Retrofit retrofit = <span class="keyword">new</span> Retrofit.Builder()  </span><br><span class="line">    .baseUrl(API_BASE_URL)</span><br><span class="line">    .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">    .client(client)</span><br><span class="line">    .build();</span><br></pre></td></tr></table></figure>
 
           
         
@@ -908,7 +744,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/3、Android/3、Andorid 设备/蓝牙/Andorid 蓝牙/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/08/10/4、计算机系统/1、Linux/2、常用软件服务管理/Ubuntu安装Java8和Java9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -927,8 +763,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/Andorid 蓝牙/" itemprop="url">
-                  Andorid 蓝牙
+                <a class="post-title-link" href="/2017/08/10/4、计算机系统/1、Linux/2、常用软件服务管理/Ubuntu安装Java8和Java9/" itemprop="url">
+                  Ubuntu安装Java8和Java9
                 </a>
               
             
@@ -947,14 +783,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2017-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-03-10T11:42:59+08:00">2017-03-10</time>
+              <time title="Created: 2017-08-10 10:42:59" itemprop="dateCreated datePublished" datetime="2017-08-10T10:42:59+08:00">2017-08-10</time>
             
 
             
@@ -971,7 +807,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-13 10:30:50" itemprop="dateModified" datetime="2018-04-13T10:30:50+08:00">2018-04-13</time>
+                <time title="Modified: 2019-01-30 16:24:51" itemprop="dateModified" datetime="2019-01-30T16:24:51+08:00">2019-01-30</time>
               
             
           </span>
@@ -1006,169 +842,15 @@
       
         
           
-            <h2 id="Andorid-蓝牙"><a href="#Andorid-蓝牙" class="headerlink" title="Andorid 蓝牙"></a>Andorid 蓝牙</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><pre><code>Android中的蓝牙分两种：经典蓝牙、低功耗蓝牙。
-蓝牙发展至今经历了8个版本的更新。1.1、1.2、2.0、2.1、3.0、4.0、4.1、4.2、5.0。当然5.0的蓝牙模块目前Google虽已发布，但是市场上还未见到5.0的蓝牙设备。那么我们就尽请期待5.0蓝牙设备的到来！**那么在1.x~3.0之间的我们称之为传统蓝牙**，**4.x开始的蓝牙我们称之为低功耗蓝牙也就是蓝牙ble**，当然4.x版本的蓝牙也是向下兼容的。android手机必须系统版本4.3及以上才支持BLE API。
-* 低功耗蓝牙比传统蓝牙，传输速度更快，覆盖范围更广，安全性更高，延迟更短，耗电极低等等优点
-* 传统的一般通过socket方式，而低功耗蓝牙是通过Gatt协议来实现。
-二者本质上没有太多区别，可以理解为后者是前者的升级优化版本。**对于API上的实现区别还是很大的**。
-</code></pre><h3 id="Bluetooth-与-Bluetooth-LE-的区别"><a href="#Bluetooth-与-Bluetooth-LE-的区别" class="headerlink" title="Bluetooth 与 Bluetooth LE 的区别"></a>Bluetooth 与 Bluetooth LE 的区别</h3><pre><code>对于那些已经熟悉蓝牙开发的童鞋来说，BLE提供了一个诸如学习曲线的玩意，因为它是一个非常不同的事物，所以让我们大致地看下他们的主要区别。
- 第一个主要区别是在配对过程。传统的蓝牙开发，配对两个设配主要是用户的任务，但使用BLE，配对的任务更多的在于开发商。这是一件好事，因为从用户的角度来说整个配对过程变得更直接了当。
- 另一个主要的区别是通信本身。传统的蓝牙开发通信方式有许多选择，从根本上说都是基于和标准的Sockets非常相似的Sockets架构。本质上我们的数据通过Sockets传递，并且它是两个设备知道数据流格式的一种实例。BLE则采用不同的方法，它以属性为中心进行数据通信。在两个设备之间共享的属性本质上是一个原子数据（整数或字符串）。属性可用于表示数据或控制传感器的行为。例如，在一个心率监测仪中一个属性可能包含了当前的心率值（数据）以及另一个可能包含心率值更新频率的设置（行为）。
-</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/2、C_C++/32位64位操作系统基本数据类型字节大小/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/10/2、C_C++/32位64位操作系统基本数据类型字节大小/" itemprop="url">
-                  32位64位操作系统基本数据类型字节大小
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-03-10T11:42:59+08:00">2017-03-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-04-18 14:06:48" itemprop="dateModified" datetime="2018-04-18T14:06:48+08:00">2018-04-18</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="32位64位操作系统基本数据类型字节大小"><a href="#32位64位操作系统基本数据类型字节大小" class="headerlink" title="32位64位操作系统基本数据类型字节大小"></a>32位64位操作系统基本数据类型字节大小</h2><p>int型字长问题：<br>① C/C++规定int字长和机器字长相同；<br>② 操作系统字长和机器字长未必一致；<br>③ 编译器根据操作系统字长来定义int字长；<br>  由上面三点可知，在一些没有操作系统的嵌入式计算机系统上，int的长度与处理器字长一致；有操作<br>系统时，操作系统的字长与处理器的字长不一定一致，此时编译器根据操作系统的字长来定义int字长:”<br>比如你在64位机器上运行DOS16系统，那么所有for dos16的C/C++编译器中int都是16位的;在64位机器上<br>运行win32系统，那么所有for win32的C/C++编译器中int都是32位的”<br>常见基本类型的字节大小</p>
-<p><strong>32位操作系统</strong><br>char ：1个字节(固定)<br><em>(即指针变量): 4个字节(32位机的寻址空间是4个字节。同理64位编译器)(变化</em>)<br>short int : 2个字节(固定)<br>int： 4个字节(固定)<br>unsigned int : 4个字节(固定)<br>float: 4个字节(固定)<br>double: 8个字节(固定)<br>long: 4个字节<br>unsigned long: 4个字节(变化*,其实就是寻址控件的地址长度数值)<br>long long: 8个字节(固定)</p>
-<p><strong>64位操作系统</strong><br>char ：1个字节(固定)<br><em>(即指针变量): 8个字节<br>short int : 2个字节(固定)<br>int： 4个字节(固定)<br>unsigned int : 4个字节(固定)<br>float: 4个字节(固定)<br>double: 8个字节(固定)<br>long: 8个字节<br>unsigned long: 8个字节(变化</em>其实就是寻址控件的地址长度数值)<br>long long: 8个字节(固定)</p>
-<p>除了*与long随操作系统子长变化而变化外，其他的都固定不变(32位和64相比)<br>bool 1个字节  char 1个字节      int 4个字节   float 4个字节       doubl 8个字节   long long 8个字节</p>
+            <h2 id="Ubuntu安装Java-JDK"><a href="#Ubuntu安装Java-JDK" class="headerlink" title="Ubuntu安装Java JDK"></a>Ubuntu安装Java JDK</h2><h3 id="一、使用ppa-源方式安装"><a href="#一、使用ppa-源方式安装" class="headerlink" title="一、使用ppa/源方式安装"></a>一、使用ppa/源方式安装</h3><p>Java 9 的代码由于提供了新特性，所以有些代码并不支持向后兼容。也就是说，用 Java 9 写的代码，有可能在 Java 8 或更早版本的 JDK 上不能运行。</p>
+<h4 id="1、安装python-software-properties"><a href="#1、安装python-software-properties" class="headerlink" title="1、安装python-software-properties"></a>1、安装python-software-properties</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-software-properties</span><br><span class="line">sudo apt-get install software-properties-common</span><br></pre></td></tr></table></figure>
+<h4 id="2、安装PPA-资源库"><a href="#2、安装PPA-资源库" class="headerlink" title="2、安装PPA 资源库"></a>2、安装PPA 资源库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 添加Webupd8 PPA 资源库</span></span><br><span class="line">sudo add-apt-repository ppa:webupd8team/java</span><br><span class="line"><span class="meta">#</span><span class="bash">更新apt-get 使其生效</span></span><br><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure>
+<h4 id="3、安装Jave8-或者java9"><a href="#3、安装Jave8-或者java9" class="headerlink" title="3、安装Jave8 或者java9"></a>3、安装Jave8 或者java9</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">选择确认条款，用Tab键切换。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> java8</span></span><br><span class="line">sudo apt-get install oracle-java8-installer</span><br><span class="line"><span class="meta">#</span><span class="bash"> java9</span></span><br><span class="line">sudo apt-get install oracle-java9-installer</span><br><span class="line"><span class="meta">#</span><span class="bash"> </span></span><br><span class="line"><span class="meta">#</span><span class="bash">如果无法下载，可以通过其他方式相应JDK的tar.gz包，放在</span></span><br><span class="line"><span class="meta">#</span><span class="bash">/var/cache/oracle-jdk8-installer 目录下</span></span><br><span class="line"><span class="meta">#</span><span class="bash">然后再次执行上面的指令，会默认使用下载好的压缩包</span></span><br></pre></td></tr></table></figure>
+<h4 id="4、设置为默认jdk"><a href="#4、设置为默认jdk" class="headerlink" title="4、设置为默认jdk"></a>4、设置为默认jdk</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//sudo update-java-alternatives -s java-8-oracle</span><br><span class="line"><span class="meta">#</span><span class="bash"> java7</span></span><br><span class="line">sudo update-java-alternatives -s java-7-oracle</span><br><span class="line"><span class="meta">#</span><span class="bash"> java8</span></span><br><span class="line">sudo apt-get install oracle-java8-set-default</span><br><span class="line"><span class="meta">#</span><span class="bash"> java9</span></span><br><span class="line">sudo apt-get install oracle-java9-set-default</span><br></pre></td></tr></table></figure>
+<h4 id="4、验证安装"><a href="#4、验证安装" class="headerlink" title="4、验证安装"></a>4、验证安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> java -version</span></span><br><span class="line">java version "9"</span><br><span class="line">Java(TM) SE Runtime Environment (build 9+181)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 9+181, mixed mode)</span><br></pre></td></tr></table></figure>
+<h3 id="二、直接下载压缩包安装"><a href="#二、直接下载压缩包安装" class="headerlink" title="二、直接下载压缩包安装"></a>二、直接下载压缩包安装</h3><h4 id="1、官网下载JDK压缩包"><a href="#1、官网下载JDK压缩包" class="headerlink" title="1、官网下载JDK压缩包"></a>1、官网下载JDK压缩包</h4><p>登录<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="noopener">官网</a> 下载JDK压缩包</p>
+<h4 id="2、解压缩到指定目录"><a href="#2、解压缩到指定目录" class="headerlink" title="2、解压缩到指定目录"></a>2、解压缩到指定目录</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -zxvf jdk-7u60-linux-x64.gz -C /usr/lib/jvm</span><br></pre></td></tr></table></figure>
+<h4 id="3、配置环境变量"><a href="#3、配置环境变量" class="headerlink" title="3、配置环境变量"></a>3、配置环境变量</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#打开环境变量配置文件</span></span><br><span class="line">sudo vim ~/.bashrc</span><br><span class="line"><span class="comment">#在文件末尾追加</span></span><br><span class="line"><span class="comment">#set oracle jdk environment</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk1.7.0_60  <span class="comment">## 这里要注意目录要换成自己解压的jdk 目录</span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre  </span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib  </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span>  </span><br><span class="line"><span class="comment">#保存退出编辑模式</span></span><br><span class="line"><span class="comment">#使环境变量生效</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1222,7 +904,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/3、Android/2、Android 进阶/NDK/JIN/JNI 常用方法/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/08/10/4、计算机系统/1、Linux/2、常用软件服务管理/Centos 7创建FTP服务器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -1241,8 +923,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/10/3、Android/2、Android 进阶/NDK/JIN/JNI 常用方法/" itemprop="url">
-                  JNI 常用方法
+                <a class="post-title-link" href="/2017/08/10/4、计算机系统/1、Linux/2、常用软件服务管理/Centos 7创建FTP服务器/" itemprop="url">
+                  Centos7 搭建FTP 服务
                 </a>
               
             
@@ -1261,14 +943,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2017-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-03-10T11:42:59+08:00">2017-03-10</time>
+              <time title="Created: 2017-08-10 10:42:59" itemprop="dateCreated datePublished" datetime="2017-08-10T10:42:59+08:00">2017-08-10</time>
             
 
             
@@ -1285,7 +967,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-18 14:06:18" itemprop="dateModified" datetime="2018-04-18T14:06:18+08:00">2018-04-18</time>
+                <time title="Modified: 2018-04-13 10:24:28" itemprop="dateModified" datetime="2018-04-13T10:24:28+08:00">2018-04-13</time>
               
             
           </span>
@@ -1320,102 +1002,12 @@
       
         
           
-            <p>要素  ：<br>      1、 该函数大全是基于C语言方式的，对于C++方式可以直接转换 ，例如，对于生成一个jstring类型的方法转换分别如下：<br>                     C编程环境中使用方法为：(<em>env) -&gt;NewStringUTF(env , “123”) ;<br>                    C++编程环境中（例如，VC下）则是： env -&gt;NewStringUTF( “123”) ;             (使用起来更简单)<br>     2、关于下列有些函数中：</em>isCopy     的说明，例如，如下函数：<br>                            const char<em> GetStringUTFChars(JNIEnv</em>env, jstring string, jboolean <em>isCopy);<br>        对第三个参数 jboolean </em>isCopy说明如下：<br>             当从JNI函数GetStringUTFChars函数中返回得到字符串B时，如果B是原始字符串java.lang.String的一份拷贝，<br>      则isCopy  被赋值为JNI_TRUE。如果B是和原始字符串指向的是JVM中的同一份数据，则isCopy  被赋值为JNI_FALSE。<br>     当isCopy  为JNI_FALSE时，本地代码绝不能修改字符串的内容，否则JVM中的原始字符串也会被修改，这会打破Java语言<br>      中字符串不可变的规则。<br>            通常，我们不必关心JVM是否会返回原始字符串的拷贝，只需要为isCopy传递NULL作为参数 。<br>                                                                                                           —-     以上内容来自 《JNI编程指南》</p>
-<h3 id="一、类操作"><a href="#一、类操作" class="headerlink" title="一、类操作"></a>一、类操作</h3><p>  jclass DefineClass (JNIEnv <em>env, jobject loader,   const jbyte </em>buf , jsize bufLen);<br>     功能：从原始类数据的缓冲区中加载类。<br>     参数： env        JNI 接口指针。<br>                 loader    分派给所定义的类的类加载器。<br>                 buf        包含 .class 文件数据的缓冲区。<br>                 bufLen  缓冲区长度。<br>     返回值：返回 Java 类对象。如果出错则返回NULL。<br>     抛出： ClassFormatError      如果类数据指定的类无效。<br>                       ClassCircularityError  如果类或接口是自身的超类或超接口。<br>                       OutOfMemoryError  如果系统内存不足。                  </p>
-<p>   jclass FindClass (JNIEnv <em>env, const char </em>name);<br>     功能: 该函数用于加载本地定义的类。它将搜索由CLASSPATH 环境变量为具有指定名称的类所指定的目录和 zip文件。<br>     参数：env    JNI 接口指针。<br>              name  类全名（即包名后跟类名，之间由”/“分隔）.如果该名称以“[（数组签名字符）打头，则返回一个数组类。<br>     返回值：返回类对象全名。如果找不到该类，则返回 NULL。<br>     抛出：   ClassFormatError          如果类数据指定的类无效。<br>                  ClassCircularityError      如果类或接口是自身的超类或超接口。<br>                  NoClassDefFoundError  如果找不到所请求的类或接口的定义。<br>                  OutOfMemoryError       如果系统内存不足。                  </p>
-<p>  jclass GetObjectClass (JNIEnv *env, jobject obj);<br>     功能：通过对象获取这个类。该函数比较简单，唯一注意的是对象不能为NULL，否则获取的class肯定返回也为NULL。<br>     参数：  env   JNI 接口指针。<br>                obj   Java 类对象实例。         </p>
-<p>  jclass GetSuperclass (JNIEnv *env, jclass clazz);<br>     功能：获取父类或者说超类 。 如果 clazz 代表类class而非类 object，则该函数返回由 clazz 所指定的类的超类。 如果 clazz<br>           指定类 object 或代表某个接口，则该函数返回NULL。<br>     参数：  env   JNI 接口指针。<br>                clazz  Java 类对象。<br>     返回值：    由 clazz 所代表的类的超类或 NULL。               </p>
-<p>  jboolean IsAssignableFrom (JNIEnv *env, jclass clazz1,  jclass clazz2);<br>    功能：确定 clazz1 的对象是否可安全地强制转换为clazz2。<br>    参数：  env  JNI 接口指针。<br>              clazz1 第一个类参数。<br>              clazz2 第二个类参数。<br>    返回值：  下列某个情况为真时返回 JNI_TRUE：<br>                    1、 第一及第二个类参数引用同一个 Java 类。<br>                    2、 第一个类是第二个类的子类。<br>                    3、 第二个类是第一个类的某个接口。    </p>
-<h3 id="二、异常操作"><a href="#二、异常操作" class="headerlink" title="二、异常操作"></a>二、异常操作</h3><p>  jint  Throw(JNIEnv *env, jthrowable obj);<br>      功能：抛出 java.lang.Throwable 对象。<br>       参数： env  JNI 接口指针。<br>                 obj   java.lang.Throwable 对象。<br>       返回值：  成功时返回 0，失败时返回负数。<br>       抛出：    java.lang.Throwable 对象 obj。           </p>
-<p>  jint ThrowNew (JNIEnv <em>env ,  jclass clazz,  const char </em>message);<br>     功能：利用指定类的消息（由 message 指定）构造异常对象并抛出该异常。<br>     参数： env    JNI 接口指针。<br>                clazz  java.lang.Throwable 的子类。<br>                message  用于构造java.lang.Throwable对象的消息。<br>     返回值： 成功时返回 0，失败时返回负数。<br>     抛出：  新构造的 java.lang.Throwable 对象。                 </p>
-<p>  jthrowable ExceptionOccurred (JNIEnv *env);<br>    功能：确定是否某个异常正被抛出。在平台相关代码调用 ExceptionClear() 或 Java 代码处理该异常前，异常将始终保持<br>        抛出状态。<br>    参数：  env  JNI 接口指针。<br>    返回值： 返回正被抛出的异常对象，如果当前无异常被抛出，则返回NULL。           </p>
-<p> void ExceptionDescribe (JNIEnv *env);<br>    功能：将异常及堆栈的回溯输出到系统错误报告信道（例如 stderr）。该例程可便利调试操作。<br>    参数：env   JNI 接口指针。            </p>
-<p>  void ExceptionClear (JNIEnv *env);<br>   功能：清除当前抛出的任何异常。如果当前无异常，则此例程不产生任何效果。<br>   参数： env   JNI 接口指针。            </p>
-<p>  void FatalError (JNIEnv <em>env, const char </em>msg);<br>   功能：抛出致命错误并且不希望虚拟机进行修复。该函数无返回值。<br>   参数：  env   JNI 接口指针。<br>               msg   错误消息。          </p>
-<h3 id="三、全局及局部引用"><a href="#三、全局及局部引用" class="headerlink" title="三、全局及局部引用"></a>三、全局及局部引用</h3><p>   jobject NewGlobalRef (JNIEnv *env, jobject obj);<br>     功能：创建 obj 参数所引用对象的新全局引用。obj 参数既可以是全局引用，也可以是局部引用。全局引用通过调用<br>          DeleteGlobalRef() 来显式撤消。<br>     参数：env   JNI 接口指针。<br>                obj    全局或局部引用。<br>     返回值： 返回全局引用。如果系统内存不足则返回 NULL。          </p>
-<p>  void DeleteGlobalRef (JNIEnv *env, jobject globalRef);<br>     功能： 删除 globalRef 所指向的全局引用。<br>     参数： env    JNI 接口指针。<br>                globalRef  全局引用。         </p>
-<p>  void  DeleteLocalRef (JNIEnv *env, jobject localRef);<br>     功能： 删除 localRef所指向的局部引用。<br>     参数： env   JNI 接口指针。<br>                 localRef  局部引用。            </p>
-<h3 id="四、对象操作"><a href="#四、对象操作" class="headerlink" title="四、对象操作"></a>四、对象操作</h3><p>  jobject AllocObject (JNIEnv *env, jclass clazz);<br>     功能：分配新 Java 对象而不调用该对象的任何构造函数。返回该对象的引用。clazz 参数务必不要引用数组类。<br>     参数： env  JNI 接口指针。<br>               clazz  Java 类对象。<br>     返回值： 返回 Java 对象。如果无法构造该对象，则返回NULL。<br>     抛出： InstantiationException：如果该类为一个接口或抽象类。<br>                OutOfMemoryError：如果系统内存不足。                  </p>
-<p>  jobject NewObject (JNIEnv <em>env ,  jclass clazz,  jmethodID methodID, …);   //参数附加在函数后面<br>  jobject NewObjectA (JNIEnv </em>env , jclassclazz,  jmethodID methodID, jvalue <em>args);    //参数以指针形式附加<br>  jobjec tNewObjectV (JNIEnv </em>env , jclassclazz,  jmethodID methodID, va_list args);    //参数以”链表”形式附加            </p>
-<p>  功能：构造新 Java 对象。方法 ID指示应调用的构造函数方法。注意：该 ID特指该类class的构造函数ID ， 必须通过调用<br>      GetMethodID() 获得，且调用时的方法名必须为 <init>，而返回类型必须为 void (V)。clazz参数务必不要引用数组类。<br>  参数：  env  JNI 接口指针。<br>              clazz  Java 类对象。<br>              methodID 构造函数的方法 ID。<br>     NewObject 的其它参数：  传给构造函数的参数，可以为空 。<br>     NewObjectA 的其它参数： args：传给构造函数的参数数组。<br>     NewObjectV 的其它参数： args：传给构造函数的参数 va_list。       </init></p>
-<p>  返回值： 返回 Java 对象，如果无法构造该对象，则返回NULL。<br>  抛出：   InstantiationException  如果该类为接口或抽象类。<br>              OutOfMemoryError   如果系统内存不足。<br>              构造函数抛出的任何异常。                  </p>
-<p>  jclass GetObjectClass (JNIEnv *env, jobject obj);<br>   功能：返回对象的类。<br>   参数： env  JNI 接口指针。<br>              obj  Java 对象（不能为 NULL）。<br>   返回值： 返回 Java 类对象。              </p>
-<p> jboolean IsInstanceOf (JNIEnv *env, jobject obj, jclass clazz);<br>   功能：测试对象是否为某个类的实例。<br>   参数：  env  JNI 接口指针。<br>               obj  Java 对象。<br>               clazz Java 类对象。<br>   返回值：如果可将 obj 强制转换为 clazz，则返回 JNI_TRUE。否则返回 JNI_FALSE。NULL 对象可强制转换为任何类。           </p>
-<p> jbooleanIsSameObject (JNIEnv *env, jobjectref1, jobject ref2);<br>    功能：测试两个引用是否引用同一 Java 对象。<br>    参数：  env  JNI 接口指针。<br>               ref1  Java 对象。<br>               ref2   Java 对象。<br>    返回值： 如果 ref1 和 ref2 引用同一 Java 对象或均为 NULL，则返回 JNI_TRUE。否则返回 JNI_FALSE。         </p>
-<h3 id="五、-字符串操作"><a href="#五、-字符串操作" class="headerlink" title="五、 字符串操作"></a>五、 字符串操作</h3><p>  jstring  NewString (JNIEnv <em>env, const jchar </em>unicodeChars,   jsize len);<br>    功能：利用 Unicode 字符数组构造新的 java.lang.String 对象。<br>    参数：   env：JNI 接口指针。<br>                 unicodeChars：指向 Unicode 字符串的指针。<br>                 len：Unicode 字符串的长度。<br>    返回值： Java 字符串对象。如果无法构造该字符串，则为NULL。<br>    抛出： OutOfMemoryError：如果系统内存不足。                  </p>
-<p> jsize  GetStringLength (JNIEnv *env, jstring string);<br>    功能：返回 Java 字符串的长度（Unicode 字符数）。<br>    参数：  env：JNI 接口指针。<br>                string：Java 字符串对象。<br>    返回值： Java 字符串的长度。            </p>
-<p>  const  jchar <em>  GetStringChars (JNIEnv</em>env, jstring string,  jboolean <em>isCopy);<br>   功能：返回指向字符串的 Unicode 字符数组的指针。该指针在调用 ReleaseStringchars() 前一直有效。<br>         如果 isCopy 非空，则在复制完成后将 </em>isCopy 设为 JNI_TRUE。如果没有复制，则设为JNI_FALSE。<br>   参数：   env：JNI 接口指针。<br>                string：Java 字符串对象。<br>                isCopy：指向布尔值的指针。<br>   返回值：   指向 Unicode 字符串的指针，如果操作失败，则返回NULL。               </p>
-<p> void  ReleaseStringChars (JNIEnv <em>env, jstring string,  const jchar </em>chars);<br>   功能：通知虚拟机平台相关代码无需再访问 chars。参数chars 是一个指针，可通过 GetStringChars() 从 string 获得。<br>   参数： env：JNI 接口指针。<br>              string：Java 字符串对象。<br>              chars：指向 Unicode 字符串的指针。               </p>
-<p> jstring  NewStringUTF (JNIEnv <em>env, const char </em>bytes);<br>   功能：利用 UTF-8 字符数组构造新 java.lang.String 对象。<br>   参数： env：JNI 接口指针。如果无法构造该字符串，则为 NULL。<br>              bytes：指向 UTF-8 字符串的指针。<br>   返回值：Java 字符串对象。如果无法构造该字符串，则为NULL。<br>   抛出：  OutOfMemoryError：如果系统内存不足。                  </p>
-<p> jsize  GetStringUTFLength (JNIEnv *env, jstring string);<br>   功能：以字节为单位返回字符串的 UTF-8 长度。<br>   参数：   env：JNI 接口指针。<br>               string：Java 字符串对象。<br>   返回值：  返回字符串的 UTF-8</p>
-<p> const char<em> GetStringUTFChars (JNIEnv</em>env, jstring string, jboolean <em>isCopy);<br>   功能：返回指向字符串的 UTF-8 字符数组的指针。该数组在被ReleaseStringUTFChars() 释放前将一直有效。    如果 isCopy<br>      不是 NULL，</em>isCopy 在复制完成后即被设为 JNI_TRUE。如果未复制，则设为 JNI_FALSE。<br>   参数：  env：JNI 接口指针。<br>              string：Java 字符串对象。<br>              isCopy：指向布尔值的指针。<br>   返回值：  指向 UTF-8 字符串的指针。如果操作失败，则为 NULL。             </p>
-<p>  void  ReleaseStringUTFChars (JNIEnv <em>env, jstring string,  const char </em>utf);<br>   功能：通知虚拟机平台相关代码无需再访问 utf。utf 参数是一个指针，可利用 GetStringUTFChars() 获得。<br>   参数：   env：JNI 接口指针。<br>               string：Java 字符串对象。<br>               utf：指向 UTF-8 字符串的指针。               </p>
-<h3 id="六、数组操作"><a href="#六、数组操作" class="headerlink" title="六、数组操作"></a>六、数组操作</h3><p> jsize GetArrayLength (JNIEnv *env, jarray array);<br>   功能：返回数组中的元素数。<br>   参数：  env：JNI 接口指针。<br>              array：Java 数组对象。<br>   返回值： 数组的长度。                  </p>
-<p> jarray NewObjectArray (JNIEnv *env, jsize length,  jclass elementClass, jobject initialElement);<br>   功能：构造新的数组，它将保存类 elementClass 中的对象。所有元素初始值均设为 initialElement。<br>   参数： env：JNI 接口指针。<br>             length：数组大小。<br>             elementClass：数组元素类。<br>             initialElement：初始值。    可以为NULL 。<br>   返回值：Java 数组对象。如果无法构造数组，则为 NULL。<br>   抛出：  OutOfMemoryError：如果系统内存不足。                  </p>
-<p>   说明： 使用该函数时，为了便于易操作性，我们一般可以用jobjectArray数组类型或得返回值，例如：<br>                 jobjectArray objArray = env-&gt;NewObjectArray ( );<br>                 //操作该对象<br>                 env-&gt;GetObjectArrayElement (objArray, 0);//获得该object数组在索引0处的值 ,(可以强制转换类型).</p>
-<p> jobject  GetObjectArrayElement (JNIEnv *env,   jobjectArray array, jsize index);<br>   功能：返回 Object 数组的元素。<br>   参数：   env：JNI 接口指针。<br>                array：Java 数组。<br>                index：数组下标。<br>   返回值： Java 对象。<br>   抛出： ArrayIndexOutOfBoundsException：如果 index 不是数组中的有效下标。             </p>
-<p>  void  SetObjectArrayElement (JNIEnv *env, jobjectArray array,  jsize index, jobject value);<br>   功能：设置 Object 数组的元素。<br>   参数：  env：JNI 接口指针。<br>              array：Java 数组。<br>               index：数组下标。<br>               value：新值。<br>   抛出： ArrayIndexOutOfBoundsException：如果 index 不是数组中的有效下标。<br>              ArrayStoreException：如果 value 的类不是数组元素类的子类。           </p>
-<pre><code>New&lt;PrimitiveType&gt;Array方法类型      
-</code></pre><p>  NativeType New<primitivetype>Array (JNIEnv <em>env, ArrayType array, jboolean</em>isCopy);                  </primitivetype></p>
-<pre><code> 说明： 用于构造新基本类型数组对象的一系列操作。下表说明了特定的基本类型数组构造函数。用户应把
-New&lt;PrimitiveType&gt;Array 替换为某个实际的基本类型数组构造函数例程名（见下表），然后将 ArrayType替换为
-</code></pre><p>　该例程相应的数组类型。<br>     参数：  env ： JNI 接口指针。<br>                 length：数组长度。<br>     返回值：  Java 数组。如果无法构造该数组，则为 NULL。<br>       　<br>            New<primitivetype>Array 方法组               数组类型<br>                  NewBooleanArray()                            jbooleanArray<br>                  NewByteArray()                                  jbyteArray<br>                  NewCharArray()                                 jcharArray<br>                  NewShortArray()                                jshortArray<br>                  NewIntArray()                                    jintArray<br>                  NewLongArray()                                 jlongArray<br>                  NewFloatArray()                                 jfloatArray<br>                  NewDoubleArray()                             jdoubleArray   </primitivetype></p>
-<p> Get<primitivetype>ArrayElements 方法类型       </primitivetype></p>
-<p>  NativeType <em>Get<primitivetype>ArrayElements (JNIEnv </primitivetype></em>env, ArrayType array, jboolean<em>isCopy);<br>   说明：一组返回基本类型数组体的函数。结果在调用相应的 Release<primitivetype>ArrayElements()函数前将一直有效。<br>     由于返回的数组可能是 Java 数组的副本，因此对返回数组的更改不必在基本类型数组中反映出来，直到调用了<br>     Release<primitivetype>ArrayElements()。 如果 isCopy 不是 NULL，</primitivetype></primitivetype></em>isCopy 在复制完成后即被设为 JNI_TRUE。如果<br>     未复制，则设为 JNI_FALSE。<br> 　　 使用说明：<br>   　　　   将 Get<primitivetype>ArrayElements 替换为表中某个实际的基本类型元素访问器例程名。<br>      　　　将 ArrayType 替换为对应的数组类型。<br>      　　　将 NativeType 替换为该例程对应的本地类型。<br>    参数：   env：JNI 接口指针。<br>                array：Java 字符串对象。<br>                isCopy：指向布尔值的指针。<br>    返回值：    返回指向数组元素的指针，如果操作失败，则为 NULL。          </primitivetype></p>
-<pre><code>不管布尔数组在 Java 虚拟机中如何表示，GetBooleanArrayElements() 将始终返回一个 jbooleans 类型的指针，其中每一
-</code></pre><p>　字节代表一个元素（开包表示）。内存中将确保所有其它类型。<br>      　     　<br>            Get<primitivetype>ArrayElements 例程         数组类型                  本地类型<br>                  GetBooleanArrayElements()                   jbooleanArray            jboolean<br>                  GetByteArrayElements()                         jbyteArray                  jbyte<br>                  GetCharArrayElements()                        jcharArray                  jchar<br>                  GetShortArrayElements()                       jshortArray                 jshort<br>                  GetIntArrayElements()                           jintArray                     jint<br>                  GetLongArrayElements()                        jlongArray                  jlong<br>                  GetFloatArrayElements()                        jfloatArray                  jfloat<br>                  GetDoubleArrayElements()                     jdoubleArray              jdouble</primitivetype></p>
-<pre><code>Release&lt;PrimitiveType&gt;ArrayElements 方法类型                
-</code></pre><p>  void  Release<primitivetype>ArrayElements (JNIEnv <em>env, ArrayType array, NativeType </em>elems,jint mode);<br>     功能：通知虚拟机平台相关代码无需再访问 elems 的一组函数。elems 参数是一个通过使用对应的<br>        Get<primitivetype>ArrayElements() 函数由 array 导出的指针。必要时，该函数将把对 elems 的修改复制回基本<br>        类型数组。mode参数将提供有关如何释放数组缓冲区的信息。如果elems 不是 array 中数组元素的副本，mode将无效。<br>        否则，mode 将具有下表所述的功能：<br>                        模式                                         动作<br>                         0                            复制回内容并释放elems 缓冲区<br>                   JNI_COMMIT               复制回内容但不释放elems 缓冲区<br>                   JNI_ABORT                   释放缓冲区但不复制回变化<br>       多数情况下，编程人员将把“0”传给 mode 参数以确保固定的数组和复制的数组保持一致。其它选项可以使编程人员进一步<br>   控制内存管理，但使用时务必慎重。<br>     使用说明：<br>         将 ArrayType 替换为对应的数组类型。<br>         将 NativeType 替换为该例程对应的本地类型。               </primitivetype></primitivetype></p>
-<p>   参数： env：JNI 接口指针。<br>             array：Java 数组对象。<br>             elems：指向数组元素的指针。<br>             mode：释放模式。      </p>
-<pre><code>     Release&lt;PrimitiveType&gt;ArrayElements 方法组         数组类型             本地类型
-          ReleaseBooleanArrayElements()                      jbooleanArray       jboolean
-          ReleaseByteArrayElements()                           jbyteArray              jbyte
-          ReleaseCharArrayElements()                          jcharArray              jchar
-          ReleaseShortArrayElements()                         jshortArray             jshort
-          ReleaseIntArrayElements()                             jintArray                 jint
-          ReleaseLongArrayElements()                       jlongArray             jlong
-          ReleaseFloatArrayElements()                       jfloatArray            jfloat
-          ReleaseDoubleArrayElements()                   jdoubleArray         jdouble
-
-
-Get&lt;PrimitiveType&gt;ArrayRegion 方法类型          
-</code></pre><p>  void  Get<primitivetype>ArrayRegion (JNIEnv <em>env, ArrayType array,  jsize start, jsize len, NativeType </em>buf);<br>    功能：将基本类型数组某一区域复制到缓冲区中的一组函数。<br>      使用说明：<br>               将 Get<primitivetype>ArrayRegion 替换为下表的某个实际基本类型元素访问器例程名。<br>               将 ArrayType 替换为对应的数组类型。<br>               将 NativeType 替换为该例程对应的本地类型。<br>   参数：     env：JNI 接口指针。<br>                 array：Java 指针。<br>                 start：起始下标。<br>                 len：要复制的元素数。<br>                 buf：目的缓冲区。<br>   抛出：  ArrayIndexOutOfBoundsException：如果区域中的某个下标无效。  </primitivetype></primitivetype></p>
-<p>   方法族如下：                      　     　<br>                    Get<primitivetype>ArrayRegion方法           数组类型             本地类型<br>                        GetBooleanArrayRegion()                          jbooleanArray     jboolean<br>                        GetByteArrayRegion()                                jbyteArray           jbyte<br>                        GetCharArrayRegion()                               jcharArray           jchar<br>                        GetShortArrayRegion()                              jshortArray          jhort<br>                        GetIntArrayRegion()                                  jintArray              jint<br>                        GetLongArrayRegion()                               jlongArray          jlong<br>                        GetFloatArrayRegion()                               jfloatArray         jloat<br>                        GetDoubleArrayRegion()                           jdoubleArray    jdouble</primitivetype></p>
-<pre><code>Set&lt;PrimitiveType&gt;ArrayRegion 方法类型          
-</code></pre><p> void  Set<primitivetype>ArrayRegion (JNIEnv <em>env, ArrayType array,   jsize start, jsize len, NativeType </em>buf);<br>    功能：将基本类型数组的某一区域从缓冲区中复制回来的一组函数。<br>        使用说明：  将 Set<primitivetype>ArrayRegion 替换为表中的实际基本类型元素访问器例程名。<br>                          将 ArrayType 替换为对应的数组类型。<br>                          将 NativeType 替换为该例程对应的本地类型。<br>    参数： env：JNI 接口指针。<br>              array: Java 数组。<br>              start：起始下标。<br>              len：要复制的元素数。<br>              buf：源缓冲区。<br>    抛出： ArrayIndexOutOfBoundsException：如果区域中的某个下标无效。<br> 　     　<br>                  Set<primitivetype>ArrayRegion 方法族            数组类型             本地类型<br>                        SetBooleanArrayRegion()                          jbooleanArray     jboolean<br>                        SetByteArrayRegion()                                jbyteArray           jbyte<br>                        SetCharArrayRegion()                               jcharArray           jchar<br>                        SetShortArrayRegion()                              jshortArray          jshort<br>                        SetIntArrayRegion()                                  jintArray              jint<br>                        SetLongArrayRegion()                               jlongArray           jlong<br>                        SetFloatArrayRegion()                               jfloatArray           jfloat<br>                        SetDoubleArrayRegion()                            jdoubleArray      jdouble</primitivetype></primitivetype></primitivetype></p>
-<h3 id="六、访问对象的属性和方法"><a href="#六、访问对象的属性和方法" class="headerlink" title="六、访问对象的属性和方法"></a>六、访问对象的属性和方法</h3><h4 id="1、实例属性的访问"><a href="#1、实例属性的访问" class="headerlink" title="1、实例属性的访问"></a>1、实例属性的访问</h4><p>  jfieldID  GetFieldID (JNIEnv <em>env, jclass clazz, const char </em>name, const char *sig);<br>   功能：返回类的实例（非静态）域的属性 ID。该域由其名称及签名指定。访问器函数的Get<type>Field 及 Set<type>Field<br>        系列使用域 ID 检索对象域。GetFieldID() 不能用于获取数组的长度域。应使用GetArrayLength()。<br>   参数：  env：JNI 接口指针。<br>               clazz：Java 类对象。<br>               name: 该属性的Name名称<br>               sig：   该属性的域签名。<br>   返回值：属性ID。如果操作失败，则返回NULL。<br>   抛出： NoSuchFieldError：如果找不到指定的域。<br>              ExceptionInInitializerError：如果由于异常而导致类初始化程序失败。<br>              OutOfMemoryError：如果系统内存不足。                 </type></type></p>
-<p>   Get<type>Field 例程               </type></p>
-<p>   NativeType  Get<type>Field (JNIEnv*env, jobject obj, jfieldID fieldID);<br>    功能：该访问器例程系列返回对象的实例（非静态）域的值。要访问的域由通过调用GetFieldID() 而得到的域 ID 指定。<br>    参数：   env：JNI 接口指针。<br>                 obj：Java 对象（不能为 NULL）。<br>                 fieldID：有效的域 ID。<br>    返回值：   属性的内容。<br>    　     Get<type>Field 例程名        本地类型<br>               GetObjectField()                  jobject<br>               GetBooleanField()               jboolean<br>               GetByteField()                     jbyte<br>               GetCharField()                     jchar<br>               GetShortField()                    jshort<br>               GetIntField()                        jint<br>               GetLongField()                    jlong<br>               GetFloatField()                    jfloat<br>               GetDoubleField()      jdouble    </type></type></p>
-<p>   Set<type>Field 方法族 </type></p>
-<p>  void  Set<type>Field (JNIEnv *env, jobject obj, jfieldID fieldID,  NativeType value);<br>  功能： 该访问器例程系列设置对象的实例（非静态）属性的值。要访问的属性由通过调用SetFieldID() 而得到的属性 ID指定。<br>   参数：  env：JNI 接口指针。<br>               obj：Java 对象（不能为 NULL）。<br>              fieldID：有效的域 ID。<br>              value：域的新值。<br>      方法族 如下：                 　<br>               Set<type>Field 方法族            本地类型<br>                  SetObjectField()                    jobject<br>                  SetBooleanField()                  jboolean<br>                  SetByteField()                       jbyte<br>                  SetCharField()                      jchar<br>                  SetShortField()                     jshort<br>                  SetIntField()                         jint<br>                  SetLongField()                      jlong<br>                  SetFloatField()                      jfloat<br>                  SetDoubleField()                  jdouble    </type></type></p>
-<h4 id="2、静态属性的访问-也存在相同的方法，"><a href="#2、静态属性的访问-也存在相同的方法，" class="headerlink" title="2、静态属性的访问 :也存在相同的方法，"></a>2、静态属性的访问 :也存在相同的方法，</h4><pre><code> jfieldID  GetStaticFieldID (JNIEnv *env,jclass clazz, const char *name, const char *sig);     
-NativeType  GetStatic&lt;type&gt;Field (JNIEnv*env,jclass classzz , jfieldID fieldID);           
-     void  SetStatic&lt;type&gt;Field (JNIEnv *env,jclassclasszz, jfieldID fieldID,  NativeType value);           
-</code></pre><p>   它们与实例属性的唯一区别在于第二个参数jclass classzz代表的是类引用，而不是类实例。</p>
-<p> 3、调用实例方法 </p>
-<p>   jmethodID GetMethodID(JNIEnv <em>env, jclass clazz,    const char </em>name, const char *sig);<br>    功能：返回类或接口实例（非静态）方法的方法 ID。方法可在某个 clazz 的超类中定义，也可从 clazz 继承。该方法由其名称<br>         和签名决定。 GetMethodID() 可使未初始化的类初始化。要获得构造函数的方法 ID，应将 <init> 作为方法名，同时将<br>         void (V) 作为返回类型。<br>    参数：  env：JNI 接口指针。<br>                clazz：Java 类对象。<br>                name：方法名。<br>                sig：方法的签名。<br>    返回值： 方法 ID，如果找不到指定的方法，则为 NULL。<br>    抛出：    NoSuchMethodError：如果找不到指定方法。<br>                  ExceptionInInitializerError：如果由于异常而导致类初始化程序失败。<br>                  OutOfMemoryError：如果系统内存不足。                  </init></p>
-<p>  Call<type>Method 例程  、Call<type>MethodA 例程  、Call<type>MethodV 例程 </type></type></type></p>
-<p>  NativeType Call<type>Method (JNIEnv<em>en v,  jobject obj , jmethodID methodID, …);     //参数附加在函数后面,<br>  NativeType Call<type>MethodA (JNIEnv </type></em>env, jobject obj, jmethodID methodID, jvalue <em>args);  //参数以指针形式附加<br>  NativeType Call<type>MethodV (JNIEnv </type></em>env, jobject obj,jmethodID methodID, va_list args); //参数以”链表”形式附加</type></p>
-<p>  说明：这三个操作的方法用于从本地方法调用Java 实例方法。它们的差别仅在于向其所调用的方法传递参数时所用的机制。<br>      这三个操作将根据所指定的方法 ID 调用 Java 对象的实例（非静态）方法。参数 methodID 必须通过调用 GetMethodID()<br>      来获得。当这些函数用于调用私有方法和构造函数时，方法 ID 必须从obj 的真实类派生而来，而不应从其某个超类派生。<br>      当然，附加参数可以为空 。<br>  参数：  env：JNI 接口指针。<br>             obj：Java 对象。<br>             methodID：方法 ID。<br>  返回值： 返回调用 Java 方法的结果。<br>  抛出：  执行 Java 方法时抛出的异常。    </p>
-<p>   下表根据结果类型说明了各个方法类型。用户应将Call<type>Method 中的 type 替换为所调用方法的Java 类型（或使用表<br> 中的实际方法名），同时将 NativeType 替换为该方法相应的本地类型。省略掉了其他两种类型。 </type></p>
-<pre><code>Java层返回值                  方法族                                            本地返回类型NativeType
-
-返回值为void ：          CallVoidMethod( )   A / V                               (无)
-返回值为引用类型：     CallObjectMethod( )                              jobect
-返回值为boolean ：    CallBooleanMethod ( )                           jboolean
-返回值为byte ：          CallByteMethod( )                                  jbyte
-返回值为char  ：         CallCharMethod( )                                 jchar
-返回值为short             CallShortMethod( )                                jshort       
-返回值为int   ：          CallIntMethod( )                                     jint  
-返回值为long：          CallLongMethod()                                   jlong         
-返回值为float ：         CallFloatMethod()                                   jfloat        
-返回值为double：      CallDoubleMethod()                                jdouble    
-</code></pre><h4 id="4、调用静态方法：也存在如下方法群，"><a href="#4、调用静态方法：也存在如下方法群，" class="headerlink" title="4、调用静态方法：也存在如下方法群，"></a>4、调用静态方法：也存在如下方法群，</h4><pre><code> jfieldID   GetStaticMethodID (JNIEnv *env,jclass clazz, const char *name, const char *sig);     
-NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID);           
-</code></pre><p>   它们与于实例方法的唯一区别在于第二个参数jclass classzz代表的是类引用，而不是类实例。</p>
-<h3 id="七、注册本地方法"><a href="#七、注册本地方法" class="headerlink" title="七、注册本地方法"></a>七、注册本地方法</h3><p>  jint  RegisterNatives (JNIEnv <em>env, jclass clazz, const JNINativeMethod </em>methods,    jint  nMethods);<br>   功能：向 clazz 参数指定的类注册本地方法。methods 参数将指定 JNINativeMethod 结构的数组，其中包含本地方法的名称、<br>    签名和函数指针。nMethods 参数将指定数组中的本地方法数。JNINativeMethod 结构定义如下所示：<br>         typedef struct {<br>               char <em>name;<br>               char </em>signature;<br>              void <em>fnPtr;<br>         } JNINativeMethod;<br>     函数指针通常必须有下列签名：<br>              ReturnType (</em>fnPtr)(JNIEnv *env, jobject objectOrClass, …);                  </p>
-<p>   参数： env：JNI 接口指针。<br>              clazz：Java 类对象。<br>             methods：类中本地方法和具体实现方法的映射指针。<br>             nMethods：类中的本地方法数。<br>   返回值：  成功时返回 “0”；失败时返回负数。<br>   抛出：  NoSuchMethodError：如果找不到指定的方法或方法不是本地方法。            </p>
-<p> jint  UnregisterNatives (JNIEnv *env, jclass clazz);<br>  功能： 取消注册类的本地方法。类将返回到链接或注册了本地方法函数前的状态。      该函数不应在常规平台相关代码中使用。<br>        相反，它可以为某些程序提供一种重新加载和重新链接本地库的途径。<br>  参数：  env：JNI 接口指针。<br>             clazz：Java 类对象。<br>  返回值： 成功时返回“0”；失败时返回负数。  </p>
+            <h2 id="Centos7-搭建FTP-服务"><a href="#Centos7-搭建FTP-服务" class="headerlink" title="Centos7 搭建FTP 服务"></a>Centos7 搭建FTP 服务</h2><h3 id="1、安装vsftpd"><a href="#1、安装vsftpd" class="headerlink" title="1、安装vsftpd"></a>1、安装vsftpd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum check-update</span><br><span class="line">yum -y install vsftpd</span><br><span class="line"><span class="comment">#完成后再检查一遍</span></span><br><span class="line">whereis vsftpd</span><br></pre></td></tr></table></figure>
+<h3 id="2、查看vsftpd-服务状态"><a href="#2、查看vsftpd-服务状态" class="headerlink" title="2、查看vsftpd 服务状态"></a>2、查看vsftpd 服务状态</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#如果是激活状态的话会有active绿色的标记</span></span><br><span class="line">systemctl status vsftpd.service</span><br></pre></td></tr></table></figure>
+<h3 id="3、修改配置参数"><a href="#3、修改配置参数" class="headerlink" title="3、修改配置参数"></a>3、修改配置参数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/vsftpd/vsftpd.conf</span><br><span class="line"><span class="comment">#修改为如下参数</span></span><br><span class="line">anonymous_enable=NO</span><br><span class="line">chroot_local_user=YES</span><br><span class="line">allow_writeable_chroot=YES</span><br><span class="line"><span class="comment">#之后添加下列内容到vsftpd.conf末尾</span></span><br><span class="line">pasv_enable=YES</span><br><span class="line">pasv_min_port=40000</span><br><span class="line">pasv_max_port=40100</span><br></pre></td></tr></table></figure>
+<h3 id="4、配置防火墙"><a href="#4、配置防火墙" class="headerlink" title="4、配置防火墙"></a>4、配置防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#默认情况下centos7是使用firewall和selinux</span></span><br><span class="line"><span class="comment">#防火墙添加FTP服务：</span></span><br><span class="line">firewall-cmd --permanent --add-service=ftp</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="comment">#设置SELinux：</span></span><br><span class="line">getsebool -a | grep ftp</span><br><span class="line">setsebool -P ftpd_full_access on</span><br></pre></td></tr></table></figure>
+<h3 id="5、创建ftp用户"><a href="#5、创建ftp用户" class="headerlink" title="5、创建ftp用户"></a>5、创建ftp用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建ftp用户两种方式，系统用户和虚拟用户，这里使用系统用户</span></span><br><span class="line"><span class="comment">#在ftp组中加入一个atom_ftp账户用来ftp到/root并给它添加密码</span></span><br><span class="line">useradd -g ftp -M -d /root -s /sbin/nologin atom_ftp</span><br><span class="line">passwd atom_ftp</span><br><span class="line"><span class="comment">#把/root的所有权给atom_ftp.root</span></span><br><span class="line">chown -R atom_ftp.root /root</span><br></pre></td></tr></table></figure>
+<h3 id="6、重启ftp"><a href="#6、重启ftp" class="headerlink" title="6、重启ftp"></a>6、重启ftp</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart vsftpd.service</span><br><span class="line">systemctl <span class="built_in">enable</span> vsftpd.service</span><br><span class="line">systemctl status vsftpd.service</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1469,7 +1061,7 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/7、web/前端跨域问题/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/08/07/4、计算机系统/1、Linux/3、场景应用/WebRTC服务器搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -1488,8 +1080,8 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/10/7、web/前端跨域问题/" itemprop="url">
-                  前端跨域问题
+                <a class="post-title-link" href="/2017/08/07/4、计算机系统/1、Linux/3、场景应用/WebRTC服务器搭建/" itemprop="url">
+                  WebRTC 服务器搭建
                 </a>
               
             
@@ -1508,14 +1100,14 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2017-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-03-10T11:42:59+08:00">2017-03-10</time>
+              <time title="Created: 2017-08-07 15:23:30" itemprop="dateCreated datePublished" datetime="2017-08-07T15:23:30+08:00">2017-08-07</time>
             
 
             
@@ -1532,7 +1124,7 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2017-11-23 10:46:13" itemprop="dateModified" datetime="2017-11-23T10:46:13+08:00">2017-11-23</time>
+                <time title="Modified: 2017-11-14 15:34:54" itemprop="dateModified" datetime="2017-11-14T15:34:54+08:00">2017-11-14</time>
               
             
           </span>
@@ -1567,167 +1159,24 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
       
         
           
-            <h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><p>由于浏览器同源策略，凡是发送请求url的协议、域名、端口三者之间任意一与当前页面地址不同即为跨域。具体可以查看下表<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-17/56455391.jpg" alt=""><br>特别注意两点：<br>第一，如果是协议和端口造成的跨域问题“前台”是无能为力的，<br>第二：在跨域问题上，域仅仅是通过“URL的首部”来识别而不会去尝试判断相同的ip地址对应着两个域或两个域是否在同一个ip上。</p>
-<p>解决方式参考<br><a href="http://www.cnblogs.com/JChen666/p/3399951.html" target="_blank" rel="noopener">前端解决跨域问题的8种方案</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/03/10/3、Android/3、Andorid 设备/蓝牙/手机BLE作为外围设备/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/10/3、Android/3、Andorid 设备/蓝牙/手机BLE作为外围设备/" itemprop="url">
-                  手机BLE作为外围设备
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2017-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2017-03-10T11:42:59+08:00">2017-03-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-04-13 10:38:44" itemprop="dateModified" datetime="2018-04-13T10:38:44+08:00">2018-04-13</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="手机BLE作为外围设备"><a href="#手机BLE作为外围设备" class="headerlink" title="手机BLE作为外围设备"></a>手机BLE作为外围设备</h2><p> 自安卓5.0后，谷歌加入了对安卓手机作为低功耗蓝牙外围设备，即服务端的支持。使得手机可以通过低功耗蓝牙进行相互通信。</p>
-<h3 id="开发步骤"><a href="#开发步骤" class="headerlink" title="开发步骤"></a>开发步骤</h3><p>实现这一功能其实只需要分为设置广播和设置服务器两个部分完成即可</p>
-<h3 id="设置服务器"><a href="#设置服务器" class="headerlink" title="设置服务器"></a>设置服务器</h3><p>这一步骤主要操作的是BluetoothGattServer。</p>
+            <p>参考链接<br><a href="http://blog.csdn.net/tifentan/article/details/53462535" target="_blank" rel="noopener">CSDN Webrtc服务器搭建</a><br><a href="http://blog.csdn.net/mandagod/article/details/71440873" target="_blank" rel="noopener">CSDN 搭建自己的AppRTCDemo服务器</a><br><a href="http://blog.csdn.net/leytton/article/details/76696372" target="_blank" rel="noopener">WebRTC实时通信系列教程</a></p>
+<p>#WebRTC 服务器搭建<br>WebRTC，是Web Real-Time Communication的缩写，是谷歌2010年以6820万美元收购Global IP Solutions公司而获得的一项技术，于2011年5月开放了工程的源代码，在行业内得到了广泛的支持和应用，成为下一代视频通话的标准。</p>
+<p>##WebRTC 运行服务器<br>需要搭建三个服务器，分别是房间服务器、信令服务器以及打洞服务器</p>
+<ul>
+<li>房间服务器（Room Server）<br>房间服务器是用来创建和管理通话会话的状态维护,是双方通话还是多方通话,加入与离开房间等等,我们暂时沿用Google部署在GAE平台上的AppRTC这个房间服务器实现,该GAE App的源码可以在github.com上获取.该实现是一个基于Python的GAE应用,我们需要下载Google GAE的离线开发包到我们自己的Linux服务器上来运行该项目,搭建房间服务器.</li>
+<li>信令服务器（Signaling Server）<br>信令服务器是用来管理和协助通话终端建立去中心的点对点通话的一个角色.这个角色要负责一下任务</li>
+</ul>
 <ol>
-<li>定义一个BluetoothGattServerCallback的回调如下<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> BluetoothGattServerCallback bluetoothGattServerCallback = <span class="keyword">new</span> BluetoothGattServerCallback() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConnectionStateChange</span><span class="params">(BluetoothDevice device, <span class="keyword">int</span> status, <span class="keyword">int</span> newState)</span> </span>&#123;</span><br><span class="line">            Log.v(<span class="string">"onConnectionStateChange"</span>,<span class="string">"连接状态改变"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceAdded</span><span class="params">(<span class="keyword">int</span> status, BluetoothGattService service)</span> </span>&#123;</span><br><span class="line">            Log.v(<span class="string">"onServiceAdded"</span>,<span class="string">"成功添加服务"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCharacteristicReadRequest</span><span class="params">(BluetoothDevice device, <span class="keyword">int</span> requestId, <span class="keyword">int</span> offset, BluetoothGattCharacteristic characteristic)</span> </span>&#123;</span><br><span class="line">            Log.v(<span class="string">"CharacteristicReadReq"</span>,<span class="string">"远程设备请求读取数据"</span>);</span><br><span class="line">            bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, <span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">0</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCharacteristicWriteRequest</span><span class="params">(BluetoothDevice device, <span class="keyword">int</span> requestId, BluetoothGattCharacteristic characteristic, <span class="keyword">boolean</span> preparedWrite, <span class="keyword">boolean</span> responseNeeded, <span class="keyword">int</span> offset, <span class="keyword">byte</span>[] value)</span> </span>&#123;</span><br><span class="line">            Log.v(<span class="string">"CharacteristicWriteReq"</span>,<span class="string">"远程设备请求写入数据"</span>);</span><br><span class="line">            bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, <span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;<span class="number">0</span>,<span class="number">9</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">6</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>&#125;);</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDescriptorReadRequest</span><span class="params">(BluetoothDevice device, <span class="keyword">int</span> requestId, <span class="keyword">int</span> offset, BluetoothGattDescriptor descriptor)</span> </span>&#123;</span><br><span class="line">            Log.v(<span class="string">"DescriptorReadReq"</span>,<span class="string">"远程设备请求写入描述器"</span>);</span><br><span class="line">            bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, <span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>,<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>,<span class="number">18</span>,<span class="number">19</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDescriptorWriteRequest</span><span class="params">(BluetoothDevice device, <span class="keyword">int</span> requestId, BluetoothGattDescriptor descriptor, <span class="keyword">boolean</span> preparedWrite, <span class="keyword">boolean</span> responseNeeded, <span class="keyword">int</span> offset, <span class="keyword">byte</span>[] value)</span> </span>&#123;</span><br><span class="line">            Log.v(<span class="string">"DescriptorReadReq"</span>,<span class="string">"远程设备请求写入描述器"</span>);</span><br><span class="line">            bluetoothGattServer.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, <span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;<span class="number">19</span>,<span class="number">18</span>,<span class="number">17</span>,<span class="number">16</span>,<span class="number">15</span>,<span class="number">14</span>,<span class="number">13</span>,<span class="number">12</span>,<span class="number">11</span>,<span class="number">10</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onExecuteWrite</span><span class="params">(BluetoothDevice device, <span class="keyword">int</span> requestId, <span class="keyword">boolean</span> execute)</span> </span>&#123;</span><br><span class="line">            Log.v(<span class="string">"onExecuteWrite"</span>,<span class="string">"执行挂起写入操作"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNotificationSent</span><span class="params">(BluetoothDevice device, <span class="keyword">int</span> status)</span> </span>&#123;</span><br><span class="line">            Log.v(<span class="string">"onNotificationSent"</span>,<span class="string">"通知发送"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMtuChanged</span><span class="params">(BluetoothDevice device, <span class="keyword">int</span> mtu)</span> </span>&#123;</span><br><span class="line">            Log.v(<span class="string">"onMtuChanged"</span>,<span class="string">"mtu改变"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
-</li>
+<li>用来控制通信发起或者结束的连接控制消息</li>
+<li>发生错误时用来相互通告的消息</li>
+<li>各自一方媒体流元数据，比如像解码器、解码器的配置、带宽、媒体类型等等</li>
+<li>两两之间用来建立安全连接的关键数据</li>
+<li>外界所能看到的网络上的数据，比如广域网IP地址、端口等</li>
 </ol>
-<p>利用BluetoothManager的openGattServer(Context,BluetoothServerCallback)方法获得BluetoothGattServer实例。</p>
+<p>信令服务器的具体协议实现没有严格规定,只要实现功能就OK.<br>我们这里依然沿用Google提供的基于GO语言和WebSocket的信令服务器Collider.和上面的房间服务器一并在Github上可以获取.获取到我们自己的Linux服务器上用GO语言的运行环境来运行该信令服务器.</p>
+<ul>
+<li>打洞服务器（STUN/TURN/ICE Server）<br>我们目前大部分人连接互联网时都处于防火墙后面或者配置私有子网的家庭(NAT)路由器后面,这就导致我们的计算机的IP地址不是广域网IP地址,故而不能相互之间直接通讯. 正因为这样的一个场景,我们得想办法去穿越这些防火墙或者家庭(NAT)路由器,让两个同处于私有网络里的计算机能够通讯起来.</li>
+</ul>
 
           
         
@@ -1781,7 +1230,7 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/02/14/3、Android/1、Android 基础/基本知识/SDK/Android adb 命令/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/07/10/4、计算机系统/2、Android/1、Android 基础/基本知识/如何判断当前线程是否是主线程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -1800,8 +1249,8 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/02/14/3、Android/1、Android 基础/基本知识/SDK/Android adb 命令/" itemprop="url">
-                  Android ADB 命令
+                <a class="post-title-link" href="/2017/07/10/4、计算机系统/2、Android/1、Android 基础/基本知识/如何判断当前线程是否是主线程/" itemprop="url">
+                  Android Studio 配置
                 </a>
               
             
@@ -1820,14 +1269,14 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2017-02-14 10:11:01" itemprop="dateCreated datePublished" datetime="2017-02-14T10:11:01+08:00">2017-02-14</time>
+              <time title="Created: 2017-07-10 12:12:59" itemprop="dateCreated datePublished" datetime="2017-07-10T12:12:59+08:00">2017-07-10</time>
             
 
             
@@ -1844,7 +1293,7 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-20 16:09:33" itemprop="dateModified" datetime="2018-04-20T16:09:33+08:00">2018-04-20</time>
+                <time title="Modified: 2019-02-13 10:08:34" itemprop="dateModified" datetime="2019-02-13T10:08:34+08:00">2019-02-13</time>
               
             
           </span>
@@ -1879,80 +1328,466 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
       
         
           
-            <h2 id="Android-ADB-命令"><a href="#Android-ADB-命令" class="headerlink" title="Android ADB 命令"></a>Android ADB 命令</h2><h3 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h3><ul>
-<li>cat<br>该命名常用语查看文件，现在我往data/local/tmp push了一个config.xml文件，可以用cat 命令对其进行查看。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat (文件名)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>该命令还可以结合grep命令进行过滤，比如我现在用grep 命令过滤上述文件中的debug 项<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat (文件名) |grep debug</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>adb install [-l] [-r] [-s] file<br>[-l] 锁定该程序，安装<br>[-r] 重新安装该程序,保存数据<br>[-s] 安装到sdcard</li>
-<li>adb uninstall [-k] package_name<br>[-K] 不清除数据，卸载</li>
-<li>pm clear package_name<br>-清除指定包名的数据</li>
-<li>pm install<br>   对应adb install</li>
-<li>pm uninstall<br>   对应adb install</li>
-<li><p>adb shell dumpsys</p>
-<ol>
-<li><p>adb shelll dumpsys activity top     用于查看当前运行应用的的信息</p>
-</li>
-<li><p>adb shelll dumpsys activity top 可以查看指定包名应用的详细信息(相当于应用的AndroidManifest.xml中的内容)</p>
-</li>
-<li><p>adb shell dumpsys meminfo &lt;package_name/pid&gt; 可以查看指定进程名或者是进程id的内存信息</p>
-</li>
-<li><p>adb shell dumpsys dbinfo &lt;package_name&gt; 可以查看指定包名应用的数据库存储信息(包括存储的sql语句)</p>
-</li>
-</ol>
-</li>
-<li><p>adb pull<br>将设备中的文件放到到本地eg:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb pull /sdcard/tmp.txt D:\</span><br><span class="line"><span class="meta">#</span><span class="bash">命令简单，不在多说，只是在操作的时候可能遇到文件权限问题，用chmod改一下权限即可。</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>adb forward [(远程端)协议:端口号] [(设备端)协议:端口号]<br>设备的端口转发</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb forward tcp:23946 tcp:23946</span><br><span class="line">adb forward tcp:8700 jwdp:1786</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这个命令对于我们在调试的时候非常有用，特别在IDA调试中。</p>
-<ul>
-<li>adb jdwp<br>查看设备中可以被调试的应用的进程号<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb jdwp</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这个命令或许用途不是很多，但是对于调试的时候还是有点用途。可以忽略这个命令。</p>
-<ul>
-<li>adb logcat |findstr pname/pid/keyword<br>查看当前日志信息<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb logcat -s tag |findstr  &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>eg:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb logcat -s ActivityManager | findstr  com.android.settings</span><br></pre></td></tr></table></figure></p>
-<p>这个命令大家都不陌生，也是重中之重，有的同学或许会好奇，为何不用AS查看日志了，但是有时候AS不能满足我们，比如我们想开多个日志窗口，这时候我们可以打开多个cmd窗口利用这个命令查看日志信息即可。用的最多的就是-s参数，可以直接查看对应的tag日志信息，可以利用findstr进行信息过滤：</p>
-<p>也可以进入 adb shell 时 通过grep 进行过滤</p>
-<ul>
-<li>am start -n [包(package)名]/[包名].[活动(activity)名称]<br>启动一个应用<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">am start -n com.android.browser/com.android.browser.BrowserActivity</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注意：可以以debug方式启动应用：am start –D –n …. 特别在我们反编译调试应用的时候，可能需要以debug方式启动应用</p>
-<ul>
-<li>am startservice -n [包(package)名]/[包名].[服务(service)名]<br>启动一个服务<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">am startservice -n com.android.traffic/com.android.traffic.maniservice</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>和上面命令类似，启动服务</p>
-<ul>
-<li>am broadcast -a [广播动作]<br>发送一个广播<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">am broadcast -a android.NET.conn.CONNECTIVITY_CHANGE</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>和上面的命令类似，发送一个广播，有时候我们定义了一个广播，可能需要测试，就可以借助这个功能模拟发送一个广播。</p>
-<ul>
-<li><p>netcfg<br>查看设备的ip地址<br>有时候想查看设备的ip地址，去设置页面太费劲了，可以直接用这个命令即可</p>
-</li>
-<li><p>aapt dump xmltree [apk包] [需要查看的资源文件xml]<br>查看apk中的信息以及编辑apk程序包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aapt dump xmltree demo.apk AndroidManifest.xml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>dexdump [dex文件路径]<br>可以查看一个dex文件的相信信息</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dexdump D:\classes.dex</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>cat /proc/[pid]/maps<br>查看当前进程的内存加载情况，查看当前进程的内存映射信息，比如加载了哪些so文件，dex文件等：</p>
-</li>
-<li><p>cat /proc/[pid]/status<br>查看当前进程的状态信息</p>
-</li>
-<li><p>cat /proc/[pid]/net/tcp/tcp6/udp/udp6OL<br>获取当前应用使用到的端口号信息</p>
-</li>
-</ul>
+            <h2 id="如何判断当前线程是否是主线程"><a href="#如何判断当前线程是否是主线程" class="headerlink" title="如何判断当前线程是否是主线程"></a>如何判断当前线程是否是主线程</h2><h3 id="1、使用Looper"><a href="#1、使用Looper" class="headerlink" title="1、使用Looper"></a>1、使用Looper</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMainThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Looper.getMainLooper() == Looper.myLooper();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMainThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Looper.getMainLooper().getThread() == Thread.currentThread();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isMainThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/06/10/4、计算机系统/2、Android/1、Android 基础/基本知识/AndroidStudio 配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/10/4、计算机系统/2、Android/1、Android 基础/基本知识/AndroidStudio 配置/" itemprop="url">
+                  Android Studio 配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-10 12:12:59" itemprop="dateCreated datePublished" datetime="2017-06-10T12:12:59+08:00">2017-06-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-08-09 11:20:57" itemprop="dateModified" datetime="2018-08-09T11:20:57+08:00">2018-08-09</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Android-Studio-配置"><a href="#Android-Studio-配置" class="headerlink" title="Android Studio 配置"></a>Android Studio 配置</h2><h3 id="1、支持中文项目路径"><a href="#1、支持中文项目路径" class="headerlink" title="1、支持中文项目路径"></a>1、支持中文项目路径</h3><p>windows 平台在如图所示的位置添加<strong><em>gradle.properties</em></strong>文件<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171128/F34DHBge1i.png?imageslim" alt="mark"><br>在新建的文件中添加<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">com.android.build.gradle.overridePathCheck=<span class="keyword">true</span></span><br></pre></td></tr></table></figure></p>
+<p>重新构建工程即可</p>
+<h3 id="2、网络代理"><a href="#2、网络代理" class="headerlink" title="2、网络代理"></a>2、网络代理</h3>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/06/10/4、计算机系统/1、Linux/1、常用Linux指令/Ubuntu常用的命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/10/4、计算机系统/1、Linux/1、常用Linux指令/Ubuntu常用的命令/" itemprop="url">
+                  Ubuntu常用的命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-10 10:42:59" itemprop="dateCreated datePublished" datetime="2017-06-10T10:42:59+08:00">2017-06-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-31 17:29:23" itemprop="dateModified" datetime="2019-01-31T17:29:23+08:00">2019-01-31</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Ubuntu常用的命令"><a href="#Ubuntu常用的命令" class="headerlink" title="Ubuntu常用的命令"></a>Ubuntu常用的命令</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br></pre></td><td class="code"><pre><span class="line">查看软件xxx安装内容：dpkg -L xxx</span><br><span class="line">查找软件库中的软件：apt-cache search 正则表达式</span><br><span class="line">查找软件库中的软件：aptitude search 软件包</span><br><span class="line">查找文件属于哪个包：dpkg -S filename</span><br><span class="line">查找文件属于哪个包：apt-file search filename</span><br><span class="line">查询软件xxx依赖哪些包：apt-cache depends xxx</span><br><span class="line">查询软件xxx被哪些包依赖：apt-cache rdepends xxx</span><br><span class="line">增加一个光盘源：sudo apt-cdrom add</span><br><span class="line">系统升级：sudo apt-get update;sudo apt-get dist-upgrade</span><br><span class="line">清除已删除包的残馀配置文件：dpkg -l |grep ^rc|awk ‘&#123;<span class="built_in">print</span> <span class="variable">$2</span>&#125;’ |sudo xargs dpkg -P</span><br><span class="line">编译时缺少h文件的自动处理：sudo auto-apt run ./configure</span><br><span class="line">查看安装软件时下载包的临时存放目录：ls /var/cache/apt/archives</span><br><span class="line">备份当前系统安装的所有包的列表：dpkg –get-selections | grep -v deinstall &gt; ~/somefile</span><br><span class="line">从备份的安装包的列表文件恢复所有包：dpkg –<span class="built_in">set</span>-selections &lt; ~/somefile;sudo dselect</span><br><span class="line">清理旧版本的软件缓存：sudo apt-get autoclean</span><br><span class="line">清理所有软件缓存：sudo apt-get clean</span><br><span class="line">删除系统不再使用的孤立软件：sudo apt-get autoremove</span><br><span class="line">查看包在服务器上面的地址：apt-get -qq –<span class="built_in">print</span>-uris install ssh | cut -d\’ -f2</span><br><span class="line">查看内核：uname -a</span><br><span class="line">查看Ubuntu版本：cat /etc/issue 或 lsb_release -a</span><br><span class="line">查看内核加载的模块：lsmod</span><br><span class="line">查看PCI设备：lspci</span><br><span class="line">查看USB设备：lsusb -v</span><br><span class="line">查看网卡状态：sudo ethtool eth0</span><br><span class="line">查看CPU信息：cat /proc/cpuinfo</span><br><span class="line">显示当前硬件信息：sudo lshw</span><br><span class="line">显示系统运行时间：uptime</span><br><span class="line">查看硬盘的分区：sudo fdisk -l</span><br><span class="line">硬盘分区：sudo fdisk /dev/sda</span><br><span class="line">硬盘格式化：sudo mkfs.ext3 /dev/sda1</span><br><span class="line">硬盘检查(请不要检查已经挂载的分区，否则容易损坏数据)：sudo fsck /dev/sda1</span><br><span class="line">分区挂载：sudo mount -t 文件系统类型 (-o nls=utf8 或 -o iocharset=utf8) 设备路经 访问路经</span><br><span class="line">分区卸载：sudo umount 目录名或设备名</span><br><span class="line">查看IDE硬盘信息：sudo hdparm -i /dev/hda</span><br><span class="line">查看STAT硬盘信息 ：sudo hdparm -I /dev/sda 或 sudo blktool /dev/sda id</span><br><span class="line">查看硬盘剩馀空间：df</span><br><span class="line">查看目录占用空间：du -hs 目录名</span><br><span class="line">优盘没法卸载：sync;fuser -km /media/usbdisk</span><br><span class="line">查看硬盘当前读写情况：sudo iostat -x 2</span><br><span class="line">查看当前的内存使用情况：free</span><br><span class="line">动态显示进程执行情况：top</span><br><span class="line">查看当前有哪些进程：ps -A</span><br><span class="line">查看当前进程树：pstree</span><br><span class="line">中止一个进程：<span class="built_in">kill</span> 进程号 或 killall 进程名</span><br><span class="line">强制中止一个进程：<span class="built_in">kill</span> -9 进程号 或 killall -9 进程名</span><br><span class="line">图形方式中止一个程序：xkill 出现骷髅标志的鼠标，点击需要中止的程序即可</span><br><span class="line">查看进程打开的文件：lsof -p</span><br><span class="line">显示开启文件abc.txt的进程 ：lsof abc.txt</span><br><span class="line">显示22端口现在运行什么程序 ：lsof -i :22</span><br><span class="line">显示nsd进程现在打开的文件 ：lsof -c nsd</span><br><span class="line">在后台运行程序，退出登录后，并不结束程序 ：nohup 程序 &amp;</span><br><span class="line">详细显示程序的运行信息 ：strace -f -F -o outfile</span><br><span class="line">增加系统最大打开文件个数：<span class="built_in">ulimit</span> -n 4096 或 <span class="built_in">echo</span> 4096 &gt; /proc/sys/fs/file-max</span><br><span class="line">配置 ADSL ：sudo pppoeconf</span><br><span class="line">ADSL手工拨号：sudo pon dsl-provider</span><br><span class="line">激活 ADSL：sudo /etc/ppp/pppoe_on_boot</span><br><span class="line">断开 ADSL ：sudo poff</span><br><span class="line">查看拨号日志：sudo plog</span><br><span class="line">如何设置动态域名：w3m -no-cookie -dump ‘http://usere:pass@members.3322.org/dyndns/update?system=dyndns&amp;hostname=yourdns.3322.org’</span><br><span class="line">根据IP查网卡地址 ：arping IP地址</span><br><span class="line">根据IP查电脑名 ：nmblookup -A IP地址</span><br><span class="line">查看当前IP地址 ：ifconfig eth0 |awk ‘/inet/ &#123;split(<span class="variable">$2</span>,x,”:”);<span class="built_in">print</span> x[2]&#125;’</span><br><span class="line">查看当前外网的IP地址 ：w3m -no-cookie -dump www.123cha.com|grep -o ‘[0-9]\&#123;1,3\&#125;\.[0-9]\&#123;1,3\&#125;\.[0-9]\&#123;1,3\&#125;\.[0-9]\&#123;1,3\&#125;’</span><br><span class="line">查看当前监听80端口的程序 ：lsof -i :80</span><br><span class="line">查看当前网卡的物理地址：arp -a | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$4</span>&#125;’</span><br><span class="line">同一个网卡增加第二个IP地址 ：sudo ifconfig eth0:0 1.2.3.4 netmask 255.255.255.0</span><br><span class="line">立即让网络支持nat ：<span class="built_in">echo</span> 1 | sudo tee /proc/sys/net/ipv4/ip_forward; sudo iptables -t nat -I POSTROUTING -j MASQUERADE</span><br><span class="line">查看路由信息：netstat -rn 或 sudo route -n</span><br><span class="line">手工增加一条路由 ：sudo route add -net 192.168.0.0 netmask 255.255.255.0 gw 172.16.0.1</span><br><span class="line">手工删除一条路由：sudo route del -net 192.168.0.0 netmask 255.255.255.0 gw 172.16.0.1</span><br><span class="line">修改网卡MAC地址的方法 ：sudo ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE</span><br><span class="line">统计当前IP连接的个数 ：netstat -na|grep ESTABLISHED|awk ‘&#123;<span class="built_in">print</span> <span class="variable">$5</span>&#125;’|awk -F: ‘&#123;<span class="built_in">print</span> <span class="variable">$1</span>&#125;’|sort|uniq -c|sort -r -n</span><br><span class="line">屏蔽IPV6 ：<span class="built_in">echo</span> ‘blacklist ipv6′ | sudo tee /etc/modprobe.d/blacklist-ipv6</span><br><span class="line">察看当前网络连接状况以及程序 ：sudo netstat -atnp</span><br><span class="line">查看ADSL的当前流量：sudo ethstatus -i ppp0</span><br><span class="line">查看域名的注册备案情况：whois baidu.cn</span><br><span class="line">查看到某一个域名的路由情况：tracepath baidu.cn</span><br><span class="line">重新从服务器获得IP地址 ：sudo dhclient</span><br><span class="line">下载网站文档：wget -r -p -np -k http://www.xxx.com</span><br><span class="line">如何5个线程下载：axel -n 5 http://www.xxx.com/downloadfile.zip</span><br><span class="line">添加一个服务：sudo update-rc.d 服务名 defaults 99</span><br><span class="line">删除一个服务 ：sudo update-rc.d 服务名 remove</span><br><span class="line">临时重启一个服务：/etc/init.d/服务名 restart</span><br><span class="line">临时关闭一个服务：/etc/init.d/服务名 stop</span><br><span class="line">临时启动一个服务：/etc/init.d/服务名 start</span><br><span class="line">增加用户：sudo adduser 用户名</span><br><span class="line">删除用户：sudo deluser 用户名</span><br><span class="line">修改当前用户的密码：passwd</span><br><span class="line">修改用户密码：sudo passwd 用户名</span><br><span class="line">修改用户资料：sudo chfn userid</span><br><span class="line">如何禁用某个帐户：sudo usermod -L 用户名 或 sudo passwd -l 用户名</span><br><span class="line">如何启用某个帐户：sudo usermod -U 用户名 或 sudo passwd -u 用户名</span><br><span class="line">增加用户到admin组：sudo usermod -G admin -a 用户名</span><br><span class="line">配置默认Java使用哪个 ：sudo update-alternatives –config java</span><br><span class="line">终端设置代理 ：<span class="built_in">export</span> http_proxy=http://xx.xx.xx.xx:xxx</span><br><span class="line">修改系统登录信息：sudo vim /etc/motd</span><br><span class="line">使用sun的java编译器：sudo update-java-alternatives -s java-6-sun</span><br><span class="line">切换输入法引擎：im-switch -c</span><br><span class="line">转换文件名由GBK为UTF8 ：convmv -r -f cp936 -t utf8 –notest –nosmart *</span><br><span class="line">转换文件内容由GBK到UTF8 ：iconv -f gbk -t utf8 <span class="variable">$i</span> &gt; newfile</span><br><span class="line">转换 mp3 标签编码 ：sudo apt-get install python-mutagen;find . -iname ‘*.mp3′ -execdir mid3iconv -e GBK &#123;&#125; \;</span><br><span class="line">控制台下显示中文 ：sudo apt-get install zhcon;zhcon –utf8 –drv=vga</span><br><span class="line">lftp 登录远程Windows中文FTP　：lftp :~&gt;<span class="built_in">set</span> ftp:charset GBK</span><br><span class="line">PDF 文件乱码 ：sudo apt-get install xpdf-chinese-simplified xpdf-chinese-traditional poppler-data</span><br><span class="line">一屏查看文件内容 ：cat 文件名</span><br><span class="line">分页查看文件内容：more 文件名</span><br><span class="line">可控分页查看文件内容：less 文件名</span><br><span class="line">根据字符串匹配来查看文件部分内容：grep 字符串 文件名</span><br><span class="line">显示包含字符串的文件名：grep -l -r 字符串 路径</span><br><span class="line">显示不包含字符串的文件名：grep -L -r 字符串 路径</span><br><span class="line">快速查找某个文件：find 目录 -name 文件名</span><br><span class="line">创建两个空文件：touch file1 file2</span><br><span class="line">递归式创建一些嵌套目录：mkdir –p /tmp/xxs/dsd/efd</span><br><span class="line">递归式删除嵌套目录：rm –fr /tmp/xxs</span><br><span class="line">回当前用户的宿主目录：<span class="built_in">cd</span> ~</span><br><span class="line">查看当前所在目录的绝对路经：<span class="built_in">pwd</span></span><br><span class="line">列出当前目录下的所有文件：ls -a</span><br><span class="line">移动路径下的文件并改名：mv 路径/文件 /新路径/新文件名</span><br><span class="line">复制文件或者目录：cp -av 原文件或原目录 新文件或新目录</span><br><span class="line">查看文件类型：file filename</span><br><span class="line">对比两个文件之间的差异：diff file1 file2</span><br><span class="line">显示xxx文件倒数6行的内容 ：tail -n 6 xxx</span><br><span class="line">不停地显示最新的内容 ：tail -n 10 -f /var/<span class="built_in">log</span>/apache2/access.log</span><br><span class="line">查看文件第五行到第10行的内容 ：sed -n ‘5,10p’ /var/<span class="built_in">log</span>/apache2/access.log</span><br><span class="line">查找关于xxx的命令 ：apropos xxx 或 man -k xxx</span><br><span class="line">通过ssh传输文件 ：scp -rp /path/filename username@remoteIP:/path</span><br><span class="line">把所有文件的后辍由rm改为rmvb ：rename ’s/.rm$/.rmvb/’ *</span><br><span class="line">把所有文件名中的大写改为小写：rename ‘tr/A-Z/a-z/’ *</span><br><span class="line">删除特殊文件名 –help.txt 的文件：rm — –help.txt 或 rm ./–help.txt</span><br><span class="line">查看当前目录的子目录：ls -d */. 或 <span class="built_in">echo</span> */.</span><br><span class="line">将最近30天访问过的文件移动到上级back目录 ：find . -<span class="built_in">type</span> f -atime -30 -<span class="built_in">exec</span> mv &#123;&#125; ../back \;</span><br><span class="line">显示一小时以内的包含 xxxx 的文件：find . -<span class="built_in">type</span> f -mmin -60|xargs -i grep -l xxxx ‘&#123;&#125;’</span><br><span class="line">显示最近2小时到8小时之内的文件：find . -mmin +120 -mmin -480 -<span class="built_in">exec</span> more &#123;&#125; \;</span><br><span class="line">删除修改时间在30天之前的文件 ：find . -<span class="built_in">type</span> f -mtime +30 -mtime -3600 -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line">删除创建时间在30天之前的文件 ：find . -<span class="built_in">type</span> f -ctime +30 -ctime -3600 -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line">删除掉guest的以avi或rm结尾的文件：find . -name ‘*.avi’ -o -name ‘*.rm’ -user ‘guest’ -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line">删除掉不以java和xml结尾7天没有使用的文件 ：find . ! -name *.java ! -name ‘*.xml’ -atime +7 -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line">删除所有的 .svn 目录 ：find . -name .svn -<span class="built_in">type</span> d -<span class="built_in">exec</span> rm -fr &#123;&#125; \;</span><br><span class="line">删除所有以“~”结尾的临时文件 ：find . -name ‘*~’ -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line"></span><br><span class="line">统计当前文件个数：ls .|wc -w</span><br><span class="line">统计当前目录个数：ls -l |grep ^d|wc -l</span><br><span class="line">显示当前目录下2006-01-01的文件名 ：ls -l |grep 2006-01-01 |awk ‘&#123;<span class="built_in">print</span> <span class="variable">$8</span>&#125;’</span><br><span class="line">使用ssh方式同步远程数据到本地目录 ：rsync -Pa -I –size-only –delete –timeout=300 Remote_IP:/home/ubuntu /backup</span><br><span class="line">增加 7Z 压缩软件：sudo apt-get install p7zip p7zip-full p7zip-rar</span><br><span class="line">增加 rar 软件压缩和解压缩支持 ：sudo apt-get install rar unrar</span><br><span class="line">解压缩 xxx.tar.gz ：tar -zxvf xxx.tar.gz</span><br><span class="line">解压缩 xxx.tar.bz2 ：tar -jxvf xxx.tar.bz2</span><br><span class="line">压缩aaa bbb目录为xxx.tar.gz ：tar -zcvf xxx.tar.gz aaa bbb</span><br><span class="line">压缩aaa bbb目录为xxx.tar.bz2 ：tar -jcvf xxx.tar.bz2 aaa bbb</span><br><span class="line">增加 lha 支持 ：sudo apt-get install lha</span><br><span class="line">增加解 cab 文件支持 ：sudo apt-get install cabextract</span><br><span class="line">显示日历：cal</span><br><span class="line">设置日期：date -s mm/dd/yy</span><br><span class="line">设置时间：date -s HH:MM</span><br><span class="line">将时间写入CMOS ：hwclock –systohc</span><br><span class="line">查看CMOS时间 ：hwclock –show</span><br><span class="line">读取CMOS时间 ：hwclock –hctosys</span><br><span class="line">从服务器上同步时间 ：sudo ntpdate ntp.ubuntu.com</span><br><span class="line">设置电脑的时区为上海：sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">关闭UTC，将当前时间写入CMOS。：sudo sed -ie ’s/UTC=yes/UTC=no/g’ /etc/default/rcS;sudo hwclock –systohc</span><br><span class="line">修改mysql的root口令 ：sudo mysqladmin -u root -p password ‘你的新密码’</span><br><span class="line">如何使用命令关闭显示器 ：xset dpms force off</span><br><span class="line">设置CPU的频率 ：sudo apt-get install cpufrequtils;sudo cpufreq-info</span><br><span class="line">命令关机：sudo halt</span><br><span class="line">现在关机：sudo shutdown -h now</span><br><span class="line">晚上11点自动关机：sudo shutdown -h 23:00</span><br><span class="line">60分钟后关机：sudo shutdown -h +60</span><br><span class="line">命令重启电脑：sudo reboot</span><br><span class="line">现在重启电脑：sudo shutdown -r now</span><br><span class="line">关闭笔记本的触摸板 ：synclient touchpadoff=1</span><br><span class="line">开启笔记本的触摸板：synclient touchpadoff=0</span><br><span class="line">统计每个单词的出现频率并排序 ：awk ‘&#123;arr[<span class="variable">$1</span>]+=1 &#125;END&#123;<span class="keyword">for</span>(i <span class="keyword">in</span> arr)&#123;<span class="built_in">print</span> arr[i]“\t”i&#125;&#125;’ FILE_NAME | sort -rn</span><br><span class="line">统计80端口的连接并排序 ：netstat -na|grep :80|awk ‘&#123;<span class="built_in">print</span> <span class="variable">$5</span>&#125;’|awk -F: ‘&#123;<span class="built_in">print</span> <span class="variable">$1</span>&#125;’|sort|uniq -c|sort -r -n</span><br><span class="line">把终端加到右键菜单：sudo apt-get install nautilus-open-terminal</span><br><span class="line">如何删除Totem电影播放机的播放历史记录 ：rm ~/.recently-used</span><br><span class="line">vim 如何显示彩色字符 ：sudo cp /usr/share/vim/vimcurrent/vimrc_example.vim /usr/share/vim/vimrc</span><br><span class="line">让 vim 直接支持编辑 .gz 文件 ：sudo apt-get install vim-full</span><br><span class="line">vim 如何显示行号：:<span class="built_in">set</span> number</span><br><span class="line">查看在会话设置的启动程序：ls ~/.config/autostart</span><br><span class="line">提高wine的反应速度 ：sudo sed -ie ‘/GBK/,/^&#125;/d’ /usr/share/X11/locale/zh_CN.UTF-8/XLC_LOCALE</span><br><span class="line">制作ISO文件：mkisofs -o test.iso -Jrv -V test_disk /home/carla/</span><br><span class="line">延迟10秒抓图：gnome-screenshot -d 10</span><br><span class="line">延迟5秒抓当前激活窗口：gnome-screenshot -w -d 5</span><br><span class="line">如何命令行刻录：cdrecord -scanbus;cdrecord -v -eject speed=8 dev=1,1,0 test.iso</span><br><span class="line">回收站在哪里：~/.<span class="built_in">local</span>/share/Trash/</span><br><span class="line">默认打开方式的配置文件在哪里：~/.<span class="built_in">local</span>/share/applications/mimeapps.list</span><br><span class="line">如何查看HTTP头：w3m -dump_head http://www.xxx.com</span><br><span class="line">连续监视内存使用情况：watch -d free</span><br><span class="line">如何切换到root帐号：sudo -Hs</span><br><span class="line">只读挂载ntfs分区：sudo mount -t ntfs -o nls=utf8,<span class="built_in">umask</span>=0 /dev/sdb1 /mnt/c</span><br><span class="line">可写挂载ntfs分区：sudo mount -t ntfs-3g -o locale=zh_CN.utf8,<span class="built_in">umask</span>=0 /dev/sdb1 /mnt/c</span><br><span class="line">挂载fat32分区：sudo mount -t vfat -o iocharset=utf8,<span class="built_in">umask</span>=0 /dev/sda1 /mnt/c</span><br><span class="line">挂载共享文件：sudo mount -t smbfs -o username=xxx,password=xxx,iocharset=utf8 //192.168.1.1/share /mnt/share</span><br><span class="line">挂载ISO文件：sudo mount -t iso9660 -o loop,utf8 xxx.iso /mnt/iso</span><br><span class="line">带行号显示文件的内容：nl 文件名</span><br><span class="line">批 量将rmvb转为avi：<span class="keyword">for</span> i <span class="keyword">in</span> *; <span class="keyword">do</span> mencoder -oac mp3lame -lameopts vbr=3 -ovcxvid -xvidencopts fixed_quant=4 -of avi <span class="variable">$i</span> -o `<span class="built_in">echo</span> <span class="variable">$i</span> | sed -e’s/rmvb$/avi/’`; <span class="keyword">done</span></span><br><span class="line">批量将svg转为png：<span class="keyword">for</span> i <span class="keyword">in</span> *; <span class="keyword">do</span> inkscape <span class="variable">$i</span> –<span class="built_in">export</span>-png=`<span class="built_in">echo</span> <span class="variable">$i</span> | sed -e ’s/svg$/png/’`; <span class="keyword">done</span></span><br><span class="line">批量缩小图片到30%：<span class="keyword">for</span> i <span class="keyword">in</span> *; <span class="keyword">do</span> convert -resize 30%x30% <span class="variable">$1</span> sm-<span class="variable">$1</span>; <span class="keyword">done</span></span><br><span class="line">批量转换jpg到png：<span class="keyword">for</span> i <span class="keyword">in</span> *; <span class="keyword">do</span> convert <span class="variable">$i</span> `<span class="built_in">echo</span> <span class="variable">$i</span> | sed -e ’s/jpg$/png/’`; <span class="keyword">done</span></span><br><span class="line">获取jpg的扩展信息(Exif)：identify -verbose xxx.jpg</span><br><span class="line">查看当前系统所有的监听端口：nc -zv localhost 1-65535</span><br><span class="line">去掉文件中的^M：cat filename | tr -d “^M” &gt; newfile</span><br><span class="line">去掉文件中的^M：sed -e “s/^M//g” filename &gt; newfile</span><br><span class="line">转换bin/cue到iso文件：sudo apt-get install bchunk;bchunk image.bin image.cue image</span><br><span class="line">转换目录到iso文件：mkisofs dirname -o isofile.iso</span><br><span class="line">转换CD到iso文件：dd <span class="keyword">if</span>=/dev/cdrom of=isofile.iso</span><br><span class="line">ape 转换为flac：sudo apt-get install flac shntool;shntool split -t“%n.%p-%t” -f example_UTF-8.cue -o flac example.ape -d flacOutputDir</span><br><span class="line">ape转换为 mp3：sudo apt-get install flac shntool lame;shntool split -t“%n.%p-%t” -f example_UTF-8.cue -o ‘cust ext=mp3 lame –r3mix -b 320–quiet – %f’ example.ape -d mp3OutputDir</span><br><span class="line">检查本地是否存在安全隐患：sudo apt-get install rkhunter;rkhunter –checkall</span><br><span class="line">如何安装杀毒软件：sudo apt-get install clamav;clamscan -r ~/</span><br><span class="line">查看网络连接状态：netstat -n | awk ‘/^tcp/ &#123;++S[<span class="variable">$NF</span>]&#125; END &#123;<span class="keyword">for</span>(a <span class="keyword">in</span> S) <span class="built_in">print</span> a, S[a]&#125;’</span><br><span class="line">统计程序的内存耗用：ps -eo fname,rss|awk ‘&#123;arr[<span class="variable">$1</span>]+=<span class="variable">$2</span>&#125; END &#123;<span class="keyword">for</span> (i <span class="keyword">in</span> arr) &#123;<span class="built_in">print</span> i,arr[i]&#125;&#125;’|sort -k2 -nr</span><br><span class="line">显示当前内存大小：free -m |grep “Mem” | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$2</span>&#125;’</span><br><span class="line">按内存从大到小排列进程：ps -eo “%C : %p : %z : %a”|sort -k5 -nr</span><br><span class="line">按cpu利用率从大到小排列进程：ps -eo “%C : %p : %z : %a”|sort -nr</span><br><span class="line">统计当前目录下所有jpg文件的尺寸：find . -name *.jpg -<span class="built_in">exec</span> wc -c &#123;&#125; \;|awk ‘&#123;<span class="built_in">print</span> <span class="variable">$1</span>&#125;’|awk ‘&#123;a+=<span class="variable">$1</span>&#125;END&#123;<span class="built_in">print</span> a&#125;’</span><br><span class="line"></span><br><span class="line">清除僵死进程：ps -eal | awk ‘&#123; <span class="keyword">if</span> (<span class="variable">$2</span> == “Z”) &#123;<span class="built_in">print</span> <span class="variable">$4</span>&#125;&#125;’ | sudo <span class="built_in">kill</span> -9</span><br><span class="line">CD 抓轨为 mp3 (有损)：sudo apt-get install abcde;abcde -o mp3 -b</span><br><span class="line">CD 抓轨为 Flac (无损)：sudo apt-get install abcde;abcde -o flac -b</span><br><span class="line">显示系统安装包的统计信息：apt-cache stats</span><br><span class="line">显示系统全部可用包的名称：apt-cache pkgnames</span><br><span class="line">显示包的信息：apt-cache show k3b</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/06/01/4、计算机系统/2、Android/1、Android 基础/基本组件/RecycleView_LinearLayoutManager-reverseLayout 和 stackFromEnd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/01/4、计算机系统/2、Android/1、Android 基础/基本组件/RecycleView_LinearLayoutManager-reverseLayout 和 stackFromEnd/" itemprop="url">
+                  RecycleView_LinearLayoutManager-reverseLayout 和 stackFromEnd
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-01 09:12:42" itemprop="dateCreated datePublished" datetime="2017-06-01T09:12:42+08:00">2017-06-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-06-01 09:26:15" itemprop="dateModified" datetime="2018-06-01T09:26:15+08:00">2018-06-01</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="LinearLayoutManager-api-reverseLayout-和-stackFromEnd"><a href="#LinearLayoutManager-api-reverseLayout-和-stackFromEnd" class="headerlink" title="LinearLayoutManager api-reverseLayout 和 stackFromEnd"></a>LinearLayoutManager api-reverseLayout 和 stackFromEnd</h2><p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180601/Lc3gfeIIL9.png?imageslim" alt="mark"></p>
 
           
         
@@ -1995,7 +1830,7 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2038,8 +1873,8 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">80</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2087,10 +1922,8 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">18</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -2143,7 +1976,7 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -2157,7 +1990,7 @@ NativeType  Call&lt;type&gt;Method (JNIEnv*env,jclass classzz , jfieldID fieldID
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 

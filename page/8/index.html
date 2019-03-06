@@ -223,7 +223,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -231,7 +231,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/10/3、Android/1、Android 基础/基本知识/组件相关/EditText 输入金额/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/08/11/3、开发语言/3、Java/1、java 基础/byte[]数组和int之间的转换/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -301,8 +301,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/03/10/3、Android/1、Android 基础/基本知识/组件相关/EditText 输入金额/" itemprop="url">
-                  EditText 输入金额
+                <a class="post-title-link" href="/2016/08/11/3、开发语言/3、Java/1、java 基础/byte[]数组和int之间的转换/" itemprop="url">
+                  byte[]数组和int之间的转换
                 </a>
               
             
@@ -321,14 +321,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2016-03-10T11:42:59+08:00">2016-03-10</time>
+              <time title="Created: 2016-08-11 16:02:59" itemprop="dateCreated datePublished" datetime="2016-08-11T16:02:59+08:00">2016-08-11</time>
             
 
             
@@ -345,7 +345,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2017-11-16 17:11:21" itemprop="dateModified" datetime="2017-11-16T17:11:21+08:00">2017-11-16</time>
+                <time title="Modified: 2018-08-08 19:18:40" itemprop="dateModified" datetime="2018-08-08T19:18:40+08:00">2018-08-08</time>
               
             
           </span>
@@ -380,17 +380,219 @@
       
         
           
-            <h1 id="EditText-输入金额"><a href="#EditText-输入金额" class="headerlink" title="EditText 输入金额"></a>EditText 输入金额</h1><h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>1、 首先需要将EditText的InputType设置成如下格式，保证用户只能输入小数点和数字</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">android:inputType=<span class="string">"numberDecimal"</span></span><br><span class="line">#或者</span><br><span class="line">setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL)</span><br></pre></td></tr></table></figure>
-<p>2、 接下来有两种实现方式</p>
+            <h2 id="byte-数组和int之间的转换"><a href="#byte-数组和int之间的转换" class="headerlink" title="byte[]数组和int之间的转换"></a>byte[]数组和int之间的转换</h2><h3 id="1、int与byte-之间的转换（类似的byte-short-long型）"><a href="#1、int与byte-之间的转换（类似的byte-short-long型）" class="headerlink" title="1、int与byte[]之间的转换（类似的byte short,long型）"></a>1、int与byte[]之间的转换（类似的byte short,long型）</h3><p>int转byte[]<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * 将int数值转换为占四个字节的byte数组，本方法适用于(低位在前，高位在后)的顺序。 和bytesToInt（）配套使用 </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> value  </span></span><br><span class="line"><span class="comment">    *            要转换的int值 </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> byte数组 </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] intToBytes( <span class="keyword">int</span> value )   </span><br><span class="line">&#123;   </span><br><span class="line">    <span class="keyword">byte</span>[] src = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];  </span><br><span class="line">    src[<span class="number">3</span>] =  (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">24</span>) &amp; <span class="number">0xFF</span>);  </span><br><span class="line">    src[<span class="number">2</span>] =  (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">16</span>) &amp; <span class="number">0xFF</span>);  </span><br><span class="line">    src[<span class="number">1</span>] =  (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">8</span>) &amp; <span class="number">0xFF</span>);    </span><br><span class="line">    src[<span class="number">0</span>] =  (<span class="keyword">byte</span>) (value &amp; <span class="number">0xFF</span>);                  </span><br><span class="line">    <span class="keyword">return</span> src;   </span><br><span class="line">&#125;  </span><br><span class="line"> <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * 将int数值转换为占四个字节的byte数组，本方法适用于(高位在前，低位在后)的顺序。  和bytesToInt2（）配套使用 </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] intToBytes2(<span class="keyword">int</span> value)   </span><br><span class="line">&#123;   </span><br><span class="line">    <span class="keyword">byte</span>[] src = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];  </span><br><span class="line">    src[<span class="number">0</span>] = (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">24</span>) &amp; <span class="number">0xFF</span>);  </span><br><span class="line">    src[<span class="number">1</span>] = (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">16</span>)&amp; <span class="number">0xFF</span>);  </span><br><span class="line">    src[<span class="number">2</span>] = (<span class="keyword">byte</span>) ((value&gt;&gt;<span class="number">8</span>)&amp;<span class="number">0xFF</span>);    </span><br><span class="line">    src[<span class="number">3</span>] = (<span class="keyword">byte</span>) (value &amp; <span class="number">0xFF</span>);       </span><br><span class="line">    <span class="keyword">return</span> src;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>byte[]转int<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * byte数组中取int数值，本方法适用于(低位在前，高位在后)的顺序，和和intToBytes（）配套使用 </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> src  </span></span><br><span class="line"><span class="comment">    *            byte数组  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> offset  </span></span><br><span class="line"><span class="comment">    *            从数组的第offset位开始  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> int数值  </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bytesToInt</span><span class="params">(<span class="keyword">byte</span>[] src, <span class="keyword">int</span> offset)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> value;    </span><br><span class="line">    value = (<span class="keyword">int</span>) ((src[offset] &amp; <span class="number">0xFF</span>)   </span><br><span class="line">            | ((src[offset+<span class="number">1</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">8</span>)   </span><br><span class="line">            | ((src[offset+<span class="number">2</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">16</span>)   </span><br><span class="line">            | ((src[offset+<span class="number">3</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">24</span>));  </span><br><span class="line">    <span class="keyword">return</span> value;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"> <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * byte数组中取int数值，本方法适用于(低位在后，高位在前)的顺序。和intToBytes2（）配套使用 </span></span><br><span class="line"><span class="comment">    */</span>  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bytesToInt2</span><span class="params">(<span class="keyword">byte</span>[] src, <span class="keyword">int</span> offset)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> value;    </span><br><span class="line">    value = (<span class="keyword">int</span>) ( ((src[offset] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">24</span>)  </span><br><span class="line">            |((src[offset+<span class="number">1</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">16</span>)  </span><br><span class="line">            |((src[offset+<span class="number">2</span>] &amp; <span class="number">0xFF</span>)&lt;&lt;<span class="number">8</span>)  </span><br><span class="line">            |(src[offset+<span class="number">3</span>] &amp; <span class="number">0xFF</span>));  </span><br><span class="line">    <span class="keyword">return</span> value;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2、int与byte-之间的转换（类似的byte-short-long型）"><a href="#2、int与byte-之间的转换（类似的byte-short-long型）" class="headerlink" title="2、int与byte[]之间的转换（类似的byte short,long型）"></a>2、int与byte[]之间的转换（类似的byte short,long型）</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * 将int数值转换为占四个字节的byte数组，本方法适用于(低位在前，高位在后)的顺序。  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> value  </span></span><br><span class="line"><span class="comment">    *            要转换的int值 </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> byte数组 </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] intToBytes(<span class="keyword">int</span> value)   </span><br><span class="line">&#123;   </span><br><span class="line">    <span class="keyword">byte</span>[] byte_src = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];  </span><br><span class="line">    byte_src[<span class="number">3</span>] = (<span class="keyword">byte</span>) ((value &amp; <span class="number">0xFF000000</span>)&gt;&gt;<span class="number">24</span>);  </span><br><span class="line">    byte_src[<span class="number">2</span>] = (<span class="keyword">byte</span>) ((value &amp; <span class="number">0x00FF0000</span>)&gt;&gt;<span class="number">16</span>);  </span><br><span class="line">    byte_src[<span class="number">1</span>] = (<span class="keyword">byte</span>) ((value &amp; <span class="number">0x0000FF00</span>)&gt;&gt;<span class="number">8</span>);    </span><br><span class="line">    byte_src[<span class="number">0</span>] = (<span class="keyword">byte</span>) ((value &amp; <span class="number">0x000000FF</span>));          </span><br><span class="line">    <span class="keyword">return</span> byte_src;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**  </span></span><br><span class="line"><span class="comment">    * byte数组中取int数值，本方法适用于(低位在前，高位在后)的顺序。 </span></span><br><span class="line"><span class="comment">    *   </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> ary  </span></span><br><span class="line"><span class="comment">    *            byte数组  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> offset  </span></span><br><span class="line"><span class="comment">    *            从数组的第offset位开始  </span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> int数值  </span></span><br><span class="line"><span class="comment">    */</span>    </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bytesToInt</span><span class="params">(<span class="keyword">byte</span>[] ary, <span class="keyword">int</span> offset)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> value;    </span><br><span class="line">    value = (<span class="keyword">int</span>) ((ary[offset]&amp;<span class="number">0xFF</span>)   </span><br><span class="line">            | ((ary[offset+<span class="number">1</span>]&lt;&lt;<span class="number">8</span>) &amp; <span class="number">0xFF00</span>)  </span><br><span class="line">            | ((ary[offset+<span class="number">2</span>]&lt;&lt;<span class="number">16</span>)&amp; <span class="number">0xFF0000</span>)   </span><br><span class="line">            | ((ary[offset+<span class="number">3</span>]&lt;&lt;<span class="number">24</span>) &amp; <span class="number">0xFF000000</span>));  </span><br><span class="line">    <span class="keyword">return</span> value;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/08/10/3、开发语言/3、Java/1、java 基础/java Random/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/10/3、开发语言/3、Java/1、java 基础/java Random/" itemprop="url">
+                  java 中的Random
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-08-10 16:02:59" itemprop="dateCreated datePublished" datetime="2016-08-10T16:02:59+08:00">2016-08-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-08-06 10:06:20" itemprop="dateModified" datetime="2018-08-06T10:06:20+08:00">2018-08-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="java-中的Random"><a href="#java-中的Random" class="headerlink" title="java 中的Random"></a>java 中的Random</h2><p>Java中存在着两种Random函数：</p>
+<h3 id="一、java-lang-Math-Random"><a href="#一、java-lang-Math-Random" class="headerlink" title="一、java.lang.Math.Random:"></a>一、java.lang.Math.Random:</h3><p>调用这个Math.Random()函数能够返回带正号的double值，该值大于等于0.0且小于1.0，即取值范围是[0.0,1.0)的左闭右开区间，返回值是一个伪随机数，在该范围内(近似)均匀分布。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Math.Random() 函数产生的随机数:<span class="number">0.9956775355643588</span></span><br><span class="line">Math.Random() 函数产生的随机数:<span class="number">0.3452454357686029</span></span><br><span class="line">Math.Random() 函数产生的随机数:<span class="number">0.9489235373049734</span></span><br><span class="line">Math.Random() 函数产生的随机数:<span class="number">0.5280729775003039</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="二、java-util-Random"><a href="#二、java-util-Random" class="headerlink" title="二、java.util.Random:"></a>二、java.util.Random:</h3><p>Random类是伪随机数的产生器。之所以称之为伪随机数是因为它们是简单的均匀分布序列。Random定义了下面的构造函数。 </p>
 <ul>
-<li>EditText 添加TextWatcher监听<br>具体实现如下<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">editText.addTextChangedListener(<span class="keyword">new</span> TextWatcher() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before,<span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">                   #判断是否含有“.”</span><br><span class="line">            <span class="keyword">if</span> (s.toString().contains(<span class="string">"."</span>)) &#123;</span><br><span class="line">                   #判断小数点后位数是否大于2</span><br><span class="line">               <span class="keyword">if</span> (s.length() - <span class="number">1</span> - s.toString().indexOf(<span class="string">"."</span>) &gt; <span class="number">2</span>) &#123;</span><br><span class="line">                       s = s.toString().subSequence(<span class="number">0</span>, s.toString().indexOf(<span class="string">"."</span>) + <span class="number">3</span>);</span><br><span class="line">                       editText.setText(s);</span><br><span class="line">                       editText.setSelection(s.length());</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">                 #判断输入是否从“.”开始</span><br><span class="line">           <span class="keyword">if</span> (s.toString().trim().substring(<span class="number">0</span>).equals(<span class="string">"."</span>)) &#123;</span><br><span class="line">                   s = <span class="string">"0"</span> + s;</span><br><span class="line">                   editText.setText(s);</span><br><span class="line">                   editText.setSelection(<span class="number">2</span>);</span><br><span class="line">               &#125;</span><br><span class="line">                 #判断输入是否从0开始，并且长度大于1</span><br><span class="line">            <span class="keyword">if</span> (s.toString().startsWith(<span class="string">"0"</span>) &amp;&amp; s.toString().trim().length() &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                 #判断第二个字符不是“.”</span><br><span class="line">                   <span class="keyword">if</span> (!s.toString().substring(<span class="number">1</span>, <span class="number">2</span>).equals(<span class="string">"."</span>)) &#123;</span><br><span class="line">                       editText.setText(s.subSequence(<span class="number">0</span>, <span class="number">1</span>));</span><br><span class="line">                       editText.setSelection(<span class="number">1</span>);</span><br><span class="line">                       <span class="keyword">return</span>;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> count, <span class="keyword">int</span> after)</span> </span>&#123;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable s)</span> </span>&#123;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br></pre></td></tr></table></figure>
-</li>
+<li>Random() 创建一个新的随机数生成器。</li>
+<li>Random(long seed) 使用单个 long 种子创建一个新的随机数生成器。<br>第一种形式创建一个使用当前时间作为起始值或称为初始值的数字发生器。第二种形式允许人为指定一个初值。<br>如果用初值初始化了一个Random对象，就对随机序列定义了起始点。如果用相同的初值初始化另一个Random对象，将获得同一随机序列。如果要生成不同的序列，应当指定不同的初值。实现这种处理的最简单的方法是使用当前时间作为产生Random对象的初值。这种方法减少了得到相同序列的可能性。<br>下面是Java.util.Random()方法摘要：</li>
 </ul>
-<ul>
-<li>EditText 设置 自定义InputFilter</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">#创建自定义InputFilter</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MoneyInputFilter</span> <span class="keyword">implements</span> <span class="title">InputFilter</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    Pattern mPattern;    </span><br><span class="line">    <span class="comment">//输入的最大金额    </span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_VALUE = Integer.MAX_VALUE;    </span><br><span class="line">    <span class="comment">//小数点后的位数    </span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> POINTER_LENGTH = <span class="number">2</span>;    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String POINTER = <span class="string">"."</span>;    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String ZERO = <span class="string">"0"</span>;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MoneyInputFilter</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        mPattern = Pattern.compile(<span class="string">"([0-9]|\\.)*"</span>);    </span><br><span class="line">    &#125;    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">/**  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> source    新输入的字符串  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> start     新输入的字符串起始下标，一般为0  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> end       新输入的字符串终点下标，一般为source长度-1  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dest      输入之前文本框内容  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dstart    原内容起始坐标，一般为0  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> dend      原内容终点坐标，一般为dest长度-1  </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span>          输入内容  </span></span><br><span class="line"><span class="comment">     */</span>    </span><br><span class="line">    <span class="meta">@Override</span>    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> CharSequence <span class="title">filter</span><span class="params">(CharSequence source, <span class="keyword">int</span> start, <span class="keyword">int</span> end, Spanned dest, <span class="keyword">int</span> dstart, <span class="keyword">int</span> dend)</span> </span>&#123;    </span><br><span class="line">        String sourceText = source.toString();    </span><br><span class="line">        String destText = dest.toString();  </span><br><span class="line">        <span class="comment">//验证删除等按键    </span></span><br><span class="line">        <span class="keyword">if</span> (TextUtils.isEmpty(sourceText)) &#123;    </span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;    </span><br><span class="line">        &#125;    </span><br><span class="line">        Matcher matcher = mPattern.matcher(source);    </span><br><span class="line">        <span class="comment">//已经输入小数点的情况下，只能输入数字    </span></span><br><span class="line">        <span class="keyword">if</span>(destText.contains(POINTER)) &#123;    </span><br><span class="line">            <span class="keyword">if</span> (!matcher.matches()) &#123;    </span><br><span class="line">                <span class="keyword">return</span> <span class="string">""</span>;    </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;    </span><br><span class="line">                <span class="keyword">if</span> (POINTER.equals(source.toString())) &#123;  <span class="comment">//只能输入一个小数点  </span></span><br><span class="line">                    <span class="keyword">return</span> <span class="string">""</span>;    </span><br><span class="line">                &#125;    </span><br><span class="line">            &#125;    </span><br><span class="line">            <span class="comment">//验证小数点精度，保证小数点后只能输入两位    </span></span><br><span class="line">            <span class="keyword">int</span> index = destText.indexOf(POINTER);    </span><br><span class="line">            <span class="keyword">int</span> length = dend - index;    </span><br><span class="line">    </span><br><span class="line">            <span class="keyword">if</span> (length &gt; POINTER_LENGTH) &#123;    </span><br><span class="line">                <span class="keyword">return</span> dest.subSequence(dstart, dend);  </span><br><span class="line">            &#125;    </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">            <span class="comment">/** </span></span><br><span class="line"><span class="comment">             * 没有输入小数点的情况下，只能输入小数点和数字 </span></span><br><span class="line"><span class="comment">             * 1. 首位不能输入小数点 </span></span><br><span class="line"><span class="comment">             * 2. 如果首位输入0，则接下来只能输入小数点了 </span></span><br><span class="line"><span class="comment">             */</span>  </span><br><span class="line">            <span class="keyword">if</span> (!matcher.matches()) &#123;    </span><br><span class="line">                <span class="keyword">return</span> <span class="string">""</span>;    </span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;    </span><br><span class="line">                <span class="keyword">if</span> ((POINTER.equals(source.toString())) &amp;&amp; TextUtils.isEmpty(destText)) &#123;  <span class="comment">//首位不能输入小数点  </span></span><br><span class="line">                    <span class="keyword">return</span> <span class="string">""</span>;  </span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!POINTER.equals(source.toString()) &amp;&amp; ZERO.equals(destText)) &#123; <span class="comment">//如果首位输入0，接下来只能输入小数点  </span></span><br><span class="line">                    <span class="keyword">return</span> <span class="string">""</span>;  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;    </span><br><span class="line">        &#125;    </span><br><span class="line">        <span class="comment">//验证输入金额的大小  </span></span><br><span class="line">        <span class="keyword">double</span> sumText = Double.parseDouble(destText + sourceText);  </span><br><span class="line">        <span class="keyword">if</span> (sumText &gt; MAX_VALUE) &#123;    </span><br><span class="line">            <span class="keyword">return</span> dest.subSequence(dstart, dend);    </span><br><span class="line">        &#125;    </span><br><span class="line">        <span class="keyword">return</span> dest.subSequence(dstart, dend) + sourceText;    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;  </span><br><span class="line">##添加 inputFilter</span><br><span class="line">InputFilter[] filters = &#123; <span class="keyword">new</span> CashierInputFIlter()  &#125;;</span><br><span class="line">editText.setFilters(filters);</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>protected int next(int bits)</td>
+<td>生成下一个伪随机数</td>
+</tr>
+<tr>
+<td>boolean nextBoolean()</td>
+<td>返回下一个伪随机数，它是取自此随机数生成器序列的均匀分布的boolean值</td>
+</tr>
+<tr>
+<td>void nextBytes(byte[] bytes)</td>
+<td>生成随机字节并将其置于用户提供的 byte 数组中</td>
+</tr>
+<tr>
+<td>double nextDouble()</td>
+<td>返回下一个伪随机数，它是取自此随机数生成器序列的、在0.0和1.0之间均匀分布的 double值</td>
+</tr>
+<tr>
+<td>float nextFloat()</td>
+<td>返回下一个伪随机数，它是取自此随机数生成器序列的、在0.0和1.0之间均匀分布float值</td>
+</tr>
+<tr>
+<td>double nextGaussian()</td>
+<td>返回下一个伪随机数，它是取自此随机数生成器序列的、呈高斯（“正态”）分布的double值，其平均值是0.0标准差是1.0</td>
+</tr>
+<tr>
+<td>int nextInt()</td>
+<td>返回下一个伪随机数，它是此随机数生成器的序列中均匀分布的 int 值</td>
+</tr>
+<tr>
+<td>int nextInt(int n)</td>
+<td>返回一个伪随机数，它是取自此随机数生成器序列的、在（包括和指定值（不包括）之间均匀分布的int值</td>
+</tr>
+<tr>
+<td>long nextLong()</td>
+<td>返回下一个伪随机数，它是取自此随机数生成器序列的均匀分布的 long 值</td>
+</tr>
+<tr>
+<td>void setSeed(long seed)</td>
+<td>使用单个 long 种子设置此随机数生成器的种子</td>
+</tr>
+</tbody>
+</table>
+<p>正如你能看到的，从Random对象中可以提取七种类型的随机数。从nextBoolean()方法中可以获得随机布尔数。通过调用nextBytes()方法获得随机字节数。通过调用nextInt()方法可以获得随机整型数。通过调用nextLong()方法可以获得均匀分布的长整型随机数。通过调用nextFloat()和nextDouble()方法可以分别得到在0.0到1.0之间的，均匀分布的float和double随机数。最后，调用nextGaussian()方法返回中心在0.0，标准偏差为1.0的double值，这就是著名的钟形曲线。</p>
+<h3 id="三、Random类使用示例"><a href="#三、Random类使用示例" class="headerlink" title="三、Random类使用示例"></a>三、Random类使用示例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Random r = <span class="keyword">new</span> Random()</span><br><span class="line">生成[<span class="number">0</span>, <span class="number">1.0</span>）区间的小数：<span class="keyword">double</span> d1 = r.nextDouble();直接使用nextDouble方法获得。</span><br><span class="line">生成[<span class="number">0</span>, <span class="number">5.0</span>)区间的小数：<span class="keyword">double</span> d2  r.nextDouble()*<span class="number">5</span>;因为nextDouble方法生成的数字区间是[<span class="number">0</span>, <span class="number">1.0</span>)，将该区间扩大<span class="number">5</span>倍即是要求的区间。同理，生成[<span class="number">0</span>, d)区间的随机小数，d为任意正的小数，则只需要将nextDouble方法的返回值乘以d即可。</span><br><span class="line">生成[<span class="number">1</span>, <span class="number">2.5</span>)区间的小数：<span class="keyword">double</span> d3 = r.nextDouble()*<span class="number">1.5</span>+<span class="number">1</span>;生成[<span class="number">1</span>, <span class="number">2.5</span>)区间的随机小数，则只需要首先生成[<span class="number">0</span>, <span class="number">1.5</span>)区间的随机数字，然后将生成的随机数区间加<span class="number">1</span>即可。同理，生成任意非从<span class="number">0</span>开始的小数区间[d1, d2)范围的随机数字(其中d1不等于<span class="number">0</span>)，则只需要首先生成[<span class="number">0</span>, d2-d1)区间的随机数字，然后将生成的随机数区间加上d1即可。</span><br><span class="line">生成任意整数：<span class="keyword">int</span> n1 = r.nextInt();直接使用nextInt方法即可。</span><br><span class="line">生成[<span class="number">0</span>, <span class="number">10</span>)区间的整数：<span class="keyword">int</span> n2 = r.nextInt(<span class="number">10</span>) /n2 = Math.abs(r.nextInt()%<span class="number">10</span>) ;前面两种方法均可生成[<span class="number">0</span>, <span class="number">10</span>)区间的整数。第一种实现使用Random类中的nextInt(<span class="keyword">int</span> n)方法直接实现。第二种实现中，首先调用nextInt()方法生成一个任意的<span class="keyword">int</span>数字，该数字和<span class="number">10</span>取余以后生成的数组区间为(-<span class="number">10</span>, <span class="number">10</span>),然后再对该区间求绝对值，则得到的区间就是[<span class="number">0</span>, <span class="number">10</span>)了。同理，生成任意[<span class="number">0</span>, n)区间的随机整数，都可以使用如下代码：<span class="keyword">int</span> n2 = r.nextInt(n); n2 = Math.abs(r.nextInt()%n)</span><br><span class="line">生成[<span class="number">0</span>, <span class="number">10</span>]区间的整数：<span class="keyword">int</span> n3 = r.nextInt(<span class="number">11</span>);n3 = Math.abs(r.nextInt()%<span class="number">11</span>)相对于整数区间，[<span class="number">0</span>, <span class="number">10</span>]区间和[<span class="number">0</span>, <span class="number">11</span>)区间等价，所以即生成[<span class="number">0</span>, <span class="number">11</span>)区间的整数。</span><br><span class="line">生成[-<span class="number">3</span>, <span class="number">15</span>)区间的整数：<span class="keyword">int</span> n4 = r.nextInt(<span class="number">18</span>)-<span class="number">3</span>; n4 = Math.abs(r.next()%<span class="number">18</span>)-<span class="number">3</span>;生成非从<span class="number">0</span>开始区间的随机整数，可以参看上面非从<span class="number">0</span>开始的小数区间实现原理的说明。</span><br></pre></td></tr></table></figure>
           
         
       
@@ -443,7 +645,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/10/3、Android/1、Android 基础/基本知识/组件相关/WebView截图/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/08/02/3、开发语言/3、Java/1、java 基础/java 文件写入追加/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -462,8 +664,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/03/10/3、Android/1、Android 基础/基本知识/组件相关/WebView截图/" itemprop="url">
-                  webView 截屏
+                <a class="post-title-link" href="/2016/08/02/3、开发语言/3、Java/1、java 基础/java 文件写入追加/" itemprop="url">
+                  java 文件写入追加
                 </a>
               
             
@@ -482,14 +684,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2016-03-10T11:42:59+08:00">2016-03-10</time>
+              <time title="Created: 2016-08-02 18:51:47" itemprop="dateCreated datePublished" datetime="2016-08-02T18:51:47+08:00">2016-08-02</time>
             
 
             
@@ -506,7 +708,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2017-11-23 10:53:31" itemprop="dateModified" datetime="2017-11-23T10:53:31+08:00">2017-11-23</time>
+                <time title="Modified: 2018-08-06 10:06:31" itemprop="dateModified" datetime="2018-08-06T10:06:31+08:00">2018-08-06</time>
               
             
           </span>
@@ -541,7 +743,7 @@
       
         
           
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//长截屏   5.0以上就行不通  </span></span><br><span class="line"><span class="comment">//获取Picture对象  </span></span><br><span class="line">Picture picture = wv_capture.capturePicture();  </span><br><span class="line"><span class="comment">//得到图片的宽和高（没有reflect图片内容）  </span></span><br><span class="line"><span class="keyword">int</span> width = picture.getWidth();  </span><br><span class="line"><span class="keyword">int</span> height = picture.getHeight();  </span><br><span class="line"><span class="keyword">if</span> (width &gt; <span class="number">0</span> &amp;&amp; height &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">    <span class="comment">//创建位图  </span></span><br><span class="line">    Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);  </span><br><span class="line">    Canvas canvas = <span class="keyword">new</span> Canvas(bitmap);  </span><br><span class="line">    <span class="comment">//绘制(会调用native方法，完成图形绘制)  </span></span><br><span class="line">    picture.draw(canvas);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//5.0建议的方法  </span></span><br><span class="line"><span class="comment">//只显示了webview     </span></span><br><span class="line">enableSlowWholeDocumentDraw(),在setContentView前去调用  </span><br><span class="line"><span class="comment">//获取webview缩放率  </span></span><br><span class="line"><span class="keyword">float</span> scale = wv_capture.getScale();  </span><br><span class="line"><span class="comment">//得到缩放后webview内容的高度  </span></span><br><span class="line"><span class="keyword">int</span> webViewHeight = (<span class="keyword">int</span>) (wv_capture.getContentHeight()*scale);  </span><br><span class="line">Bitmap bitmap = Bitmap.createBitmap(wv_capture.getWidth(),webViewHeight, Bitmap.Config.ARGB_8888);  </span><br><span class="line">Canvas canvas = <span class="keyword">new</span> Canvas(bitmap);  </span><br><span class="line"><span class="comment">//绘制  </span></span><br><span class="line">wv_capture.draw(canvas);  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"> <span class="comment">//截图下来,然后保存  </span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        Picture picture = webView.capturePicture();  </span><br><span class="line">        <span class="keyword">int</span> width = picture.getWidth();  </span><br><span class="line">        <span class="keyword">int</span> height = picture.getHeight();  </span><br><span class="line">        <span class="keyword">if</span> (width &gt; <span class="number">0</span> &amp;&amp; height &gt; <span class="number">0</span>) &#123;  </span><br><span class="line">            <span class="comment">//创建位图  </span></span><br><span class="line">            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);  </span><br><span class="line">            Canvas canvas = <span class="keyword">new</span> Canvas(bitmap);  </span><br><span class="line">            <span class="comment">//绘制(会调用native方法，完成图形绘制)  </span></span><br><span class="line">            picture.draw(canvas);  </span><br><span class="line">            iv.setImageBitmap(bitmap);  </span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"截屏成功"</span> + width + <span class="string">"   "</span> + height + <span class="string">"  "</span> + canvas.getHeight(), Toast.LENGTH_SHORT).show();  </span><br><span class="line">            <span class="keyword">try</span> &#123;  </span><br><span class="line">                String fileName = Environment.getExternalStorageDirectory().getPath() + <span class="string">"/webview_capture4.jpg"</span>;  </span><br><span class="line">                FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(fileName);  </span><br><span class="line">                <span class="comment">//压缩bitmap到输出流中  </span></span><br><span class="line">                bit = Bitmap.createBitmap(bitmap);  </span><br><span class="line">                bit.compress(Bitmap.CompressFormat.JPEG, <span class="number">70</span>, fos);  </span><br><span class="line">                fos.close();  </span><br><span class="line">                Toast.makeText(<span class="keyword">this</span>, <span class="string">"截屏成功"</span>, Toast.LENGTH_SHORT).show();  </span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;  </span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;  </span><br><span class="line">                <span class="keyword">if</span> (bit != <span class="keyword">null</span>) &#123;  </span><br><span class="line">                    bit.recycle();  </span><br><span class="line">                &#125;  </span><br><span class="line">  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line"><span class="comment">//在Activity销毁时进行回收,所以开启缓存的话会有性能开销  </span></span><br><span class="line">webView.setDrawingCacheEnabled(<span class="keyword">true</span>);  </span><br><span class="line">...  </span><br><span class="line">Bitmap bitmap = webView.getDrawingCache();  </span><br><span class="line"><span class="comment">//多次调用会崩溃,so  </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go2</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    Bitmap bitmap;  </span><br><span class="line">    <span class="keyword">if</span> (webView.isDrawingCacheEnabled()) &#123;  </span><br><span class="line">        webView.buildDrawingCache();  </span><br><span class="line">        bitmap = webView.getDrawingCache();  </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">        webView.setDrawingCacheEnabled(<span class="keyword">true</span>);  </span><br><span class="line">        bitmap = webView.getDrawingCache();  </span><br><span class="line">    &#125;  </span><br><span class="line">    Bitmap bit = Bitmap.createBitmap(bitmap);  </span><br><span class="line">    iv.setImageBitmap(bit);  </span><br><span class="line">    webView.destroyDrawingCache();  </span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//整个窗口的截图  </span></span><br><span class="line">View view = context.getWindow().getDecorView();  </span><br><span class="line">Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);  </span><br><span class="line">Canvas canvas = <span class="keyword">new</span> Canvas(bitmap);view.draw(canvas);  </span><br><span class="line"><span class="comment">//保存  </span></span><br><span class="line"> saveFile</span><br><span class="line"> <span class="keyword">try</span> &#123; </span><br><span class="line">  String fileName = Environment.getExternalStorageDirectory().getPath()+<span class="string">"/   webview_capture4.jpg"</span>;   </span><br><span class="line">   FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(fileName);   </span><br><span class="line"> <span class="comment">//压缩bitmap到输出流中   </span></span><br><span class="line">   bitmap.compress(Bitmap.CompressFormat.JPEG, <span class="number">70</span>, fos); fos.close();   </span><br><span class="line">   Toast.makeText(WebviewFromGetDecorView.<span class="keyword">this</span>, <span class="string">"截屏成功"</span>, Toast.LENGTH_LONG).show();   </span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">     Log.e(TAG, e.getMessage());   </span><br><span class="line">&#125;  </span><br><span class="line"><span class="keyword">finally</span> &#123; </span><br><span class="line">  <span class="keyword">if</span>(bitmap!=<span class="keyword">null</span>) &#123;</span><br><span class="line">     bitmap.recycle();  </span><br><span class="line">  &#125;   </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="java-文件写入追加"><a href="#java-文件写入追加" class="headerlink" title="java 文件写入追加"></a>java 文件写入追加</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A方法追加文件：使用RandomAccessFile</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">appendMethodA</span><span class="params">(String fileName, String content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 打开一个随机访问文件流，按读写方式</span></span><br><span class="line">            RandomAccessFile randomFile = <span class="keyword">new</span> RandomAccessFile(fileName, <span class="string">"rw"</span>);</span><br><span class="line">            <span class="comment">// 文件长度，字节数</span></span><br><span class="line">            <span class="keyword">long</span> fileLength = randomFile.length();</span><br><span class="line">            <span class="comment">//将写文件指针移到文件尾。</span></span><br><span class="line">            randomFile.seek(fileLength);</span><br><span class="line">            randomFile.writeBytes(content);</span><br><span class="line">            randomFile.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * B方法追加文件：使用FileWriter</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">appendMethodB</span><span class="params">(String fileName, String content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件</span></span><br><span class="line">            FileWriter writer = <span class="keyword">new</span> FileWriter(fileName, <span class="keyword">true</span>);</span><br><span class="line">            writer.write(content);</span><br><span class="line">            writer.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -594,7 +796,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/10/9、Git/Win10 Git 配置SSH/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/07/28/3、开发语言/3、Java/1、java 基础/java 文件读取/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -613,8 +815,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/03/10/9、Git/Win10 Git 配置SSH/" itemprop="url">
-                  Win10 Git 配置SSH
+                <a class="post-title-link" href="/2016/07/28/3、开发语言/3、Java/1、java 基础/java 文件读取/" itemprop="url">
+                  java 文件读取
                 </a>
               
             
@@ -633,14 +835,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2016-03-10T11:42:59+08:00">2016-03-10</time>
+              <time title="Created: 2016-07-28 17:44:09" itemprop="dateCreated datePublished" datetime="2016-07-28T17:44:09+08:00">2016-07-28</time>
             
 
             
@@ -657,7 +859,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-18 13:54:30" itemprop="dateModified" datetime="2018-04-18T13:54:30+08:00">2018-04-18</time>
+                <time title="Modified: 2018-06-28 17:50:19" itemprop="dateModified" datetime="2018-06-28T17:50:19+08:00">2018-06-28</time>
               
             
           </span>
@@ -692,18 +894,11 @@
       
         
           
-            <h2 id="Win10-Git-配置SSH"><a href="#Win10-Git-配置SSH" class="headerlink" title="Win10 Git 配置SSH"></a>Win10 Git 配置SSH</h2><p>当我们使用<strong>github</strong>或者<strong>码云</strong>等仓库时我们有可能需要ssh认证，所以需要生成他的ssh key。</p>
-<h3 id="1、安装GitBash"><a href="#1、安装GitBash" class="headerlink" title="1、安装GitBash"></a>1、安装GitBash</h3><p>1、首先你要安装git工具<br>下载地址：<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
-<h3 id="2、生成SSH-keyPair"><a href="#2、生成SSH-keyPair" class="headerlink" title="2、生成SSH keyPair"></a>2、生成SSH keyPair</h3><p>1、右键鼠标，选中 “Git Bash here”<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171207/Ke9g2BJCjd.png?imageslim" alt="mark"><br>2、输入指令，进入.ssh文件夹<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh/</span><br></pre></td></tr></table></figure></p>
-<p>如果提示 “ No such file or directory”，你可以手动的创建一个 .ssh文件夹即可<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171207/i9f4l8j9lg.png?imageslim" alt="mark"><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir .ssh</span><br></pre></td></tr></table></figure></p>
-<p>3、配置全局的name和email，这里是的你github或者bitbucket的name和email<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"xkwg"</span>  </span><br><span class="line">git config --global user.email <span class="string">"xkwg@163.com"</span></span><br></pre></td></tr></table></figure></p>
-<p>查看设置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line">cat .gitconfig</span><br></pre></td></tr></table></figure></p>
-<p>结果如图<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171207/A70BAjkC2F.png?imageslim" alt="mark"><br>使用如下命令可以取消全局设置：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure></p>
-<p>3、Git生成单个SSH key及管理生成的多个SSH Key<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"xkwg@163.com"</span></span><br></pre></td></tr></table></figure></p>
-<p>  连续按三次回车，这里设置的密码就为空了，并且创建了key。<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171207/5lIajLCABe.png?imageslim" alt="mark"><br>生成两个文件：id_rsa和id_rsa.pub</p>
-<h3 id="3、-github、-gitLab-或者-码云-配置SSH"><a href="#3、-github、-gitLab-或者-码云-配置SSH" class="headerlink" title="3、 github、 gitLab  或者 码云  配置SSH"></a>3、 <strong>github</strong>、 <strong>gitLab</strong>  或者 <strong>码云</strong>  配置SSH</h3><p>1、查看SSH公钥,并复制公钥内容<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat id_rsa.pub</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171207/gg9LaA6H19.png?imageslim" alt="mark"><br>打开码云个人设置SSH,复制后保存即可愉快的使用git ssh 了<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171207/5HKml2g9bI.png?imageslim" alt="mark"></p>
-
+            <h2 id="java-文件读取"><a href="#java-文件读取" class="headerlink" title="java 文件读取"></a>java 文件读取</h2><p>在java中文件读取主要有以下几种情况<br>1、按字节读取文件内容<br>2、按字符读取文件内容<br>3、按行读取文件内容<br>4、随机读取文件内容 </p>
+<h2 id="1、按字节读取文件内容"><a href="#1、按字节读取文件内容" class="headerlink" title="1、按字节读取文件内容"></a>1、按字节读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以字节为单位读取文件，常用于读二进制文件，如图片、声音、影像等文件。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByBytes</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(fileName);</span><br><span class="line">        InputStream in = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字节为单位读取文件内容，一次读一个字节："</span>);</span><br><span class="line">            <span class="comment">// 一次读一个字节</span></span><br><span class="line">            in = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">            <span class="keyword">int</span> tempbyte;</span><br><span class="line">            <span class="keyword">while</span> ((tempbyte = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                System.out.write(tempbyte);</span><br><span class="line">            &#125;</span><br><span class="line">            in.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字节为单位读取文件内容，一次读多个字节："</span>);</span><br><span class="line">            <span class="comment">// 一次读多个字节</span></span><br><span class="line">            <span class="keyword">byte</span>[] tempbytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">100</span>];</span><br><span class="line">            <span class="keyword">int</span> byteread = <span class="number">0</span>;</span><br><span class="line">            in = <span class="keyword">new</span> FileInputStream(fileName);</span><br><span class="line">            ReadFromFile.showAvailableBytes(in);</span><br><span class="line">            <span class="comment">// 读入多个字节到字节数组中，byteread为一次读入的字节数</span></span><br><span class="line">            <span class="keyword">while</span> ((byteread = in.read(tempbytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                System.out.write(tempbytes, <span class="number">0</span>, byteread);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">            e1.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (in != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    in.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2、按字符读取文件内容"><a href="#2、按字符读取文件内容" class="headerlink" title="2、按字符读取文件内容"></a>2、按字符读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以字符为单位读取文件，常用于读文本，数字等类型的文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByChars</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(fileName);</span><br><span class="line">        Reader reader = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字符为单位读取文件内容，一次读一个字符："</span>);</span><br><span class="line">            <span class="comment">// 一次读一个字符</span></span><br><span class="line">            reader = <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(file));</span><br><span class="line">            <span class="keyword">int</span> tempchar;</span><br><span class="line">            <span class="keyword">while</span> ((tempchar = reader.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 对于windows下，\r\n这两个字符在一起时，表示一个换行。</span></span><br><span class="line">                <span class="comment">// 但如果这两个字符分开显示时，会换两次行。</span></span><br><span class="line">                <span class="comment">// 因此，屏蔽掉\r，或者屏蔽\n。否则，将会多出很多空行。</span></span><br><span class="line">                <span class="keyword">if</span> (((<span class="keyword">char</span>) tempchar) != <span class="string">'\r'</span>) &#123;</span><br><span class="line">                    System.out.print((<span class="keyword">char</span>) tempchar);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            reader.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字符为单位读取文件内容，一次读多个字符："</span>);</span><br><span class="line">            <span class="comment">// 一次读多个字符</span></span><br><span class="line">            <span class="keyword">char</span>[] tempchars = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">30</span>];</span><br><span class="line">            <span class="keyword">int</span> charread = <span class="number">0</span>;</span><br><span class="line">            reader = <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(fileName));</span><br><span class="line">            <span class="comment">// 读入多个字符到字符数组中，charread为一次读取字符数</span></span><br><span class="line">            <span class="keyword">while</span> ((charread = reader.read(tempchars)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 同样屏蔽掉\r不显示</span></span><br><span class="line">                <span class="keyword">if</span> ((charread == tempchars.length)</span><br><span class="line">                        &amp;&amp; (tempchars[tempchars.length - <span class="number">1</span>] != <span class="string">'\r'</span>)) &#123;</span><br><span class="line">                    System.out.print(tempchars);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charread; i++) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (tempchars[i] == <span class="string">'\r'</span>) &#123;</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            System.out.print(tempchars[i]);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">            e1.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (reader != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    reader.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3、按行读取文件内容"><a href="#3、按行读取文件内容" class="headerlink" title="3、按行读取文件内容"></a>3、按行读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 以行为单位读取文件，常用于读面向行的格式化文件</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByLines</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">      File file = <span class="keyword">new</span> File(fileName);</span><br><span class="line">      BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          System.out.println(<span class="string">"以行为单位读取文件内容，一次读一整行："</span>);</span><br><span class="line">          reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(file));</span><br><span class="line">          String tempString = <span class="keyword">null</span>;</span><br><span class="line">          <span class="keyword">int</span> line = <span class="number">1</span>;</span><br><span class="line">          <span class="comment">// 一次读入一行，直到读入null为文件结束</span></span><br><span class="line">          <span class="keyword">while</span> ((tempString = reader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="comment">// 显示行号</span></span><br><span class="line">              System.out.println(<span class="string">"line "</span> + line + <span class="string">": "</span> + tempString);</span><br><span class="line">              line++;</span><br><span class="line">          &#125;</span><br><span class="line">          reader.close();</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (reader != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  reader.close();</span><br><span class="line">              &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4、随机读取文件内容"><a href="#4、随机读取文件内容" class="headerlink" title="4、随机读取文件内容"></a>4、随机读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 随机读取文件内容</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByRandomAccess</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">      RandomAccessFile randomFile = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          System.out.println(<span class="string">"随机读取一段文件内容："</span>);</span><br><span class="line">          <span class="comment">// 打开一个随机访问文件流，按只读方式</span></span><br><span class="line">          randomFile = <span class="keyword">new</span> RandomAccessFile(fileName, <span class="string">"r"</span>);</span><br><span class="line">          <span class="comment">// 文件长度，字节数</span></span><br><span class="line">          <span class="keyword">long</span> fileLength = randomFile.length();</span><br><span class="line">          <span class="comment">// 读文件的起始位置</span></span><br><span class="line">          <span class="keyword">int</span> beginIndex = (fileLength &gt; <span class="number">4</span>) ? <span class="number">4</span> : <span class="number">0</span>;</span><br><span class="line">          <span class="comment">// 将读文件的开始位置移到beginIndex位置。</span></span><br><span class="line">          randomFile.seek(beginIndex);</span><br><span class="line">          <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">10</span>];</span><br><span class="line">          <span class="keyword">int</span> byteread = <span class="number">0</span>;</span><br><span class="line">          <span class="comment">// 一次读10个字节，如果文件内容不足10个字节，则读剩下的字节。</span></span><br><span class="line">          <span class="comment">// 将一次读取的字节数赋给byteread</span></span><br><span class="line">          <span class="keyword">while</span> ((byteread = randomFile.read(bytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">              System.out.write(bytes, <span class="number">0</span>, byteread);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (randomFile != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  randomFile.close();</span><br><span class="line">              &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -756,7 +951,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/10/3、Android/1、Android 基础/基本知识/View相关/View 所在的位置/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/05/10/3、开发语言/3、Java/1、java 基础/javac、javah、javap等java基础指令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -775,8 +970,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/03/10/3、Android/1、Android 基础/基本知识/View相关/View 所在的位置/" itemprop="url">
-                  Android中View 所在的位置
+                <a class="post-title-link" href="/2016/05/10/3、开发语言/3、Java/1、java 基础/javac、javah、javap等java基础指令/" itemprop="url">
+                  javac、javah、javap等java基础指令
                 </a>
               
             
@@ -795,14 +990,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2016-03-10T11:42:59+08:00">2016-03-10</time>
+              <time title="Created: 2016-05-10 13:53:43" itemprop="dateCreated datePublished" datetime="2016-05-10T13:53:43+08:00">2016-05-10</time>
             
 
             
@@ -819,7 +1014,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-13 10:33:27" itemprop="dateModified" datetime="2018-04-13T10:33:27+08:00">2018-04-13</time>
+                <time title="Modified: 2018-08-06 10:06:43" itemprop="dateModified" datetime="2018-08-06T10:06:43+08:00">2018-08-06</time>
               
             
           </span>
@@ -854,11 +1049,18 @@
       
         
           
-            <h2 id="Android中View-所在的位置"><a href="#Android中View-所在的位置" class="headerlink" title="Android中View 所在的位置"></a>Android中View 所在的位置</h2><p> 我们需要知道，在Activity生命周期里的onCreate方法里对一个View去执行getWidth，getHeight，getTop，getBottom等一系列的方法是拿不到数据的，得到的结果都为0，由于此时Activity还没有得到焦点，依附在Activity的View自然也就得不到数据，所以我们需要在onResume后去进行对View的数据获取。<br>    可以通过onGlobalLayoutListener或者onWidnowFocusChanged等方法去获取，这里的执行顺序是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Activity.onCreate-&gt;</span><br><span class="line">Activity.onResume-&gt;</span><br><span class="line">View.onMeasure-&gt;</span><br><span class="line">View.onLayout-&gt;</span><br><span class="line">onGlobalLayoutListener&gt;</span><br><span class="line">Activity.onWidnowFocusChanged</span><br></pre></td></tr></table></figure></p>
-<p>View 在屏幕中的位置，如图所示<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-22/15063172.jpg" alt=""></p>
-<blockquote>
-<p>这里需要注意的是，除了getRawX和getRawY是相对屏幕的位置，其他的是相对应所在父布局的位置，所以在确定数据的时候，需要注意布局的嵌套。</p>
+            <h2 id="javac、javah、javap等java基础指令"><a href="#javac、javah、javap等java基础指令" class="headerlink" title="javac、javah、javap等java基础指令"></a>javac、javah、javap等java基础指令</h2><h3 id="1、javac"><a href="#1、javac" class="headerlink" title="1、javac"></a>1、javac</h3><blockquote>
+<p>javac 是java语言编程编译器。全称java compiler。javac 工具读取用 Java 编程语言编写的类和接口定义，并将它们编译成字节码类文件。</p>
 </blockquote>
+<p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/Ib8fHJ9GLa.png?imageslim" alt="mark"></p>
+<h3 id="2、javah"><a href="#2、javah" class="headerlink" title="2、javah"></a>2、javah</h3><blockquote>
+<p>javah 生成实现本地方法所需的 C 头文件和源文件。</p>
+</blockquote>
+<p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/F2Ke0FceaL.png?imageslim" alt="mark"></p>
+<h3 id="3、javap"><a href="#3、javap" class="headerlink" title="3、javap"></a>3、javap</h3><blockquote>
+<p>javap是JDK自带的反汇编器，可以查看java编译器为我们生成的字节码。通过它，我们可以对照源代码和字节码，从而了解很多编译器内部的工作。</p>
+</blockquote>
+<p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/dCAbKl9a2f.png?imageslim" alt="mark"><br>常用操作指令<br>1、javap -c <class> (注意这个地方不需要class后缀) 指令。反编译class文件<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/10Bld2G1lF.png?imageslim" alt="mark"><br>2、javap -s <class>  指令。获取方法的签名<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/ckIHKgJC4c.png?imageslim" alt="mark"></class></class></p>
 
           
         
@@ -912,7 +1114,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/01/3、Android/1、Android 基础/基本知识/Android Assets文件拷贝/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/05/10/4、计算机系统/2、Android/1、Android 基础/基本知识/组件相关/Activity 透明背景/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -931,8 +1133,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/03/01/3、Android/1、Android 基础/基本知识/Android Assets文件拷贝/" itemprop="url">
-                  Android Assets文件拷贝
+                <a class="post-title-link" href="/2016/05/10/4、计算机系统/2、Android/1、Android 基础/基本知识/组件相关/Activity 透明背景/" itemprop="url">
+                  Activity 透明背景
                 </a>
               
             
@@ -951,14 +1153,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-03-01 11:42:59" itemprop="dateCreated datePublished" datetime="2016-03-01T11:42:59+08:00">2016-03-01</time>
+              <time title="Created: 2016-05-10 11:42:59" itemprop="dateCreated datePublished" datetime="2016-05-10T11:42:59+08:00">2016-05-10</time>
             
 
             
@@ -975,7 +1177,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-08-09 11:19:33" itemprop="dateModified" datetime="2018-08-09T11:19:33+08:00">2018-08-09</time>
+                <time title="Modified: 2017-11-16 17:10:11" itemprop="dateModified" datetime="2017-11-16T17:10:11+08:00">2017-11-16</time>
               
             
           </span>
@@ -1010,14 +1212,12 @@
       
         
           
-            <h2 id="Android-Assets文件拷贝"><a href="#Android-Assets文件拷贝" class="headerlink" title="Android Assets文件拷贝"></a>Android Assets文件拷贝</h2><h3 id="1、Assets文件介绍"><a href="#1、Assets文件介绍" class="headerlink" title="1、Assets文件介绍"></a>1、Assets文件介绍</h3><p>assets文件夹里面的文件都是保持原始的文件格式，需要用AssetManager以字节流的形式读取文件。  </p>
-<ol>
-<li>先在Activity里面调用getAssets() 来获取AssetManager引用。 </li>
-<li>再用AssetManager的open(String fileName, int accessMode) 方法则指定读取的文件以及访问模式就能得到输入流InputStream。 </li>
-<li>然后就是用已经open file 的inputStream读取文件，读取完成后记得inputStream.close() 。  </li>
-<li>调用AssetManager.close() 关闭AssetManager。 </li>
-</ol>
-<h3 id="2、实现方法"><a href="#2、实现方法" class="headerlink" title="2、实现方法"></a>2、实现方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Assets文件拷贝</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> context    上下文</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> assetsPath assets 文件(夹)名或文件(夹)路径</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> savePath   保存文件(夹)路径</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFilesFromAssets</span><span class="params">(Context context, String assetsPath, String savePath)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String fileNames[] = context.getAssets().list(assetsPath);<span class="comment">// 获取assets目录下的所有文件及目录名</span></span><br><span class="line">        <span class="keyword">if</span> (fileNames.length &gt; <span class="number">0</span>) &#123;<span class="comment">// 如果是目录</span></span><br><span class="line">            File file = <span class="keyword">new</span> File(savePath);</span><br><span class="line">            file.mkdirs();<span class="comment">// 如果文件夹不存在，则递归</span></span><br><span class="line">            <span class="keyword">for</span> (String fileName : fileNames) &#123;</span><br><span class="line">                copyFilesFromAssets(context, assetsPath + <span class="string">"/"</span> + fileName,</span><br><span class="line">                        savePath + <span class="string">"/"</span> + fileName);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;<span class="comment">// 如果是文件</span></span><br><span class="line">            InputStream is = context.getAssets().open(assetsPath);</span><br><span class="line">            FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="keyword">new</span> File(savePath));</span><br><span class="line">            <span class="keyword">byte</span>[] buffer = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="keyword">int</span> byteCount = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> ((byteCount = is.read(buffer)) != -<span class="number">1</span>) &#123;<span class="comment">// 循环从输入流读取</span></span><br><span class="line">                <span class="comment">// buffer字节</span></span><br><span class="line">                fos.write(buffer, <span class="number">0</span>, byteCount);<span class="comment">// 将读取的输入流写入到输出流</span></span><br><span class="line">            &#125;</span><br><span class="line">            fos.flush();<span class="comment">// 刷新缓冲区</span></span><br><span class="line">            is.close();</span><br><span class="line">            fos.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="Activity-透明背景"><a href="#Activity-透明背景" class="headerlink" title="Activity 透明背景"></a>Activity 透明背景</h1><blockquote>
+<p> 使用设置Activity主题样式的方法</p>
+</blockquote>
+<p>首先在样式styles 中添加<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"TranslucentTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowBackground"</span>&gt;</span>@android:color/transparent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:colorBackgroundCacheHint"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowIsTranslucent"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowAnimationStyle"</span>&gt;</span>@android:style/Animation<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowNoTitle"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowContentOverlay"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>然后在清单文件中找到Activity设置该主题样式<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">   <span class="attr">android:name</span>=<span class="string">"com.xxxx.demo"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">android:theme</span>=<span class="string">"@style/TranslucentTheme"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>最后设置Activity 的根布局文件的背景为透明或半透明<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-14/31224857.jpg" alt=""></p>
 
           
         
@@ -1071,7 +1271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/02/19/3、Android/1、Android 基础/基本知识/SDK/android LLDB命令/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/05/08/4、计算机系统/2、Android/1、Android 基础/基本知识/Android 手机存储/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -1090,8 +1290,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/02/19/3、Android/1、Android 基础/基本知识/SDK/android LLDB命令/" itemprop="url">
-                  Android LLDB命令
+                <a class="post-title-link" href="/2016/05/08/4、计算机系统/2、Android/1、Android 基础/基本知识/Android 手机存储/" itemprop="url">
+                  Android 手机存储
                 </a>
               
             
@@ -1110,14 +1310,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-02-19 10:11:20" itemprop="dateCreated datePublished" datetime="2016-02-19T10:11:20+08:00">2016-02-19</time>
+              <time title="Created: 2016-05-08 14:39:07" itemprop="dateCreated datePublished" datetime="2016-05-08T14:39:07+08:00">2016-05-08</time>
             
 
             
@@ -1134,7 +1334,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-20 16:10:13" itemprop="dateModified" datetime="2018-04-20T16:10:13+08:00">2018-04-20</time>
+                <time title="Modified: 2019-02-13 10:08:29" itemprop="dateModified" datetime="2019-02-13T10:08:29+08:00">2019-02-13</time>
               
             
           </span>
@@ -1169,627 +1369,134 @@
       
         
           
-            <h2 id="Android-LLDB命令"><a href="#Android-LLDB命令" class="headerlink" title="Android LLDB命令"></a>Android LLDB命令</h2>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/02/11/3、Android/0、Android Studio/Android Studio 快捷键/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/02/11/3、Android/0、Android Studio/Android Studio 快捷键/" itemprop="url">
-                  Android Studio 快捷键
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2016-02-11 11:41:51" itemprop="dateCreated datePublished" datetime="2016-02-11T11:41:51+08:00">2016-02-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-08-08 19:25:58" itemprop="dateModified" datetime="2018-08-08T19:25:58+08:00">2018-08-08</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Android-Studio-快捷键"><a href="#Android-Studio-快捷键" class="headerlink" title="Android Studio 快捷键"></a>Android Studio 快捷键</h2><ul>
-<li><em>经常使用</em></li>
-<li><strong>偶尔使用</strong></li>
-<li><strong><em>难得使用</em></strong></li>
-</ul>
-<h3 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h3><table>
+            <h2 id="Android-手机存储"><a href="#Android-手机存储" class="headerlink" title="Android 手机存储"></a>Android 手机存储</h2><p>Andorid 手机存储分为<code>内部存储internal storage</code> 和 <code>外部存储external storage</code>。从app看。目录又分为<code>私有目录</code> 和 <code>公有目录</code>。<br>在storage文件夹中有一个sdcard文件夹，这个文件夹中的文件又分为两类，一类是公有目录，还有一类是私有目录，其中的公有目录有九大类，比如DCIM、DOWNLOAD等这种系统为我们创建的文件夹，私有目录就是Android这个文件夹，这个文件夹打开之后里边有一个data文件夹，打开这个data文件夹，里边有许多包名组成的文件夹。<br>一般来说，我们不会自己去操作内部存储空间，没有root权限的话，我们也没法操作内部存储空间，事实上内部存储主要是由系统来维护的。不过在代码中我们是可以访问到这个文件夹的。由于内部存储空间有限，在开发中我们一般都是操作外部存储空间，Google官方建议我们App的数据应该存储在外部存储的私有目录中该App的包名下，这样当用户卸载掉App之后，相关的数据会一并删除，如果你直接在/storage/sdcard目录下创建了一个应用的文件夹，那么当你删除应用的时候，这个文件夹就不会被删除。<br>因此和App有关，所以对这些文件夹的访问都是调用Context里边的方法，而不含有包名的路径，和某一个App无关，我们可以通过Environment中的方法来访问.</p>
+<h3 id="1、内部存储"><a href="#1、内部存储" class="headerlink" title="1、内部存储"></a>1、内部存储</h3><p>应用内部存储空间（数据文件私有）文件存储到这个路径下，不需要申请权限，当应用被卸载的时候，目录下的文件会被删除。<br>需要注意的是，这个文件的目录和应用的存储位置有关，<br>当应用被移动到外部存储设备的时候，文件的绝对路径也是变化的，所以建议当数据存储到这个目录的时候，用相对路径</p>
+<table>
 <thead>
 <tr>
-<th>快捷键</th>
-<th>功能</th>
+<th>主要方法</th>
+<th>路径</th>
+<th>注意</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>F1</td>
-<td>帮助</td>
+<td>context.getCacheDir()</td>
+<td>data/data/包名/cache</td>
+<td>当安卓设备的存储空间少，或者不够用的时候，系统会自动删除这个目录下的文件。官方建议是，超过1MB的文件，建议存储到getExternalCacheDir()目录下</td>
 </tr>
 <tr>
-<td><em>Alt+F1</em></td>
-<td><em>查找文件所在目录位置</em></td>
+<td>context.getFilesDir()</td>
+<td>data/data/包名/files</td>
+<td>系统提供的访问此路径文件的方法是：context.openFileOutput(String,int);context.openFileInput(String name);</td>
 </tr>
 <tr>
-<td>Alt+1</td>
-<td>快速打开或隐藏工程面板</td>
+<td>context.getDatabasePath()</td>
+<td>data/data/包名/databases</td>
+<td></td>
 </tr>
 <tr>
-<td>Ctrl+Alt+S</td>
-<td>打开设置对话框</td>
+<td>context.getSharedPreferences()</td>
+<td>data/data/包名/shared_prefs</td>
+<td></td>
 </tr>
 <tr>
-<td>Alt+Home</td>
-<td>跳转到导航栏</td>
-</tr>
-<tr>
-<td>Esc</td>
-<td>光标返回编辑框</td>
-</tr>
-<tr>
-<td>Shift+Esc</td>
-<td>光标返回编辑框,关闭无用的窗口</td>
-</tr>
-<tr>
-<td>Shift+Click</td>
-<td>关闭标签页</td>
-</tr>
-<tr>
-<td>F12</td>
-<td>把焦点从编辑器移到最近使用的工具窗口</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Y</td>
-<td>同步</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+S</td>
-<td>打开设置对话框</td>
-</tr>
-<tr>
-<td>Alt+Shift+Inert</td>
-<td>开启/关闭列选择模式</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Shift+S</td>
-<td>打开当前项目/模块属性</td>
-</tr>
-<tr>
-<td>Alt+Shift+C</td>
-<td>查看文件的变更历史</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+F10</td>
-<td>运行</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+F9</td>
-<td>debug运行</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+F12</td>
-<td>资源管理器打开文件夹</td>
+<td>Environment.getDataDirectory()</td>
+<td>/data</td>
+<td>获得根目录/data (内部存储路径)</td>
 </tr>
 </tbody>
 </table>
-<h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><table>
+<p>​                         </p>
+<h3 id="2、外部存储"><a href="#2、外部存储" class="headerlink" title="2、外部存储"></a>2、外部存储</h3><h4 id="2-1-外部存储公有目录"><a href="#2-1-外部存储公有目录" class="headerlink" title="2.1 外部存储公有目录"></a>2.1 外部存储公有目录</h4><p>应用外部存储空间（数据文件非私有，可以被手机的系统程序访问（如MP3格式的文件，会被手机系统检索出来），同样，该目录下的文件，所有的APP程序也都是可以访问的，）<br>这个目录是用来存放各种类型的文件的目录，在这里用户可以分类管理不同类型的文件（例如音乐、图片、电影等）；<br><code>Environment.getExternalStorageDirectory();</code><br>应用外部存储空间（数据文件非私有，可以被手机的系统程序访问（如MP3格式的文件，会被手机系统检索出来），同样，该目录下的文件，所有的APP程序也都是可以访问的，）<br>注意：外部存储空间可能处于不可访问状态，或者已经被移除状态，或者存储空间损坏无法访问等问题。可以通过getExternalStorageState()这个方法来判断外部存储空间的状态。</p>
+<blockquote>
+<p>注：在该目录下读写文件，需要获取读写权限。<br>该目录下的文件，这个目录是用户进行操作的一个根目录，进入二级目录可以通过<code>getExternalFilesDirs(String), getExternalCacheDirs(), and getExternalMediaDirs().</code>这些方法。<br>官方建议，不要直接使用该目录，为了避免污染用户的根命名空间，应用私有的数据，应该放在 Context.getExternalFilesDir目录下,其他的可以被分享的文件，可以放在getExternalStoragePublicDirectory(String)目录下。</p>
+</blockquote>
+<table>
 <thead>
 <tr>
-<th>快捷键</th>
-<th>功能</th>
+<th>方法</th>
+<th>路径</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><em>Ctrl+C</em></td>
-<td><em>复制当前行或选中的内容</em></td>
+<td>Environment.getDownloadCacheDirectory()</td>
+<td>/cache</td>
 </tr>
 <tr>
-<td><em>Crtl+D</em></td>
-<td><em>粘贴当前行或选中的内容 ，它将会复制当前行并且粘贴在下一行，它并不会复制到剪贴板。当它被用于复制当前行时它将会是非常有用的。</em></td>
+<td>Environment.getRootDirectory()</td>
+<td>/system</td>
 </tr>
 <tr>
-<td><strong>Ctrl+X</strong></td>
-<td><strong>剪切当前行或选中的内容</strong></td>
+<td>Environment.getExternalStorageDirectory()</td>
+<td>/storage/sdcard0</td>
 </tr>
 <tr>
-<td><em>Ctrl+Y</em></td>
-<td><em>删除行</em></td>
+<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_ALARMS)</td>
+<td>/storage/sdcard0/Alarms</td>
 </tr>
 <tr>
-<td><em>Ctrl+Z</em></td>
-<td><em>倒退</em></td>
+<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_DCIM)</td>
+<td>/storage/sdcard0/DCIM</td>
 </tr>
 <tr>
-<td><em>Ctrl+Shift+Z</em></td>
-<td>向前</td>
+<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS)</td>
+<td>/storage/sdcard0/Download</td>
 </tr>
 <tr>
-<td><em>Alt+Enter</em></td>
-<td><em>自动修正,相当于Eclipse的代码提示</em></td>
+<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_MOVIES)</td>
+<td>/storage/sdcard0/Movies</td>
 </tr>
 <tr>
-<td><em>Ctrl+Alt+L</em></td>
-<td><em>代码格式化</em></td>
+<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_MUSIC)</td>
+<td>/storage/sdcard0/Music</td>
 </tr>
 <tr>
-<td>Ctrl+Alt+I</td>
-<td>将选中的代码进行自动缩进编排</td>
+<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_NOTIFICATIONS)</td>
+<td>/storage/sdcard0/Notifications</td>
 </tr>
 <tr>
-<td>Ctrl+Alt+O</td>
-<td>优化导入的类和包</td>
+<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_PICTURES)</td>
+<td>/storage/sdcard0/Pictures</td>
 </tr>
 <tr>
-<td>Alt+Insert</td>
-<td>得到一些Intention Action，可以生成构造器、Getter、Setter、将 <code>==</code> 改为 <code>equals()</code> 等</td>
+<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_PODCASTS)</td>
+<td>/storage/sdcard0/Podcasts</td>
 </tr>
 <tr>
-<td>Ctrl+Shift+V</td>
-<td>选最近使用的剪贴板内容并插入</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Shift+V</td>
-<td>简单粘贴</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Insert</td>
-<td>选最近使用的剪贴板内容并插入（同Ctrl+Shift+V）</td>
-</tr>
-<tr>
-<td>Ctrl+Enter</td>
-<td>在当前行的上面插入新行，并移动光标到新行（此功能光标在行首时有效）</td>
-</tr>
-<tr>
-<td>Shift+Enter</td>
-<td>在当前行的下面插入新行，并移动光标到新行</td>
-</tr>
-<tr>
-<td><strong>Ctrl+J</strong></td>
-<td><strong>在线模板是一个快速插入代码片段的方式。使用在线模板有趣的是它能参数化，当你插入代码时它可以使用参数智能的引导你。如果你知道它的缩写你就不需要调用快捷键。你可以直接输入它并用“Tab”键完成输入。</strong></td>
-</tr>
-<tr>
-<td>Ctrl+Alt+T</td>
-<td>把选中的代码放在 <code>try{}</code> 、<code>if{}</code> 、 <code>else{}</code> 里</td>
-</tr>
-<tr>
-<td>Shift+Alt+Insert</td>
-<td>竖编辑模式</td>
-</tr>
-<tr>
-<td><em>Ctrl+ <code>/</code></em></td>
-<td><em>注释 <code>//</code></em></td>
-</tr>
-<tr>
-<td><em>Ctrl+Shift+ <code>/</code></em></td>
-<td><em>注释 `/</em>…<em>/`</em></td>
-</tr>
-<tr>
-<td>Ctrl+Shift+J</td>
-<td>合并成一行</td>
-</tr>
-<tr>
-<td>F2/Shift+F2</td>
-<td>跳转到下/上一个错误语句处</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Back</td>
-<td>跳转到上次编辑的地方</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Space</td>
-<td>类名自动完成</td>
-</tr>
-<tr>
-<td>Shift+Alt+Up/Down</td>
-<td>内容向上/下移动</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+Up/Down</td>
-<td>语句向上/下移动</td>
-</tr>
-<tr>
-<td><strong>Ctrl+Shift+U</strong></td>
-<td><strong>大小写切换</strong></td>
-</tr>
-<tr>
-<td>Tab</td>
-<td>代码标签输入完成后，按 <code>Tab</code>，生成代码</td>
-</tr>
-<tr>
-<td>Ctrl+Backspace</td>
-<td>按单词删除</td>
-</tr>
-<tr>
-<td><strong>Ctrl+Shift+Enter</strong></td>
-<td><strong>语句完成</strong></td>
-</tr>
-<tr>
-<td>Ctrl+Alt+J</td>
-<td>用动态模板环绕</td>
+<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_RINGTONES)</td>
+<td>/storage/sdcard0/Ringtones</td>
 </tr>
 </tbody>
 </table>
-<p>###文件<br>|  快捷键 |  功能 |<br>|———|———–|<br>|  <em>Ctrl+F12</em> | <em>显示当前文件的结构使用驼峰式从列表中过滤。例如：输入“oCr”将会找到“onCreate” 你也可以勾选打开“显示匿名内部类”。在你想直接进入“OnClickListener”中的“onClick”方法时它有可能是有用的。</em> |<br>|  <em>Ctrl+H</em> | <em>显示类继承结构图</em> |<br>|  <em>Ctrl+Q</em> | <em>显示注释文档</em> |<br>|  <em>Ctrl+P</em> | <em>方法参数提示 ,当你正在写一个方法调用时会显示一个同样参数的列表。当你想看已存在的方法参数时是有用的。 你光标所在位置的参数会用黄色显示。如果没有参数用黄色，这意味着方法调用是无效的，可能有参数不能被正确地强转（如：一个float参数传一个int值） 当你正在写一个方法调用参数信息意外地消失了，就像我经常做的，你也可以输入一个逗号（,）用来触发参数信息的显示。</em> |<br>|  Ctrl+U | 打开当前类的父类或者实现的接口 |<br>|  Alt+Left/Righ | 切换代码视图 |<br>|  Ctrl+Alt+Left/Right | 返回上次编辑的位置 |<br>|  <strong>Alt+Up/Down</strong> | <strong>在方法间快速移动定位, 光标在当前文件中的方法或类名称之间移动。如果你的光标在方法体内，向上可以直接移动光标到方法名上。这个是非常有用的，因为它能在你重构方法时或查找这个方法的用法时让光标跳到正确的地方。</strong> |<br>|  <strong>Ctrl+B</strong> | <strong>快速打开光标处的类或方法</strong> |<br>|  <em>Ctrl+W</em> | <em>能扩大当前选中的区域。如它能选择当前的变量，然后是声明，然后是方法等等。</em> |<br>|  Ctrl+Shift+W |取消选择光标所在词 |<br>|  F2 或 Shift+F2 | 高亮错误或警告快速定位 |<br>|  Alt+Up/Down | 在方法间快速移动定位 |<br>|  Ctrl+Alt+Shift+C | 复制引用，必须选择类名 |<br>|  Ctrl+Shift+C | 复制路径 |<br>|  Shift+F1 | 要打开编辑器光标字符处使用的类或者方法 <code>Java</code> 文档的浏览器 |<br>|  Ctrl+G | 定位行 |</p>
-<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><table>
+<p>上面的九个方法对应的就是SD卡的九大公有目录，Google官方建议我们数据应该存储在私有目录下，不建议存储在公有目录下或其他地方</p>
+<h4 id="2-2-外部存储私有目录"><a href="#2-2-外部存储私有目录" class="headerlink" title="2.2 外部存储私有目录"></a>2.2 外部存储私有目录</h4><p>那什么是私有目录呢？就是在外部存储的App的包名下，如：/storage/emulated/0/Android/data/(包名)/files/test<br>应用外部存储空间(数据文件私有，系统媒体文件无法访问（例如存了一个MP3文件，通过系统的文件夹管理系统，无法找到）)，<br>当应用被卸载的时候，目录下的文件会被删除，但是这里和getCacheDir()/getFileDir()还有不同之处：<br>只有手机系统使用的是虚拟外部存储（虚拟SD卡，现在绝大多数的手机，都不用外挂物理SD卡了）的时候，<br>才可以在卸载应用的同时，自动删除该目录下的文件，如果是之前的物理存储（物理SD卡）则不会自动删除该目录，及目录下的文件。</p>
+<blockquote>
+<p>在使用的时候，需要判断外部存储的挂载状态（getExternalStorageState(File)），还需要申请读写权限（READ_EXTERNAL_STORAGE， WRITE_EXTERNAL_STORAGE）<br>注：当其他应用拥有SD卡读写权限的时候，可以访问该目录下的文件</p>
+</blockquote>
+<table>
 <thead>
 <tr>
-<th>快捷键</th>
-<th>功能</th>
+<th>方法</th>
+<th>路径</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Ctrl+F</strong></td>
-<td><strong>在当前窗口查找文本</strong></td>
+<td>getExternalFilesDir()</td>
+<td>/storage/emulated/0/Android/data/(包名)/files/</td>
 </tr>
 <tr>
-<td>Ctrl+Shift+F</td>
-<td>在指定环境下查找文本</td>
-</tr>
-<tr>
-<td>F3</td>
-<td>向下查找关键字出现位置</td>
-</tr>
-<tr>
-<td>Shift+F3</td>
-<td>向上一个关键字出现位置</td>
-</tr>
-<tr>
-<td>Ctrl+R</td>
-<td>在当前窗口替换文本</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+R</td>
-<td>在指定窗口替换文本</td>
-</tr>
-<tr>
-<td><em>Ctrl+N</em></td>
-<td><em>查找类</em></td>
-</tr>
-<tr>
-<td><em>Ctrl+Shift+N</em></td>
-<td><em>查找文件</em></td>
-</tr>
-<tr>
-<td><em>Ctrl+Shift+Alt+N</em></td>
-<td><em>查找项目中的方法或变量</em></td>
-</tr>
-<tr>
-<td><em>Ctrl+B</em></td>
-<td><em>查找变量的来源</em></td>
-</tr>
-<tr>
-<td>Alt+Up/Down</td>
-<td>光标在当前文件中的方法或类名称之间移动</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+B</td>
-<td>快速打开光标处的类或方法</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+B</td>
-<td>跳转到类或方法实现处</td>
-</tr>
-<tr>
-<td>Ctrl+E</td>
-<td>可以得到一个最近打开的文件的可搜索的列表</td>
-</tr>
-<tr>
-<td>Alt+F3</td>
-<td>快速查找，效果和Ctrl+F相同</td>
-</tr>
-<tr>
-<td>F4</td>
-<td>跳转至定义变量的位置</td>
-</tr>
-<tr>
-<td>Alt+F7</td>
-<td>查询当前元素在工程中的引用</td>
-</tr>
-<tr>
-<td>Ctrl+F7</td>
-<td>查询当前元素在当前文件中的引用，然后按 <code>F3</code> 可以选择</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+F7</td>
-<td>选中查询当前元素在工程中的引用</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+F7</td>
-<td>高亮显示匹配的字符，按 <code>Esc</code> 高亮消失</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+O</td>
-<td>弹出显示查找内容</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Up/Down</td>
-<td>快速跳转搜索结果</td>
-</tr>
-<tr>
-<td>Ctrl+Shift+S</td>
-<td>高级搜索、搜索结构</td>
-</tr>
-<tr>
-<td><em>Ctrl+Alt+Home</em></td>
-<td><em>帮助你很轻松地在布局文件和Activity/fragment文件之间进行导航。还有一个快捷方式是在类名的旁边和布局文件的顶部。</em></td>
+<td>getExternalCacheDir</td>
+<td>/storage/emulated/0/Android/data//cache/</td>
 </tr>
 </tbody>
 </table>
-<h3 id="重构"><a href="#重构" class="headerlink" title="重构"></a>重构</h3><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>F5</td>
-<td>复制</td>
-</tr>
-<tr>
-<td>F6</td>
-<td>移动</td>
-</tr>
-<tr>
-<td>Alt+Delete</td>
-<td>安全删除</td>
-</tr>
-<tr>
-<td><strong>Ctrl+U</strong></td>
-<td><strong>转到父类</strong></td>
-</tr>
-<tr>
-<td>Ctrl+O</td>
-<td>重写父类的方法</td>
-</tr>
-<tr>
-<td>Ctrl+I</td>
-<td>实现方法</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+N</td>
-<td>内联</td>
-</tr>
-<tr>
-<td><strong>Ctrl+Alt+Shift+T</strong></td>
-<td><strong>弹出重构菜单</strong></td>
-</tr>
-<tr>
-<td>Shift+F6</td>
-<td>重构-重命名</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+M</td>
-<td>提取代码组成方法</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+C</td>
-<td>将变量更改为常量</td>
-</tr>
-<tr>
-<td><strong>Ctrl+Alt+V</strong></td>
-<td><strong>定义变量引用当前对象或者方法的返回值,这是一个提取变量的快捷键不用通过重构菜单。这是非常有用的当你动态生成代码时你可以不用输入变量的声明并且可以直接修改变量名称。IDE将会生成声明并且还会给出一些建议的变量名称</strong></td>
-</tr>
-<tr>
-<td>Ctrl+Alt+F</td>
-<td>将局部变量更改为类的成员变量</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+P</td>
-<td>将变量更改为方法的参数</td>
-</tr>
-</tbody>
-</table>
-<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>F8</td>
-<td>跳到下一步</td>
-</tr>
-<tr>
-<td>Shift+F8</td>
-<td>跳出函数、跳到下一个断点</td>
-</tr>
-<tr>
-<td>Alt+Shift+F8</td>
-<td>强制跳出函数</td>
-</tr>
-<tr>
-<td>F7</td>
-<td>进入代码</td>
-</tr>
-<tr>
-<td>Shift+F7</td>
-<td>智能进入代码</td>
-</tr>
-<tr>
-<td>Alt+Shift+F7</td>
-<td>强制进入代码</td>
-</tr>
-<tr>
-<td>Alt+F9</td>
-<td>运行至光标处</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+F9</td>
-<td>强制运行至光标处</td>
-</tr>
-<tr>
-<td>Ctrl+F2</td>
-<td>停止运行</td>
-</tr>
-<tr>
-<td>Alt+F8</td>
-<td>计算变量值</td>
-</tr>
-</tbody>
-</table>
-<h3 id="VCS-Version-Contral-Service"><a href="#VCS-Version-Contral-Service" class="headerlink" title="VCS (Version Contral Service)"></a>VCS (Version Contral Service)</h3><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><em>Alt+ <code>~</code></em></td>
-<td><em><code>VCS</code> 操作菜单</em></td>
-</tr>
-<tr>
-<td>Ctrl+K</td>
-<td>提交更改</td>
-</tr>
-<tr>
-<td>Ctrl+T</td>
-<td>更新项目</td>
-</tr>
-<tr>
-<td>Ctrl+Alt+Shift+D</td>
-<td>显示变化</td>
-</tr>
-</tbody>
-</table>
+<blockquote>
+<p>如果你的api 版本低于8，那么不能使用getExternalFilesDir()，而是使用Environment.getExternalStorageDirectory()获得根路径之后，自己再想办法操作/Android/data/&lt;package_name&gt;/下的文件。<br>也就是说api 8以下的版本在操作文件的时候没有专门为私有文件和公共文件的操作提供api支持。你只能先获取根目录，然后自行想办法。</p>
+</blockquote>
+<h4 id="2-3-扩展卡内存"><a href="#2-3-扩展卡内存" class="headerlink" title="2.3 扩展卡内存"></a>2.3 扩展卡内存</h4><p>扩展内存就是我们插入的外置SD卡，获取扩展内存的路径有代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//获取扩展SDCard</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getExtendedMemoryPath</span><span class="params">(Context mContext)</span> </span>&#123;</span><br><span class="line">    StorageManager mStorageManager = (StorageManager) mContext.getSystemService(Context.STORAGE_SERVICE);</span><br><span class="line">    Class&lt;?&gt; storageVolumeClazz = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        storageVolumeClazz = Class.forName(<span class="string">"android.os.storage.StorageVolume"</span>);</span><br><span class="line">        Method getVolumeList = mStorageManager.getClass().getMethod(<span class="string">"getVolumeList"</span>);</span><br><span class="line">        Method getPath = storageVolumeClazz.getMethod(<span class="string">"getPath"</span>);</span><br><span class="line">        Method isRemovable = storageVolumeClazz.getMethod(<span class="string">"isRemovable"</span>);</span><br><span class="line">        Object result = getVolumeList.invoke(mStorageManager);</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> length = Array.getLength(result);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">            Object storageVolumeElement = Array.get(result, i);</span><br><span class="line">            String path = (String) getPath.invoke(storageVolumeElement);</span><br><span class="line">            <span class="keyword">boolean</span> removable = (Boolean) isRemovable.invoke(storageVolumeElement);</span><br><span class="line">            <span class="keyword">if</span> (removable) &#123;</span><br><span class="line">                <span class="keyword">return</span> path;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1843,7 +1550,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/01/21/6、Linux/1、常用Linux指令/一键测试脚本bench_sh/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/15/4、计算机系统/2、Android/1、Android 基础/数据加密/Android中的AES/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -1862,8 +1569,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/01/21/6、Linux/1、常用Linux指令/一键测试脚本bench_sh/" itemprop="url">
-                  一键测试脚本bench_sh
+                <a class="post-title-link" href="/2016/03/15/4、计算机系统/2、Android/1、Android 基础/数据加密/Android中的AES/" itemprop="url">
+                  Android中的AES
                 </a>
               
             
@@ -1882,14 +1589,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-01-21 16:31:10" itemprop="dateCreated datePublished" datetime="2016-01-21T16:31:10+08:00">2016-01-21</time>
+              <time title="Created: 2016-03-15 17:01:55" itemprop="dateCreated datePublished" datetime="2016-03-15T17:01:55+08:00">2016-03-15</time>
             
 
             
@@ -1906,7 +1613,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-08-06 09:48:16" itemprop="dateModified" datetime="2018-08-06T09:48:16+08:00">2018-08-06</time>
+                <time title="Modified: 2017-11-22 10:46:12" itemprop="dateModified" datetime="2017-11-22T10:46:12+08:00">2017-11-22</time>
               
             
           </span>
@@ -1941,10 +1648,7 @@
       
         
           
-            <h2 id="一键测试脚本bench-sh"><a href="#一键测试脚本bench-sh" class="headerlink" title="一键测试脚本bench_sh"></a>一键测试脚本bench_sh</h2><p>总结一下 bench.sh 特点：<br>1、显示当前测试的各种系统信息；<br>2、取自世界多处的知名数据中心的测试点，下载测试比较全面；<br>3、支持 IPv6 下载测速；<br>4、IO 测试三次，并显示平均值。</p>
-<p>再配合 unixbench.sh 脚本测试，即可全面测试 VPS 的性能。<br>使用方法：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令1：</span><br><span class="line">wget -qO- bench.sh | bash</span><br><span class="line">或者</span><br><span class="line">curl -Lso- bench.sh | bash</span><br><span class="line">命令2：</span><br><span class="line">wget -qO- 86.re/bench.sh | bash</span><br><span class="line">或者</span><br><span class="line">curl -so- 86.re/bench.sh | bash</span><br></pre></td></tr></table></figure></p>
-<p>备注：<br>bench.sh 既是脚本名，同时又是域名。所以不要怀疑我写错了或者你看错了。<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180420/JI1hE39DAB.png?imageslim" alt="mark"></p>
-
+            <h1 id="Android中的AES"><a href="#Android中的AES" class="headerlink" title="Android中的AES"></a>Android中的AES</h1><h2 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h2>
           
         
       
@@ -1997,7 +1701,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2015/04/16/6、Linux/1、常用Linux指令/Linux 查看端口占用情况/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/11/4、计算机系统/2、Android/1、Android 基础/数据加密/Android中的RSA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -2016,8 +1720,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/04/16/6、Linux/1、常用Linux指令/Linux 查看端口占用情况/" itemprop="url">
-                  Linux 查看端口占用情况
+                <a class="post-title-link" href="/2016/03/11/4、计算机系统/2、Android/1、Android 基础/数据加密/Android中的RSA/" itemprop="url">
+                  Android中的RSA
                 </a>
               
             
@@ -2036,14 +1740,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2015-04-16 14:21:44" itemprop="dateCreated datePublished" datetime="2015-04-16T14:21:44+08:00">2015-04-16</time>
+              <time title="Created: 2016-03-11 11:42:59" itemprop="dateCreated datePublished" datetime="2016-03-11T11:42:59+08:00">2016-03-11</time>
             
 
             
@@ -2060,7 +1764,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-17 16:34:13" itemprop="dateModified" datetime="2018-04-17T16:34:13+08:00">2018-04-17</time>
+                <time title="Modified: 2017-11-17 09:40:34" itemprop="dateModified" datetime="2017-11-17T09:40:34+08:00">2017-11-17</time>
               
             
           </span>
@@ -2095,12 +1799,7 @@
       
         
           
-            <h2 id="Linux-查看端口占用情况"><a href="#Linux-查看端口占用情况" class="headerlink" title="Linux 查看端口占用情况"></a>Linux 查看端口占用情况</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -i:端口号</span><br><span class="line">netstat -tunlp|grep 端口号</span><br></pre></td></tr></table></figure>
-<p>都可以查看指定端口被哪个进程占用的情况</p>
-<h3 id="1、lsof-i-端口号"><a href="#1、lsof-i-端口号" class="headerlink" title="1、lsof -i:端口号"></a>1、lsof -i:端口号</h3><p>lsof -i 用以显示符合条件的进程情况，lsof(list open files)是一个列出当前系统打开文件的工具。<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180417/L1gHghm1Eh.png?imageslim" alt="mark"><br>lsof -i 输出当前系统所有运行进程的信息<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">| 字段| 意义 | </span><br><span class="line">| COMMAND | 进程名称 |</span><br><span class="line">| PID | 进程ID | </span><br><span class="line">| USER | 进程所有者 | </span><br><span class="line">| FD | 文件描述符 | </span><br><span class="line">| TYPE | 文件类型 |</span><br><span class="line">| DEVICE | 磁盘盘符 |</span><br><span class="line">| SIZE/OFF |  大小 | </span><br><span class="line">| NODE | 索引节点|</span><br><span class="line">| Name | 打开文件的确切名称 |</span><br></pre></td></tr></table></figure></p>
-<p>可使用 <figure class="highlight plain"><figcaption><span>-i:端口号``` 查询指定端口的占用情况</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">![mark](http://oymp4z5xr.bkt.clouddn.com/hexo/180417/mdE2Hc5jl2.png?imageslim)</span><br><span class="line"></span><br><span class="line">### 2、netstat -tunlp|grep 端口号</span><br><span class="line">netstat -tunlp用于显示tcp，udp的端口和进程等相关情况</span><br><span class="line">![mark](http://oymp4z5xr.bkt.clouddn.com/hexo/180417/A72miCDbh4.png?imageslim)</span><br><span class="line">```table</span><br><span class="line">| netstat 参数 | 意义 |</span><br><span class="line">| -t | tcp,仅显示tcp 相关信息 |</span><br><span class="line">| -u | udp,仅显示udp 相关信息 |</span><br><span class="line">| -n | 不显示别名，能相识数字的全部转化为数字 |</span><br><span class="line">| -l | 仅列出有在监听的服务状态 |</span><br><span class="line">| -p | 显示建立相关链接的程序名 |</span><br></pre></td></tr></table></figure></p>
-<p>netstat -tunlp|grep 端口号，用于查看指定端口号的进程情况<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180417/jAifC2GF46.png?imageslim" alt="mark"></p>
-
+            <h1 id="Android中的RSA"><a href="#Android中的RSA" class="headerlink" title="Android中的RSA"></a>Android中的RSA</h1>
           
         
       
@@ -2153,7 +1852,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2015/04/16/6、Linux/1、常用Linux指令/curl下载文件的命令/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/10/4、计算机系统/2、Android/1、Android 基础/数据加密/Android中的Base64/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -2172,8 +1871,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2015/04/16/6、Linux/1、常用Linux指令/curl下载文件的命令/" itemprop="url">
-                  curl文件下载
+                <a class="post-title-link" href="/2016/03/10/4、计算机系统/2、Android/1、Android 基础/数据加密/Android中的Base64/" itemprop="url">
+                  Android Base64
                 </a>
               
             
@@ -2192,14 +1891,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2015-04-16 14:21:44" itemprop="dateCreated datePublished" datetime="2015-04-16T14:21:44+08:00">2015-04-16</time>
+              <time title="Created: 2016-03-10 15:22:22" itemprop="dateCreated datePublished" datetime="2016-03-10T15:22:22+08:00">2016-03-10</time>
             
 
             
@@ -2216,7 +1915,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-20 14:29:07" itemprop="dateModified" datetime="2018-04-20T14:29:07+08:00">2018-04-20</time>
+                <time title="Modified: 2017-11-17 09:39:58" itemprop="dateModified" datetime="2017-11-17T09:39:58+08:00">2017-11-17</time>
               
             
           </span>
@@ -2251,14 +1950,73 @@
       
         
           
-            <h2 id="curl文件下载"><a href="#curl文件下载" class="headerlink" title="curl文件下载"></a>curl文件下载</h2><p>curl将下载文件输出到stdout，将进度信息输出到stderr，不显示进度信息使用–silent 选项。</p>
+            <h1 id="Android中的Base64"><a href="#Android中的Base64" class="headerlink" title="Android中的Base64"></a>Android中的Base64</h1><h2 id="1、base64是什么"><a href="#1、base64是什么" class="headerlink" title="1、base64是什么"></a>1、base64是什么</h2><pre><code> Base64并不是一种加密算法，而是一种转码算法。它把字节序列按照映射表转码为便于传输的64个可见字符，降低数据出错率。这也是它的名字的由来，即“基于64个字符”之意。通常我们在将数据加密后，经过Base64转码后再进行传输。按照Base64算法转码后的字节，通过逆运算可以得到原始字节，至于原始字节代表的含义，并不关心，也就是说，可以转码的数据并不限于文本，但转码结果均是64个可打印字符组成的序列(末尾可能出现1或2个“=”字符，其含义后续说明)。
+Base64要求把每三个8Bit的字节转换为四个6Bit的字节（3*8 = 4*6 = 24），然后把6Bit再添两位高位0，组成四个8Bit的字节，也就是说，转换后的字符串理论上将要比原来的长1/3。
+</code></pre><h2 id="2、base64-的规则"><a href="#2、base64-的规则" class="headerlink" title="2、base64 的规则"></a>2、base64 的规则</h2><pre><code>关于这个编码的规则：
+1、 把3个字符变成4个字符。
+2、每76个字符加一个换行符。
+3、最后的结束符也要处理
+</code></pre><p>例如：<br>转换前 11111111, 11111111, 11111111 （二进制）<br>转换后 00111111, 00111111, 00111111, 00111111 （二进制）<br>十进制 43 27 41 54<br>对应码表中的值 r b p 2<br>所以上面的24位编码，编码后的Base64值为 rbp2<br>上面的三个字节是原文，下面的四个字节是转换后的Base64编码，其前两位均为0。<br>转换后，我们用一个码表来得到我们想要的字符串（也就是最终的Base64编码），这个表是这样的：（摘自RFC2045）<br>Base64映射表：<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-16/35733995.jpg" alt=""></p>
+<blockquote>
+</blockquote>
+<p> 注意：在转码成Base64字符后，这些字符序列是按照ASCII字符集存储，‘D’对应的ASCII码值为68，所以存为01000100，而不是3（00000011），很多初学者以为映射表中的码值就是转码后字符的字节值，这是不对的，映射表中的码值是对“分区块”处理后的每个字节映射转换Base64字符时所用。顺便附上ASCII表<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-17/62239519.jpg" alt=""><br>数据还原时，先把Base64字符按照ASCII字符集转换成字节，然后进行“分区处理”的逆运算，得到原始字节。</p>
+<p>…聪明的你可能会问到，原文的字节数量应该是3的倍数啊，如果这个条件不能满足的话，那该怎么办呢？<br>我们的解决办法是这样的：原文剩余的字节根据编码规则继续单独转(1变2,2变3;不够的位数用0补全)，再用=号补满4个字节。这就是为什么有些Base64编码会以一个或两个等号结束的原因，但等号最多只有两个。因为：<br>一个原字节至少会变成两个目标字节<br>所以余数任何情况下都只可能是0，1，2这三个数中的一个。如果余数是0的话，就表示原文字节数正好是3的倍数（最理想的情况）。如果是1的话，转成2个Base64编码字符，为了让Base64编码是4的倍数，就要补2个等号；同理，如果是2的话，就要补1个等号。</p>
+<h2 id="3-Android中的使用"><a href="#3-Android中的使用" class="headerlink" title="3.Android中的使用"></a>3.Android中的使用</h2><pre><code>Android内置了Base64的处理。有的小伙伴担心自己的后台不是Java后台，其实Base64是一种算法，是与语言不相关的，每种语言都会有自己对应的实现，得到的结果是一致的。有时前端和后台解码后的数据之所以不一致，并非语言不通所致，而是一些Base64处理规则没有保持一致，比如，若结尾有‘=’字符，是否略去，等等。
+android.util 包下的Base64类提供了一些编码静态方法：
+</code></pre><table>
+<thead>
+<tr>
+<th>API</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public static byte[]  encode(byte[] input, int flags)</td>
+<td>将字节数组进行转码，得到转码后的字节数组(Base64字符对应的ASCII字节值)。</td>
+</tr>
+<tr>
+<td>public static byte[]  encode(String str, int flags)</td>
+<td>将一个字符串进行转码，该方法等价于Base64.encode(str.getBytes(),flags)</td>
+</tr>
+<tr>
+<td>public static String  encodeToString(byte[] input, int flags)</td>
+<td>将字节数组转码成Base64字符</td>
+</tr>
+</tbody>
+</table>
+<pre><code>解码的静态方法：
+</code></pre><table>
+<thead>
+<tr>
+<th>API</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>public static byte[] decode(byte[] input, int flags)</td>
+<td>将转码后的字节还原成原始字节。</td>
+</tr>
+<tr>
+<td>public static byte[] decode(String str, int flags)</td>
+<td>将Base64字符序列还原成原始字。</td>
+</tr>
+</tbody>
+</table>
+<pre><code>不同字符编码的情况
+</code></pre><p>UTF-8、GBK、gb2312、ISO_8859_1字符集中，这64个字符的对应的字节值以及所占用的字节数与ASCII完全一样。所以str.getBytes()与str.getBytes(“US-ASCII”)等效。但是java 使用的Unicode编码却不同。java代码中字符串默认以Unicode编码，咱们看一下Java中类似的代码是如何处理的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#源码</span><br><span class="line">#可以看到，它并没有像Android一样直接调用src.getBytes()，Unicode与ASCII对这64个字符编码的字节值和占用字节数并不一样，而是传入字符集ISO_8859-1，效果与ASCII等价。</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">byte</span>[] decode(String src) &#123;  </span><br><span class="line">    <span class="keyword">return</span> decode(src.getBytes(StandardCharsets.ISO_8859_1));  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>这里说明一点，Java中的Base64位于java.util包下，Android剔除了该类，后者的Base64类位于android.util包下。</p>
+</blockquote>
+<pre><code>flag 参数的含义
+</code></pre><p>Android中的四个静态方法都有一个int型flags参数,它们的值可以是如下几种：</p>
 <ul>
-<li><p>1 . curl URL –silent<br>这条命令是将下载文件输出到终端，所有下载的数据都被写入到stdout。</p>
-</li>
-<li><p>2 . curl URL –silent -O<br>使用选项 -O 将下载的数据写入到文件，必须使用文件的绝对地址。</p>
-</li>
-<li><p>3 . curl URL -o filename –progress<br>######################################### 100.0%<br>选项 -o 将下载数据写入到指定名称的文件中，并使用 –progress 显示进度条。</p>
-</li>
+<li>DEFAULT 这个参数是默认，使用默认的方法来加密</li>
+<li>NO_PADDING 这个参数是略去加密字符串最后的”=”</li>
+<li>NO_WRAP 这个参数意思是略去所有的换行符（设置后CRLF就没用了）</li>
+<li>CRLF 这个参数看起来比较眼熟，它就是Win风格的换行符，意思就是使用CR LF这一对作为一行的结尾而不是Unix风格的LF</li>
+<li>URL_SAFE 这个参数意思是加密时不使用对URL和文件名有特殊意义的字符来作为加密字符，具体就是以-和_取代+和/</li>
 </ul>
 
           
@@ -2302,7 +2060,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2345,8 +2103,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">80</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2394,10 +2152,8 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">18</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -2450,7 +2206,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -2464,7 +2220,7 @@
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 

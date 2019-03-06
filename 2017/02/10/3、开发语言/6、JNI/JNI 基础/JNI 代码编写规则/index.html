@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="JNI 代码编写规则一、基本类型1、java参数类型和jni本地参数类型对照   Java 类型 jni本地类型 描述     boolean jboolean C/C++ unsigned 8 bits   byte jbyte C/C++ signed 8 bits   char jchar C/C++ unsigned 16 bits   short jshort C/C++ signed">
+<meta name="keywords" content="JNI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jni代码编写规则">
+<meta property="og:url" content="http://liyy.org/2017/02/10/3、开发语言/6、JNI/JNI 基础/JNI 代码编写规则/index.html">
+<meta property="og:site_name" content="AtomOne">
+<meta property="og:description" content="JNI 代码编写规则一、基本类型1、java参数类型和jni本地参数类型对照   Java 类型 jni本地类型 描述     boolean jboolean C/C++ unsigned 8 bits   byte jbyte C/C++ signed 8 bits   char jchar C/C++ unsigned 16 bits   short jshort C/C++ signed">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oymp4z5xr.bkt.clouddn.com/17-11-21/71727895.jpg">
+<meta property="og:updated_time" content="2019-02-11T02:25:11.027Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jni代码编写规则">
+<meta name="twitter:description" content="JNI 代码编写规则一、基本类型1、java参数类型和jni本地参数类型对照   Java 类型 jni本地类型 描述     boolean jboolean C/C++ unsigned 8 bits   byte jbyte C/C++ signed 8 bits   char jchar C/C++ unsigned 16 bits   short jshort C/C++ signed">
+<meta name="twitter:image" content="http://oymp4z5xr.bkt.clouddn.com/17-11-21/71727895.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://liyy.org/2017/02/10/3、开发语言/6、JNI/JNI 基础/JNI 代码编写规则/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>jni代码编写规则 | AtomOne</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AtomOne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">一个默默无闻的技术Cat</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/02/10/3、开发语言/6、JNI/JNI 基础/JNI 代码编写规则/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">jni代码编写规则
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-02-10 11:02:59" itemprop="dateCreated datePublished" datetime="2017-02-10T11:02:59+08:00">2017-02-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-11 10:25:11" itemprop="dateModified" datetime="2019-02-11T10:25:11+08:00">2019-02-11</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="JNI-代码编写规则"><a href="#JNI-代码编写规则" class="headerlink" title="JNI 代码编写规则"></a>JNI 代码编写规则</h2><h3 id="一、基本类型"><a href="#一、基本类型" class="headerlink" title="一、基本类型"></a>一、基本类型</h3><h4 id="1、java参数类型和jni本地参数类型对照"><a href="#1、java参数类型和jni本地参数类型对照" class="headerlink" title="1、java参数类型和jni本地参数类型对照"></a>1、java参数类型和jni本地参数类型对照</h4><table>
+<thead>
+<tr>
+<th>Java 类型</th>
+<th>jni本地类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean</td>
+<td>jboolean</td>
+<td>C/C++ unsigned 8 bits</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>jbyte</td>
+<td>C/C++ signed 8 bits</td>
+</tr>
+<tr>
+<td>char</td>
+<td>jchar</td>
+<td>C/C++ unsigned 16 bits</td>
+</tr>
+<tr>
+<td>short</td>
+<td>jshort</td>
+<td>C/C++ signed 16 bits</td>
+</tr>
+<tr>
+<td>int</td>
+<td>jint</td>
+<td>C/C++ signed 32 bits</td>
+</tr>
+<tr>
+<td>long</td>
+<td>jlong</td>
+<td>C/C++ signed 64 bits</td>
+</tr>
+<tr>
+<td>float</td>
+<td>jfloat</td>
+<td>C/C++  32位浮点型</td>
+</tr>
+<tr>
+<td>double</td>
+<td>jdouble</td>
+<td>C/C++  64位浮点型</td>
+</tr>
+<tr>
+<td>void</td>
+<td>void</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>对象类型</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Java 类型</th>
+<th>jni本地类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Object</td>
+<td>jobject</td>
+<td>任何Java对象，或者没有对应的java类型的对象</td>
+</tr>
+<tr>
+<td>Class</td>
+<td>jclass</td>
+<td>class对象</td>
+</tr>
+<tr>
+<td>String</td>
+<td>jstring</td>
+<td>字符串对象</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>数组类型</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Java 类型</th>
+<th>jni本地类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>boolean[]</td>
+<td>jbooleanArray</td>
+<td>布尔型数组 unsigned</td>
+</tr>
+<tr>
+<td>byte[]</td>
+<td>jbyteArray</td>
+<td>比特型数组 signed</td>
+</tr>
+<tr>
+<td>char[]</td>
+<td>jcharArray</td>
+<td>字符型数组 unsigned</td>
+</tr>
+<tr>
+<td>short[]</td>
+<td>jshortArray</td>
+<td>短整型数组 signed</td>
+</tr>
+<tr>
+<td>int[]</td>
+<td>jintArray</td>
+<td>整型数组 signed</td>
+</tr>
+<tr>
+<td>long[]</td>
+<td>jlongArray</td>
+<td>长整型数组 signed</td>
+</tr>
+<tr>
+<td>float[]</td>
+<td>jfloatArray</td>
+<td>浮点型数组</td>
+</tr>
+<tr>
+<td>double[]</td>
+<td>jdoubleArray</td>
+<td>双浮点型数组</td>
+</tr>
+<tr>
+<td>Object[]</td>
+<td>jobjectArray</td>
+<td>任何对象的数组</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2、JNI引用类型与Java的对应关系如下树层次图："><a href="#2、JNI引用类型与Java的对应关系如下树层次图：" class="headerlink" title="2、JNI引用类型与Java的对应关系如下树层次图："></a>2、JNI引用类型与Java的对应关系如下树层次图：</h3><ul>
+<li>java中的返回值void和JNI中的void是完全对应的。<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-21/71727895.jpg" alt=""> </li>
+<li><p>java中的基本数据类型（boolean ，byte , char ，short ,int,long,float,double八种）在JNI中对应的数据类型只要在前面加上j就对应了（jboolean ，jbyte , jchar ，jshort ,jint,jlong,jfloat,jdouble）。<br>JNI中还有个Java中没有的jsize,定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 其实jsize整型是用来描述基本指标和大小。</span><br><span class="line">   <span class="keyword">typedef</span> jint jsize;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java中的对象，包括类库中定义的类、接口以及自定义的类接口，都对应于JNI中的jobject。</p>
+</li>
+<li>java中基本数据类型的数组对应与JNI中的j<type>array类型。（type就是上面说的8种基本数据类型）</type></li>
+<li>java中对象的数组对应于JNI中的jobjectArray类型。（在java中一切对象、接口以及数组都是对象）<blockquote>
+<p><a href="http://blog.csdn.net/xyz_lmn/article/details/6956003" target="_blank" rel="noopener">http://blog.csdn.net/xyz_lmn/article/details/6956003</a><br><a href="http://www.cnblogs.com/liangwind/archive/2009/08/18/1925515.html" target="_blank" rel="noopener">http://www.cnblogs.com/liangwind/archive/2009/08/18/1925515.html</a></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="3、Java基本类型的精度"><a href="#3、Java基本类型的精度" class="headerlink" title="3、Java基本类型的精度"></a>3、Java基本类型的精度</h3><p>java 的基本数据类型是不存在有符号和无符号这种概念的. JAVA中的基本数据类型不存在无符号的，它们的取值范围是固定的，不会随着机器硬件环境或者操作系统的改变而改变。</p>
+<table>
+<thead>
+<tr>
+<th>简单类型</th>
+<th>字节数</th>
+<th>范围/精度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>32位IEEE754单精度</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>64位IEEE754双精度</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>1</td>
+<td>-128到127</td>
+</tr>
+<tr>
+<td>short</td>
+<td>2</td>
+<td>-32,768到32,767</td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td>-2,147,483,648到2,147,483,647</td>
+</tr>
+<tr>
+<td>long</td>
+<td>8</td>
+<td>-9,223,372,036,854,775,808到9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td>char</td>
+<td>2</td>
+<td>整个Unicode字符集</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>1</td>
+<td>True或者false</td>
+</tr>
+</tbody>
+</table>
+<p>像byte 是范围是 -128到127, 你想要变为 0到255 怎么办, 跟 0XFF 做与运算 就可以了.<br>如 byte bb , 如果你想赋值它值 255, 那是不行的, 就算赋值了, bb 的值也是 255 对 256 求模后的值 -1<br>　　    如果你只是想取他 0到255 的值, 还是很简单的,<br>　　    bb &amp; 0XFF  , 如 bb = -1,  那 bb &amp; 0XFF 结果为 255,<br>　　    这个与运算后的结果会隐式转换为int 类型的, 因为 byte 放不下了.<br>与运算 还是很快的, 比加减法还快的.<br><a href="http://www.stuhack.com/biancheng/java/35169.html" target="_blank" rel="noopener">http://www.stuhack.com/biancheng/java/35169.html</a></p>
+<h2 id="二、jni层使用java的基本类型数据"><a href="#二、jni层使用java的基本类型数据" class="headerlink" title="二、jni层使用java的基本类型数据"></a>二、jni层使用java的基本类型数据</h2><p>对于上面八种基本的数据类型boolean ，byte , char ，short ,int,long,float,double，jni层的c++代码可以用强制直接转换成对于长度的c/c++类型数据。<br>如：unsigned char tmp = (unsigned char) m_jboolean;<br>    unsigned short tmp = (unsigned short)m_jchar;<br>    或者同长度类型的数据就可以直接赋值的，int tmp = m_jint;</p>
+<h2 id="三、jni层对数组的使用"><a href="#三、jni层对数组的使用" class="headerlink" title="三、jni层对数组的使用"></a>三、jni层对数组的使用</h2><p>JNI通过JNIEnv提供的操作Java数组的功能。它提供了两个函数：一个是操作java的简单型数组的，另一个是操作对象类型数组的。</p>
+<ol>
+<li>操作java的简单型数组<br>因为速度的原因，简单类型的数组作为指向本地类型的指针暴露给本地代码。因此，它们能作为常规的数组存取。这个指针是指向实际的Java数组或者Java数组的拷贝的指针。另外，数组的布置保证匹配本地类型。<br>为了存取Java简单类型的数组，你就要要使用GetXXXArrayElements函数（见表三），XXX代表了数组的类型。这个函数把Java数组看成参数，返回一个指向对应的本地类型的数组的指针。<br> 完整的函数族见下表：<br>函数                         Java 数组类型  本地类型<br>GetBooleanArrayElements     jbooleanArray   jboolean<br>GetByteArrayElements         jbyteArray      jbyte<br>GetCharArrayElements         jcharArray      jchar<br>GetShortArrayElements        jshortArray     jshort<br>GetIntArrayElements          jintArray       jint<br>GetLongArrayElements         jlongArray      jlong<br>GetFloatArrayElements        jfloatArray     jfloat<br>GetDoubleArrayElements       jdoubleArray    jdouble</li>
+</ol>
+<p>当你对数组的存取完成后，要确保调用相应的ReleaseXXXArrayElements函数，参数是对应Java数组和GetXXXArrayElements返回的指针。如果必要的话，这个释放函数会复制你做的任何变化（这样它们就反射到java数组），然后释放所有相 关的资源。<br>例如：<br>static jint com_ginwave_fs_com_HWRC_GetRecogRange(JNIEnv<em> env, jclass clazz, jintArray Handle)<br>{<br>unsigned long </em>pHandle = NULL;<br>int ret = 0;<br>jint <em>tmpHandle = env-&gt;GetIntArrayElements(Handle, 0);<br>pHandle = (unsigned long </em>)tmpHandle;<br>ret = (int)HWRC_GetRecogRange(pHandle);<br>env-&gt;ReleaseIntArrayElements(Handle, tmpHandle, 0);<br>return r<br>}</p>
+<p>获取数组的长度：<br>jint theArrayLength = env-&gt;GetArrayLength(Frame);</p>
+<pre><code>创建一个新的函数数组簇如下：
+</code></pre><p>NewBooleanArray<br>NewByteArray<br>NewCharArray<br>NewShortArray<br>NewIntArray<br>NewLongArray<br>NewFloatArray<br>NewDoubleArray<br>        参数为数组长度，如：<br>        jbyte *list;<br>        jbyteArray byteArray = NULL;<br>        byteArray = env-&gt;NewByteArray(len);<br>        if (byteArray)<br>            env-&gt;SetByteArrayRegion(byteArray, 0, len, list);</p>
+<pre><code>关于函数簇GetXXXArrayRegion和SetXXXArrayRegion，其中XXX为基本类型。
+例如：
+env-&gt;SetByteArrayRegion(buffer, destOffset, count, (const jbyte *)address + srcOffset);
+Setxxx的方向是从JNI层往java层传递；
+env-&gt;GetByteArrayRegion(buffer, srcOffset, count, (jbyte *)address + destOffset);
+而Getxxx的方向则是数据从java层向jni层传递。
+
+这里是获取简单型数组中的数据供jni或者下层使用，如果需要在jni层设置java
+</code></pre><p>中对于的简单型数组的话，就需要使用到接下来讲到的对象类型的一些操作。<br>    总结下，有以下几簇函数：<br>    GetArrayLength<br>    NewXXXArray<br>    GetXXXArrayElements<br>    ReleaseXXXArrayElements<br>    GetXXXArrayRegion<br>    SetXXXArrayRegion<br>    对于数据，暂时遇到这些函数了。。。</p>
+<ol start="2">
+<li>操作java对象类型数据<br>Java对象做为引用被传递到本地方法中，所有这些Java对象的引用都有一个共同的父类型jobject(相当于java中的Object类是所有类的父类一样)。</li>
+</ol>
+<p>1). string对象<br>从java程序中传过去的String对象在本地方法中对应的是jstring类型，jstring类型和c中的char<em>不同，所以如果你直接当做char</em>使用的话，就会出错。因此在使用之前需要将jstring转换成为c/c++中的char<em>，这里使用JNIEnv的方法转换。<br>static jstring  com_prompt_getLine(JNIEnv </em>env, jobject obj, jstring prompt)<br>{<br>char buf[128];<br>const char <em>str = (</em>env)-&gt;GetStringUTFChars(env, prompt, 0);<br>printf(“%s”, str);<br>env-&gt;ReleaseStringUTFChars(prompt, str);<br>…</p>
+<p>}<br>这里使用GetStringUTFChars方法将传进来的prompt（jstring类型）转换成为UTF－8的格式，就能够在本地方法中使用了。<br>注意：在使用完你所转换之后的对象之后，需要显示调用ReleaseStringUTFChars方法，让JVM释放转换成UTF-8的string的对象的空间，如果不显示的调用的话，JVM中会一直保存该对象，不会被垃圾回收器回收，因此就会导致内存溢出。</p>
+<p>下面是访问String的一些方法：<br>GetStringUTFChars        将jstring转换成为UTF-8格式的char<em><br>GetStringChars           将jstring转换成为Unicode格式的char</em><br>ReleaseStringUTFChars    释放指向UTF-8格式的char<em>的指针<br>ReleaseStringChars       释放指向Unicode格式的char</em>的指针<br>NewStringUTF             创建一个UTF-8格式的String对象<br>NewString                创建一个Unicode格式的String对象<br>GetStringUTFLength       获取UTF-8格式的char<em>的长度<br>GetStringLength          获取Unicode格式的char</em>的长度</p>
+<p>提供给两个jstring和char <em>互相转换的函数：<br>/</em> c/c++ string turn to java jstring <em>/<br>static jstring strTojstring(JNIEnv</em> env, const unsigned char<em> pStr)<br>{<br>    int        strLen    = strlen((const char</em>)pStr);<br>    jclass     jstrObj   = env-&gt;FindClass(“java/lang/String”);<br>    jmethodID  methodId  = env-&gt;GetMethodID(jstrObj, “”, “([BLjava/lang/String;)V”);<br>    jbyteArray byteArray = env-&gt;NewByteArray(strLen);<br>    jstring    encode    = env-&gt;NewStringUTF(“utf-8”);</p>
+<pre><code>env-&gt;SetByteArrayRegion(byteArray, 0, strLen, (jbyte*)pStr);
+
+return (jstring)env-&gt;NewObject(jstrObj, methodId, byteArray, encode);
+</code></pre><p>}<br>//check ok!</p>
+<p>/<em> java jstring turn to c/c++ string </em>/<br>static char<em> jstringTostr(JNIEnv</em> env, jstring jstr)<br>{<br>    char* pStr = NULL;</p>
+<pre><code>jclass     jstrObj   = env-&gt;FindClass(&quot;java/lang/String&quot;);
+jstring    encode    = env-&gt;NewStringUTF(&quot;utf-8&quot;);
+jmethodID  methodId  = env-&gt;GetMethodID(jstrObj, &quot;getBytes&quot;, &quot;(Ljava/lang/String;)[B&quot;);
+jbyteArray byteArray = (jbyteArray)env-&gt;CallObjectMethod(jstr, methodId, encode);
+jsize      strLen    = env-&gt;GetArrayLength(byteArray);
+jbyte      *jBuf     = env-&gt;GetByteArrayElements(byteArray, JNI_FALSE);
+
+if (jBuf &gt; 0)
+{
+    pStr = (char*)malloc(strLen + 1);
+
+    if (!pStr)
+    {
+        return NULL;
+    }
+
+    memcpy(pStr, jBuf, strLen);
+
+    pStr[strLen] = 0;
+}
+
+env-&gt;ReleaseByteArrayElements(byteArray, jBuf, 0);
+
+return pStr;
+</code></pre><p>}<br>// check ok!</p>
+<pre><code>    2) 访问java对象
+JNI提供的另外一个功能是在本地代码中使用Java对象。通过使用合适的JNI函数，你可以创建Java对象，get、set 静态(static)和 实例（instance）的域，调用静态(static)和实例（instance）函数。JNI通过ID识别域和方法，一个域或方法的ID是任何处理域和方法的函数的必须参数。
+</code></pre><p>下表列出了用以得到静态(static)和实例（instance）的域与方法的JNI函数。每个函数接受（作为参数）域或方法的类，它们的名称，符号和它们对应返回的jfieldID或jmethodID。</p>
+<pre><code>函数                    描述
+</code></pre><p>GetFieldID              得到一个实例的域的ID<br>GetStaticFieldID        得到一个静态的域的ID<br>GetMethodID             得到一个实例的方法的ID<br>GetStaticMethodID       得到一个静态方法的ID</p>
+<pre><code>下面以一个例子来说明用法：上下层之间需要传递一个或者多个结构体值。
+c/c++结构体定义：
+typedef struct tagTHWFrame{
+    short left;
+    short top;
+    short width;
+    short height;
+</code></pre><p>} THWFrame;<br>当然在java层也需要定义一个匹配的类出来：<br>public class THWFrame{<br>    public short left;<br>    public short top;<br>    public short width;<br>    public short height;<br>}<br>注意貌似这里只能定义成public的。<br>下面是jni层相关的代码，主要思想是对java对应类对象的属性域获得ID值后一个一个访问。<br>/<em> int HWRC_SetInputBox( unsigned long </em>pHandle, const THWFrame <em>pFrame ); </em>/<br>static void ObjectTOTHWFrameStruct(JNIEnv<em> env, jobjectArray Frame, THWFrame </em>pFrame, int index)<br>{<br>    jobject obj = env-&gt;GetObjectArrayElement(Frame, index);<br>    jclass cls = env-&gt;GetObjectClass(obj);<br>    jfieldID left = env-&gt;GetFieldID(cls, “left”, “S”);<br>    pFrame[index].left = (short)env-&gt;GetShortField(obj, left);</p>
+<pre><code>jfieldID top = env-&gt;GetFieldID(cls, &quot;top&quot;, &quot;S&quot;);
+pFrame[index].top = (short)env-&gt;GetShortField(obj, top);
+
+jfieldID width = env-&gt;GetFieldID(cls, &quot;width&quot;, &quot;S&quot;);
+pFrame[index].width = (short)env-&gt;GetShortField(obj, width);
+
+jfieldID height = env-&gt;GetFieldID(cls, &quot;height&quot;, &quot;S&quot;);
+pFrame[index].height = (short)env-&gt;GetShortField(obj, height); 
+</code></pre><p>}<br>static jint com_ginwave_fs_com_HWRC_SetInputBox(JNIEnv<em> env, jclass clazz,<br>            jintArray Handle, jobjectArray Frame)<br>{<br>    unsigned long </em>pHandle = NULL;<br>    THWFrame *pFrame = NULL;<br>    int frame_len = 0;<br>    int ret = 0;</p>
+<pre><code>jint *tmpHandle = env-&gt;GetIntArrayElements(Handle, 0);
+pHandle = (unsigned long *)tmpHandle;
+
+jint theArrayLength = env-&gt;GetArrayLength(Frame);
+frame_len = theArrayLength;
+pFrame = (THWFrame *)malloc( sizeof(THWFrame) * frame_len );
+
+for( int i = 0; i &lt; frame_len; i++ ){
+    ObjectTOTHWFrameStruct(env, Frame, pFrame, i);
+}
+
+ret = HWRC_SetInputBox(pHandle, (const THWFrame *)pFrame);
+
+env-&gt;ReleaseIntArrayElements(Handle, tmpHandle, 0);
+free(pFrame);
+frame_len = NULL;
+
+return ret;
+</code></pre><p>}<br>// {“HWRC_SetInputBox”, “([I[Ljava/com/ginwave/fs/com/THWFrame)I” , (void *)com_ginwave_fs_com_HWRC_SetInputBox },<br>// check ok!</p>
+<p>/<em> int HWRC_GetInputBox( unsigned long </em>pHandle, THWFrame <em>pFrame ); </em>/<br>static void THWFrameStructTOObject(JNIEnv<em> env, jobjectArray Frame, THWFrame </em>pFrame, int index)<br>{<br>    jobject obj = env-&gt;GetObjectArrayElement(Frame, index);<br>    jclass cls = env-&gt;GetObjectClass(obj);<br>    jfieldID left = env-&gt;GetFieldID(cls, “left”, “S”);<br>    env-&gt;SetShortField(obj, left, (short)pFrame[index].left);</p>
+<pre><code>jfieldID top = env-&gt;GetFieldID(cls, &quot;top&quot;, &quot;S&quot;);
+env-&gt;SetShortField(obj, top, (short)pFrame[index].top);
+
+jfieldID width = env-&gt;GetFieldID(cls, &quot;width&quot;, &quot;S&quot;);
+env-&gt;SetShortField(obj, width, (short)pFrame[index].width);
+
+jfieldID height = env-&gt;GetFieldID(cls, &quot;height&quot;, &quot;S&quot;);
+env-&gt;SetShortField(obj, height, (short)pFrame[index].height);
+</code></pre><p>}<br>static jint com_ginwave_fs_com_HWRC_GetInputBox(JNIEnv<em> env, jclass clazz,<br>            jintArray Handle, jobjectArray Frame)<br>{<br>    unsigned long </em>pHandle = NULL;<br>    THWFrame *pFrame = NULL;<br>    int frame_len = 0;<br>    int ret = 0;</p>
+<pre><code>jint *tmpHandle = env-&gt;GetIntArrayElements(Handle, 0);
+pHandle = (unsigned long *)tmpHandle;
+
+jint theArrayLength = env-&gt;GetArrayLength(Frame);
+frame_len = theArrayLength;
+pFrame = (THWFrame *)malloc( sizeof(THWFrame) * frame_len );
+
+ret = HWRC_GetInputBox(pHandle, pFrame);
+
+for( int i = 0; i &lt; frame_len; i++ ){
+    THWFrameStructTOObject(env, Frame, pFrame, i);
+}
+
+env-&gt;ReleaseIntArrayElements(Handle, tmpHandle, 0);
+free(pFrame);
+frame_len = NULL;
+
+return ret;
+</code></pre><p>}<br>// {“HWRC_GetInputBox”, “([I[Ljava/com/ginwave/fs/com/THWFrame)I” , (void *)com_ginwave_fs_com_HWRC_GetInputBox },<br>// check ok!</p>
+<p>其中，比较难理解的应该是函数的签名了，下面是他们的一些规则：<br>这个数组的类型是JNINativeMethod，定义如下：<br>typedef struct {<br>const char<em> name;<br>const char</em> signature;<br>void* fnPtr;<br>} JNINativeMethod;</p>
+<p>第一个变量name是Java中函数的名字。<br>第二个变量signature，用字符串是描述了函数的参数和返回值<br>第三个变量fnPtr是函数指针，指向C函数。</p>
+<p>其中比较难以理解的是第二个参数，例如<br>“()V”<br>“(II)V”<br>“(Ljava/lang/String;Ljava/lang/String;)V”</p>
+<p>实际上这些字符是与函数的参数类型一一对应的。<br>“()” 中的字符表示参数，后面的则代表返回值。例如”()V” 就表示void Func();<br>“(II)V” 表示 void Func(int, int);<br>具体的每一个字符的对应关系如下</p>
+<p>字符             Java类型      C类型<br>V              void              void<br>Z              jboolean     boolean<br>I              jint         int<br>J                     jlong             long<br>D              jdouble           double<br>F               jfloat              float<br>B              jbyte             byte<br>C              jchar                     char<br>S               jshort             short</p>
+<p>数组则以”[“开始，用两个字符表示<br>[I       jintArray          int[]<br>[F       jfloatArray         float[]<br>[B       jbyteArray          byte[]<br>[C        jcharArray          char[]<br>[S        jshortArray          short[]<br>[D       jdoubleArray         double[]<br>[J        jlongArray         long[]<br>[Z        jbooleanArray      boolean[]</p>
+<p>objects对象          Lfully-qualified-class-name;         L类名<br>Arrays数组          [array-type                                 [数组类型</p>
+<p>方法参数或者返回值为java中的对象时，必须以“L”加上其路径，不过此路径必须以“/”分开，自定义的对象也使用本规则，不在包中时直接“L”加上类名称。比如说 java.lang.String为“java/lang/String”,com.nedu.jni.helloword.Student为”com /nedu/jni/helloword/Student”</p>
+<p>方法参数或者返回值为数组时类型前加上[,例如[I表示 int[],[[[D表示 double[][][]，即几维数组就加几个[。</p>
+<p>JNI函数中始终包含两个必要的参数：JNIEnv<em> env, jclass clazz<br>JNIEnv </em>――它是一个接口指针，用于定位函数表中的函数！<br>在JNI规范中一般称  为   “Interface Pointer”。看到这儿好像和过程调用很类似了！是的，JNI中的操作过程，就是面向过程的！后面的jobject是  一个指向该类的指针，类似与C语言中的this。这个第二个参数是变化的，当该方法为类的实例方法时该参数为jobject；当该方法为类方法 （即静态方法）时该参数为jclass，指向该类的class。<br>通过ndk编程来得到jni层头文件的时候，这第二个参数对于staic方法，生成出来的就是jclass，而对于非staic方法，生成出来的就是jobject。</p>
+<p>从上图可知，jobject包含了其实概括了所有的java类型，也就是说，像上图中的非jobject类型的数据，在传递参数的时候都可以以jobject类型传递下去。比如说，如果要java中要传递一个二(多)维int数组下去，就可以包装成jobjectArray传下去，只不过对应的签名要弄成[[I了。</p>
+<p>对于访问java对象的方法<br>在本地方法中调用Java对象的方法的步骤：<br>①.获取你需要访问的Java对象的类：<br>jclass cls = (<em>env)-&gt;GetObjectClass(env, obj);   // FindClass(“android/util/log”)<br>使用GetObjectClass方法获取obj对应的jclass。 // 直接搜索类名，需要是static修饰的类。<br>②.获取MethodID：<br>jmethodID mid = (</em>env)-&gt;GetMethodID(env, cls, “callback”, “(I)V”);<br>// GetStaticMethodID(…)  , 获取静态方法的ID<br>使用GetMethdoID方法获取你要使用的方法的MethdoID。其参数的意义：<br>env–&gt;JNIEnv<br>cls–&gt;第一步获取的jclass<br>“callback”–&gt;要调用的方法名<br>“(I)V”–&gt;方法的Signature, 签名同前面的JNI规则。<br>③.调用方法：<br>(*env)-&gt;CallVoidMethod(env, obj, mid, depth);<br>// CallStaticIntMethod(….) ， 调用静态方法<br>使用CallVoidMethod方法调用方法。参数的意义：<br>env–&gt;JNIEnv<br>obj–&gt;通过本地方法穿过来的jobject<br>mid–&gt;要调用的MethodID（即第二步获得的MethodID）<br>depth–&gt;方法需要的参数（对应方法的需求，添加相应的参数）<br>注：这里使用的是CallVoidMethod方法调用，因为没有返回值，如果有返回值的话使用对应的方法，在后面会提到。<br>CallVoidMethod               CallStaticVoidMethod<br>CallIntMethod                     CallStaticVoidMethod<br>CallBooleanMethod              CallStaticVoidMethod<br>CallByteMethod                   CallStaticVoidMethod<br>…<br>其实jni中还有很多很多的接口函数这里没有列举，可以直接参考源码：<br>$ find  frameworks/base  type d  -name  jni<br>./voip/jni<br>./rfid/jni<br>./freestylus/jni<br>./native/graphics/jni<br>./drm/jni<br>./tests/BrowserTestPlugin/jni<br>./services/jni<br>./packages/TtsService/jni<br>./media/jni<br>./media/libdrm/mobile1/include/jni<br>./media/libdrm/mobile1/src/jni<br>./graphics/jni<br>./core/jni<br>./opengl/tests/gl_jni/jni<br>./opengl/tests/gl2_jni/jni<br>./opengl/tests/gldual/jni<br>这么多jni目录都可以参考，其中主要是core/jni目录了。<br>四、关于异常<br>异常接口有：<br>jniThrowException(env, “java/lang/RuntimeException”, “Method called after release()”);<br>env-&gt;ThrowNew(env-&gt;FindClass(“java/io/IOException”),”CWJLog Error, IOException”);<br>doThrow(env, “java/lang/IllegalStateException”, msg);<br>使用Throw，自己构造(没用过)<br>jclass clazz = env-&gt;FindClass(“java/io/IOException”);<br>jmethodID methodId = env-&gt;GetMethodID(clazz, “<init>“, “()V”);<br>jthrowable throwable = env-&gt;NewObject(clazz, methodId);<br>env-&gt;Throwthrowable);</init></p>
+<p>参考网址：<br><a href="http://blog.csdn.net/xyz_lmn/article/details/6959545" target="_blank" rel="noopener">http://blog.csdn.net/xyz_lmn/article/details/6959545</a><br> Android JNI入门第三篇——jni头文件分析<br><a href="http://blog.csdn.net/xyz_lmn/article/details/6966259" target="_blank" rel="noopener">http://blog.csdn.net/xyz_lmn/article/details/6966259</a><br> Android JNI入门第四篇——Android.mk文件分析<br><a href="http://blog.csdn.net/xyz_lmn/article/details/7017420" target="_blank" rel="noopener">http://blog.csdn.net/xyz_lmn/article/details/7017420</a><br> Android JNI开发提高篇<br><a href="http://blog.csdn.net/xyz_lmn/article/details/6956003" target="_blank" rel="noopener">http://blog.csdn.net/xyz_lmn/article/details/6956003</a><br> Android JNI入门第二篇——Java参数类型与本地参数类型对照</p>
+<p><a href="http://wenku.baidu.com/view/e9e28ca1b0717fd5360cdc18.html" target="_blank" rel="noopener">http://wenku.baidu.com/view/e9e28ca1b0717fd5360cdc18.html</a><br>JNI入门<br><a href="http://www.ibm.com/developerworks/cn/java/j-jni/" target="_blank" rel="noopener">http://www.ibm.com/developerworks/cn/java/j-jni/</a><br>使用 Java Native Interface 的最佳实践<br><a href="http://helloxuweifu.iteye.com/blog/1168647" target="_blank" rel="noopener">http://helloxuweifu.iteye.com/blog/1168647</a><br><a href="http://blog.csdn.net/kangyaping/article/details/6584027" target="_blank" rel="noopener">http://blog.csdn.net/kangyaping/article/details/6584027</a><br>JNI函数调用大全</p>
+<p><a href="http://newfaction.net/2010/11/30/java-jni-getfieldid-and-getmethodid-and-parameter-description.html" target="_blank" rel="noopener">http://newfaction.net/2010/11/30/java-jni-getfieldid-and-getmethodid-and-parameter-description.html</a><br>java jni GetFieldID 和 GetMethodID 以及参数的说明<br><a href="http://hi.baidu.com/spmno/blog/item/7d4d764ea78a6809b3de0588.html" target="_blank" rel="noopener">http://hi.baidu.com/spmno/blog/item/7d4d764ea78a6809b3de0588.html</a><br>jni中使用数组的几个方法<br><a href="http://xxw8393.blog.163.com/blog/static/3725683420107109411366/" target="_blank" rel="noopener">http://xxw8393.blog.163.com/blog/static/3725683420107109411366/</a><br>JNI 返回结构体参数<br><a href="http://www.cnblogs.com/nicholas_f/archive/2010/11/30/1892124.html" target="_blank" rel="noopener">http://www.cnblogs.com/nicholas_f/archive/2010/11/30/1892124.html</a><br>JNI中java类型与C/C++类型对应关系<br><a href="http://blog.csdn.net/sunny09290/article/details/6884994" target="_blank" rel="noopener">http://blog.csdn.net/sunny09290/article/details/6884994</a><br>JNI数据类型<br><a href="http://www.cnblogs.com/liangwind/archive/2009/08/18/1925515.html" target="_blank" rel="noopener">http://www.cnblogs.com/liangwind/archive/2009/08/18/1925515.html</a><br>jni　–c/c++　数据类型、数组、对象<br><a href="http://www.cnblogs.com/diyunpeng/archive/2009/09/24/1573296.html" target="_blank" rel="noopener">http://www.cnblogs.com/diyunpeng/archive/2009/09/24/1573296.html</a><br>Java有符号数与无符号数<br><a href="http://www.stuhack.com/biancheng/java/35169.html" target="_blank" rel="noopener">http://www.stuhack.com/biancheng/java/35169.html</a><br>Java的基本数据类型是无符号的</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JNI/" rel="tag"># JNI</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/10/4、计算机系统/2、Android/2、Android 进阶/自定义View/自定义进度条progress/" rel="next" title="Activity 启动流程">
+                <i class="fa fa-chevron-left"></i> Activity 启动流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/10/4、计算机系统/2、Android/2、Android 进阶/源码分析/Binder 机制/" rel="prev" title="Android Binder 机制">
+                Android Binder 机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">liyy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/atom-li" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/atom_one" target="_blank" title="Gitee"><i class="fa fa-fw fa-globe"></i>Gitee</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JNI-代码编写规则"><span class="nav-number">1.</span> <span class="nav-text">JNI 代码编写规则</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、基本类型"><span class="nav-number">1.1.</span> <span class="nav-text">一、基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、java参数类型和jni本地参数类型对照"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、java参数类型和jni本地参数类型对照</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、JNI引用类型与Java的对应关系如下树层次图："><span class="nav-number">1.2.</span> <span class="nav-text">2、JNI引用类型与Java的对应关系如下树层次图：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、Java基本类型的精度"><span class="nav-number">1.3.</span> <span class="nav-text">3、Java基本类型的精度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、jni层使用java的基本类型数据"><span class="nav-number">2.</span> <span class="nav-text">二、jni层使用java的基本类型数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、jni层对数组的使用"><span class="nav-number">3.</span> <span class="nav-text">三、jni层对数组的使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liyy</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

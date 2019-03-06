@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Ubuntu常用的命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu常用的命令">
+<meta property="og:url" content="http://liyy.org/2017/06/10/4、计算机系统/1、Linux/1、常用Linux指令/Ubuntu常用的命令/index.html">
+<meta property="og:site_name" content="AtomOne">
+<meta property="og:description" content="Ubuntu常用的命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-31T09:29:23.166Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu常用的命令">
+<meta name="twitter:description" content="Ubuntu常用的命令123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899">
+
+
+
+
+
+
+  <link rel="canonical" href="http://liyy.org/2017/06/10/4、计算机系统/1、Linux/1、常用Linux指令/Ubuntu常用的命令/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Ubuntu常用的命令 | AtomOne</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AtomOne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">一个默默无闻的技术Cat</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2017/06/10/4、计算机系统/1、Linux/1、常用Linux指令/Ubuntu常用的命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ubuntu常用的命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-06-10 10:42:59" itemprop="dateCreated datePublished" datetime="2017-06-10T10:42:59+08:00">2017-06-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-31 17:29:23" itemprop="dateModified" datetime="2019-01-31T17:29:23+08:00">2019-01-31</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Ubuntu常用的命令"><a href="#Ubuntu常用的命令" class="headerlink" title="Ubuntu常用的命令"></a>Ubuntu常用的命令</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br></pre></td><td class="code"><pre><span class="line">查看软件xxx安装内容：dpkg -L xxx</span><br><span class="line">查找软件库中的软件：apt-cache search 正则表达式</span><br><span class="line">查找软件库中的软件：aptitude search 软件包</span><br><span class="line">查找文件属于哪个包：dpkg -S filename</span><br><span class="line">查找文件属于哪个包：apt-file search filename</span><br><span class="line">查询软件xxx依赖哪些包：apt-cache depends xxx</span><br><span class="line">查询软件xxx被哪些包依赖：apt-cache rdepends xxx</span><br><span class="line">增加一个光盘源：sudo apt-cdrom add</span><br><span class="line">系统升级：sudo apt-get update;sudo apt-get dist-upgrade</span><br><span class="line">清除已删除包的残馀配置文件：dpkg -l |grep ^rc|awk ‘&#123;<span class="built_in">print</span> <span class="variable">$2</span>&#125;’ |sudo xargs dpkg -P</span><br><span class="line">编译时缺少h文件的自动处理：sudo auto-apt run ./configure</span><br><span class="line">查看安装软件时下载包的临时存放目录：ls /var/cache/apt/archives</span><br><span class="line">备份当前系统安装的所有包的列表：dpkg –get-selections | grep -v deinstall &gt; ~/somefile</span><br><span class="line">从备份的安装包的列表文件恢复所有包：dpkg –<span class="built_in">set</span>-selections &lt; ~/somefile;sudo dselect</span><br><span class="line">清理旧版本的软件缓存：sudo apt-get autoclean</span><br><span class="line">清理所有软件缓存：sudo apt-get clean</span><br><span class="line">删除系统不再使用的孤立软件：sudo apt-get autoremove</span><br><span class="line">查看包在服务器上面的地址：apt-get -qq –<span class="built_in">print</span>-uris install ssh | cut -d\’ -f2</span><br><span class="line">查看内核：uname -a</span><br><span class="line">查看Ubuntu版本：cat /etc/issue 或 lsb_release -a</span><br><span class="line">查看内核加载的模块：lsmod</span><br><span class="line">查看PCI设备：lspci</span><br><span class="line">查看USB设备：lsusb -v</span><br><span class="line">查看网卡状态：sudo ethtool eth0</span><br><span class="line">查看CPU信息：cat /proc/cpuinfo</span><br><span class="line">显示当前硬件信息：sudo lshw</span><br><span class="line">显示系统运行时间：uptime</span><br><span class="line">查看硬盘的分区：sudo fdisk -l</span><br><span class="line">硬盘分区：sudo fdisk /dev/sda</span><br><span class="line">硬盘格式化：sudo mkfs.ext3 /dev/sda1</span><br><span class="line">硬盘检查(请不要检查已经挂载的分区，否则容易损坏数据)：sudo fsck /dev/sda1</span><br><span class="line">分区挂载：sudo mount -t 文件系统类型 (-o nls=utf8 或 -o iocharset=utf8) 设备路经 访问路经</span><br><span class="line">分区卸载：sudo umount 目录名或设备名</span><br><span class="line">查看IDE硬盘信息：sudo hdparm -i /dev/hda</span><br><span class="line">查看STAT硬盘信息 ：sudo hdparm -I /dev/sda 或 sudo blktool /dev/sda id</span><br><span class="line">查看硬盘剩馀空间：df</span><br><span class="line">查看目录占用空间：du -hs 目录名</span><br><span class="line">优盘没法卸载：sync;fuser -km /media/usbdisk</span><br><span class="line">查看硬盘当前读写情况：sudo iostat -x 2</span><br><span class="line">查看当前的内存使用情况：free</span><br><span class="line">动态显示进程执行情况：top</span><br><span class="line">查看当前有哪些进程：ps -A</span><br><span class="line">查看当前进程树：pstree</span><br><span class="line">中止一个进程：<span class="built_in">kill</span> 进程号 或 killall 进程名</span><br><span class="line">强制中止一个进程：<span class="built_in">kill</span> -9 进程号 或 killall -9 进程名</span><br><span class="line">图形方式中止一个程序：xkill 出现骷髅标志的鼠标，点击需要中止的程序即可</span><br><span class="line">查看进程打开的文件：lsof -p</span><br><span class="line">显示开启文件abc.txt的进程 ：lsof abc.txt</span><br><span class="line">显示22端口现在运行什么程序 ：lsof -i :22</span><br><span class="line">显示nsd进程现在打开的文件 ：lsof -c nsd</span><br><span class="line">在后台运行程序，退出登录后，并不结束程序 ：nohup 程序 &amp;</span><br><span class="line">详细显示程序的运行信息 ：strace -f -F -o outfile</span><br><span class="line">增加系统最大打开文件个数：<span class="built_in">ulimit</span> -n 4096 或 <span class="built_in">echo</span> 4096 &gt; /proc/sys/fs/file-max</span><br><span class="line">配置 ADSL ：sudo pppoeconf</span><br><span class="line">ADSL手工拨号：sudo pon dsl-provider</span><br><span class="line">激活 ADSL：sudo /etc/ppp/pppoe_on_boot</span><br><span class="line">断开 ADSL ：sudo poff</span><br><span class="line">查看拨号日志：sudo plog</span><br><span class="line">如何设置动态域名：w3m -no-cookie -dump ‘http://usere:pass@members.3322.org/dyndns/update?system=dyndns&amp;hostname=yourdns.3322.org’</span><br><span class="line">根据IP查网卡地址 ：arping IP地址</span><br><span class="line">根据IP查电脑名 ：nmblookup -A IP地址</span><br><span class="line">查看当前IP地址 ：ifconfig eth0 |awk ‘/inet/ &#123;split(<span class="variable">$2</span>,x,”:”);<span class="built_in">print</span> x[2]&#125;’</span><br><span class="line">查看当前外网的IP地址 ：w3m -no-cookie -dump www.123cha.com|grep -o ‘[0-9]\&#123;1,3\&#125;\.[0-9]\&#123;1,3\&#125;\.[0-9]\&#123;1,3\&#125;\.[0-9]\&#123;1,3\&#125;’</span><br><span class="line">查看当前监听80端口的程序 ：lsof -i :80</span><br><span class="line">查看当前网卡的物理地址：arp -a | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$4</span>&#125;’</span><br><span class="line">同一个网卡增加第二个IP地址 ：sudo ifconfig eth0:0 1.2.3.4 netmask 255.255.255.0</span><br><span class="line">立即让网络支持nat ：<span class="built_in">echo</span> 1 | sudo tee /proc/sys/net/ipv4/ip_forward; sudo iptables -t nat -I POSTROUTING -j MASQUERADE</span><br><span class="line">查看路由信息：netstat -rn 或 sudo route -n</span><br><span class="line">手工增加一条路由 ：sudo route add -net 192.168.0.0 netmask 255.255.255.0 gw 172.16.0.1</span><br><span class="line">手工删除一条路由：sudo route del -net 192.168.0.0 netmask 255.255.255.0 gw 172.16.0.1</span><br><span class="line">修改网卡MAC地址的方法 ：sudo ifconfig eth0 hw ether 00:AA:BB:CC:DD:EE</span><br><span class="line">统计当前IP连接的个数 ：netstat -na|grep ESTABLISHED|awk ‘&#123;<span class="built_in">print</span> <span class="variable">$5</span>&#125;’|awk -F: ‘&#123;<span class="built_in">print</span> <span class="variable">$1</span>&#125;’|sort|uniq -c|sort -r -n</span><br><span class="line">屏蔽IPV6 ：<span class="built_in">echo</span> ‘blacklist ipv6′ | sudo tee /etc/modprobe.d/blacklist-ipv6</span><br><span class="line">察看当前网络连接状况以及程序 ：sudo netstat -atnp</span><br><span class="line">查看ADSL的当前流量：sudo ethstatus -i ppp0</span><br><span class="line">查看域名的注册备案情况：whois baidu.cn</span><br><span class="line">查看到某一个域名的路由情况：tracepath baidu.cn</span><br><span class="line">重新从服务器获得IP地址 ：sudo dhclient</span><br><span class="line">下载网站文档：wget -r -p -np -k http://www.xxx.com</span><br><span class="line">如何5个线程下载：axel -n 5 http://www.xxx.com/downloadfile.zip</span><br><span class="line">添加一个服务：sudo update-rc.d 服务名 defaults 99</span><br><span class="line">删除一个服务 ：sudo update-rc.d 服务名 remove</span><br><span class="line">临时重启一个服务：/etc/init.d/服务名 restart</span><br><span class="line">临时关闭一个服务：/etc/init.d/服务名 stop</span><br><span class="line">临时启动一个服务：/etc/init.d/服务名 start</span><br><span class="line">增加用户：sudo adduser 用户名</span><br><span class="line">删除用户：sudo deluser 用户名</span><br><span class="line">修改当前用户的密码：passwd</span><br><span class="line">修改用户密码：sudo passwd 用户名</span><br><span class="line">修改用户资料：sudo chfn userid</span><br><span class="line">如何禁用某个帐户：sudo usermod -L 用户名 或 sudo passwd -l 用户名</span><br><span class="line">如何启用某个帐户：sudo usermod -U 用户名 或 sudo passwd -u 用户名</span><br><span class="line">增加用户到admin组：sudo usermod -G admin -a 用户名</span><br><span class="line">配置默认Java使用哪个 ：sudo update-alternatives –config java</span><br><span class="line">终端设置代理 ：<span class="built_in">export</span> http_proxy=http://xx.xx.xx.xx:xxx</span><br><span class="line">修改系统登录信息：sudo vim /etc/motd</span><br><span class="line">使用sun的java编译器：sudo update-java-alternatives -s java-6-sun</span><br><span class="line">切换输入法引擎：im-switch -c</span><br><span class="line">转换文件名由GBK为UTF8 ：convmv -r -f cp936 -t utf8 –notest –nosmart *</span><br><span class="line">转换文件内容由GBK到UTF8 ：iconv -f gbk -t utf8 <span class="variable">$i</span> &gt; newfile</span><br><span class="line">转换 mp3 标签编码 ：sudo apt-get install python-mutagen;find . -iname ‘*.mp3′ -execdir mid3iconv -e GBK &#123;&#125; \;</span><br><span class="line">控制台下显示中文 ：sudo apt-get install zhcon;zhcon –utf8 –drv=vga</span><br><span class="line">lftp 登录远程Windows中文FTP　：lftp :~&gt;<span class="built_in">set</span> ftp:charset GBK</span><br><span class="line">PDF 文件乱码 ：sudo apt-get install xpdf-chinese-simplified xpdf-chinese-traditional poppler-data</span><br><span class="line">一屏查看文件内容 ：cat 文件名</span><br><span class="line">分页查看文件内容：more 文件名</span><br><span class="line">可控分页查看文件内容：less 文件名</span><br><span class="line">根据字符串匹配来查看文件部分内容：grep 字符串 文件名</span><br><span class="line">显示包含字符串的文件名：grep -l -r 字符串 路径</span><br><span class="line">显示不包含字符串的文件名：grep -L -r 字符串 路径</span><br><span class="line">快速查找某个文件：find 目录 -name 文件名</span><br><span class="line">创建两个空文件：touch file1 file2</span><br><span class="line">递归式创建一些嵌套目录：mkdir –p /tmp/xxs/dsd/efd</span><br><span class="line">递归式删除嵌套目录：rm –fr /tmp/xxs</span><br><span class="line">回当前用户的宿主目录：<span class="built_in">cd</span> ~</span><br><span class="line">查看当前所在目录的绝对路经：<span class="built_in">pwd</span></span><br><span class="line">列出当前目录下的所有文件：ls -a</span><br><span class="line">移动路径下的文件并改名：mv 路径/文件 /新路径/新文件名</span><br><span class="line">复制文件或者目录：cp -av 原文件或原目录 新文件或新目录</span><br><span class="line">查看文件类型：file filename</span><br><span class="line">对比两个文件之间的差异：diff file1 file2</span><br><span class="line">显示xxx文件倒数6行的内容 ：tail -n 6 xxx</span><br><span class="line">不停地显示最新的内容 ：tail -n 10 -f /var/<span class="built_in">log</span>/apache2/access.log</span><br><span class="line">查看文件第五行到第10行的内容 ：sed -n ‘5,10p’ /var/<span class="built_in">log</span>/apache2/access.log</span><br><span class="line">查找关于xxx的命令 ：apropos xxx 或 man -k xxx</span><br><span class="line">通过ssh传输文件 ：scp -rp /path/filename username@remoteIP:/path</span><br><span class="line">把所有文件的后辍由rm改为rmvb ：rename ’s/.rm$/.rmvb/’ *</span><br><span class="line">把所有文件名中的大写改为小写：rename ‘tr/A-Z/a-z/’ *</span><br><span class="line">删除特殊文件名 –help.txt 的文件：rm — –help.txt 或 rm ./–help.txt</span><br><span class="line">查看当前目录的子目录：ls -d */. 或 <span class="built_in">echo</span> */.</span><br><span class="line">将最近30天访问过的文件移动到上级back目录 ：find . -<span class="built_in">type</span> f -atime -30 -<span class="built_in">exec</span> mv &#123;&#125; ../back \;</span><br><span class="line">显示一小时以内的包含 xxxx 的文件：find . -<span class="built_in">type</span> f -mmin -60|xargs -i grep -l xxxx ‘&#123;&#125;’</span><br><span class="line">显示最近2小时到8小时之内的文件：find . -mmin +120 -mmin -480 -<span class="built_in">exec</span> more &#123;&#125; \;</span><br><span class="line">删除修改时间在30天之前的文件 ：find . -<span class="built_in">type</span> f -mtime +30 -mtime -3600 -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line">删除创建时间在30天之前的文件 ：find . -<span class="built_in">type</span> f -ctime +30 -ctime -3600 -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line">删除掉guest的以avi或rm结尾的文件：find . -name ‘*.avi’ -o -name ‘*.rm’ -user ‘guest’ -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line">删除掉不以java和xml结尾7天没有使用的文件 ：find . ! -name *.java ! -name ‘*.xml’ -atime +7 -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line">删除所有的 .svn 目录 ：find . -name .svn -<span class="built_in">type</span> d -<span class="built_in">exec</span> rm -fr &#123;&#125; \;</span><br><span class="line">删除所有以“~”结尾的临时文件 ：find . -name ‘*~’ -<span class="built_in">exec</span> rm &#123;&#125; \;</span><br><span class="line"></span><br><span class="line">统计当前文件个数：ls .|wc -w</span><br><span class="line">统计当前目录个数：ls -l |grep ^d|wc -l</span><br><span class="line">显示当前目录下2006-01-01的文件名 ：ls -l |grep 2006-01-01 |awk ‘&#123;<span class="built_in">print</span> <span class="variable">$8</span>&#125;’</span><br><span class="line">使用ssh方式同步远程数据到本地目录 ：rsync -Pa -I –size-only –delete –timeout=300 Remote_IP:/home/ubuntu /backup</span><br><span class="line">增加 7Z 压缩软件：sudo apt-get install p7zip p7zip-full p7zip-rar</span><br><span class="line">增加 rar 软件压缩和解压缩支持 ：sudo apt-get install rar unrar</span><br><span class="line">解压缩 xxx.tar.gz ：tar -zxvf xxx.tar.gz</span><br><span class="line">解压缩 xxx.tar.bz2 ：tar -jxvf xxx.tar.bz2</span><br><span class="line">压缩aaa bbb目录为xxx.tar.gz ：tar -zcvf xxx.tar.gz aaa bbb</span><br><span class="line">压缩aaa bbb目录为xxx.tar.bz2 ：tar -jcvf xxx.tar.bz2 aaa bbb</span><br><span class="line">增加 lha 支持 ：sudo apt-get install lha</span><br><span class="line">增加解 cab 文件支持 ：sudo apt-get install cabextract</span><br><span class="line">显示日历：cal</span><br><span class="line">设置日期：date -s mm/dd/yy</span><br><span class="line">设置时间：date -s HH:MM</span><br><span class="line">将时间写入CMOS ：hwclock –systohc</span><br><span class="line">查看CMOS时间 ：hwclock –show</span><br><span class="line">读取CMOS时间 ：hwclock –hctosys</span><br><span class="line">从服务器上同步时间 ：sudo ntpdate ntp.ubuntu.com</span><br><span class="line">设置电脑的时区为上海：sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime</span><br><span class="line">关闭UTC，将当前时间写入CMOS。：sudo sed -ie ’s/UTC=yes/UTC=no/g’ /etc/default/rcS;sudo hwclock –systohc</span><br><span class="line">修改mysql的root口令 ：sudo mysqladmin -u root -p password ‘你的新密码’</span><br><span class="line">如何使用命令关闭显示器 ：xset dpms force off</span><br><span class="line">设置CPU的频率 ：sudo apt-get install cpufrequtils;sudo cpufreq-info</span><br><span class="line">命令关机：sudo halt</span><br><span class="line">现在关机：sudo shutdown -h now</span><br><span class="line">晚上11点自动关机：sudo shutdown -h 23:00</span><br><span class="line">60分钟后关机：sudo shutdown -h +60</span><br><span class="line">命令重启电脑：sudo reboot</span><br><span class="line">现在重启电脑：sudo shutdown -r now</span><br><span class="line">关闭笔记本的触摸板 ：synclient touchpadoff=1</span><br><span class="line">开启笔记本的触摸板：synclient touchpadoff=0</span><br><span class="line">统计每个单词的出现频率并排序 ：awk ‘&#123;arr[<span class="variable">$1</span>]+=1 &#125;END&#123;<span class="keyword">for</span>(i <span class="keyword">in</span> arr)&#123;<span class="built_in">print</span> arr[i]“\t”i&#125;&#125;’ FILE_NAME | sort -rn</span><br><span class="line">统计80端口的连接并排序 ：netstat -na|grep :80|awk ‘&#123;<span class="built_in">print</span> <span class="variable">$5</span>&#125;’|awk -F: ‘&#123;<span class="built_in">print</span> <span class="variable">$1</span>&#125;’|sort|uniq -c|sort -r -n</span><br><span class="line">把终端加到右键菜单：sudo apt-get install nautilus-open-terminal</span><br><span class="line">如何删除Totem电影播放机的播放历史记录 ：rm ~/.recently-used</span><br><span class="line">vim 如何显示彩色字符 ：sudo cp /usr/share/vim/vimcurrent/vimrc_example.vim /usr/share/vim/vimrc</span><br><span class="line">让 vim 直接支持编辑 .gz 文件 ：sudo apt-get install vim-full</span><br><span class="line">vim 如何显示行号：:<span class="built_in">set</span> number</span><br><span class="line">查看在会话设置的启动程序：ls ~/.config/autostart</span><br><span class="line">提高wine的反应速度 ：sudo sed -ie ‘/GBK/,/^&#125;/d’ /usr/share/X11/locale/zh_CN.UTF-8/XLC_LOCALE</span><br><span class="line">制作ISO文件：mkisofs -o test.iso -Jrv -V test_disk /home/carla/</span><br><span class="line">延迟10秒抓图：gnome-screenshot -d 10</span><br><span class="line">延迟5秒抓当前激活窗口：gnome-screenshot -w -d 5</span><br><span class="line">如何命令行刻录：cdrecord -scanbus;cdrecord -v -eject speed=8 dev=1,1,0 test.iso</span><br><span class="line">回收站在哪里：~/.<span class="built_in">local</span>/share/Trash/</span><br><span class="line">默认打开方式的配置文件在哪里：~/.<span class="built_in">local</span>/share/applications/mimeapps.list</span><br><span class="line">如何查看HTTP头：w3m -dump_head http://www.xxx.com</span><br><span class="line">连续监视内存使用情况：watch -d free</span><br><span class="line">如何切换到root帐号：sudo -Hs</span><br><span class="line">只读挂载ntfs分区：sudo mount -t ntfs -o nls=utf8,<span class="built_in">umask</span>=0 /dev/sdb1 /mnt/c</span><br><span class="line">可写挂载ntfs分区：sudo mount -t ntfs-3g -o locale=zh_CN.utf8,<span class="built_in">umask</span>=0 /dev/sdb1 /mnt/c</span><br><span class="line">挂载fat32分区：sudo mount -t vfat -o iocharset=utf8,<span class="built_in">umask</span>=0 /dev/sda1 /mnt/c</span><br><span class="line">挂载共享文件：sudo mount -t smbfs -o username=xxx,password=xxx,iocharset=utf8 //192.168.1.1/share /mnt/share</span><br><span class="line">挂载ISO文件：sudo mount -t iso9660 -o loop,utf8 xxx.iso /mnt/iso</span><br><span class="line">带行号显示文件的内容：nl 文件名</span><br><span class="line">批 量将rmvb转为avi：<span class="keyword">for</span> i <span class="keyword">in</span> *; <span class="keyword">do</span> mencoder -oac mp3lame -lameopts vbr=3 -ovcxvid -xvidencopts fixed_quant=4 -of avi <span class="variable">$i</span> -o `<span class="built_in">echo</span> <span class="variable">$i</span> | sed -e’s/rmvb$/avi/’`; <span class="keyword">done</span></span><br><span class="line">批量将svg转为png：<span class="keyword">for</span> i <span class="keyword">in</span> *; <span class="keyword">do</span> inkscape <span class="variable">$i</span> –<span class="built_in">export</span>-png=`<span class="built_in">echo</span> <span class="variable">$i</span> | sed -e ’s/svg$/png/’`; <span class="keyword">done</span></span><br><span class="line">批量缩小图片到30%：<span class="keyword">for</span> i <span class="keyword">in</span> *; <span class="keyword">do</span> convert -resize 30%x30% <span class="variable">$1</span> sm-<span class="variable">$1</span>; <span class="keyword">done</span></span><br><span class="line">批量转换jpg到png：<span class="keyword">for</span> i <span class="keyword">in</span> *; <span class="keyword">do</span> convert <span class="variable">$i</span> `<span class="built_in">echo</span> <span class="variable">$i</span> | sed -e ’s/jpg$/png/’`; <span class="keyword">done</span></span><br><span class="line">获取jpg的扩展信息(Exif)：identify -verbose xxx.jpg</span><br><span class="line">查看当前系统所有的监听端口：nc -zv localhost 1-65535</span><br><span class="line">去掉文件中的^M：cat filename | tr -d “^M” &gt; newfile</span><br><span class="line">去掉文件中的^M：sed -e “s/^M//g” filename &gt; newfile</span><br><span class="line">转换bin/cue到iso文件：sudo apt-get install bchunk;bchunk image.bin image.cue image</span><br><span class="line">转换目录到iso文件：mkisofs dirname -o isofile.iso</span><br><span class="line">转换CD到iso文件：dd <span class="keyword">if</span>=/dev/cdrom of=isofile.iso</span><br><span class="line">ape 转换为flac：sudo apt-get install flac shntool;shntool split -t“%n.%p-%t” -f example_UTF-8.cue -o flac example.ape -d flacOutputDir</span><br><span class="line">ape转换为 mp3：sudo apt-get install flac shntool lame;shntool split -t“%n.%p-%t” -f example_UTF-8.cue -o ‘cust ext=mp3 lame –r3mix -b 320–quiet – %f’ example.ape -d mp3OutputDir</span><br><span class="line">检查本地是否存在安全隐患：sudo apt-get install rkhunter;rkhunter –checkall</span><br><span class="line">如何安装杀毒软件：sudo apt-get install clamav;clamscan -r ~/</span><br><span class="line">查看网络连接状态：netstat -n | awk ‘/^tcp/ &#123;++S[<span class="variable">$NF</span>]&#125; END &#123;<span class="keyword">for</span>(a <span class="keyword">in</span> S) <span class="built_in">print</span> a, S[a]&#125;’</span><br><span class="line">统计程序的内存耗用：ps -eo fname,rss|awk ‘&#123;arr[<span class="variable">$1</span>]+=<span class="variable">$2</span>&#125; END &#123;<span class="keyword">for</span> (i <span class="keyword">in</span> arr) &#123;<span class="built_in">print</span> i,arr[i]&#125;&#125;’|sort -k2 -nr</span><br><span class="line">显示当前内存大小：free -m |grep “Mem” | awk ‘&#123;<span class="built_in">print</span> <span class="variable">$2</span>&#125;’</span><br><span class="line">按内存从大到小排列进程：ps -eo “%C : %p : %z : %a”|sort -k5 -nr</span><br><span class="line">按cpu利用率从大到小排列进程：ps -eo “%C : %p : %z : %a”|sort -nr</span><br><span class="line">统计当前目录下所有jpg文件的尺寸：find . -name *.jpg -<span class="built_in">exec</span> wc -c &#123;&#125; \;|awk ‘&#123;<span class="built_in">print</span> <span class="variable">$1</span>&#125;’|awk ‘&#123;a+=<span class="variable">$1</span>&#125;END&#123;<span class="built_in">print</span> a&#125;’</span><br><span class="line"></span><br><span class="line">清除僵死进程：ps -eal | awk ‘&#123; <span class="keyword">if</span> (<span class="variable">$2</span> == “Z”) &#123;<span class="built_in">print</span> <span class="variable">$4</span>&#125;&#125;’ | sudo <span class="built_in">kill</span> -9</span><br><span class="line">CD 抓轨为 mp3 (有损)：sudo apt-get install abcde;abcde -o mp3 -b</span><br><span class="line">CD 抓轨为 Flac (无损)：sudo apt-get install abcde;abcde -o flac -b</span><br><span class="line">显示系统安装包的统计信息：apt-cache stats</span><br><span class="line">显示系统全部可用包的名称：apt-cache pkgnames</span><br><span class="line">显示包的信息：apt-cache show k3b</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/01/4、计算机系统/2、Android/1、Android 基础/基本组件/RecycleView_LinearLayoutManager-reverseLayout 和 stackFromEnd/" rel="next" title="RecycleView_LinearLayoutManager-reverseLayout 和 stackFromEnd">
+                <i class="fa fa-chevron-left"></i> RecycleView_LinearLayoutManager-reverseLayout 和 stackFromEnd
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/10/4、计算机系统/2、Android/1、Android 基础/基本知识/AndroidStudio 配置/" rel="prev" title="Android Studio 配置">
+                Android Studio 配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">liyy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/atom-li" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/atom_one" target="_blank" title="Gitee"><i class="fa fa-fw fa-globe"></i>Gitee</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu常用的命令"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu常用的命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liyy</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

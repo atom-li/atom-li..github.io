@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="atomicinteger内存模型 static编译时有啥不同,static 语句块,static变量,static方法,构造初始化顺序(静态绑定) animation和animator的用法,概述实现原理 Handler,looper,messagequeue,thread,message,每个类功能,关系? Mvc,mvp的差异 app闪退的原因有哪些?每种情况简述分析过程 如果一个app存">
+<meta name="keywords" content="only one">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AtomOne">
+<meta property="og:url" content="http://liyy.org/2019/02/28/9、面试/Android 面试题/index.html">
+<meta property="og:site_name" content="AtomOne">
+<meta property="og:description" content="atomicinteger内存模型 static编译时有啥不同,static 语句块,static变量,static方法,构造初始化顺序(静态绑定) animation和animator的用法,概述实现原理 Handler,looper,messagequeue,thread,message,每个类功能,关系? Mvc,mvp的差异 app闪退的原因有哪些?每种情况简述分析过程 如果一个app存">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-28T02:48:43.300Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AtomOne">
+<meta name="twitter:description" content="atomicinteger内存模型 static编译时有啥不同,static 语句块,static变量,static方法,构造初始化顺序(静态绑定) animation和animator的用法,概述实现原理 Handler,looper,messagequeue,thread,message,每个类功能,关系? Mvc,mvp的差异 app闪退的原因有哪些?每种情况简述分析过程 如果一个app存">
+
+
+
+
+
+
+  <link rel="canonical" href="http://liyy.org/2019/02/28/9、面试/Android 面试题/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | AtomOne</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AtomOne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">一个默默无闻的技术Cat</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2019/02/28/9、面试/Android 面试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-28 10:27:17 / Modified: 10:48:43" itemprop="dateCreated datePublished" datetime="2019-02-28T10:27:17+08:00">2019-02-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ul>
+<li>atomicinteger内存模型</li>
+<li>static编译时有啥不同,static 语句块,static变量,static方法,构造初始化顺序(静态绑定)</li>
+<li>animation和animator的用法,概述实现原理</li>
+<li>Handler,looper,messagequeue,thread,message,每个类功能,关系?</li>
+<li><strong>Mvc,mvp的差异</strong></li>
+<li>app闪退的原因有哪些?每种情况简述分析过程</li>
+<li>如果一个app存在多进程,请列出全部的ipc方法</li>
+<li>操作系统中进程和线程有什么联系和区别,系统什么时候会在用户态和内核态中切换?</li>
+<li>如何加载ndk库?如何在jni中注册native函数,有几种注册方式?</li>
+<li><p>一个app如果性能不好,怎么分析?</p>
+</li>
+<li><p>设计的六大原则</p>
+</li>
+<li>如果hashmap key不一样,但是hashcode一样会怎么样?</li>
+<li>okhttp有什么优秀的设计模式?builder模式有什么好处?责任链模式有什么好处?</li>
+<li>懒汉模式单例为什么加volaitle?</li>
+<li>hashmap是否线程安全?不安全会出什么问题?</li>
+<li>concurrenthashmap读写分别是啥情况?</li>
+<li>bindservice和startservice生命周期有啥不同?</li>
+<li>广播有几种?广播是观察者模式?跨进城广播也是观察者模式吗?</li>
+<li>ams是怎么找到启动的那个activity的?</li>
+<li>a-b-c界面,其中b是singleinstance的,那么c界面点back返回a界面,为什么?怎么管理栈的?</li>
+<li>红黑树有啥特性?</li>
+<li>在oncreate里面可以得到view的宽高吗?</li>
+<li>view的getwidth和getmesurewidth有啥区别?</li>
+<li>遍历hashmap的原理?</li>
+<li><p>23种设计模式</p>
+</li>
+<li><p>如何避免out of menmory和anr?</p>
+</li>
+<li>arraymap和hashmap的区别?</li>
+<li>如何实现线程同步?</li>
+<li>简述android事件分发机制</li>
+<li>简述view绘制流程</li>
+<li><p>用两个栈实现一个队列</p>
+</li>
+<li><p>viewpager嵌套滑动冲突怎么解决?</p>
+</li>
+<li>svg动画</li>
+<li><p>属性动画画一个抛物线怎么弄?</p>
+</li>
+<li><p>为了适配多分辨率,引入什么开源框架?</p>
+</li>
+<li>阅读界面书架用什么控件实现?</li>
+<li>布局怎么做到每行的文字左右对齐?</li>
+<li>直播界面,微信对话界面实现?</li>
+<li><p>性能优化怎么弄?</p>
+</li>
+<li><p>笔试题很多</p>
+</li>
+<li>sax解析xml的优点</li>
+<li>Contentvalue 键值类型</li>
+<li>androiddvm的进程与linux的进程说法正确的是?(选择题)</li>
+<li>Android:gravity和android:layout_gravity的区别?</li>
+<li>assets与res/raw的区别?</li>
+<li>解释layout_weight的作用</li>
+<li>view如何刷新?</li>
+<li>animation.animationlistner干什么用的?</li>
+<li>android常用布局及排版效率</li>
+<li>collection与collections的区别</li>
+<li>匿名内部类是否可以extends其他类?是否可以implement interface(接口)</li>
+<li>补间动画常见的效果?有哪几个常见的插入器?</li>
+<li>override与overload的区别?overloaded的方法是否可以改变返回值的类型?</li>
+<li>sleep与wait有什么区别?</li>
+<li>在android中,请简述jni的调用过程?</li>
+<li>请结束android.mk的作用,并试写一个android.mk文件(包含一个.c源文件即可)</li>
+<li>冒泡排序(代码实现)</li>
+<li>猴子偷桃问题代码实现</li>
+<li><p>给出两个链表的头指针比如p1,p2,判断这两个链表是否相交,写出主要思路即可</p>
+</li>
+<li><p>简述封装,继承,多态</p>
+</li>
+<li>强软弱虚引用的应用场合</li>
+<li>输出一个数组,不重复?(有点忘记题目什么意思了)</li>
+<li><p>用四个线程计算数组和(我说用join方法,或者countdownlatch,他说用线程池即可)</p>
+</li>
+<li><p>策略模式和命令模式是啥?</p>
+</li>
+<li>拓扑排序</li>
+<li>数组和链表在中间位置的插入效率</li>
+<li>binder的原理</li>
+<li>art和dvm在gc上有啥不同?有啥改进?</li>
+<li>linux和windows下进程怎么通信的?(完全不了解)</li>
+<li>性能优化做过什么工作?</li>
+<li>一个类实现一个接口,接口引用指向这个类对象,可以不可以调用它的tostring方法?</li>
+<li>浏览器,输入url匹配,假设有一亿条url缓存,用什么数据结构匹配?</li>
+<li>recycleview缓存机制相比listview缓存机制有啥改进?</li>
+<li>一个长度为10的arraylist和linklist,在第五条插入,哪个更快?</li>
+<li><p>子类复写父类的equals方法,但是子类增加了一个成员变量int,请问equals方法咋整?</p>
+</li>
+<li><p>手写hashmap</p>
+</li>
+<li>写生产者消费者模式,不可用syncronized</li>
+<li><p>treemap,hashmap应用场景</p>
+</li>
+<li><p>dvm和art的区别</p>
+</li>
+<li>从framework的角度讲activity的启动流程(冷启动)</li>
+<li>手写算法,二维数组,每一行,每一列都是升序,找出某数的下标,没有输出[-1,-1],最好的时间复杂度是m+n(行数+列数)</li>
+<li>zxing二维码开源框架流程</li>
+<li>contentprovider怎么升级维护?</li>
+<li>constaintlayout</li>
+<li><p>bitmap有几种格式,分别占多少字节</p>
+</li>
+<li><p>android事件分发机制,如何下发,如何上传?</p>
+</li>
+<li>一个界面下拉刷新要怎么实现?</li>
+<li>bitmap占用内存多少怎么计算?一个像素占几个字节?</li>
+<li>threadlocal的原理?</li>
+<li>framework加载activity的流程</li>
+<li>arraylist和linkedlist的应用场景</li>
+<li>网络请求相关的框架</li>
+<li>好几万条短信,滑动卡顿怎么解决?</li>
+<li>有没有了解过三方开源数据库(好像是腾讯的什么数据库框架,不仅仅是懂sqlite)</li>
+<li>避免内存泄漏,为什么说handler用成员内部类会内存泄漏?activity不是已经到gcroot被切断了吗?还有静态context持有activity的引用会内存泄漏,必须要持有怎么办?(及时释放)</li>
+<li>计算viewgroup的层级,递归实现和非递归实现</li>
+<li>自己写一个应用,包名就叫android行不行,为什么?</li>
+<li>主线程looper如果没有消息,就会阻塞在那,为什么不回anr?</li>
+<li>系统进程可以用webview吗?</li>
+<li>原子类的了解</li>
+<li>一个app多进程的好处</li>
+<li>一个arraylist,里面全部是int,讲所有值是2的整数的节点删除</li>
+<li>arraymap了解</li>
+<li>binder机制</li>
+<li>shareprefrence原理?是否线程安全和进程安全?</li>
+<li>一个app启动页另开一个进程,启动页10s后启动mainactivity,请问5s的时候有几个进程?</li>
+<li><p>java内存结构,内存模型</p>
+</li>
+<li><p>冒泡排序手写</p>
+</li>
+<li><p>如何判断一个字符串是回文字符串</p>
+</li>
+<li><p>为什么要引入activity这个组件</p>
+</li>
+<li><p>shareprefrence不是进程安全,假设一个apk两个进程同时修改shareprefrence怎么办?</p>
+</li>
+<li><p>contenprovider已经是进程间通信,为什么还要引入broadcastreceiver?</p>
+</li>
+<li><p>a启动b,b启动c,怎样可以在c界面点back退回到a?</p>
+</li>
+<li><p>startservice和bindservice生命周期有什么不同?</p>
+</li>
+<li><p>两个应用同时注册一个广播,优先级都一样,哪个会先收到广播?(有序广播?)</p>
+</li>
+</ul>
+<ul>
+<li>threadlocal原理</li>
+<li><p>zxing有过优化提高识别率吗?</p>
+</li>
+<li><p>arraylist里面可以不可以new一个t泛型的数组?</p>
+</li>
+<li>补间动画click事件还在原位怎么解决?</li>
+<li>多线程并发</li>
+<li>隔代数据库升级</li>
+<li>性能优化</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/26/4、计算机系统/2、Android/2、Android 进阶/自定义View/自定义switch/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">liyy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/atom-li" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/atom_one" target="_blank" title="Gitee"><i class="fa fa-fw fa-globe"></i>Gitee</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liyy</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Tomcat 自签名证书双向认证一、证书制作1、生成服务端server.keystore1234567891011keytool -genkey -v -alias server -keyalg RSA -validity 36500 -keypass 123456 -storepass 123456 -keystore server.keystore// -genkey// -v// -alia">
+<meta name="keywords" content="only one">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AtomOne">
+<meta property="og:url" content="http://liyy.org/2019/01/29/4、计算机系统/2、Android/4、Android 安全/Https 安全认证/双向认证证书/https双向认证/index.html">
+<meta property="og:site_name" content="AtomOne">
+<meta property="og:description" content="Tomcat 自签名证书双向认证一、证书制作1、生成服务端server.keystore1234567891011keytool -genkey -v -alias server -keyalg RSA -validity 36500 -keypass 123456 -storepass 123456 -keystore server.keystore// -genkey// -v// -alia">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815101726.png">
+<meta property="og:image" content="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815103134.png">
+<meta property="og:image" content="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815104214.png">
+<meta property="og:image" content="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815104956.png">
+<meta property="og:image" content="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815105724.png">
+<meta property="og:image" content="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815110807.png">
+<meta property="og:image" content="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815113904.png">
+<meta property="og:image" content="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815120039.png">
+<meta property="og:updated_time" content="2019-01-29T08:58:06.386Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AtomOne">
+<meta name="twitter:description" content="Tomcat 自签名证书双向认证一、证书制作1、生成服务端server.keystore1234567891011keytool -genkey -v -alias server -keyalg RSA -validity 36500 -keypass 123456 -storepass 123456 -keystore server.keystore// -genkey// -v// -alia">
+<meta name="twitter:image" content="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815101726.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://liyy.org/2019/01/29/4、计算机系统/2、Android/4、Android 安全/Https 安全认证/双向认证证书/https双向认证/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> | AtomOne</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">AtomOne</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">一个默默无闻的技术Cat</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2019/01/29/4、计算机系统/2、Android/4、Android 安全/Https 安全认证/双向认证证书/https双向认证/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-29 17:05:21 / Modified: 16:58:06" itemprop="dateCreated datePublished" datetime="2019-01-29T17:05:21+08:00">2019-01-29</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Tomcat-自签名证书双向认证"><a href="#Tomcat-自签名证书双向认证" class="headerlink" title="Tomcat 自签名证书双向认证"></a>Tomcat 自签名证书双向认证</h2><h3 id="一、证书制作"><a href="#一、证书制作" class="headerlink" title="一、证书制作"></a>一、证书制作</h3><h4 id="1、生成服务端server-keystore"><a href="#1、生成服务端server-keystore" class="headerlink" title="1、生成服务端server.keystore"></a>1、生成服务端server.keystore</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -<span class="built_in">alias</span> server -keyalg RSA -validity 36500 -keypass 123456 -storepass 123456 -keystore server.keystore</span><br><span class="line">// -genkey</span><br><span class="line">// -v</span><br><span class="line">// -<span class="built_in">alias</span> 自定义证书名称</span><br><span class="line">// -keyalg 加密算法</span><br><span class="line">// -validity 证书有效期，36500表示100年，默认值是90天</span><br><span class="line">// -keypass 证书密码，这项较为重要，会在tomcat配置文件中使用，建议输入与keystore的密码一致，设置其它密码也可以</span><br><span class="line">// -storepass keystore密码，此处需要输入大于等于6个字符的字符串</span><br><span class="line">// -keystore 证书文件路径和名称</span><br><span class="line">&gt; “您的名字与姓氏是什么？”这是必填项，并且必须是TOMCAT部署主机的域名或者IP[如：gbcom.com 或者 10.1.25.251]（就是你将来要在浏览器中输入的访问地址），否则浏览器会弹出警告窗口，提示用户证书与所在域不匹配。在本地做开发测试时，应填入“localhost”。</span><br><span class="line">&gt; 你的组织单位名称是什么？”、“您的组织名称是什么？”、“您所在城市或区域名称是什么？”、“您所在的州或者省份名称是什么？”、“该单位的两字母国家代码是什么？”可以按照需要填写也可以不填写直接回车，在系统询问“正确吗？”时，对照输入信息，如果符合要求则使用键盘输入字母“y”，否则输入“n”重新填写上面的信息。</span><br></pre></td></tr></table></figure>
+<p>如图所示：</p>
+<p><img src="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815101726.png" alt="mark"></p>
+<h4 id="2、为客户端生成证书"><a href="#2、为客户端生成证书" class="headerlink" title="2、为客户端生成证书"></a>2、为客户端生成证书</h4><p>双向认证时需要客户端安装该证书 ，为浏览器生成证书，以便让服务器来验证它。为了能将证书顺利导入至IE和Firefox，证书格式应该是PKCS12。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -<span class="built_in">alias</span> client -keyalg RSA -validity 3650 -storetype PKCS12 -keypass 123456 -storepass 123456  -keystore client.p12</span><br><span class="line">// -genkey</span><br><span class="line">// -v</span><br><span class="line">// -<span class="built_in">alias</span> 自定义证书名称</span><br><span class="line">// -keyalg 加密算法</span><br><span class="line">// -validity 证书有效期，3650表示10年，默认值是90天</span><br><span class="line">// -storetype 证书格式</span><br><span class="line">// -keypass 证书密码，此处需要输入大于等于6个字符的字符串</span><br><span class="line">// -storepass keystore密码，此处需要输入大于等于6个字符的字符串</span><br><span class="line">// -keystore 证书文件路径和名称</span><br><span class="line">&gt; 客户端的CN(您的名字与姓氏,服务端是host)可以是任意值。双击client.p12文件，即可将证书导入至浏览器（客户端）。</span><br></pre></td></tr></table></figure>
+<p>如图所示：</p>
+<p><img src="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815103134.png" alt="mark"></p>
+<h4 id="3、导出客户端证书"><a href="#3、导出客户端证书" class="headerlink" title="3、导出客户端证书"></a>3、导出客户端证书</h4><p>由于是双向SSL认证，服务器必须要信任客户端证书，因此，必须把客户端证书添加为服务器的信任认证 ，因为不能直接将PKCS12格式的证书库导入服务端证书（server.keystore）,所以 将p12文件导出为一个cer文件</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">keytool -<span class="built_in">export</span> -<span class="built_in">alias</span> client -keystore client.p12 -storetype PKCS12 -storepass 123456 -rfc -file client.cer </span><br><span class="line">// -<span class="built_in">export</span> 导出</span><br><span class="line">// -<span class="built_in">alias</span> 自定义证书名称</span><br><span class="line">// -keystore 证书文件路径和名称</span><br><span class="line">// -storetype 证书格式</span><br><span class="line">// -storepass keystore密码</span><br><span class="line">// -rfc </span><br><span class="line">// -file 导出文件路径名称</span><br></pre></td></tr></table></figure>
+<p>如图所示：</p>
+<p><img src="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815104214.png" alt="mark"></p>
+<h4 id="4、让服务器信任客户端证书"><a href="#4、让服务器信任客户端证书" class="headerlink" title="4、让服务器信任客户端证书"></a>4、让服务器信任客户端证书</h4><p>是将 <strong>client.cer</strong> 导入到服务器的证书库 <strong>server.keystore</strong>， 一个keystore可以导入多个证书，生成证书列表。 </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">keytool -import -v -<span class="built_in">alias</span> client -file client.cer -keystore server.keystore -storepass 123456</span><br><span class="line">// -import</span><br><span class="line">// -v</span><br><span class="line">// -<span class="built_in">alias</span></span><br><span class="line">// -file</span><br><span class="line">// -keystore</span><br><span class="line">// -storepass</span><br></pre></td></tr></table></figure>
+<p>如图所示</p>
+<p><img src="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815104956.png" alt="mark"></p>
+<h4 id="5、让客户端信任服务器证书"><a href="#5、让客户端信任服务器证书" class="headerlink" title="5、让客户端信任服务器证书"></a>5、让客户端信任服务器证书</h4><p>由于是双向SSL认证，客户端也要验证服务器证书，因此，必须把服务器证书添加到浏览器的“受信任的根证书颁发机构”。由于不能直接将keystore格式的证书库导入，必须先把服务器证书导出为一个单独的CER文件。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">keytool -<span class="built_in">export</span> -<span class="built_in">alias</span> server -keystore server.keystore -storepass 123456 -file server.cer</span><br><span class="line">// -<span class="built_in">export</span> 导出</span><br><span class="line">// -<span class="built_in">alias</span> 自定义证书名称</span><br><span class="line">// -keystore 证书文件路径和名称</span><br><span class="line">// -storetype 证书格式</span><br><span class="line">// -storepass keystore密码</span><br><span class="line">// -file 导出文件路径名称</span><br><span class="line">&gt; 双击server.cer文件，按照提示安装证书，将证书填入到“受信任的根证书颁发机构”。</span><br></pre></td></tr></table></figure>
+<p><img src="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815105724.png" alt="mark"></p>
+<h4 id="6、查看服务端证书库"><a href="#6、查看服务端证书库" class="headerlink" title="6、查看服务端证书库"></a>6、查看服务端证书库</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -list -keystore server.keystore -storepass 123456</span><br></pre></td></tr></table></figure>
+<p><img src="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815110807.png" alt="mark"></p>
+<h3 id="二、-配置双向认证"><a href="#二、-配置双向认证" class="headerlink" title="二、 配置双向认证"></a>二、 配置双向认证</h3><h4 id="1、Tomcat-配置"><a href="#1、Tomcat-配置" class="headerlink" title="1、Tomcat 配置"></a>1、Tomcat 配置</h4><p>将server.keystore放置到Tomcat根目录下key文件夹中（key文件夹不存在，可自行创建），在Tomcat根目录,打开conf 文件夹 下的server.xml。配置方法如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8443"</span> <span class="attr">protocol</span>=<span class="string">"org.apache.coyote.http11.Http11NioProtocol"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">SSLEnabled</span>=<span class="string">"true"</span> <span class="attr">scheme</span>=<span class="string">"https"</span> <span class="attr">secure</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">clientAuth</span>=<span class="string">"true"</span> <span class="attr">sslProtocol</span>=<span class="string">"TLS"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">keystoreFile</span>=<span class="string">"$&#123;catalina.base&#125;/key/server.keystore"</span> <span class="attr">keystorePass</span>=<span class="string">"123456"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">truststoreFile</span>=<span class="string">"$&#123;catalina.base&#125;/key/server.keystore"</span> <span class="attr">truststorePass</span>=<span class="string">"123456"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">属性说明：</span><br><span class="line">clientAuth:设置是否双向验证，默认为false，设置为true代表双向验证</span><br><span class="line">keystoreFile:服务器证书文件路径</span><br><span class="line">keystorePass:服务器证书密码</span><br><span class="line">truststoreFile:用来验证客户端证书的根证书，此例中就是服务器证书</span><br><span class="line">truststorePass:根证书密码</span><br></pre></td></tr></table></figure>
+<p>配置完成后，重启Tomcat.。</p>
+<h4 id="2、浏览器设置"><a href="#2、浏览器设置" class="headerlink" title="2、浏览器设置"></a>2、浏览器设置</h4><p>将 server.cer 导入到浏览器“受信任的根证书颁发机构”区域，这样是为了让浏览器信任服务器。将  client.p12证书导入至浏览器“个人”区域，这样是为了让服务器信任浏览器。在浏览器输入<a href="https://192.168.1.112:8443/" target="_blank" rel="noopener">https://192.168.1.112:8443/</a>  即可正常访问。地址栏后会有“锁”图标，表示本次会话已经通过HTTPS双向验证，接下来的会话过程中所传输的信息都已经过SSL信息加密。 </p>
+<p><img src="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815113904.png" alt="mark"></p>
+<h3 id="三、Android-端实现SSL双向认证"><a href="#三、Android-端实现SSL双向认证" class="headerlink" title="三、Android 端实现SSL双向认证"></a>三、Android 端实现SSL双向认证</h3><h4 id="1、生成客户端信任证书"><a href="#1、生成客户端信任证书" class="headerlink" title="1、生成客户端信任证书"></a>1、生成客户端信任证书</h4><p>从服务端证书导出客户端信任证书</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">keytool -import -v -<span class="built_in">alias</span> server -file server.cer -keystore truststore.jks -storepass 123456 </span><br><span class="line">// -import 导入</span><br><span class="line">// -v</span><br><span class="line">// -<span class="built_in">alias</span> </span><br><span class="line">// -file</span><br><span class="line">// -keystore </span><br><span class="line">// -storepass keystore密码</span><br></pre></td></tr></table></figure>
+<p><img src="https://yublog.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20180815120039.png" alt="mark"></p>
+<h4 id="2、生成Android识别的BKS库文件"><a href="#2、生成Android识别的BKS库文件" class="headerlink" title="2、生成Android识别的BKS库文件"></a>2、生成Android识别的BKS库文件</h4><p>Java平台默认识别jks格式的证书文件，但是android平台只识别bks格式的证书文件 。用Portecle工具转成bks格式。<br>运行protecle.jar将client.p12和truststore.jks分别转换成client.bks和truststore.bks,然后放到android客户端的assert目录下 。</p>
+<blockquote>
+<p>操作方式：File -&gt; open Keystore File -&gt; 选择证书库文件 -&gt; 输入密码 -&gt; Tools -&gt; change keystore type -&gt; BKS -&gt; save keystore as -&gt; 保存即可 </p>
+</blockquote>
+<h4 id="3、使用Okhttp3-实现Https双向认证。"><a href="#3、使用Okhttp3-实现Https双向认证。" class="headerlink" title="3、使用Okhttp3 实现Https双向认证。"></a>3、使用Okhttp3 实现Https双向认证。</h4><p>Andorid 读取自定义证书创建证书自定义的SSLSocketFactory，trustManager</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String CLIENT_PRI_KEY          = <span class="string">"client.bks"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TRUSTSTORE_PUB_KEY      = <span class="string">"truststore.bks"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String CLIENT_BKS_PASSWORD     = <span class="string">"123456"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String TRUSTSTORE_BKS_PASSWORD = <span class="string">"123456"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String KEYSTORE_TYPE           = <span class="string">"BKS"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String PROTOCOL_TYPE           = <span class="string">"TLS"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String CERTIFICATE_FORMAT      = <span class="string">"X509"</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 为okhttpClient配置ssl</span></span><br><span class="line"><span class="comment"> * 实现双向认证</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> clientBuilder</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">buildOkhttpSSL</span><span class="params">(OkHttpClient.Builder clientBuilder)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 客户端的keystore,服务器端需要验证</span></span><br><span class="line">        KeyStore keyStore = KeyStore.getInstance(KEYSTORE_TYPE);</span><br><span class="line">        <span class="comment">// 客户端信任的服务器端证书</span></span><br><span class="line">        KeyStore trustStore = KeyStore.getInstance(KEYSTORE_TYPE);</span><br><span class="line">        <span class="comment">// 读取并加载证书</span></span><br><span class="line">        InputStream ksIn = App.getAppContext().getAssets().open(CLIENT_PRI_KEY);</span><br><span class="line">        InputStream tsIn = App.getAppContext().getAssets().open(TRUSTSTORE_PUB_KEY);</span><br><span class="line">        keyStore.load(ksIn, CLIENT_BKS_PASSWORD.toCharArray());</span><br><span class="line">        trustStore.load(tsIn, TRUSTSTORE_BKS_PASSWORD.toCharArray());</span><br><span class="line">        ksIn.close();</span><br><span class="line">        tsIn.close();</span><br><span class="line">        <span class="comment">// 初始化SSLContext</span></span><br><span class="line">        SSLContext sslContext = SSLContext.getInstance(PROTOCOL_TYPE);</span><br><span class="line">        <span class="comment">// 使用x509算法，初始化信任工厂，加载信任认证书库</span></span><br><span class="line">        TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(CERTIFICATE_FORMAT);</span><br><span class="line">        trustManagerFactory.init(trustStore);</span><br><span class="line">        <span class="comment">// 使用x509算法,初始化证书工厂，加载客户端证书</span></span><br><span class="line">        KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(CERTIFICATE_FORMAT);</span><br><span class="line">        keyManagerFactory.init(keyStore, CLIENT_BKS_PASSWORD.toCharArray());</span><br><span class="line">        <span class="comment">//获得SSLSocketFactory</span></span><br><span class="line">        sslContext.init(keyManagerFactory.getKeyManagers(), trustManagerFactory.getTrustManagers(), <span class="keyword">new</span> SecureRandom());</span><br><span class="line">        SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();</span><br><span class="line">        <span class="comment">//获得trustManager</span></span><br><span class="line">        TrustManager[] trustManagers = trustManagerFactory.getTrustManagers();</span><br><span class="line">        X509TrustManager trustManager = (X509TrustManager) trustManagers[<span class="number">0</span>];</span><br><span class="line">        clientBuilder.sslSocketFactory(sslSocketFactory, trustManager);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为okhttp配置SSL</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 构建OkHttpClient.Builder</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> OkHttpClient.<span class="function">Builder <span class="title">getHttpClientBuilder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    OkHttpClient.Builder builder = <span class="keyword">new</span> OkHttpClient.Builder();</span><br><span class="line">    <span class="comment">// 设置https</span></span><br><span class="line">    SSLHelper.buildOkhttpSSL(builder, App.getAppContext());</span><br><span class="line">    <span class="comment">// 设置hostnameVerifier</span></span><br><span class="line">    builder.hostnameVerifier(<span class="keyword">new</span> HostnameVerifier() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">verify</span><span class="params">(String hostname, SSLSession session)</span> </span>&#123;</span><br><span class="line">            Log.i(<span class="string">"OkHttpHelper"</span>, <span class="string">"hostname ="</span> + hostname);</span><br><span class="line">            Log.i(<span class="string">"OkHttpHelper"</span>, <span class="string">"session ="</span> + session.getPeerHost());</span><br><span class="line">            <span class="keyword">return</span> hostname.equalsIgnoreCase(session.getPeerHost());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 添加log</span></span><br><span class="line">    <span class="keyword">if</span> (AppConfig.DEBUG) &#123;</span><br><span class="line">        HttpLoggingInterceptor interceptor = <span class="keyword">new</span> HttpLoggingInterceptor();</span><br><span class="line">        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);</span><br><span class="line">        <span class="keyword">if</span> (!builder.interceptors().contains(interceptor)) &#123;</span><br><span class="line">            builder.addInterceptor(interceptor);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> builder;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过以上配置，android 就可用访问自签名证书实现的https双向认证的api了。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/29/4、计算机系统/2、Android/4、Android 安全/Https 安全认证/单向认证证书/https单向认证/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/29/4、计算机系统/2、Android/4、Android 安全/Https 安全认证/Https 基础知识/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">liyy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/atom-li" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitee.com/atom_one" target="_blank" title="Gitee"><i class="fa fa-fw fa-globe"></i>Gitee</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tomcat-自签名证书双向认证"><span class="nav-number">1.</span> <span class="nav-text">Tomcat 自签名证书双向认证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、证书制作"><span class="nav-number">1.1.</span> <span class="nav-text">一、证书制作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、生成服务端server-keystore"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、生成服务端server.keystore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、为客户端生成证书"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、为客户端生成证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、导出客户端证书"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、导出客户端证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、让服务器信任客户端证书"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、让服务器信任客户端证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、让客户端信任服务器证书"><span class="nav-number">1.1.5.</span> <span class="nav-text">5、让客户端信任服务器证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6、查看服务端证书库"><span class="nav-number">1.1.6.</span> <span class="nav-text">6、查看服务端证书库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、-配置双向认证"><span class="nav-number">1.2.</span> <span class="nav-text">二、 配置双向认证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、Tomcat-配置"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、Tomcat 配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、浏览器设置"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、浏览器设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Android-端实现SSL双向认证"><span class="nav-number">1.3.</span> <span class="nav-text">三、Android 端实现SSL双向认证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、生成客户端信任证书"><span class="nav-number">1.3.1.</span> <span class="nav-text">1、生成客户端信任证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、生成Android识别的BKS库文件"><span class="nav-number">1.3.2.</span> <span class="nav-text">2、生成Android识别的BKS库文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、使用Okhttp3-实现Https双向认证。"><span class="nav-number">1.3.3.</span> <span class="nav-text">3、使用Okhttp3 实现Https双向认证。</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liyy</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

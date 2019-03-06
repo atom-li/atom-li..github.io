@@ -223,7 +223,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -231,7 +231,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/07/28/1、Java/1、java 基础/java 文件读取/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/10/16/4、计算机系统/1、Linux/2、常用软件服务管理/nginx 命令详解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -301,8 +301,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/07/28/1、Java/1、java 基础/java 文件读取/" itemprop="url">
-                  java 文件读取
+                <a class="post-title-link" href="/2016/10/16/4、计算机系统/1、Linux/2、常用软件服务管理/nginx 命令详解/" itemprop="url">
+                  nginx 命令详解
                 </a>
               
             
@@ -321,14 +321,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-07-28 17:44:09" itemprop="dateCreated datePublished" datetime="2016-07-28T17:44:09+08:00">2016-07-28</time>
+              <time title="Created: 2016-10-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-10-16T10:24:44+08:00">2016-10-16</time>
             
 
             
@@ -345,7 +345,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-06-28 17:50:19" itemprop="dateModified" datetime="2018-06-28T17:50:19+08:00">2018-06-28</time>
+                <time title="Modified: 2018-04-13 10:26:39" itemprop="dateModified" datetime="2018-04-13T10:26:39+08:00">2018-04-13</time>
               
             
           </span>
@@ -380,173 +380,9 @@
       
         
           
-            <h2 id="java-文件读取"><a href="#java-文件读取" class="headerlink" title="java 文件读取"></a>java 文件读取</h2><p>在java中文件读取主要有以下几种情况<br>1、按字节读取文件内容<br>2、按字符读取文件内容<br>3、按行读取文件内容<br>4、随机读取文件内容 </p>
-<h2 id="1、按字节读取文件内容"><a href="#1、按字节读取文件内容" class="headerlink" title="1、按字节读取文件内容"></a>1、按字节读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以字节为单位读取文件，常用于读二进制文件，如图片、声音、影像等文件。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByBytes</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(fileName);</span><br><span class="line">        InputStream in = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字节为单位读取文件内容，一次读一个字节："</span>);</span><br><span class="line">            <span class="comment">// 一次读一个字节</span></span><br><span class="line">            in = <span class="keyword">new</span> FileInputStream(file);</span><br><span class="line">            <span class="keyword">int</span> tempbyte;</span><br><span class="line">            <span class="keyword">while</span> ((tempbyte = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                System.out.write(tempbyte);</span><br><span class="line">            &#125;</span><br><span class="line">            in.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字节为单位读取文件内容，一次读多个字节："</span>);</span><br><span class="line">            <span class="comment">// 一次读多个字节</span></span><br><span class="line">            <span class="keyword">byte</span>[] tempbytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">100</span>];</span><br><span class="line">            <span class="keyword">int</span> byteread = <span class="number">0</span>;</span><br><span class="line">            in = <span class="keyword">new</span> FileInputStream(fileName);</span><br><span class="line">            ReadFromFile.showAvailableBytes(in);</span><br><span class="line">            <span class="comment">// 读入多个字节到字节数组中，byteread为一次读入的字节数</span></span><br><span class="line">            <span class="keyword">while</span> ((byteread = in.read(tempbytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                System.out.write(tempbytes, <span class="number">0</span>, byteread);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">            e1.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (in != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    in.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2、按字符读取文件内容"><a href="#2、按字符读取文件内容" class="headerlink" title="2、按字符读取文件内容"></a>2、按字符读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 以字符为单位读取文件，常用于读文本，数字等类型的文件</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByChars</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">        File file = <span class="keyword">new</span> File(fileName);</span><br><span class="line">        Reader reader = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字符为单位读取文件内容，一次读一个字符："</span>);</span><br><span class="line">            <span class="comment">// 一次读一个字符</span></span><br><span class="line">            reader = <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(file));</span><br><span class="line">            <span class="keyword">int</span> tempchar;</span><br><span class="line">            <span class="keyword">while</span> ((tempchar = reader.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 对于windows下，\r\n这两个字符在一起时，表示一个换行。</span></span><br><span class="line">                <span class="comment">// 但如果这两个字符分开显示时，会换两次行。</span></span><br><span class="line">                <span class="comment">// 因此，屏蔽掉\r，或者屏蔽\n。否则，将会多出很多空行。</span></span><br><span class="line">                <span class="keyword">if</span> (((<span class="keyword">char</span>) tempchar) != <span class="string">'\r'</span>) &#123;</span><br><span class="line">                    System.out.print((<span class="keyword">char</span>) tempchar);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            reader.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">"以字符为单位读取文件内容，一次读多个字符："</span>);</span><br><span class="line">            <span class="comment">// 一次读多个字符</span></span><br><span class="line">            <span class="keyword">char</span>[] tempchars = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">30</span>];</span><br><span class="line">            <span class="keyword">int</span> charread = <span class="number">0</span>;</span><br><span class="line">            reader = <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(fileName));</span><br><span class="line">            <span class="comment">// 读入多个字符到字符数组中，charread为一次读取字符数</span></span><br><span class="line">            <span class="keyword">while</span> ((charread = reader.read(tempchars)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                <span class="comment">// 同样屏蔽掉\r不显示</span></span><br><span class="line">                <span class="keyword">if</span> ((charread == tempchars.length)</span><br><span class="line">                        &amp;&amp; (tempchars[tempchars.length - <span class="number">1</span>] != <span class="string">'\r'</span>)) &#123;</span><br><span class="line">                    System.out.print(tempchars);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; charread; i++) &#123;</span><br><span class="line">                        <span class="keyword">if</span> (tempchars[i] == <span class="string">'\r'</span>) &#123;</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            System.out.print(tempchars[i]);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">            e1.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (reader != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    reader.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="3、按行读取文件内容"><a href="#3、按行读取文件内容" class="headerlink" title="3、按行读取文件内容"></a>3、按行读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 以行为单位读取文件，常用于读面向行的格式化文件</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByLines</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">      File file = <span class="keyword">new</span> File(fileName);</span><br><span class="line">      BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          System.out.println(<span class="string">"以行为单位读取文件内容，一次读一整行："</span>);</span><br><span class="line">          reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(file));</span><br><span class="line">          String tempString = <span class="keyword">null</span>;</span><br><span class="line">          <span class="keyword">int</span> line = <span class="number">1</span>;</span><br><span class="line">          <span class="comment">// 一次读入一行，直到读入null为文件结束</span></span><br><span class="line">          <span class="keyword">while</span> ((tempString = reader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="comment">// 显示行号</span></span><br><span class="line">              System.out.println(<span class="string">"line "</span> + line + <span class="string">": "</span> + tempString);</span><br><span class="line">              line++;</span><br><span class="line">          &#125;</span><br><span class="line">          reader.close();</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (reader != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  reader.close();</span><br><span class="line">              &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="4、随机读取文件内容"><a href="#4、随机读取文件内容" class="headerlink" title="4、随机读取文件内容"></a>4、随机读取文件内容</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 随机读取文件内容</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readFileByRandomAccess</span><span class="params">(String fileName)</span> </span>&#123;</span><br><span class="line">      RandomAccessFile randomFile = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">          System.out.println(<span class="string">"随机读取一段文件内容："</span>);</span><br><span class="line">          <span class="comment">// 打开一个随机访问文件流，按只读方式</span></span><br><span class="line">          randomFile = <span class="keyword">new</span> RandomAccessFile(fileName, <span class="string">"r"</span>);</span><br><span class="line">          <span class="comment">// 文件长度，字节数</span></span><br><span class="line">          <span class="keyword">long</span> fileLength = randomFile.length();</span><br><span class="line">          <span class="comment">// 读文件的起始位置</span></span><br><span class="line">          <span class="keyword">int</span> beginIndex = (fileLength &gt; <span class="number">4</span>) ? <span class="number">4</span> : <span class="number">0</span>;</span><br><span class="line">          <span class="comment">// 将读文件的开始位置移到beginIndex位置。</span></span><br><span class="line">          randomFile.seek(beginIndex);</span><br><span class="line">          <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">10</span>];</span><br><span class="line">          <span class="keyword">int</span> byteread = <span class="number">0</span>;</span><br><span class="line">          <span class="comment">// 一次读10个字节，如果文件内容不足10个字节，则读剩下的字节。</span></span><br><span class="line">          <span class="comment">// 将一次读取的字节数赋给byteread</span></span><br><span class="line">          <span class="keyword">while</span> ((byteread = randomFile.read(bytes)) != -<span class="number">1</span>) &#123;</span><br><span class="line">              System.out.write(bytes, <span class="number">0</span>, byteread);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (randomFile != <span class="keyword">null</span>) &#123;</span><br><span class="line">              <span class="keyword">try</span> &#123;</span><br><span class="line">                  randomFile.close();</span><br><span class="line">              &#125; <span class="keyword">catch</span> (IOException e1) &#123;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/05/10/1、Java/1、java 基础/javac、javah、javap等java基础指令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/05/10/1、Java/1、java 基础/javac、javah、javap等java基础指令/" itemprop="url">
-                  javac、javah、javap等java基础指令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2016-05-10 13:53:43" itemprop="dateCreated datePublished" datetime="2016-05-10T13:53:43+08:00">2016-05-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-08-06 10:06:43" itemprop="dateModified" datetime="2018-08-06T10:06:43+08:00">2018-08-06</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="javac、javah、javap等java基础指令"><a href="#javac、javah、javap等java基础指令" class="headerlink" title="javac、javah、javap等java基础指令"></a>javac、javah、javap等java基础指令</h2><h3 id="1、javac"><a href="#1、javac" class="headerlink" title="1、javac"></a>1、javac</h3><blockquote>
-<p>javac 是java语言编程编译器。全称java compiler。javac 工具读取用 Java 编程语言编写的类和接口定义，并将它们编译成字节码类文件。</p>
-</blockquote>
-<p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/Ib8fHJ9GLa.png?imageslim" alt="mark"></p>
-<h3 id="2、javah"><a href="#2、javah" class="headerlink" title="2、javah"></a>2、javah</h3><blockquote>
-<p>javah 生成实现本地方法所需的 C 头文件和源文件。</p>
-</blockquote>
-<p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/F2Ke0FceaL.png?imageslim" alt="mark"></p>
-<h3 id="3、javap"><a href="#3、javap" class="headerlink" title="3、javap"></a>3、javap</h3><blockquote>
-<p>javap是JDK自带的反汇编器，可以查看java编译器为我们生成的字节码。通过它，我们可以对照源代码和字节码，从而了解很多编译器内部的工作。</p>
-</blockquote>
-<p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/dCAbKl9a2f.png?imageslim" alt="mark"><br>常用操作指令<br>1、javap -c <class> (注意这个地方不需要class后缀) 指令。反编译class文件<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/10Bld2G1lF.png?imageslim" alt="mark"><br>2、javap -s <class>  指令。获取方法的签名<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180510/ckIHKgJC4c.png?imageslim" alt="mark"></class></class></p>
+            <p>sudo nginx #打开 nginx<br>nginx -s reload|reopen|stop|quit  #重新加载配置|重启|停止|退出 nginx<br>nginx -t   #测试配置是否有语法错误</p>
+<p>nginx [-?hvVtq] [-s signal] [-c filename] [-p prefix] [-g directives]</p>
+<p>-?,-h           : 打开帮助信息<br>-v              : 显示版本信息并退出<br>-V              : 显示版本和配置选项信息，然后退出<br>-t              : 检测配置文件是否有语法错误，然后退出<br>-q              : 在检测配置文件期间屏蔽非错误信息<br>-s signal       : 给一个 nginx 主进程发送信号：stop（停止）, quit（退出）, reopen（重启）, reload（重新加载配置文件）<br>-p prefix       : 设置前缀路径（默认是：/usr/local/Cellar/nginx/1.2.6/）<br>-c filename     : 设置配置文件（默认是：/usr/local/etc/nginx/nginx.conf）<br>-g directives   : 设置配置文件外的全局指令</p>
 
           
         
@@ -600,7 +436,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/05/10/3、Android/1、Android 基础/基本知识/组件相关/Activity 透明背景/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/10/10/3、开发语言/3、Java/1、java 基础/java关键字 Synchronized/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -619,8 +455,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/05/10/3、Android/1、Android 基础/基本知识/组件相关/Activity 透明背景/" itemprop="url">
-                  Activity 透明背景
+                <a class="post-title-link" href="/2016/10/10/3、开发语言/3、Java/1、java 基础/java关键字 Synchronized/" itemprop="url">
+                  java关键字 Synchronized
                 </a>
               
             
@@ -639,14 +475,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-05-10 11:42:59" itemprop="dateCreated datePublished" datetime="2016-05-10T11:42:59+08:00">2016-05-10</time>
+              <time title="Created: 2016-10-10 14:32:00" itemprop="dateCreated datePublished" datetime="2016-10-10T14:32:00+08:00">2016-10-10</time>
             
 
             
@@ -663,7 +499,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2017-11-16 17:10:11" itemprop="dateModified" datetime="2017-11-16T17:10:11+08:00">2017-11-16</time>
+                <time title="Modified: 2018-08-06 10:06:48" itemprop="dateModified" datetime="2018-08-06T10:06:48+08:00">2018-08-06</time>
               
             
           </span>
@@ -698,290 +534,32 @@
       
         
           
-            <h1 id="Activity-透明背景"><a href="#Activity-透明背景" class="headerlink" title="Activity 透明背景"></a>Activity 透明背景</h1><blockquote>
-<p> 使用设置Activity主题样式的方法</p>
-</blockquote>
-<p>首先在样式styles 中添加<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">name</span>=<span class="string">"TranslucentTheme"</span> <span class="attr">parent</span>=<span class="string">"Theme.AppCompat.Light.NoActionBar"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowBackground"</span>&gt;</span>@android:color/transparent<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:colorBackgroundCacheHint"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowIsTranslucent"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowAnimationStyle"</span>&gt;</span>@android:style/Animation<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowNoTitle"</span>&gt;</span>true<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">name</span>=<span class="string">"android:windowContentOverlay"</span>&gt;</span>@null<span class="tag">&lt;/<span class="name">item</span>&gt;</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>然后在清单文件中找到Activity设置该主题样式<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">   <span class="attr">android:name</span>=<span class="string">"com.xxxx.demo"</span></span></span><br><span class="line"><span class="tag">   <span class="attr">android:theme</span>=<span class="string">"@style/TranslucentTheme"</span>/&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>最后设置Activity 的根布局文件的背景为透明或半透明<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-14/31224857.jpg" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/05/08/3、Android/1、Android 基础/基本知识/Android 手机存储/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/05/08/3、Android/1、Android 基础/基本知识/Android 手机存储/" itemprop="url">
-                  Android 手机存储
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2016-05-08 14:39:07" itemprop="dateCreated datePublished" datetime="2016-05-08T14:39:07+08:00">2016-05-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-05-16 22:41:35" itemprop="dateModified" datetime="2018-05-16T22:41:35+08:00">2018-05-16</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Android-手机存储"><a href="#Android-手机存储" class="headerlink" title="Android 手机存储"></a>Android 手机存储</h2><p>Andorid 手机存储分为<code>内部存储internal storage</code> 和 <code>外部存储external storage</code>。从app看。目录又分为<code>私有目录</code> 和 <code>公有目录</code>。<br>在storage文件夹中有一个sdcard文件夹，这个文件夹中的文件又分为两类，一类是公有目录，还有一类是私有目录，其中的公有目录有九大类，比如DCIM、DOWNLOAD等这种系统为我们创建的文件夹，私有目录就是Android这个文件夹，这个文件夹打开之后里边有一个data文件夹，打开这个data文件夹，里边有许多包名组成的文件夹。<br>一般来说，我们不会自己去操作内部存储空间，没有root权限的话，我们也没法操作内部存储空间，事实上内部存储主要是由系统来维护的。不过在代码中我们是可以访问到这个文件夹的。由于内部存储空间有限，在开发中我们一般都是操作外部存储空间，Google官方建议我们App的数据应该存储在外部存储的私有目录中该App的包名下，这样当用户卸载掉App之后，相关的数据会一并删除，如果你直接在/storage/sdcard目录下创建了一个应用的文件夹，那么当你删除应用的时候，这个文件夹就不会被删除。<br>因此和App有关，所以对这些文件夹的访问都是调用Context里边的方法，而不含有包名的路径，和某一个App无关，我们可以通过Environment中的方法来访问.</p>
-<h3 id="1、内部存储"><a href="#1、内部存储" class="headerlink" title="1、内部存储"></a>1、内部存储</h3><p>应用内部存储空间（数据文件私有）文件存储到这个路径下，不需要申请权限，当应用被卸载的时候，目录下的文件会被删除。<br>需要注意的是，这个文件的目录和应用的存储位置有关，<br>当应用被移动到外部存储设备的时候，文件的绝对路径也是变化的，所以建议当数据存储到这个目录的时候，用相对路径</p>
-<table>
-<thead>
-<tr>
-<th>主要方法</th>
-<th>路径</th>
-<th>注意</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>context.getCacheDir()</td>
-<td>data/data/包名/cache</td>
-<td>当安卓设备的存储空间少，或者不够用的时候，系统会自动删除这个目录下的文件。官方建议是，超过1MB的文件，建议存储到getExternalCacheDir()目录下</td>
-</tr>
-<tr>
-<td>context.getFilesDir()</td>
-<td>data/data/包名/files</td>
-<td>系统提供的访问此路径文件的方法是：context.openFileOutput(String,int);context.openFileInput(String name);</td>
-</tr>
-<tr>
-<td>context.getDatabasePath()</td>
-<td>data/data/包名/databases</td>
-<td></td>
-</tr>
-<tr>
-<td>context.getSharedPreferences()</td>
-<td>data/data/包名/shared_prefs</td>
-<td></td>
-</tr>
-<tr>
-<td>Environment.getDataDirectory()</td>
-<td>/data</td>
-<td>获得根目录/data (内部存储路径)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="2、外部存储"><a href="#2、外部存储" class="headerlink" title="2、外部存储"></a>2、外部存储</h3><h4 id="2-1-外部存储公有目录"><a href="#2-1-外部存储公有目录" class="headerlink" title="2.1 外部存储公有目录"></a>2.1 外部存储公有目录</h4><p>应用外部存储空间（数据文件非私有，可以被手机的系统程序访问（如MP3格式的文件，会被手机系统检索出来），同样，该目录下的文件，所有的APP程序也都是可以访问的，）<br>这个目录是用来存放各种类型的文件的目录，在这里用户可以分类管理不同类型的文件（例如音乐、图片、电影等）；<br><code>Environment.getExternalStorageDirectory();</code><br>应用外部存储空间（数据文件非私有，可以被手机的系统程序访问（如MP3格式的文件，会被手机系统检索出来），同样，该目录下的文件，所有的APP程序也都是可以访问的，）<br>注意：外部存储空间可能处于不可访问状态，或者已经被移除状态，或者存储空间损坏无法访问等问题。可以通过getExternalStorageState()这个方法来判断外部存储空间的状态。</p>
+            <h2 id="java关键字-Synchronized"><a href="#java关键字-Synchronized" class="headerlink" title="java关键字 Synchronized"></a>java关键字 Synchronized</h2><p>synchronized是Java中的关键字，是一种同步锁。它修饰的对象有以下几种： </p>
+<ol>
+<li>修饰一个对象，当一个线程访问被修饰的对象时，其他试图访问该对象的线程将会阻塞，直到该线程访问该对象结束。</li>
+<li>修饰一个代码块，被修饰的代码块称为同步语句块，其作用的范围是大括号{}括起来的代码，作用的对象是调用这个代码块的对象； </li>
+<li>修饰一个实例方法，被修饰的方法称为同步方法，其作用的范围是整个方法，作用的对象是调用这个方法的对象； </li>
+<li>修改一个静态的方法，其作用的范围是整个静态方法，作用的对象是这个类的所有对象； </li>
+<li>修改一个类，其作用的范围是synchronized后面括号括起来的部分，作用主的对象是这个类的所有对象。</li>
+</ol>
 <blockquote>
-<p>注：在该目录下读写文件，需要获取读写权限。<br>该目录下的文件，这个目录是用户进行操作的一个根目录，进入二级目录可以通过<code>getExternalFilesDirs(String), getExternalCacheDirs(), and getExternalMediaDirs().</code>这些方法。<br>官方建议，不要直接使用该目录，为了避免污染用户的根命名空间，应用私有的数据，应该放在 Context.getExternalFilesDir目录下,其他的可以被分享的文件，可以放在getExternalStoragePublicDirectory(String)目录下。</p>
+<p>A. 无论synchronized关键字加在方法上还是对象上，如果它作用的对象是非静态的，则它取得的锁是对象；如果synchronized作用的对象是一个静态方法或一个类，则它取得的锁是对类，该类所有的对象同一把锁。<br>B. 每个对象只有一个锁（lock）与之相关联，谁拿到这个锁谁就可以运行它所控制的那段代码。<br>C. 实现同步是要很大的系统开销作为代价的，甚至可能造成死锁，所以尽量避免无谓的同步控制</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>路径</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Environment.getDownloadCacheDirectory()</td>
-<td>/cache</td>
-</tr>
-<tr>
-<td>Environment.getRootDirectory()</td>
-<td>/system</td>
-</tr>
-<tr>
-<td>Environment.getExternalStorageDirectory()</td>
-<td>/storage/sdcard0</td>
-</tr>
-<tr>
-<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_ALARMS)</td>
-<td>/storage/sdcard0/Alarms</td>
-</tr>
-<tr>
-<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_DCIM)</td>
-<td>/storage/sdcard0/DCIM</td>
-</tr>
-<tr>
-<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS)</td>
-<td>/storage/sdcard0/Download</td>
-</tr>
-<tr>
-<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_MOVIES)</td>
-<td>/storage/sdcard0/Movies</td>
-</tr>
-<tr>
-<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_MUSIC)</td>
-<td>/storage/sdcard0/Music</td>
-</tr>
-<tr>
-<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_NOTIFICATIONS)</td>
-<td>/storage/sdcard0/Notifications</td>
-</tr>
-<tr>
-<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_PICTURES)</td>
-<td>/storage/sdcard0/Pictures</td>
-</tr>
-<tr>
-<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_PODCASTS)</td>
-<td>/storage/sdcard0/Podcasts</td>
-</tr>
-<tr>
-<td>Environment.getExternalStoragePublicDirectory(DIRECTORY_RINGTONES)</td>
-<td>/storage/sdcard0/Ringtones</td>
-</tr>
-</tbody>
-</table>
-<p>上面的九个方法对应的就是SD卡的九大公有目录，Google官方建议我们数据应该存储在私有目录下，不建议存储在公有目录下或其他地方</p>
-<h4 id="2-2-外部存储私有目录"><a href="#2-2-外部存储私有目录" class="headerlink" title="2.2 外部存储私有目录"></a>2.2 外部存储私有目录</h4><p>那什么是私有目录呢？就是在外部存储的App的包名下，如：/storage/emulated/0/Android/data/(包名)/files/test<br>应用外部存储空间(数据文件私有，系统媒体文件无法访问（例如存了一个MP3文件，通过系统的文件夹管理系统，无法找到）)，<br>当应用被卸载的时候，目录下的文件会被删除，但是这里和getCacheDir()/getFileDir()还有不同之处：<br>只有手机系统使用的是虚拟外部存储（虚拟SD卡，现在绝大多数的手机，都不用外挂物理SD卡了）的时候，<br>才可以在卸载应用的同时，自动删除该目录下的文件，如果是之前的物理存储（物理SD卡）则不会自动删除该目录，及目录下的文件。</p>
+<h3 id="1、修饰一个对象"><a href="#1、修饰一个对象" class="headerlink" title="1、修饰一个对象"></a>1、修饰一个对象</h3><p>1.1、明确的给一个对象加锁<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method3</span><span class="params">(SomeObject obj)</span></span>&#123;</span><br><span class="line">   <span class="comment">//obj 锁定的对象</span></span><br><span class="line">   <span class="keyword">synchronized</span>(obj)&#123;</span><br><span class="line">      <span class="comment">// TODO</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>1.2、没有明确的对象作为锁，只是想让一段代码同步时，可以创建一个特殊的对象来充当锁：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">byte</span>[] lock = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">0</span>];  <span class="comment">// 特殊的instance变量</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">synchronized</span>(lock) &#123;</span><br><span class="line">         <span class="comment">//TODO</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>在使用的时候，需要判断外部存储的挂载状态（getExternalStorageState(File)），还需要申请读写权限（READ_EXTERNAL_STORAGE， WRITE_EXTERNAL_STORAGE）<br>注：当其他应用拥有SD卡读写权限的时候，可以访问该目录下的文件</p>
+<p>零长度的byte数组对象创建起来将比任何对象都经济――查看编译后的字节码：生成零长度的byte[]对象只需3条操作码，而Object lock = new Object()则需要7行操作码。</p>
 </blockquote>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>路径</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>getExternalFilesDir()</td>
-<td>/storage/emulated/0/Android/data/(包名)/files/</td>
-</tr>
-<tr>
-<td>getExternalCacheDir</td>
-<td>/storage/emulated/0/Android/data//cache/</td>
-</tr>
-</tbody>
-</table>
+<h3 id="2、修饰代码块"><a href="#2、修饰代码块" class="headerlink" title="2、修饰代码块"></a>2、修饰代码块</h3><p>2.1、一个线程访问一个对象中的同步代码块时，其他试图访问该对象的线程将被阻塞<br>2.2、当一个线程访问对象的一个同步代码块时，另一个线程仍然可以访问该对象中的非同步代码块。<br>用法如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line">             <span class="comment">//TODO</span></span><br><span class="line">         &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3、修饰一个实例方法"><a href="#3、修饰一个实例方法" class="headerlink" title="3、修饰一个实例方法"></a>3、修饰一个实例方法</h3><p>Synchronized修饰一个方法很简单，就是在方法的前面加synchronized， synchronized修饰方法和修饰一个代码块类似，只是作用范围不一样，修饰代码块是大括号括起来的范围，而修饰方法范围是整个函数。<br>Synchronized作用于整个方法的写法。<br>写法一：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="comment">// TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>写法二：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line">    <span class="comment">// TODO</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>如果你的api 版本低于8，那么不能使用getExternalFilesDir()，而是使用Environment.getExternalStorageDirectory()获得根路径之后，自己再想办法操作/Android/data/&lt;package_name&gt;/下的文件。<br>也就是说api 8以下的版本在操作文件的时候没有专门为私有文件和公共文件的操作提供api支持。你只能先获取根目录，然后自行想办法。</p>
+<p>在定义接口方法时不能使用synchronized关键字。<br>构造方法不能使用synchronized关键字，但可以使用synchronized代码块来进行同步。</p>
 </blockquote>
-<h4 id="2-3-扩展卡内存"><a href="#2-3-扩展卡内存" class="headerlink" title="2.3 扩展卡内存"></a>2.3 扩展卡内存</h4><p>扩展内存就是我们插入的外置SD卡，获取扩展内存的路径有代码如下：<br><code>`</code>java<br>     //获取扩展SDCard<br>    private static String getExtendedMemoryPath(Context mContext) {<br>        StorageManager mStorageManager = (StorageManager) mContext.getSystemService(Context.STORAGE_SERVICE);<br>        Class&lt;?&gt; storageVolumeClazz = null;<br>        try {<br>            storageVolumeClazz = Class.forName(“android.os.storage.StorageVolume”);<br>            Method getVolumeList = mStorageManager.getClass().getMethod(“getVolumeList”);<br>            Method getPath = storageVolumeClazz.getMethod(“getPath”);<br>            Method isRemovable = storageVolumeClazz.getMethod(“isRemovable”);<br>            Object result = getVolumeList.invoke(mStorageManager);<br>            final int length = Array.getLength(result);<br>            for (int i = 0; i &lt; length; i++) {<br>                Object storageVolumeElement = Array.get(result, i);<br>                String path = (String) getPath.invoke(storageVolumeElement);<br>                boolean removable = (Boolean) isRemovable.invoke(storageVolumeElement);<br>                if (removable) {<br>                    return path;<br>                }<br>            }<br>        } catch (ClassNotFoundException e) {<br>            e.printStackTrace();<br>        } catch (InvocationTargetException e) {<br>            e.printStackTrace();<br>        } catch (NoSuchMethodException e) {<br>            e.printStackTrace();<br>        } catch (IllegalAccessException e) {<br>            e.printStackTrace();<br>        }<br>        return null;<br>    }</p>
+<h3 id="4、修饰一个静态方法"><a href="#4、修饰一个静态方法" class="headerlink" title="4、修饰一个静态方法"></a>4、修饰一个静态方法</h3><p>用法如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们知道静态方法是属于类的而不属于对象的。同样的，synchronized修饰的静态方法锁定的是这个类的所有对象。</p>
+<h3 id="5、修改一个类"><a href="#5、修改一个类" class="headerlink" title="5、修改一个类"></a>5、修改一个类</h3><p>用法如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">classA</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">synchronized</span>(ClassName.class) &#123;</span><br><span class="line">                <span class="comment">// todo</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>synchronized作用于一个类时，是给这个类加锁，并且类的所有对象用的是同一把锁。</p>
 
           
         
@@ -1035,7 +613,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/17/8、Hexo/Hexo 常用命令/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/10/10/4、计算机系统/2、Android/1、Android 基础/音视频开发/Android系统播放短促音效/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -1054,8 +632,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/03/17/8、Hexo/Hexo 常用命令/" itemprop="url">
-                  hexo常用命令笔记
+                <a class="post-title-link" href="/2016/10/10/4、计算机系统/2、Android/1、Android 基础/音视频开发/Android系统播放短促音效/" itemprop="url">
+                  Android系统播放短促音效
                 </a>
               
             
@@ -1074,14 +652,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-03-17 16:54:44" itemprop="dateCreated datePublished" datetime="2016-03-17T16:54:44+08:00">2016-03-17</time>
+              <time title="Created: 2016-10-10 11:42:59" itemprop="dateCreated datePublished" datetime="2016-10-10T11:42:59+08:00">2016-10-10</time>
             
 
             
@@ -1098,7 +676,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-04-18 13:38:51" itemprop="dateModified" datetime="2018-04-18T13:38:51+08:00">2018-04-18</time>
+                <time title="Modified: 2017-11-14 15:42:48" itemprop="dateModified" datetime="2017-11-14T15:42:48+08:00">2017-11-14</time>
               
             
           </span>
@@ -1133,698 +711,155 @@
       
         
           
-            <h2 id="hexo常用命令笔记"><a href="#hexo常用命令笔记" class="headerlink" title="hexo常用命令笔记"></a>hexo常用命令笔记</h2><h3 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g <span class="comment">#安装  </span></span><br><span class="line">npm update hexo -g <span class="comment">#升级  </span></span><br><span class="line">hexo init <span class="comment">#初始化</span></span><br></pre></td></tr></table></figure>
-<h3 id="2、本地"><a href="#2、本地" class="headerlink" title="2、本地"></a>2、本地</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">"我的博客"</span> == hexo new <span class="string">"我的博客"</span> <span class="comment">#新建文章</span></span><br><span class="line">hexo p == hexo publish</span><br><span class="line">hexo g == hexo generate<span class="comment">#生成</span></span><br><span class="line">hexo s == hexo server <span class="comment">#启动服务预览</span></span><br><span class="line">hexo d == hexo deploy<span class="comment">#部署</span></span><br></pre></td></tr></table></figure>
-<h3 id="3、服务器"><a href="#3、服务器" class="headerlink" title="3、服务器"></a>3、服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">hexo server <span class="comment">#Hexo 会监视文件变动并自动更新，您无须重启服务器。</span></span><br><span class="line">hexo server -s <span class="comment">#静态模式</span></span><br><span class="line">hexo server -p 5000 <span class="comment">#更改端口</span></span><br><span class="line">hexo server -i 192.168.1.1 <span class="comment">#自定义 IP</span></span><br><span class="line"><span class="comment">#发布博客</span></span><br><span class="line">hexo clean <span class="comment">#清除缓存 网页正常情况下可以忽略此条命令</span></span><br><span class="line">hexo g <span class="comment">#生成静态网页</span></span><br><span class="line">hexo d <span class="comment">#开始部署</span></span><br><span class="line"><span class="comment">#监视文件变动</span></span><br><span class="line">hexo generate <span class="comment">#使用 Hexo 生成静态文件快速而且简单</span></span><br><span class="line">hexo generate --watch <span class="comment">#监视文件变动</span></span><br></pre></td></tr></table></figure>
-<h3 id="4、模版"><a href="#4、模版" class="headerlink" title="4、模版"></a>4、模版</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"postName"</span> <span class="comment">#新建文章</span></span><br><span class="line">hexo new page <span class="string">"pageName"</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></span><br><span class="line">hexo deploy <span class="comment">#将.deploy目录部署到GitHub</span></span><br><span class="line"></span><br><span class="line">hexo new [layout] &lt;title&gt;</span><br><span class="line">hexo new photo <span class="string">"My Gallery"</span></span><br><span class="line">hexo new <span class="string">"Hello World"</span> --lang tw</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/16/8、Hexo/Hexo 本地环境搭建/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/16/8、Hexo/Hexo 本地环境搭建/" itemprop="url">
-                  hexo 本地搭建
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2016-03-16 11:14:42" itemprop="dateCreated datePublished" datetime="2016-03-16T11:14:42+08:00">2016-03-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-08-08 19:21:21" itemprop="dateModified" datetime="2018-08-08T19:21:21+08:00">2018-08-08</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="hexo-本地搭建"><a href="#hexo-本地搭建" class="headerlink" title="hexo 本地搭建"></a>hexo 本地搭建</h2><h3 id="1、安装Git-Bash"><a href="#1、安装Git-Bash" class="headerlink" title="1、安装Git Bash"></a>1、安装Git Bash</h3><ul>
-<li><a href="https://git-for-windows.github.io/" target="_blank" rel="noopener">下载地址</a></li>
-<li>安装步骤：双击下载好的exe文件，一路next就好啦</li>
-<li>安装好后，打开gitbash，查看版本：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git version</span><br></pre></td></tr></table></figure>
-</li>
+            <h1 id="Android系统播放短促音效"><a href="#Android系统播放短促音效" class="headerlink" title="Android系统播放短促音效"></a>Android系统播放短促音效</h1><h2 id="使用MediaPlayer实现一般音频播放"><a href="#使用MediaPlayer实现一般音频播放" class="headerlink" title="使用MediaPlayer实现一般音频播放"></a>使用<strong><em>MediaPlayer</em></strong>实现一般音频播放</h2><h3 id="1、基础知识"><a href="#1、基础知识" class="headerlink" title="1、基础知识"></a>1、基础知识</h3><ul>
+<li>此类适合播放较大文件，此类文件应该存储在SD卡上，而不是在资源文件里，还有此类每次只能播放一个音频文件。</li>
+<li>缺点：资源占用量较高，延迟时间较长；不支持多个音频同时播放。<br>使用MediaPlayer非常简单，当程序控制MediaPlayer对象装载音频完成后，程序可以调用MediaPlayer的如下三个方法进行播放控制。</li>
+<li>start()：开始或恢复播放。</li>
+<li>stop()：停止播放。</li>
+<li>pause():暂停播放。<br>为了让MediaPlayer来装载指定的音频文件，MediaPlayer提供如下简单的静态方法。</li>
 </ul>
-<p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171205/hE9GKdd6KL.png?imageslim" alt="mark"></p>
-<h3 id="2、安装NodeJs"><a href="#2、安装NodeJs" class="headerlink" title="2、安装NodeJs"></a>2、安装NodeJs</h3><p>Hexo是基于nodeJS环境的静态博客，里面的npm工具很有用</p>
-<ul>
-<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">下载地址</a> (LTS为长期支持版，Current为当前最新版)</li>
-<li>安装步骤：反正下载好msi文件后，双击打开安装，也是一路next，不过在Custom Setup这一步记得选 Add to PATH ,这样你就不用自己去配置电脑上环境变量了，装完在按 win + r 快捷键调出运行，然后输入cmd确定，在cmd中输入path可以看到你的node是否配置在里面（环境变量），没有的话你就自由发挥吧。</li>
-<li>安装好后，打开终端，查看版本:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/171205/a4J1J6icIG.png?imageslim" alt="mark"></p>
-<h3 id="3、-安装hexo"><a href="#3、-安装hexo" class="headerlink" title="3、 安装hexo"></a>3、 安装hexo</h3><p>先创建一个文件夹（用来存放所有blog的东西），然后cd到该文件夹下。<br>安装hexo命令：npm i -g hexo<br>安装完成后，查看版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/15/3、Android/1、Android 基础/数据加密/Android中的AES/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/15/3、Android/1、Android 基础/数据加密/Android中的AES/" itemprop="url">
-                  Android中的AES
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2016-03-15 17:01:55" itemprop="dateCreated datePublished" datetime="2016-03-15T17:01:55+08:00">2016-03-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-11-22 10:46:12" itemprop="dateModified" datetime="2017-11-22T10:46:12+08:00">2017-11-22</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Android中的AES"><a href="#Android中的AES" class="headerlink" title="Android中的AES"></a>Android中的AES</h1><h2 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h2>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/11/3、Android/1、Android 基础/数据加密/Android中的RSA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/11/3、Android/1、Android 基础/数据加密/Android中的RSA/" itemprop="url">
-                  Android中的RSA
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2016-03-11 11:42:59" itemprop="dateCreated datePublished" datetime="2016-03-11T11:42:59+08:00">2016-03-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-11-17 09:40:34" itemprop="dateModified" datetime="2017-11-17T09:40:34+08:00">2017-11-17</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Android中的RSA"><a href="#Android中的RSA" class="headerlink" title="Android中的RSA"></a>Android中的RSA</h1>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/10/3、Android/1、Android 基础/数据加密/Android中的Base64/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liyy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AtomOne">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/03/10/3、Android/1、Android 基础/数据加密/Android中的Base64/" itemprop="url">
-                  Android Base64
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2016-03-10 15:22:22" itemprop="dateCreated datePublished" datetime="2016-03-10T15:22:22+08:00">2016-03-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2017-11-17 09:39:58" itemprop="dateModified" datetime="2017-11-17T09:39:58+08:00">2017-11-17</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Android中的Base64"><a href="#Android中的Base64" class="headerlink" title="Android中的Base64"></a>Android中的Base64</h1><h2 id="1、base64是什么"><a href="#1、base64是什么" class="headerlink" title="1、base64是什么"></a>1、base64是什么</h2><pre><code> Base64并不是一种加密算法，而是一种转码算法。它把字节序列按照映射表转码为便于传输的64个可见字符，降低数据出错率。这也是它的名字的由来，即“基于64个字符”之意。通常我们在将数据加密后，经过Base64转码后再进行传输。按照Base64算法转码后的字节，通过逆运算可以得到原始字节，至于原始字节代表的含义，并不关心，也就是说，可以转码的数据并不限于文本，但转码结果均是64个可打印字符组成的序列(末尾可能出现1或2个“=”字符，其含义后续说明)。
-Base64要求把每三个8Bit的字节转换为四个6Bit的字节（3*8 = 4*6 = 24），然后把6Bit再添两位高位0，组成四个8Bit的字节，也就是说，转换后的字符串理论上将要比原来的长1/3。
-</code></pre><h2 id="2、base64-的规则"><a href="#2、base64-的规则" class="headerlink" title="2、base64 的规则"></a>2、base64 的规则</h2><pre><code>关于这个编码的规则：
-1、 把3个字符变成4个字符。
-2、每76个字符加一个换行符。
-3、最后的结束符也要处理
-</code></pre><p>例如：<br>转换前 11111111, 11111111, 11111111 （二进制）<br>转换后 00111111, 00111111, 00111111, 00111111 （二进制）<br>十进制 43 27 41 54<br>对应码表中的值 r b p 2<br>所以上面的24位编码，编码后的Base64值为 rbp2<br>上面的三个字节是原文，下面的四个字节是转换后的Base64编码，其前两位均为0。<br>转换后，我们用一个码表来得到我们想要的字符串（也就是最终的Base64编码），这个表是这样的：（摘自RFC2045）<br>Base64映射表：<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-16/35733995.jpg" alt=""></p>
-<blockquote>
-</blockquote>
-<p> 注意：在转码成Base64字符后，这些字符序列是按照ASCII字符集存储，‘D’对应的ASCII码值为68，所以存为01000100，而不是3（00000011），很多初学者以为映射表中的码值就是转码后字符的字节值，这是不对的，映射表中的码值是对“分区块”处理后的每个字节映射转换Base64字符时所用。顺便附上ASCII表<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-17/62239519.jpg" alt=""><br>数据还原时，先把Base64字符按照ASCII字符集转换成字节，然后进行“分区处理”的逆运算，得到原始字节。</p>
-<p>…聪明的你可能会问到，原文的字节数量应该是3的倍数啊，如果这个条件不能满足的话，那该怎么办呢？<br>我们的解决办法是这样的：原文剩余的字节根据编码规则继续单独转(1变2,2变3;不够的位数用0补全)，再用=号补满4个字节。这就是为什么有些Base64编码会以一个或两个等号结束的原因，但等号最多只有两个。因为：<br>一个原字节至少会变成两个目标字节<br>所以余数任何情况下都只可能是0，1，2这三个数中的一个。如果余数是0的话，就表示原文字节数正好是3的倍数（最理想的情况）。如果是1的话，转成2个Base64编码字符，为了让Base64编码是4的倍数，就要补2个等号；同理，如果是2的话，就要补1个等号。</p>
-<h2 id="3-Android中的使用"><a href="#3-Android中的使用" class="headerlink" title="3.Android中的使用"></a>3.Android中的使用</h2><pre><code>Android内置了Base64的处理。有的小伙伴担心自己的后台不是Java后台，其实Base64是一种算法，是与语言不相关的，每种语言都会有自己对应的实现，得到的结果是一致的。有时前端和后台解码后的数据之所以不一致，并非语言不通所致，而是一些Base64处理规则没有保持一致，比如，若结尾有‘=’字符，是否略去，等等。
-android.util 包下的Base64类提供了一些编码静态方法：
-</code></pre><table>
+<table>
 <thead>
 <tr>
 <th>API</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>static MediaPlayer create(Context context, Uri uri)</td>
+<td>从执定Uri来装载音频文件，并返回新创建的MediaPlayer对象</td>
+<td></td>
+</tr>
+<tr>
+<td>static MediaPlayer create(Context context, int resid)</td>
+<td>从resid资源的ID对应的资源文件中装载音频文件，并返回新创建的对象。</td>
+</tr>
+</tbody>
+</table>
+<p>上面方法用起来非常方便，但这两个方法每次都会返回新创建的MediaPlayer对象，如果程序需要使用MediaPlayer循环播放多个音频文件，使用MediaPlayer的静态create()方法就不太合适了，此时可通过MediaPlayer的setDataSource()方法来装载指定的音频文件。<br>MediaPlayer提供了如下方法来指定装载相应的音频文件。</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>void setDataSource(String path)</td>
+<td>指定装载path路径所代表的文件。</td>
+<td></td>
+</tr>
+<tr>
+<td>void setDataSource(FileDescriptor fd, long offset, long length)</td>
+<td>指定装载fd所代表的的文件中从offset开始、长度为length的文件内容。</td>
+<td></td>
+</tr>
+<tr>
+<td>void setDataSource(Context context, Uri uri)</td>
+<td>指定装载uri所代表的文件。</td>
+<td></td>
+</tr>
+<tr>
+<td>void setDataSource(FileDescriptor fd)</td>
+<td>指定装载fd所代表的的文件。</td>
+</tr>
+</tbody>
+</table>
+<p>执行上面所示的setDataSource()方法后，MediaPlayer并未真正的去装载那些音频文件，还需要调用MediaPlayer的prepare()方法去准备音频。所谓“准备”是让MediaPlayer真正去装载音频文件。</p>
+<p>除此之外，MediaPlayer还提供了一些绑定事件监听器的方法，用于监听MediaPlayer播放过程中所发生的特定事件。绑定事件监听器的方法如下。</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setOnCompletionListener()</td>
+<td>为MediaPlayer的播放完成事件绑定事件监听器。</td>
+<td></td>
+</tr>
+<tr>
+<td>setOnErrorListener()</td>
+<td>为MediaPlayer的播放错误事件绑定事件监听器</td>
+<td></td>
+</tr>
+<tr>
+<td>setOnPreparedListener()</td>
+<td>为MediaPlayer调用Prepare()方法时触发该监听器。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2、知识进阶"><a href="#2、知识进阶" class="headerlink" title="2、知识进阶"></a>2、知识进阶</h3><p>播放不同来源的音频文件<br>1、播放应用中的资源文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MediaPlayer mediaPlayer = MediaPlayer.create(<span class="keyword">this</span>,R.raw.incomingcall);</span><br><span class="line">mediaPlayer.start()</span><br></pre></td></tr></table></figure></p>
+<p>2、播放应用原始资源文件<br>播放应用原始资源的步骤：</p>
+<ul>
+<li>调用Context的getAssets()方法获取应用的AssetManager。</li>
+<li>] 调用AssertManager对象的openFd(String name)方法代开指定的原始资源，该方法返回一个AssetFileDescriptor对象。</li>
+<li>调用AssetFileDescriptor的getFileDescriptor()、getStartOffset和getLength()方法来获取音频文件的FileDescriptor、开始位置、长度等。</li>
+<li>创建MediaPlayer对象(或利用已有的MediaPlayer对象)，并调用MediaPlayer对象的setDataSource(FileDescriptor fd, long offset, long length)方法来装载音频资源。</li>
+<li>调用MediaPlayer对象的prepare()方法准备音频。</li>
+<li>调用MediaPlayer的start()、pause()、stop()等方法控制播放即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">AssetManager am = getAssets();</span><br><span class="line"><span class="comment">//打开指定音乐文件</span></span><br><span class="line">AssetFileDescriptor afd = am.openFd(music);</span><br><span class="line">MediaPlayer mediaPlayer = <span class="keyword">new</span> MediaPlayer();</span><br><span class="line"><span class="comment">//使用MediaPlayer装载指定的声音文件</span></span><br><span class="line">mediaPlayer.setDataSource(afd.getFileDescriptor(),</span><br><span class="line">               afd.getStartOffset(),afd.getLength());</span><br><span class="line"><span class="comment">//准备声音</span></span><br><span class="line">mediaPlayer.prepare();</span><br><span class="line"><span class="comment">//播放</span></span><br><span class="line">mediaPlayer.start();</span><br></pre></td></tr></table></figure>
+<p>3、播放外部存储器上的音频文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MediaPlayer mediaPlayer = <span class="keyword">new</span> MediaPlayer();</span><br><span class="line">mediaPlayer.setDataSource(<span class="string">"/mnt/sdcard/mysong.mp3"</span>);</span><br><span class="line">mediaPlayer.prepare();</span><br><span class="line">mediaPlayer.start();</span><br></pre></td></tr></table></figure></p>
+<p>4、播放来自网络的音频文件<br>有两种方式:<br>(1)直接使用MediaPlayer的静态方法create(Context context, Uri uri).<br>(2)调用MediaPlayer的setDataSource(Context context, Uri uri)方法装载Uri对对应的音频文件。<br>第(2)中方式的代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Uri uri = Uri.parse(<span class="string">"http://www.xxx.cn/abc.mp3"</span>);</span><br><span class="line">MediaPlayer mediaPlayer = <span class="keyword">new</span> MediaPlayer();</span><br><span class="line">mediaPlayer.setDataSource(<span class="keyword">this</span>,uri);</span><br><span class="line">mediaPlayer.prepare();</span><br><span class="line">mediaPlayer.start();</span><br></pre></td></tr></table></figure></p>
+<p>另外，MediaPlayer除了调用prepare()方法来准备声音之外，还可以调用prepareAsync()来准备声音。prepareAsync()与prepare()方法的区别在于，prepareAsync()是异步的，它不会阻塞当前的UI线程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">MediaPlayer mediaPlayer = <span class="keyword">new</span> MediaPlayer();  </span><br><span class="line"><span class="keyword">if</span> (mediaPlayer.isPlaying()) &#123;  </span><br><span class="line">   mediaPlayer.reset();<span class="comment">//重置为初始状态  </span></span><br><span class="line">&#125;  </span><br><span class="line">mediaPlayer.setDataSource(<span class="string">"/mnt/sdcard/god.mp3"</span>);  </span><br><span class="line">mediaPlayer.prepare();<span class="comment">//缓冲   </span></span><br><span class="line">mediaPlayer.start();<span class="comment">//开始或恢复播放  </span></span><br><span class="line">mediaPlayer.pause();<span class="comment">//暂停播放  </span></span><br><span class="line">mediaPlayer.start();<span class="comment">//恢复播放  </span></span><br><span class="line">mediaPlayer.stop();<span class="comment">//停止播放  </span></span><br><span class="line">mediaPlayer.release();<span class="comment">//释放资源  </span></span><br><span class="line">mediaPlayer.setOnCompletionListener(<span class="keyword">new</span> MediaPlayer.OnCompletionListener() &#123;<span class="comment">//播出完毕事件  </span></span><br><span class="line">        <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompletion</span><span class="params">(MediaPlayer arg0)</span> </span>&#123;  </span><br><span class="line">      mediaPlayer.release();  </span><br><span class="line">        &#125;  </span><br><span class="line">&#125;);  </span><br><span class="line">mediaPlayer.setOnErrorListener(<span class="keyword">new</span> MediaPlayer.OnErrorListener() &#123;<span class="comment">// 错误处理事件  </span></span><br><span class="line">         <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onError</span><span class="params">(MediaPlayer player, <span class="keyword">int</span> arg1, <span class="keyword">int</span> arg2)</span> </span>&#123;  </span><br><span class="line">  mediaPlayer.release();  </span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;  </span><br><span class="line">         &#125;  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="使用-SoundPool-实现短促音效播放"><a href="#使用-SoundPool-实现短促音效播放" class="headerlink" title="使用 SoundPool 实现短促音效播放"></a>使用 <strong><em>SoundPool</em></strong> 实现短促音效播放</h2><h3 id="1、基础知识-1"><a href="#1、基础知识-1" class="headerlink" title="1、基础知识"></a>1、基础知识</h3><p>SoundPool（android.media.SoundPool），顾名思义是声音池的意思，主要用于播放一些较短的声音片段，支持从程序的资源或文件系统加载。与MediaPlayer相比，SoundPool的优势在于CPU资源占用量低和反应延迟小。另外，SoundPool还支持自行设置声音的品质、音量、播放比率等参数，支持通过ID对多个音频流进行管理。<br> 在Android开发中我们经常使用MediaPlayer来播放音频文件，但是MediaPlayer存在一些不足，例如：资源占用量较高、延迟时间较长、不支持多个音频同时播放等。这些缺点决定了MediaPlayer在某些场合的使用情况不会很理想，例如在对时间精准度要求相对较高的游戏开发中。<br>     在游戏开发中我们经常需要播放一些游戏音效（比如：子弹爆炸，物体撞击等），这些音效的共同特点是短促、密集、延迟程度小。在这样的场景下，我们可以使用SoundPool代替MediaPlayer来播放这些音效。 </p>
+<p>SoundPool存在的缺陷<br>　   - SoundPool最大只能申请1M的内存空间，这就意味着我们只能用一些很短的声音片段，而不是用它来播放歌曲或者做游戏背景音乐。<br>　　- SoundPool提供了pause和stop方法，但这些方法建议最好不要轻易使用，因为有些时候它们可能会使你的程序莫名其妙的终止。建议使用这两个方法的时候尽可能多做测试工作，还有些朋友反映它们不会立即中止播放声音，而是把缓冲区里的数据播放完才会停下来，也许会多播放一秒钟。<br>　　- SoundPool的效率问题。其实SoundPool的效率在这些播放类中算是很好的了，但是有的朋友在G1中测试它还是有100ms左右的延迟，这可能会影响用户体验。也许这不能管SoundPool本身，因为到了性能比较好的Droid中这个延迟就可以让人接受了。<br>　　在现阶段SoundPool有这些缺陷，但也有着它不可替代的优点，基于这些我们建议大在如下情况中多使用SoundPool：<br>1、应用程序中的声效(按键提示音，消息等)<br>2、游戏中密集而短暂的声音(如多个飞船同时爆炸)<br> soundpool可以播一些短的反应速度要求高的声音，<br>比如游戏中的爆破声，而mediaplayer适合播放长点的。<br> 3、SoundPool载入音乐文件使用了独立的线程，不会阻塞UI主线程的操作。但是这里如果音效文件过大没有载入完成，我们调用play方法时可能产生严 重的后果，这里Android SDK提供了一个SoundPool.OnLoadCompleteListener类来帮助我们了解媒体文件是否载入完成，我们重载 onLoadComplete(SoundPool soundPool, int sampleId, int status) 方法即可获得。<br>4、 从上面的onLoadComplete方法可以看出该类有很多参数，比如类似id，是的SoundPool在load时可以处理多个媒体一次初始化并放入内存中，这里效率比MediaPlayer高了很多。<br>5、SoundPool类支持同时播放多个音效，这对于游戏来说是十分必要的，而MediaPlayer类是同步执行的只能一个文件一个文件的播放。</p>
+<h3 id="1、实战使用"><a href="#1、实战使用" class="headerlink" title="1、实战使用"></a>1、实战使用</h3><blockquote>
+<p>SoundPool API<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-14/88330926.jpg" alt=""></p>
+</blockquote>
+<p>SoundPool提供一个Builder内部类，该内部类专门用于创建SoundPool。<br>注：从Android5.0开始，SoundPool的构造器被设为过时了，因此推荐使用SoundPool.Builder来创建SoundPool对象。</p>
+<p>1、创建SoundPool对象<br>Android5.0之前<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">soundPool = <span class="keyword">new</span> SoundPool(<span class="number">10</span>, AudioManager.STREAM_RING,<span class="number">100</span>);</span><br></pre></td></tr></table></figure></p>
+<p>Android5.0之后<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置音效池的属性</span></span><br><span class="line"> AudioAttributes audioAttributes = <span class="keyword">new</span> AudioAttributes.Builder()</span><br><span class="line">                 <span class="comment">//设置音效使用场景</span></span><br><span class="line">                .setUsage(AudioAttributes.USAGE_NOTIFICATION)</span><br><span class="line"><span class="comment">//设置音效类型                                     .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)</span></span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line"> <span class="comment">//创建SoundPool对象               </span></span><br><span class="line"> soundPool = <span class="keyword">new</span> SoundPool.Builder()</span><br><span class="line">                 <span class="comment">//设置音效池属性</span></span><br><span class="line">                .setAudioAttributes(audioAttributes)</span><br><span class="line">                <span class="comment">//设置音效类型</span></span><br><span class="line">                .setMaxStreams(<span class="number">10</span>)</span><br><span class="line">                .build();</span><br></pre></td></tr></table></figure></p>
+<p>2、加载声音<br>一旦得到SoundPool对象后，接下来就可调用SoundPool的多个重载的load()方法来加载声音了。SoundPool提供了如下load()方法。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>public static byte[]  encode(byte[] input, int flags)</td>
-<td>将字节数组进行转码，得到转码后的字节数组(Base64字符对应的ASCII字节值)。</td>
+<td>int load (Context context, int resId, int priority)</td>
+<td>从resId加载声音。</td>
 </tr>
 <tr>
-<td>public static byte[]  encode(String str, int flags)</td>
-<td>将一个字符串进行转码，该方法等价于Base64.encode(str.getBytes(),flags)</td>
+<td>int load (FileDescriptor fd, long offset, long length, int priority)</td>
+<td>从fd所对应的文件加载声音。</td>
 </tr>
 <tr>
-<td>public static String  encodeToString(byte[] input, int flags)</td>
-<td>将字节数组转码成Base64字符</td>
+<td>int load (AssetFileDescriptor afd, int priority)</td>
+<td></td>
+</tr>
+<tr>
+<td>int load (String path, int priority)</td>
 </tr>
 </tbody>
 </table>
-<pre><code>解码的静态方法：
-</code></pre><table>
-<thead>
-<tr>
-<th>API</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>public static byte[] decode(byte[] input, int flags)</td>
-<td>将转码后的字节还原成原始字节。</td>
-</tr>
-<tr>
-<td>public static byte[] decode(String str, int flags)</td>
-<td>将Base64字符序列还原成原始字。</td>
-</tr>
-</tbody>
-</table>
-<pre><code>不同字符编码的情况
-</code></pre><p>UTF-8、GBK、gb2312、ISO_8859_1字符集中，这64个字符的对应的字节值以及所占用的字节数与ASCII完全一样。所以str.getBytes()与str.getBytes(“US-ASCII”)等效。但是java 使用的Unicode编码却不同。java代码中字符串默认以Unicode编码，咱们看一下Java中类似的代码是如何处理的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#源码</span><br><span class="line">#可以看到，它并没有像Android一样直接调用src.getBytes()，Unicode与ASCII对这64个字符编码的字节值和占用字节数并不一样，而是传入字符集ISO_8859-1，效果与ASCII等价。</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">byte</span>[] decode(String src) &#123;  </span><br><span class="line">    <span class="keyword">return</span> decode(src.getBytes(StandardCharsets.ISO_8859_1));  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>这里说明一点，Java中的Base64位于java.util包下，Android剔除了该类，后者的Base64类位于android.util包下。</p>
+<p>上面的方法中都有一个priority参数，该参数目前还没有任何作用，Android建议将该参数设置为1，保持和未来的兼容性。</p>
 </blockquote>
-<pre><code>flag 参数的含义
-</code></pre><p>Android中的四个静态方法都有一个int型flags参数,它们的值可以是如下几种：</p>
-<ul>
-<li>DEFAULT 这个参数是默认，使用默认的方法来加密</li>
-<li>NO_PADDING 这个参数是略去加密字符串最后的”=”</li>
-<li>NO_WRAP 这个参数意思是略去所有的换行符（设置后CRLF就没用了）</li>
-<li>CRLF 这个参数看起来比较眼熟，它就是Win风格的换行符，意思就是使用CR LF这一对作为一行的结尾而不是Unix风格的LF</li>
-<li>URL_SAFE 这个参数意思是加密时不使用对URL和文件名有特殊意义的字符来作为加密字符，具体就是以-和_取代+和/</li>
-</ul>
+<p>返回值为该资源在Pool 中的Id<br>为了更好的管理SoundPool所加载的每个声音的ID，程序一般会使用HashMap&lt; Interger,Interger&gt;对象来管理声音。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;Integer,Integer&gt; soundMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">soundMap.put(<span class="number">1</span>,soundPool.load(<span class="keyword">this</span>,R.raw.one,<span class="number">1</span>));</span><br><span class="line">soundMap.put(<span class="number">2</span>,soundPool.load(<span class="keyword">this</span>,R.raw.two,<span class="number">1</span>));</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>通过soundMap.get(1)就可以拿到，soundPool.load(this,R.raw.one,1)的返回值得声音ID。<br>同理，soundMap.get(2)就可以拿到，soundPool.load(this,R.raw.two,1)的返回值得声音ID。</p>
+</blockquote>
+<p>3、播放声音<br>同过load()方法加载声音后，都会返回该声音的ID，以后程序就可以通过该声音的ID来播放声音了。SoundPool提供的播放指定声音的方法如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">play</span> <span class="params">(<span class="keyword">int</span> soundID, <span class="keyword">float</span> leftVolume, <span class="keyword">float</span> rightVolume, <span class="keyword">int</span> priority, <span class="keyword">int</span> loop, <span class="keyword">float</span> rate)</span></span></span><br><span class="line"><span class="function">#Parameters</span></span><br><span class="line"><span class="function">#soundID a soundID returned by the <span class="title">load</span><span class="params">()</span> function</span></span><br><span class="line"><span class="function">#leftVolume  left volume <span class="title">value</span> <span class="params">(range = <span class="number">0.0</span> to <span class="number">1.0</span>)</span></span></span><br><span class="line"><span class="function">#rightVolume right volume <span class="title">value</span> <span class="params">(range = <span class="number">0.0</span> to <span class="number">1.0</span>)</span></span></span><br><span class="line"><span class="function">#priority    stream <span class="title">priority</span> <span class="params">(<span class="number">0</span> = lowest priority)</span></span></span><br><span class="line"><span class="function">#loop    loop <span class="title">mode</span> <span class="params">(<span class="number">0</span> = no loop, <span class="number">-1</span> = loop forever)</span></span></span><br><span class="line"><span class="function">#rate    playback <span class="title">rate</span> <span class="params">(<span class="number">1.0</span> = normal playback, range <span class="number">0.5</span> to <span class="number">2.0</span>)</span></span></span><br><span class="line"><span class="function">#</span></span><br><span class="line"><span class="function">#Returns</span></span><br><span class="line"><span class="function">#non-zero streamID <span class="keyword">if</span> successful, zero <span class="keyword">if</span> failed</span></span><br></pre></td></tr></table></figure></p>
+<p>注：有时候play()函数的返回值为0,DDMS报的错是sample not ready的问题，也就是说是在load加载音乐文件出错，导致在play播放音乐时显示not ready； 在SoundPool中有setOnLoadCompleteListener方法用来判断音乐加载是否完成，因此解决方法如下：<br>(1)在音乐加载完成时间完成后播放<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">soundPool.setOnLoadCompleteListener(<span class="keyword">new</span> SoundPool.OnLoadCompleteListener() </span><br><span class="line">&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadComplete</span><span class="params">(SoundPool soundPool,</span></span></span><br><span class="line"><span class="function"><span class="params">            &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">                streamIdOne </span></span></span><br><span class="line"><span class="function"><span class="params">                = soundPool.play(soundMap.get(<span class="number">1</span>)</span>,1,1,0,-1,1)</span>;</span><br><span class="line">            &#125;</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>(2)可直接在load后面加sleep（1000），具体时间根据加载的文件的多少大小而定，给程序足够的时间去加载初始化音频文件。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将加载的声音资源id放进此Map</span></span><br><span class="line">soundPoolMap.put(<span class="number">1</span>, soundPool.load(<span class="keyword">this</span>, R.raw.gamestart, <span class="number">1</span>));</span><br><span class="line"><span class="keyword">try</span> </span><br><span class="line">&#123;</span><br><span class="line">    Thread.sleep(<span class="number">1000</span>);<span class="comment">// 给予初始化音乐文件足够时间</span></span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">catch</span> (InterruptedException e)</span><br><span class="line">&#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4、暂停播放<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">stop</span> <span class="params">(<span class="keyword">int</span> streamID)</span></span></span><br><span class="line"><span class="function">#Parameters： </span></span><br><span class="line"><span class="function">#streamID a streamID returned by the <span class="title">play</span><span class="params">()</span> function</span></span><br></pre></td></tr></table></figure></p>
+<p>简易开发步骤：<br>1、往项目的res/raw目录中放入音效文件。<br>2、新建SoundPool对象，然后调用SoundPool.load()加载音效，调用SoundPool.play()方法播放指定音效文件。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> SoundPool pool;  </span><br><span class="line"><span class="comment">//指定声音池的最大音频流数目为10，声音品质为5  </span></span><br><span class="line">pool = <span class="keyword">new</span> SoundPool(<span class="number">10</span>, AudioManager.STREAM_SYSTEM, <span class="number">5</span>);  </span><br><span class="line"><span class="comment">//载入音频流，返回在池中的id  </span></span><br><span class="line"><span class="keyword">final</span> <span class="keyword">int</span> sourceid = pool.load(<span class="keyword">this</span>, R.raw.pj, <span class="number">0</span>);  </span><br><span class="line"> <span class="comment">//播放音频，第二个参数为左声道音量;第三个参数为右声道音量;第四个参数为优先级；第五个参数为循环次数，0不循环，-1循环;第六个参数为速率，速率    最低0.5最高为2，1代表正常速度  </span></span><br><span class="line">pool.play(sourceid, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, -<span class="number">1</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意事项<br>1、AudioFlinger could not  create track, status: -12<br>   SoundPool即音效池，在创建的时候 maxStream这个参数代表能够同时播放的最大音效数，这里切忌合理使用，写的太大后会报AudioFlinger could not  create track, status: -12 。。。。一旦报了这个错，你就听不到声音了，呵呵。<br> 2、256个音效<br>       当调用load方法的时候实际就是把音效加载到了 SoundPool中，此时返回的streamId其实就是该音效在SoundPool中的Id，这个ID从0还是1来着（有点记不清了） 递增，不过要注意的是，不要超过  256  这个临界点。也就是说第257个声音加载进去后，调用play方法其实是播不出来的，说不定还会挤掉一些前面加载好的声音。这个256的限制通过查看SDK源码基本就能了解清楚，它底层就那么实现的，用一个类似堆栈来存。<br>  3、unload方法和release方法<br>         如果你音效多，也不要指望unload方法来清除掉一些音效后再load新的进去，虽然unload后音效卸载了，但是前面分给它在SoundPool里面的Id可没有释放掉，也就是说这个时候你load新的进去只会在后面继续累加，然后累加多了就超过256了，然后就就听不到声音，然后就没有然后了。要想彻底清掉前面的音效请使用release方法，它会连内存中占用的资源一起释放掉。<br>  4、load需要一点点时间<br>      load后不要马上unload，load —play–unload的做法并不可取，不要load太大的音效，它只会申请1M的内存空间。SoundPool出错后通常会看到retuen的值是0。</p>
+</blockquote>
 
           
         
@@ -1878,7 +913,7 @@ android.util 包下的Base64类提供了一些编码静态方法：
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/03/10/3、Android/1、Android 基础/基本知识/Android 屏幕旋转/">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/4、计算机系统/1、Linux/3、场景应用/手动搭建梯子/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liyy">
@@ -1897,8 +932,8 @@ android.util 包下的Base64类提供了一些编码静态方法：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/03/10/3、Android/1、Android 基础/基本知识/Android 屏幕旋转/" itemprop="url">
-                  Android 屏幕旋转
+                <a class="post-title-link" href="/2016/09/16/4、计算机系统/1、Linux/3、场景应用/手动搭建梯子/" itemprop="url">
+                  手动搭建梯子
                 </a>
               
             
@@ -1917,14 +952,14 @@ android.util 包下的Base64类提供了一些编码静态方法：
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2016-03-10 11:42:59" itemprop="dateCreated datePublished" datetime="2016-03-10T11:42:59+08:00">2016-03-10</time>
+              <time title="Created: 2016-09-16 10:28:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:28:44+08:00">2016-09-16</time>
             
 
             
@@ -1941,7 +976,7 @@ android.util 包下的Base64类提供了一些编码静态方法：
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2017-11-23 10:43:33" itemprop="dateModified" datetime="2017-11-23T10:43:33+08:00">2017-11-23</time>
+                <time title="Modified: 2018-08-07 17:32:07" itemprop="dateModified" datetime="2018-08-07T17:32:07+08:00">2018-08-07</time>
               
             
           </span>
@@ -1976,30 +1011,1283 @@ android.util 包下的Base64类提供了一些编码静态方法：
       
         
           
-            <h2 id="Android-屏幕旋转"><a href="#Android-屏幕旋转" class="headerlink" title="Android 屏幕旋转"></a>Android 屏幕旋转</h2><h3 id="1-AndroidManifest-xml设置"><a href="#1-AndroidManifest-xml设置" class="headerlink" title="1. AndroidManifest.xml设置"></a>1. AndroidManifest.xml设置</h3><p>如果单单想设置横屏或者竖屏，那么只需要添加横竖屏代码：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:screenOrientation="landscape" //横屏设置;</span><br><span class="line">android:screenOrientation="portrait" //竖屏设置;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>这种方法的优点：即使屏幕旋转，Activity也不会重新onCreate。<br> 缺点：屏幕只有一个方向。</p>
-</blockquote>
-<h3 id="2-代码动态设置"><a href="#2-代码动态设置" class="headerlink" title="2. 代码动态设置"></a>2. 代码动态设置</h3><p>如果你需要动态改变横竖屏设置，那么，只需要在代码中调用setRequestedOrientation()函数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</span><br><span class="line"><span class="comment">//横屏设置</span></span><br><span class="line">setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);</span><br><span class="line"><span class="comment">//竖屏设置</span></span><br><span class="line">setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);</span><br><span class="line"><span class="comment">//默认设置</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>这种方法优点：可以随意动态设置，满足我们人为改变横竖屏的要求，同时满足横竖屏UI不同的设计需求；<br> 缺点：如果改变设置，那么，Activity会被销毁，重新构建，即重新onCreate；</p>
-</blockquote>
-<h3 id="3-重写onConfigurationChanged"><a href="#3-重写onConfigurationChanged" class="headerlink" title="3. 重写onConfigurationChanged"></a>3. 重写onConfigurationChanged</h3><p>如果你不希望旋转屏幕的时候Activity被不断的onCreate(这种情况往往会造成屏幕切换时的卡顿)，那么，可以使用此方法：<br>首先，在AndroidMainfest.xml中添加configChanges：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".Test"</span></span></span><br><span class="line"><span class="tag"> <span class="attr">android:configChanges</span>=<span class="string">"orientation|keyboard"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>注意，keyboardHidden表示键盘辅助功能隐藏，如果你的开发API等级等于或高于13，还需要设置screenSize，因为screenSize会在屏幕旋转时改变；<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:configChanges="keyboardHidden|orientation|screenSize"</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>然后，在Activity中重写onConfigurationChanged方法，这个方法将会在屏幕旋转变化时，进行监听处理：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfigurationChanged</span><span class="params">(Configuration newConfig)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (newConfig.orientation==Configuration.ORIENTATION_LANDSCAPE)&#123;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>这个方法的优点：我们可以随时监听屏幕旋转变化，并对应做出相应的操作；<br>缺点：它只能一次旋转90度，如果一下子旋转180度，onConfigurationChanged函数不会被调用。</p>
-</blockquote>
-<h3 id="4-结合OrientationEventListener-自定义旋转监听设置"><a href="#4-结合OrientationEventListener-自定义旋转监听设置" class="headerlink" title="4.  结合OrientationEventListener,自定义旋转监听设置"></a>4.  结合OrientationEventListener,自定义旋转监听设置</h3><p>如果你想更加完美，更加完全的掌控监听屏幕旋转变化，比如，转屏时不想重新onCreate，尤其是在Camera界面，不想出现旋转preview时屏幕的卡顿、黑屏等问题，那么，可以尝试：<br> 1、创建OrientationEventListener对象：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> OrientationEventListener mOrientationListener;</span><br><span class="line"><span class="comment">// screen orientation listener</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> mScreenProtrait = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> mCurrentOrient = <span class="keyword">false</span>;</span><br></pre></td></tr></table></figure></p>
-<p>2、自定义屏幕变化回调接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">OrientationChanged</span><span class="params">(<span class="keyword">int</span> orientation)</span></span>;</span><br><span class="line"><span class="comment">//screen orientation change event</span></span><br></pre></td></tr></table></figure></p>
-<p>3、自定义监听类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">startOrientationChangeListener</span><span class="params">()</span> </span>&#123;</span><br><span class="line"> mOrientationListener = <span class="keyword">new</span> OrientationEventListener(<span class="keyword">this</span>) &#123;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOrientationChanged</span><span class="params">(<span class="keyword">int</span> rotation)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (((rotation &gt;= <span class="number">0</span>) &amp;&amp; (rotation &lt;= <span class="number">45</span>)) || (rotation &gt;= <span class="number">315</span>)||((rotation&gt;=<span class="number">135</span>)&amp;&amp;(rotation&lt;=<span class="number">225</span>))) &#123;<span class="comment">//portrait</span></span><br><span class="line">      mCurrentOrient = <span class="keyword">true</span>;</span><br><span class="line">      <span class="keyword">if</span>(mCurrentOrient!=mScreenProtrait) &#123;</span><br><span class="line">         mScreenProtrait = mCurrentOrient;</span><br><span class="line">         OrientationChanged(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);</span><br><span class="line">         Log.d(TAG, <span class="string">"Screen orientation changed from Landscape to Portrait!"</span>);</span><br><span class="line">      &#125;</span><br><span class="line"> &#125; <span class="keyword">else</span> <span class="keyword">if</span> (((rotation &gt; <span class="number">45</span>) &amp;&amp; (rotation &lt; <span class="number">135</span>))||((rotation&gt;<span class="number">225</span>)&amp;&amp;(rotation&lt;<span class="number">315</span>))) &#123;<span class="comment">//landscape</span></span><br><span class="line"> mCurrentOrient = <span class="keyword">false</span>;</span><br><span class="line">       <span class="keyword">if</span>(mCurrentOrient!=mScreenProtrait) &#123;</span><br><span class="line">            mScreenProtrait = mCurrentOrient;</span><br><span class="line">            OrientationChanged(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);</span><br><span class="line">            Log.d(TAG, <span class="string">"Screen orientation changed from Portrait to Landscape!"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"> mOrientationListener.enable();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>4、在onCreate()中调用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startOrientationChangeListener();</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>这个方法的优点：你可以任意随时准确的监听屏幕旋转变化的状态，可以随时动态改变横竖屏状态；<br>注：对于Camera来说，你可以设置初始化为横屏或者竖屏，然后对外提供旋转监听，这样，既可以获得屏幕旋转状态，让你做出相应的操作，又不会出现&gt; 重新onCreate当前Activity造成的卡顿与短暂的黑屏切换。</p>
-</blockquote>
+            <h2 id="手动搭建梯子"><a href="#手动搭建梯子" class="headerlink" title="手动搭建梯子"></a>手动搭建梯子</h2><p>当前梯子搭建主要使用Shadowsocks 和 v2ray</p>
+<h3 id="1、Shadowsocks"><a href="#1、Shadowsocks" class="headerlink" title="1、Shadowsocks"></a>1、Shadowsocks</h3><p>参考<br><a href="https://teddysun.com/342.html" target="_blank" rel="noopener">Shadowsocks Python版一键安装脚本</a></p>
+<h3 id="2、V2ray"><a href="#2、V2ray" class="headerlink" title="2、V2ray"></a>2、V2ray</h3><p>参考<br><a href="https://www.moerats.com/archives/3/" target="_blank" rel="noopener">V2ray多功能管理一键脚本，带配置文件下载功能</a></p>
+<h4 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1 安装"></a>2.1 安装</h4><p>请使用Xshell连接服务器，以获得完美的中文支持以及配置文件下载功能。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/FunctionClub/v2ray.fun/master/install.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2 配置"></a>2.2 配置</h4><p>运行<code>V2ray</code>，根据提示配置V2ray。配置完成导出配置文件<code>config.json</code></p>
+<h4 id="2-3本地导入配置文件"><a href="#2-3本地导入配置文件" class="headerlink" title="2.3本地导入配置文件"></a>2.3本地导入配置文件</h4><p><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180518/g4lG4k9alk.png?imageslim" alt="mark"></p>
+<p>导入配置文件<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180518/faeGAma55f.png?imageslim" alt="mark"><br>选择默认服务地址<br><img src="http://oymp4z5xr.bkt.clouddn.com/hexo/180518/fmCJG1LiDm.png?imageslim" alt="mark"><br>开启代理</p>
 
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/4、计算机系统/1、Linux/2、常用软件服务管理/Ubuntu中彻底删除nginx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/16/4、计算机系统/1、Linux/2、常用软件服务管理/Ubuntu中彻底删除nginx/" itemprop="url">
+                  Ubuntu16.4 安装PHP运行环境 LAMP
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:24:44+08:00">2016-09-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-30 16:35:50" itemprop="dateModified" datetime="2019-01-30T16:35:50+08:00">2019-01-30</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Ubuntu彻底删除nginx"><a href="#Ubuntu彻底删除nginx" class="headerlink" title="Ubuntu彻底删除nginx"></a>Ubuntu彻底删除nginx</h2><p>1.先执行一下命令：</p>
+<p>1.1 删除nginx，–purge包括配置文件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove nginx</span><br></pre></td></tr></table></figure></p>
+<p>1.2 自动移除全部不使用的软件包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure></p>
+<p>1.3 罗列出与nginx相关的软件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg --get-selections|grep nginx</span><br></pre></td></tr></table></figure></p>
+<p>执行1.3的结果:</p>
+<blockquote>
+<p>stephen@stephen-OptiPlex-390:~$ dpkg –get-selections|grep nginx<br>nginx                       install<br>nginx-common                    install<br>nginx-core                  install</p>
+</blockquote>
+<p>1.4 删除1.3查询出与nginx有关的软件<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove nginx</span><br><span class="line">sudo apt-get --purge remove nginx-common</span><br><span class="line">sudo apt-get --purge remove nginx-core</span><br></pre></td></tr></table></figure></p>
+<p>这样就可以完全卸载掉nginx包括配置文件</p>
+<p>2.查看nginx正在运行的进程，如果有就kill掉<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep nginx</span><br></pre></td></tr></table></figure></p>
+<p>　　看下nginx还有没有启动,一般执行完1后，nginx还是启动着的，如下：</p>
+<blockquote>
+<p>stephen@stephen-OptiPlex-390:~$ ps -ef |grep nginx<br>root      7875  2317  0 15:02 ?        00:00:00 nginx: master process /usr/sbin/nginx<br>www-data  7876  7875  0 15:02 ?        00:00:00 nginx: worker process<br>www-data  7877  7875  0 15:02 ?        00:00:00 nginx: worker process<br>www-data  7878  7875  0 15:02 ?        00:00:00 nginx: worker process<br>www-data  7879  7875  0 15:02 ?        00:00:00 nginx: worker process<br>stephen   8321  3510  0 15:20 pts/0    00:00:00 grep –color=auto nginx</p>
+</blockquote>
+<p>3.kill nginx进程<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo kill  -9  7875 7876 7877 7879</span><br></pre></td></tr></table></figure></p>
+<p>4.全局查找与nginx相关的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo  find  /  -name  nginx*</span><br></pre></td></tr></table></figure>
+<p>5.依依删除4列出的所有文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rm -rf file</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>再次重装</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/3、开发语言/7、Cmake/cmake 基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/16/3、开发语言/7、Cmake/cmake 基础/" itemprop="url">
+                  cmake 基础
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:24:44+08:00">2016-09-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-04-20 15:43:48" itemprop="dateModified" datetime="2018-04-20T15:43:48+08:00">2018-04-20</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="cmake-基础"><a href="#cmake-基础" class="headerlink" title="cmake 基础"></a>cmake 基础</h2><h3 id="一、基本使用"><a href="#一、基本使用" class="headerlink" title="一、基本使用"></a>一、基本使用</h3><p>安装：下载二进制包后可直接解压使用<br>从源码安装则执行命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./bootstrap;</span><br><span class="line"> make;</span><br><span class="line">  make install</span><br></pre></td></tr></table></figure></p>
+<p>——尝试执行bootstrap失败<br>使用：<code>cmake dir_path</code>，生成工程文件或makefile文件</p>
+<h3 id="二、-概念"><a href="#二、-概念" class="headerlink" title="二、 概念"></a>二、 概念</h3><p><code>out-of-source build</code>，与<code>in-source build</code>相对，即将编译输出文件与源文件放到不同目录中；</p>
+<h3 id="三、基本结构"><a href="#三、基本结构" class="headerlink" title="三、基本结构"></a>三、基本结构</h3><p>1，依赖CMakeLists.txt文件，项目主目标一个，主目录中可指定包含的子目录；<br>2，在项目CMakeLists.txt中使用project指定项目名称，add_subdirectory添加子目录<br>3，子目录CMakeLists.txt将从父目录CMakeLists.txt继承设置（TBD，待检验）</p>
+<h3 id="四、-语法"><a href="#四、-语法" class="headerlink" title="四、  语法"></a>四、  语法</h3><ol>
+<li><p>#注释</p>
+</li>
+<li><p>变量：使用set命令显式定义及赋值，在非if语句中，使用${}引用，if中直接使用变量名引用；后续的set命令会清理变量原来的值；</p>
+</li>
+<li><p>command (args …)  #命令不分大小写，参数使用空格分隔，使用双引号引起参数中空格</p>
+</li>
+<li><p>set(var a;b;c) &lt;=&gt; set(var a b c)  #定义变量var并赋值为a;b;c这样一个string list</p>
+</li>
+<li><p>Add_executable(${var}) &lt;=&gt; Add_executable(a b c)   #变量使用${xxx}引用</p>
+</li>
+<li><p>条件语句：</p>
+</li>
+</ol>
+<p>if(var) #var 非empty 0 N No OFF FALSE… #非运算使用NOT</p>
+<pre><code>…
+</code></pre><p>else()/elseif() … endif(var)</p>
+<ol start="7">
+<li>循环语句</li>
+</ol>
+<p>Set(VAR a b c)</p>
+<p>Foreach(f ${VAR})       …Endforeach(f)</p>
+<ol start="8">
+<li>循环语句</li>
+</ol>
+<p>WHILE() … ENDWHILE()</p>
+<h3 id="五、内部变量"><a href="#五、内部变量" class="headerlink" title="五、内部变量"></a>五、内部变量</h3><p>CMAKE_C_COMPILER：指定C编译器</p>
+<p>CMAKE_CXX_COMPILER：</p>
+<p>CMAKE_C_FLAGS：编译C文件时的选项，如-g；也可以通过add_definitions添加编译选项</p>
+<p>EXECUTABLE_OUTPUT_PATH：可执行文件的存放路径</p>
+<p>LIBRARY_OUTPUT_PATH：库文件路径</p>
+<p>CMAKE_BUILD_TYPE:：build 类型(Debug, Release, …)，CMAKE_BUILD_TYPE=Debug</p>
+<p>BUILD_SHARED_LIBS：Switch between shared and static libraries</p>
+<p>内置变量的使用：</p>
+<blockquote>
+<p>在CMakeLists.txt中指定，使用set</p>
+</blockquote>
+<blockquote>
+<p>cmake命令中使用，如cmake -DBUILD_SHARED_LIBS=OFF</p>
+</blockquote>
+<p>###六、 命令<br>project (HELLO)   #指定项目名称，生成的VC项目的名称；</p>
+<blockquote>
+<p>使用${HELLO_SOURCE_DIR}表示项目根目录</p>
+</blockquote>
+<p>include_directories：指定头文件的搜索路径，相当于指定gcc的-I参数</p>
+<blockquote>
+<p>include_directories (${HELLO_SOURCE_DIR}/Hello)  #增加Hello为include目录</p>
+</blockquote>
+<p>link_directories：动态链接库或静态链接库的搜索路径，相当于gcc的-L参数</p>
+<blockquote>
+<p>link_directories (${HELLO_BINARY_DIR}/Hello)     #增加Hello为link目录</p>
+</blockquote>
+<p>add_subdirectory：包含子目录</p>
+<blockquote>
+<p>add_subdirectory (Hello)</p>
+</blockquote>
+<p>add_executable：编译可执行程序，指定编译，好像也可以添加.o文件</p>
+<blockquote>
+<p>add_executable (helloDemo demo.cxx demo_b.cxx)   #将cxx编译成可执行文件——</p>
+</blockquote>
+<p>add_definitions：添加编译参数</p>
+<blockquote>
+<p>add_definitions(-DDEBUG)将在gcc命令行添加DEBUG宏定义；</p>
+</blockquote>
+<blockquote>
+<p>add_definitions( “-Wall -ansi –pedantic –g”)</p>
+</blockquote>
+<p>target_link_libraries：添加链接库,相同于指定-l参数</p>
+<blockquote>
+<p>target_link_libraries(demo Hello) #将可执行文件与Hello连接成最终文件demo</p>
+</blockquote>
+<p>add_library:</p>
+<blockquote>
+<p>add_library(Hello hello.cxx)  #将hello.cxx编译成静态库如libHello.a</p>
+</blockquote>
+<p>add_custom_target:</p>
+<p>message( status|fatal_error, “message”):</p>
+<p>set_target_properties( … ): lots of properties… OUTPUT_NAME, VERSION, ….</p>
+<p>link_libraries( lib1 lib2 …): All targets link with the same set of libs</p>
+<p>###七、 说明<br>1，CMAKE生成的makefile能够处理好.h文件更改时只编译需要的cpp文件；</p>
+<p>###八、FAQ</p>
+<ol>
+<li><p>怎样获得一个目录下的所有源文件</p>
+<blockquote>
+<p>aux_source_directory(<dir> <variable>)<br>将dir中所有源文件（不包括头文件）保存到变量variable中，然后可以add_executable (ss7gw ${variable})这样使用。</variable></dir></p>
+</blockquote>
+</li>
+<li><p>怎样指定项目编译目标</p>
+<blockquote>
+<p> project命令指定</p>
+</blockquote>
+</li>
+<li><p>怎样添加动态库和静态库</p>
+<blockquote>
+<p>target_link_libraries命令添加即可</p>
+</blockquote>
+</li>
+<li><p>怎样在执行CMAKE时打印消息</p>
+<blockquote>
+<p>message([SEND_ERROR | STATUS | FATAL_ERROR] “message to display” …)</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>注意大小写</p>
+</blockquote>
+<ol start="5">
+<li>怎样指定头文件与库文件路径<blockquote>
+<p>include_directories与link_directories</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>可以多次调用以设置多个路径</p>
+</blockquote>
+<blockquote>
+<p>link_directories仅对其后面的targets起作用</p>
+</blockquote>
+<ol start="6">
+<li>怎样区分debug、release版本<blockquote>
+<p>建立debug/release两目录，分别在其中执行cmake -DCMAKE_BUILD_TYPE=Debug（或Release），需要编译不同版本时进入不同目录执行make即可；</p>
+</blockquote>
+</li>
+</ol>
+<p>Debug版会使用参数-g；Release版使用-O3 –DNDEBUG</p>
+<blockquote>
+<p>另一种设置方法——例如DEBUG版设置编译参数DDEBUG</p>
+</blockquote>
+<p>IF(DEBUG_mode)</p>
+<pre><code>add_definitions(-DDEBUG)
+</code></pre><p>ENDIF()</p>
+<p>在执行cmake时增加参数即可，例如cmake -D DEBUG_mode=ON</p>
+<ol start="7">
+<li>怎样设置条件编译<br>例如debug版设置编译选项DEBUG，并且更改不应改变CMakelist.txt</li>
+</ol>
+<blockquote>
+<p>使用option command，eg：</p>
+</blockquote>
+<p>option(DEBUG_mode “ON for debug or OFF for release” ON)</p>
+<p>IF(DEBUG_mode)</p>
+<pre><code>add_definitions(-DDEBUG)
+</code></pre><p>ENDIF()</p>
+<blockquote>
+<p>使其生效的方法：首先cmake生成makefile，然后make edit_cache编辑编译选项；Linux下会打开一个文本框，可以更改，该完后再make生成目标文件——emacs不支持make edit_cache；</p>
+</blockquote>
+<blockquote>
+<p>局限：这种方法不能直接设置生成的makefile，而是必须使用命令在make前设置参数；对于debug、release版本，相当于需要两个目录，分别先cmake一次，然后分别make edit_cache一次；</p>
+</blockquote>
+<blockquote>
+<p>期望的效果：在执行cmake时直接通过参数指定一个开关项，生成相应的makefile——可以这样做，例如cmake –DDEBUGVERSION=ON</p>
+</blockquote>
+<ol start="8">
+<li><p>怎样添加编译宏定义</p>
+<blockquote>
+<p>使用add_definitions命令，见命令部分说明</p>
+</blockquote>
+</li>
+<li><p>怎样添加编译依赖项<br>用于确保编译目标项目前依赖项必须先构建好</p>
+</li>
+</ol>
+<blockquote>
+<p>add_dependencies</p>
+</blockquote>
+<ol start="10">
+<li>怎样指定目标文件目录<blockquote>
+<p>建立一个新的目录，在该目录中执行cmake生成Makefile文件，这样编译结果会保存在该目录——类似</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>SET_TARGET_PROPERTIES(ss7gw PROPERTIES</p>
+</blockquote>
+<pre><code>RUNTIME_OUTPUT_DIRECTORY &quot;${BIN_DIR}&quot;)
+</code></pre><ol start="11">
+<li><p>很多文件夹，难道需要把每个文件夹编译成一个库文件？</p>
+<blockquote>
+<p>可以不在子目录中使用CMakeList.txt，直接在上层目录中指定子目录</p>
+</blockquote>
+</li>
+<li><p>怎样设定依赖的cmake版本</p>
+<blockquote>
+<p>cmake_minimum_required(VERSION 2.6)</p>
+</blockquote>
+</li>
+<li><p>相对路径怎么指定</p>
+<blockquote>
+<p>${projectname_SOURCE_DIR}表示根源文件目录，${ projectname _BINARY_DIR}表示根二进制文件目录？</p>
+</blockquote>
+</li>
+<li><p>怎样设置编译中间文件的目录</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</li>
+<li><p>怎样在IF语句中使用字串或数字比较</p>
+<blockquote>
+<p>数字比较LESS、GREATER、EQUAL，字串比STRLESS、STRGREATER、STREQUAL，</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>Eg：</p>
+</blockquote>
+<p>set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)</p>
+<p>set(AAA abc)</p>
+<p>IF(AAA STREQUAL abc)</p>
+<pre><code>message(STATUS &quot;true&quot;)   #应该打印true
+</code></pre><p>ENDIF()</p>
+<ol start="16">
+<li><p>更改h文件时是否只编译必须的cpp文件</p>
+<blockquote>
+<p>是</p>
+</blockquote>
+</li>
+<li><p>机器上安装了VC7和VC8，CMAKE会自动搜索编译器，但是怎样指定某个版本？</p>
+<blockquote>
+<p>TBD</p>
+</blockquote>
+</li>
+<li><p>怎样根据OS指定编译选项</p>
+<blockquote>
+<p>IF( APPLE ); IF( UNIX ); IF( WIN32 )</p>
+</blockquote>
+</li>
+<li><p>能否自动执行某些编译前、后命令？</p>
+<blockquote>
+<p>可以，TBD</p>
+</blockquote>
+</li>
+<li><p>怎样打印make的输出<br>make VERBOSE=1</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/4、计算机系统/1、Linux/2、常用软件服务管理/Centos安装node和npm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/16/4、计算机系统/1、Linux/2、常用软件服务管理/Centos安装node和npm/" itemprop="url">
+                  Centos7 安装nodejs  & npm
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:24:44+08:00">2016-09-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-29 14:56:21" itemprop="dateModified" datetime="2019-01-29T14:56:21+08:00">2019-01-29</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Centos7-安装nodejs-amp-npm"><a href="#Centos7-安装nodejs-amp-npm" class="headerlink" title="Centos7 安装nodejs  &amp; npm"></a>Centos7 安装nodejs  &amp; npm</h2><p>使用源码安装方式</p>
+<h3 id="登录官网下载最新源码"><a href="#登录官网下载最新源码" class="headerlink" title="登录官网下载最新源码"></a>登录官网下载最新源码</h3><blockquote>
+<p> 从下图所示中获取源码链接</p>
+</blockquote>
+<p><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-8/28111150.jpg" alt=""></p>
+<blockquote>
+<p>下载源码 </p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://npm.taobao.org/mirrors/node/v8.9.0/node-v8.9.0.tar.gz</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解压源码并进入解压目录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xzvf node-v* &amp;&amp; cd node-v*</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>安装编译软件gcc-c++<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc gcc-c++</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>编译源码<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line"><span class="meta">#</span><span class="bash">编译时间较长，耐心等待。。。</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>编译并安装<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>测试是否安装成功<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -version</span><br><span class="line">npm -version</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>安装结果如图所示<br><img src="http://oymp4z5xr.bkt.clouddn.com/17-11-8/94597562.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/8、读书计划/android-路线图/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/16/8、读书计划/android-路线图/" itemprop="url">
+                  android 路线图
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:24:44+08:00">2016-09-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-08-06 09:56:32" itemprop="dateModified" datetime="2018-08-06T09:56:32+08:00">2018-08-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Android学习路线从4个阶段来对Android的学习过程做一个全面的分析:Android初级、中级、高级以及资深工程师。。</p>
+<p>初级工程师<br> 编程基础、数据结构、C语言都有一定基础，Java语法什么的也都掌握的比较好。</p>
+<p>​        Android官方文档中的training和guide看一遍，同时通过写博客和记笔记的方式来做总结，建议让自己的每篇博客都有价值些。通过一年时间的学习，相信每个人都可以达到中级工程师的水平。<br>技术要求：</p>
+<ul>
+<li>基本知识点<br>比如四大组件如何使用、如何创建Service、如何进行布局、简单的自定义View、动画等常见技术</li>
+<li>书籍推荐<br>《第一行代码 Android》、《疯狂Android》</li>
+</ul>
+<p>中级工程师</p>
+<ul>
+<li>AIDL：熟悉AIDL，理解其工作原理，懂transact和onTransact的区别；</li>
+<li>Binder：从Java层大概理解Binder的工作原理，懂Parcel对象的使用；</li>
+<li>多进程：熟练掌握多进程的运行机制，懂Messenger、Socket等；</li>
+<li>事件分发：弹性滑动、滑动冲突等；</li>
+<li>玩转View：View的绘制原理、各种自定义View；</li>
+<li>动画系列：熟悉View动画和属性动画的不同点，懂属性动画的工作原理；</li>
+<li>懂性能优化、熟悉mat等工具</li>
+<li>懂点常见的设计模式<br>学习方法<br>阅读进阶书籍，阅读Android源码，阅读官方文档并尝试自己写相关的技术文章，需要有一定技术深度和自我思考。在这个阶段的学习过程中，有2个点是比较困扰大家的，一个是阅读源码，另一个是自定义View以及滑动冲突。<br>如何阅读源码呢？这是个头疼的问题，但是源码必须要读。阅读源码的时候不要深入代码细节不可自拔，要关注代码的流程并尽量挖掘出对应用层开发有用的结论。另外仔细阅读源码中对一个类或者方法的注释，在看不懂源码时，源码中的注释可以帮你更好地了解源码中的工作原理，这个过程虽然艰苦，但是别无他法。<br>如何玩转自定义View呢？我们要透过现象看本质，更多地去关注自定义view所需的知识点：</li>
+<li>搞懂view的滑动原理</li>
+<li>搞懂如何实现弹性滑动</li>
+<li>搞懂view的滑动冲突</li>
+<li>搞懂view的measure、layout和draw</li>
+<li>然后再学习几个已有的自定义view的例子</li>
+<li>最后就可以搞定自定义view了，所谓万变不离其宗<br>大概再需要1-2年时间，即可达到高级工程师的技术水平。我个人认为通过《Android开发艺术探索》和《Android群英传》可以缩短这个过程为0.5-1年。注意，达到高级工程师的技术水平不代表就可以立刻成为高级工程师（受机遇、是否跳槽的影响），但是技术达到了，成为高级工程师只是很简单的事。<br>技术要求：</li>
+<li>稍微深入的知识点<br>AIDL、Messenger、Binder、多进程、动画、滑动冲突、自定义View、消息队列等</li>
+<li>书籍推荐<br>《Android开发艺术探索》、《Android群英传》</li>
+</ul>
+<p>高级工程师<br>资深工程师月薪可以达到30k+。<br>为了成为Android资深工程师，需要学习的东西就更多了，并且有些并不是那么具体了，如下所示：</p>
+<ul>
+<li>继续加深理解”稍微深入的知识点“中所定义的内容</li>
+<li>了解系统核心机制：</li>
+</ul>
+<ol>
+<li>了解SystemServer的启动过程</li>
+<li>了解主线程的消息循环模型</li>
+<li>了解AMS和PMS的工作原理</li>
+<li>能够回答问题”一个应用存在多少个Window？“</li>
+<li>了解四大组件的大概工作流程</li>
+<li>…</li>
+</ol>
+<ul>
+<li>基本知识点的细节</li>
+</ul>
+<ol>
+<li>Activity的启动模式以及异常情况下不同Activity的表现</li>
+<li>Service的onBind和onReBind的关联</li>
+<li>onServiceDisconnected(ComponentName className)和binderDied()的区别</li>
+<li>AsyncTask在不同版本上的表现细节</li>
+<li>线程池的细节和参数配置</li>
+<li>…</li>
+</ol>
+<ul>
+<li>熟悉设计模式，有架构意识<br>学习方法<br>这个时候已经没有太具体的学习方法了，无非就是看书、看源码和做项目，平时多种总结，尽量将知识融会贯通从而形成一种体系化的感觉。<br>同时这个阶段对架构是有一定要求的，架构是抽象的，但是设计模式是具体的，所以一定要加强下设计模式的学习。关于设计模式的学习，推荐《Android 源码设计模式解析与实战》，既可以学习设计模式，又可能体会到Android源码中的设计思想。<br>技术要求：</li>
+<li>稍微深入的知识点</li>
+<li>系统核心机制</li>
+<li>基本知识点的细节</li>
+<li>设计模式和架构</li>
+<li>书籍推荐<br>《Android开发艺术探索》、《Android 源码设计模式解析与实战》、《Android内核剖析》</li>
+</ul>
+<p>资深工程师<br>更多了解不同业务的架构问题，内核源码设计原理，整理并开源自己的组件</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/09/16/4、计算机系统/1、Linux/2、常用软件服务管理/Ubuntu16.4 安装PHP运行环境 LAMP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/16/4、计算机系统/1、Linux/2、常用软件服务管理/Ubuntu16.4 安装PHP运行环境 LAMP/" itemprop="url">
+                  Ubuntu16.4 安装PHP运行环境 LAMP
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-09-16 10:24:44" itemprop="dateCreated datePublished" datetime="2016-09-16T10:24:44+08:00">2016-09-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-04-16 10:13:08" itemprop="dateModified" datetime="2018-04-16T10:13:08+08:00">2018-04-16</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Ubuntu16-4-安装PHP运行环境-LAMP"><a href="#Ubuntu16-4-安装PHP运行环境-LAMP" class="headerlink" title="Ubuntu16.4 安装PHP运行环境 LAMP"></a>Ubuntu16.4 安装PHP运行环境 LAMP</h2><h3 id="1、安装apache"><a href="#1、安装apache" class="headerlink" title="1、安装apache"></a>1、安装apache</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apache2</span><br></pre></td></tr></table></figure>
+<p>测试： 浏览器访问<a href="http://Ubuntu的IP（即http://localhost），出现It" target="_blank" rel="noopener">http://Ubuntu的IP（即http://localhost），出现It</a> Works!网页。<br>查看状态： service apache2 status/start/stop/restart<br>Web目录：/var/www<br>安装目录： /etc/apache2/<br>全局配置： /etc/apache2/apache2.conf<br>监听端口： /etc/apache2/ports.conf<br>虚拟主机： /etc/apache2/sites-enabled/000-default.conf</p>
+<h3 id="2、安装mysql"><a href="#2、安装mysql" class="headerlink" title="2、安装mysql"></a>2、安装mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-server mysql-client</span><br></pre></td></tr></table></figure>
+<p>测试：mysql -u root -p<br>查看状态：service mysql status/start/stop/retart<br>查看监听端口的情况：netstat -tunpl或 netstat -tap</p>
+<p>然后整合一下php和mysql<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php7.0-mysql</span><br></pre></td></tr></table></figure></p>
+<h3 id="3、安装php7-0"><a href="#3、安装php7-0" class="headerlink" title="3、安装php7.0"></a>3、安装php7.0</h3><p>apt-get安装<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install php7.0</span><br></pre></td></tr></table></figure></p>
+<p>输入版本信息，检测安装是否成功<br> php -v<br>PHP 7.0.4-7ubuntu2.1 (cli) ( NTS )<br>Copyright (c) 1997-2016 The PHP Group<br>Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies<br>with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies</p>
+<p>整合一下php和apache,安装apache2 php7 module<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libapache2-mod-php7.0</span><br><span class="line">sudo apt install libapache2-mod-php7.0</span><br></pre></td></tr></table></figure></p>
+<h3 id="4、验证"><a href="#4、验证" class="headerlink" title="4、验证"></a>4、验证</h3><p>重启MySQL和Apache<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql restart</span><br><span class="line">sudo service apache2 restart</span><br></pre></td></tr></table></figure></p>
+<p>测试Apache能否解析PHP<br>vim /var/www/html/phpinfo.php<br>文件中写：<figure class="highlight plain"><figcaption><span>echo phpinfo();?> ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">浏览器访问：http://ubuntu地址/phpinfo.php（即http://localhost/phpinfo.php），出现PHP Version网页</span><br><span class="line">### 5、安装phpMyAdmin</span><br><span class="line">```shell</span><br><span class="line">sudo apt-get install phpmyadmin</span><br></pre></td></tr></table></figure></p>
+<p>安装：选择apache2，点击确定。下一步选择是要配置数据库，并输入密码。<br>创建phpMyAdmin快捷方式：sudo ln -s /usr/share/phpmyadmin /var/www/html<br>启用Apache mod_rewrite模块：sudo a2enmod rewrite<br>重启服务：<br>service php7.0-fpm restart<br>service apache2 restart<br>测试：浏览器访问：<a href="http://ubuntu地址/phpmyadmin(即http://localhost/phpmyadmin)" target="_blank" rel="noopener">http://ubuntu地址/phpmyadmin(即http://localhost/phpmyadmin)</a></p>
+<h3 id="6、配置Apache"><a href="#6、配置Apache" class="headerlink" title="6、配置Apache"></a>6、配置Apache</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/apache2/apache2.conf</span><br></pre></td></tr></table></figure>
+<p>添加：<br>AddType application/x-httpd-php .php .htm .html<br>AddDefaultCharset UTF-8<br>重启Apache服务</p>
+<p>###6、解决常见问题</p>
+<p>####1、ubuntu 16.04 可能乱码的问题<br>解决中文乱码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/default/locale</span><br></pre></td></tr></table></figure></p>
+<p>修改为<br>LANG=”zh_CN.UTF-8”<br>LANGUAGE=”zh_CN:zh”<br>然后重启<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure></p>
+<p>最后 安装中文包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install zhcon</span><br></pre></td></tr></table></figure></p>
+<p>####2、 xml_parser_create()  不支持的问题<br>解决这个问题可以在这里<br><a href="http://php.net/manual/en/xml.installation.php" target="_blank" rel="noopener">XML Parser</a><br>安装XML Parser<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php-xml</span><br></pre></td></tr></table></figure></p>
+<p>之后重启apache.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://liyy.org/2016/08/11/3、开发语言/5、Python/Python 基础/1、Python 基本数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liyy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AtomOne">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/08/11/3、开发语言/5、Python/Python 基础/1、Python 基本数据类型/" itemprop="url">
+                  byte[]数组和int之间的转换
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-08-11 16:02:59" itemprop="dateCreated datePublished" datetime="2016-08-11T16:02:59+08:00">2016-08-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-08-08 19:20:39" itemprop="dateModified" datetime="2018-08-08T19:20:39+08:00">2018-08-08</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1、Python-基本数据类型"><a href="#1、Python-基本数据类型" class="headerlink" title="1、Python 基本数据类型"></a>1、Python 基本数据类型</h3>
           
         
       
@@ -2041,7 +2329,7 @@ android.util 包下的Base64类提供了一些编码静态方法：
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2084,8 +2372,8 @@ android.util 包下的Base64类提供了一些编码静态方法：
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">80</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2133,10 +2421,8 @@ android.util 包下的Base64类提供了一些编码静态方法：
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">18</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -2189,7 +2475,7 @@ android.util 包下的Base64类提供了一些编码静态方法：
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -2203,7 +2489,7 @@ android.util 包下的Base64类提供了一些编码静态方法：
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
